@@ -1,10 +1,66 @@
+import { useState } from "react"
+
 import { Wrapper, MyLabel, WrapperHeader, HeaderForm, HeaderInput, 
   WrapperBody, BasicInput, ContentInput, Zipcode, ZipcodeSearch,
-  PhotoUpload, Photo, MainsetForm, RadioInput, AdminBtn } from '../../../styles/new.js'
+  PhotoUpload, Photo, MainsetForm, RadioInput, AdminBtn, Error } from '../../../styles/new.js'
 
 export default function Home() {
   // JavaScript
+  const [user, setUser] = useState('')
+  const [pw, setPw] = useState('')
+  const [title, setTitle] = useState('')
+  const [text, setText] = useState('')
+  const [errorUser, setErrorUser] = useState('')
+  const [errorPw, setErrorPw] = useState('')
+  const [errorTitle, setErrorTitle] = useState('')
+  const [errorText, setErrorText] = useState('')
 
+  function handleChangeUser(event) {
+      const value = event.target.value
+      setUser(value)
+  }
+
+  function handleChangePw(event) {
+      const value = event.target.value
+      setPw(value)
+  }
+
+  function handleChangeTitle(event) {
+      const value = event.target.value
+      setTitle(value)
+  }
+
+  function handleChangeText(event) {
+      const value = event.target.value
+      setText(value)
+  }
+
+  function handleClickLogin() {
+    // 작성자 검증
+    if (user === '') {
+      setErrorUser('이름을 정확히 입력해 주세요.')
+    } else {
+      setErrorUser('')
+    }
+    // 비밀번호 검증
+    if (pw === '') {
+      setErrorPw('비밀번호를 정확히 입력해 주세요.')
+    } else {
+      setErrorPw('')
+    }
+    // 제목 검증
+    if (title === '') {
+      setErrorTitle('제목을 입력해 주세요.')
+    } else {
+      setErrorTitle('')
+    }
+    // 내용 검증
+    if (text === '') {
+      setErrorText('내용을 입력해 주세요.')
+    } else {
+      setErrorText('')
+    }
+  }
   return ( 
     // JSX
     // Fragment
@@ -19,18 +75,22 @@ export default function Home() {
         <WrapperHeader>
           <HeaderForm>
             <MyLabel>작성자</MyLabel>
-            <HeaderInput type="text" placeholder="이름을 적어주세요" />
+            <HeaderInput type="text" placeholder="이름을 적어주세요" onChange={handleChangeUser} value={user}/>
+            <Error>{errorUser}</Error>
           </HeaderForm>
           <HeaderForm>
             <MyLabel>비밀번호</MyLabel>
-            <HeaderInput type="password" placeholder="비밀번호를 입력해주세요." />
+            <HeaderInput type="password" placeholder="비밀번호를 입력해주세요." onChange={handleChangePw} value={pw} />
+            <Error>{errorPw}</Error>
           </HeaderForm>
         </WrapperHeader>
         <WrapperBody>
           <MyLabel>제목</MyLabel>
-          <BasicInput type="text" placeholder="제목을 작성해주세요" />
+          <BasicInput type="text" placeholder="제목을 작성해주세요" onChange={handleChangeTitle} value={title} />
+          <Error>{errorTitle}</Error>
           <MyLabel>내용</MyLabel>
-          <ContentInput type="text" placeholder="내용을 작성해주세요" />
+          <ContentInput type="text" placeholder="내용을 작성해주세요" onChange={handleChangeText} value={text} />
+          <Error>{errorText}</Error>
           <MyLabel>주소</MyLabel>
             <form>
               <Zipcode type="text" placeholder="07250" disabled/>
@@ -48,11 +108,11 @@ export default function Home() {
           </PhotoUpload>
           <MyLabel>메인 설정</MyLabel>
           <MainsetForm>
-            <RadioInput type="radio" /> 유튜브
-            <RadioInput type="radio" /> 사진
+            <RadioInput type="radio" name="mainset"/> 유튜브
+            <RadioInput type="radio" name="mainset"/> 사진
           </MainsetForm>
         </WrapperBody>
-        <AdminBtn>등록하기</AdminBtn>
+        <AdminBtn onClick={handleClickLogin}>등록하기</AdminBtn>
       </Wrapper>
     </>
   )

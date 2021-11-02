@@ -111,3 +111,8 @@ export const AdminBtn = styled.button `
   font-size: 16px;
   font-weight: 600;
 `
+
+export const Error = styled.p`
+  color: red;
+  font-size: 15px;
+`

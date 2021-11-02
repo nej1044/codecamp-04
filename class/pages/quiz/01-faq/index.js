@@ -1,7 +1,7 @@
 import { Wrapper, WrapperHeader, SearchImg, Profile, ProfileTitle,
   ProfileImg, HeaderNavbar, MenuTitle, SelectTitle, WrapperBody, 
   Question, QuestionTitle, QuestionNum, QuestionImg, WrapperFooter,
-  FooterMenu, SelectFooterMenu  } from '../../styles/faq.js'
+  FooterMenu, SelectFooterMenu  } from '../../../styles/faq.js'
 
 export default function MyPage() {
   // JavaScript
