@@ -10,7 +10,9 @@ export const Wrapper = styled.div `
   padding: 100px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 `
-
+export const H1 = styled.h1 `
+  font-size: 36px;
+`
 export const WrapperHeader = styled.div `
   display: flex;
   width: 996px;
@@ -42,21 +44,32 @@ export const WrapperBody = styled.div `
   display: flex;
   flex-direction: column;
 `
+
+export const BodyForm = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 export const BasicInput = styled.input `
   width: 996px;
   height: 52px;
-  margin-bottom: 16px;
   padding: 14px;
   font-size: 16px;
 `
 export const ContentInput = styled.textarea `
   width: 996px;
   height: 480px;
-  margin-bottom: 16px;
   padding: 14px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   resize: none;
+`
+
+export const ZipcodeForm = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 270px;
 `
 export const Zipcode = styled.input `
   width: 77px;
@@ -115,4 +128,5 @@ export const AdminBtn = styled.button `
 export const Error = styled.p`
   color: red;
   font-size: 15px;
+  margin: 10px 0px 0px 0px;
 `

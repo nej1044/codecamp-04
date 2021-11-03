@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import { Wrapper, MyLabel, WrapperHeader, HeaderForm, HeaderInput, 
-  WrapperBody, BasicInput, ContentInput, Zipcode, ZipcodeSearch,
+import { Wrapper, H1, MyLabel, WrapperHeader, HeaderForm, HeaderInput, 
+  WrapperBody, BodyForm, BasicInput, ContentInput, ZipcodeForm, Zipcode, ZipcodeSearch,
   PhotoUpload, Photo, MainsetForm, RadioInput, AdminBtn, Error } from '../../../styles/new.js'
 
 export default function Home() {
@@ -18,48 +18,53 @@ export default function Home() {
   function handleChangeUser(event) {
       const value = event.target.value
       setUser(value)
+      if (value !== '') {
+        setErrorUser('')
+      }
   }
 
   function handleChangePw(event) {
       const value = event.target.value
       setPw(value)
+      if (value !== '') {
+        setErrorPw('')
+      }
   }
 
   function handleChangeTitle(event) {
       const value = event.target.value
       setTitle(value)
+      if (value !== '') {
+        setErrorTitle('')
+      }
   }
 
   function handleChangeText(event) {
       const value = event.target.value
       setText(value)
+      if (value !== '') {
+        setErrorText('')
+      }
   }
 
   function handleClickLogin() {
     // 작성자 검증
     if (user === '') {
       setErrorUser('이름을 정확히 입력해 주세요.')
-    } else {
-      setErrorUser('')
     }
+
     // 비밀번호 검증
     if (pw === '') {
       setErrorPw('비밀번호를 정확히 입력해 주세요.')
-    } else {
-      setErrorPw('')
-    }
+    } 
     // 제목 검증
     if (title === '') {
       setErrorTitle('제목을 입력해 주세요.')
-    } else {
-      setErrorTitle('')
-    }
+    } 
     // 내용 검증
     if (text === '') {
       setErrorText('내용을 입력해 주세요.')
-    } else {
-      setErrorText('')
-    }
+    } 
   }
   return ( 
     // JSX
@@ -71,7 +76,7 @@ export default function Home() {
       </head>
       
       <Wrapper>
-        <h1>게시물 등록</h1>
+        <H1>게시물 등록</H1>
         <WrapperHeader>
           <HeaderForm>
             <MyLabel>작성자</MyLabel>
@@ -85,32 +90,44 @@ export default function Home() {
           </HeaderForm>
         </WrapperHeader>
         <WrapperBody>
-          <MyLabel>제목</MyLabel>
-          <BasicInput type="text" placeholder="제목을 작성해주세요" onChange={handleChangeTitle} value={title} />
-          <Error>{errorTitle}</Error>
-          <MyLabel>내용</MyLabel>
-          <ContentInput type="text" placeholder="내용을 작성해주세요" onChange={handleChangeText} value={text} />
-          <Error>{errorText}</Error>
-          <MyLabel>주소</MyLabel>
-            <form>
-              <Zipcode type="text" placeholder="07250" disabled/>
-              <ZipcodeSearch>우편번호 검색</ZipcodeSearch>
-            </form>
-          <BasicInput type="text"/>
-          <BasicInput type="text"/>
-          <MyLabel>유튜브</MyLabel>
-          <BasicInput type="text" placeholder="링크를 복사해주세요" />
-          <MyLabel>사진 첨부</MyLabel>
-          <PhotoUpload>
-            <Photo></Photo>
-            <Photo></Photo>
-            <Photo></Photo>
-          </PhotoUpload>
-          <MyLabel>메인 설정</MyLabel>
-          <MainsetForm>
-            <RadioInput type="radio" name="mainset"/> 유튜브
-            <RadioInput type="radio" name="mainset"/> 사진
-          </MainsetForm>
+          <BodyForm>
+            <MyLabel>제목</MyLabel>
+            <BasicInput type="text" placeholder="제목을 작성해주세요" onChange={handleChangeTitle} value={title} />
+            <Error>{errorTitle}</Error>
+          </BodyForm>
+          <BodyForm>
+            <MyLabel>내용</MyLabel>
+            <ContentInput type="text" placeholder="내용을 작성해주세요" onChange={handleChangeText} value={text} />
+            <Error>{errorText}</Error>
+          </BodyForm>
+          <ZipcodeForm>
+            <MyLabel>주소</MyLabel>
+              <form>
+                <Zipcode type="text" placeholder="07250" disabled/>
+                <ZipcodeSearch>우편번호 검색</ZipcodeSearch>
+              </form>
+            <BasicInput type="text" disabled/>
+            <BasicInput type="text"/>
+          </ZipcodeForm>
+          <BodyForm>
+            <MyLabel>유튜브</MyLabel>
+            <BasicInput type="text" placeholder="링크를 복사해주세요" />
+          </BodyForm>
+          <BodyForm>
+            <MyLabel>사진 첨부</MyLabel>
+            <PhotoUpload>
+              <Photo></Photo>
+              <Photo></Photo>
+              <Photo></Photo>
+            </PhotoUpload>
+          </BodyForm>
+          <BodyForm>
+            <MyLabel>메인 설정</MyLabel>
+            <MainsetForm>
+              <RadioInput type="radio" name="mainset"/> 유튜브
+              <RadioInput type="radio" name="mainset"/> 사진
+            </MainsetForm>
+          </BodyForm>
         </WrapperBody>
         <AdminBtn onClick={handleClickLogin}>등록하기</AdminBtn>
       </Wrapper>
