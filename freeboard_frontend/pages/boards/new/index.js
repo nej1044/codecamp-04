@@ -1,11 +1,39 @@
+import { useMutation, gql } from '@apollo/client'
 import { useState } from "react"
+import {
+  Wrapper,
+  H1,
+  MyLabel,
+  WrapperHeader,
+  HeaderForm,
+  HeaderInput,
+  WrapperBody,
+  BodyForm,
+  BasicInput,
+  ContentInput,
+  ZipcodeForm,
+  Zipcode,
+  ZipcodeSearch,
+  PhotoUpload,
+  Photo,
+  MainsetForm,
+  RadioInput,
+  AdminBtn,
+  Error
+} from '../../../styles/new.js'
 
-import { Wrapper, H1, MyLabel, WrapperHeader, HeaderForm, HeaderInput, 
-  WrapperBody, BodyForm, BasicInput, ContentInput, ZipcodeForm, Zipcode, ZipcodeSearch,
-  PhotoUpload, Photo, MainsetForm, RadioInput, AdminBtn, Error } from '../../../styles/new.js'
+const CREATE_BOARD = gql`
+    mutation createBoard($createBoardInput: CreateBoardInput!) {
+        createBoard(createBoardInput: $createBoardInput){
+            _id
+            writer
+        }
+    }
+`
 
 export default function Home() {
   // JavaScript
+  const [ createBoard ] = useMutation(CREATE_BOARD)
   const [user, setUser] = useState('')
   const [pw, setPw] = useState('')
   const [title, setTitle] = useState('')
@@ -47,7 +75,7 @@ export default function Home() {
       }
   }
 
-  function handleClickLogin() {
+  async function handleClickBoard() {
     // 작성자 검증
     if (user === '') {
       setErrorUser('이름을 정확히 입력해 주세요.')
@@ -65,7 +93,19 @@ export default function Home() {
     if (text === '') {
       setErrorText('내용을 입력해 주세요.')
     } 
+    // 작성정보전달
+    const result = await createBoard({
+      variables: {
+        createBoardInput: {
+          writer: user, password: pw, title: title, contents: text
+        }
+      }
+    })
+    console.log(result)
   }
+
+
+
   return ( 
     // JSX
     // Fragment
@@ -129,7 +169,7 @@ export default function Home() {
             </MainsetForm>
           </BodyForm>
         </WrapperBody>
-        <AdminBtn onClick={handleClickLogin}>등록하기</AdminBtn>
+        <AdminBtn onClick={handleClickBoard}>등록하기</AdminBtn>
       </Wrapper>
     </>
   )
