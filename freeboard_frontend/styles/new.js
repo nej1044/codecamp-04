@@ -8,12 +8,42 @@ export const Wrapper = styled.div `
   align-items: center;
   margin: 50px auto;
   padding: 100px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid #8EB695;
+  border-radius: 100px;
 `
 export const H1 = styled.h1 `
   font-size: 36px;
 `
-export const WrapperHeader = styled.div `
+
+export const WrapperHeader = styled.form `
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+`
+
+export const TopicWrapper = styled.div `
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+`
+
+export const TopicBtn = styled.input `
+  width: 100px;
+  height: 50px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #FBDEA2;
+  border-radius: 5px;
+  background-color: #FBDEA2;
+  &:hover {
+    background-color: #8EB695;
+    border: 1px solid #8EB695;
+  }
+`
+
+export const BodyHeader = styled.div `
   display: flex;
   width: 996px;
   flex-direction: row;
@@ -38,6 +68,11 @@ export const HeaderInput = styled.input `
   height: 52px;
   padding: 14px;
   font-size: 16px;
+  border: 1px solid #FBDEA2;
+  &:focus {
+    border: none;
+    outline: 1px solid #8EB695;
+  }
 `
 
 export const WrapperBody = styled.div `
@@ -55,6 +90,11 @@ export const BasicInput = styled.input `
   height: 52px;
   padding: 14px;
   font-size: 16px;
+  border: 1px solid #FBDEA2;
+  &:focus {
+    border: none;
+    outline: 1px solid #8EB695;
+  }
 `
 export const ContentInput = styled.textarea `
   width: 996px;
@@ -63,6 +103,11 @@ export const ContentInput = styled.textarea `
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   resize: none;
+  border: 1px solid #FBDEA2;
+  &:focus {
+    border: none;
+    outline: 1px solid #8EB695;
+  }
 `
 
 export const ZipcodeForm = styled.div `
@@ -83,9 +128,16 @@ export const ZipcodeSearch = styled.button `
   width: 124px;
   height: 52px;
   border: 0;
-  background-color: black;
+  background-color: #FBDEA2;
   color: white;
   font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #FBDEA2;
+  &:hover {
+    border: none;
+    outline: 1px solid #8EB695;
+    background-color: #8EB695;
+  }
 `
 
 export const PhotoUpload = styled.div `
@@ -99,28 +151,16 @@ export const PhotoUpload = styled.div `
 export const Photo = styled.div `
   width: 78px;
   height: 78px;
-  background-color: gray;
+  background-color: #8EB695;
 `
 
-export const MainsetForm = styled.form `
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 159px;
-  font-size: 16px;
-  font-weight: 600;
-`
-
-export const RadioInput = styled.input `
-  width: 20px;
-  height: 20px;
-`
 export const AdminBtn = styled.button `
   width: 179px;
   height: 52px;
   margin-top: 80px;
   border: 0;
-  background-color: #FFD600;
+  background-color: #8EB695;
+  color: white;
   font-size: 16px;
   font-weight: 600;
 `
