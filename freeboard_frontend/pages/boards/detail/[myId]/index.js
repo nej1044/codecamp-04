@@ -10,6 +10,7 @@ import {
   ProfileText,
   UserName,
   UserDate,
+  Address,
   UserMore,
   DetailBody,
   BodyHeader,
@@ -28,7 +29,9 @@ const FETCH_BOARD = gql `
    fetchBoard(boardId: $boardId) {
      _id
      writer
+     title
      contents
+     createdAt
    }
  }
 `
@@ -39,6 +42,17 @@ export default function DetailPage() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: {boardId: router.query.myId}
   })
+
+  const date = data?.fetchBoard.createdAt.split('T')[0]
+
+  function handleClickShow(event) {
+    if(event.target.previousSibling.style.display === 'none') {
+      event.target.previousSibling.style.display = 'flex'
+    } else {
+      event.target.previousSibling.style.display = 'none'
+    }
+    
+  }
 
   return ( 
     // JSX
@@ -53,12 +67,14 @@ export default function DetailPage() {
                 <img src="/images/detail/ProfileImg.png" />
                 <ProfileText>
                   <UserName>{data?.fetchBoard.writer}</UserName>
-                  <UserDate>Date: {data?.fetchBoard.createdAt}</UserDate>
+                  <UserDate>Date: {date}</UserDate>
                 </ProfileText>
               </UserProfile>
+              
               <UserMore>
                 <img src="/images/detail/sns.png" />
-                <img src="/images/detail/zipcode.png" />
+                <Address> 서울특별시 영등포구 양산로 200<br />(영등포동5가, 영등포시장역) 영등포 타임스퀘어 2 층 </Address>
+                <img onClick={handleClickShow} src="/images/detail/zipcode.png" />
               </UserMore>
             </UserInfo>
           </DetailHeader>

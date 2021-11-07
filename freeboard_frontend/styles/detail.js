@@ -69,8 +69,25 @@ export const UserDate = styled.p `
 
 export const UserMore = styled.div`
   display: flex;
+  position: relative;
   width: 80px;
   justify-content: space-between;
+`
+export const Address = styled.div `
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 376px;
+  height: 72px;
+  position: absolute;
+  right: 15px;
+  bottom: 40px;
+  padding: 8px 16px 16px 16px;
+  z-index: 1;
+  background-image: url('/images/detail/addressBox.png');
+  color: white;
+  font-size: 14px;
+  text-align: right;
 `
 
 export const DetailBody = styled.section `
@@ -100,7 +117,6 @@ export const BodyVideo = styled.video `
   height: 240px;
   margin-bottom: 162px;
   object-fit: cover;
-  background-color: #8EB695;
 `
 
 export const DetailMoodlet = styled.div`

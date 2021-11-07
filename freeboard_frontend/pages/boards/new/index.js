@@ -23,6 +23,7 @@ import {
   AdminBtn,
   Error
 } from '../../../styles/new.js'
+import { isCompositeType } from 'graphql'
 
 const CREATE_BOARD = gql`
     mutation createBoard($createBoardInput: CreateBoardInput!) {
@@ -45,6 +46,10 @@ export default function Home() {
   const [errorPassword, setErrorPassword] = useState('')
   const [errorTitle, setErrorTitle] = useState('')
   const [errorContents, setErrorContents] = useState('')
+
+  function hanldeClickTopic(event) {
+    
+  }
 
   function handleChangeWriter(event) {
       const value = event.target.value
@@ -124,9 +129,9 @@ export default function Home() {
         <H1>게시물 등록</H1>
         <WrapperHeader>
           <TopicWrapper>
-            <TopicBtn type="button" name="topic" value="질문"/>
-            <TopicBtn type="button" name="topic" value="자유주제"/>
-            <TopicBtn type="button" name="topic" value="스터디"/>
+            <TopicBtn onClick={hanldeClickTopic} type="button" name="topic" value="질문"/>
+            <TopicBtn onClick={hanldeClickTopic} type="button" name="topic" value="자유주제"/>
+            <TopicBtn onClick={hanldeClickTopic} type="button" name="topic" value="스터디"/>
           </TopicWrapper>
         </WrapperHeader>
         <WrapperBody>
