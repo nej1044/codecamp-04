@@ -160,7 +160,7 @@ export const AdminBtn = styled.button `
   height: 52px;
   margin-top: 80px;
   border: 0;
-  background-color: #8EB695;
+  background-color: ${(props)=>props.btnColor === true ? "#8EB695" : "#FBDEA2" };
   color: white;
   font-size: 16px;
   font-weight: 600;

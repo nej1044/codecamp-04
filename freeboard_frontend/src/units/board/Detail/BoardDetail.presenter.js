@@ -1,5 +1,3 @@
-import { useQuery, gql } from '@apollo/client'
-import { useRouter } from 'next/router'
 import {
   Wrapper,
   DetailSection,
@@ -22,76 +20,45 @@ import {
   UnLikeNum,
   DetailBtnSection,
   DetailBtn
-} from '../../../../styles/detail.js'
+} from './Board.Detail.styles'
 
-const FETCH_BOARD = gql `
- query fetchBoard($boardId: ID!) {
-   fetchBoard(boardId: $boardId) {
-     _id
-     writer
-     title
-     contents
-     createdAt
-   }
- }
-`
-
-export default function DetailPage() {
-  // JavaScript
-  const router = useRouter()
-  const { data } = useQuery(FETCH_BOARD, {
-    variables: {boardId: router.query.myId}
-  })
-
-  const date = data?.fetchBoard.createdAt.split('T')[0]
-
-  function handleClickShow(event) {
-    if(event.target.previousSibling.style.display === 'none') {
-      event.target.previousSibling.style.display = 'flex'
-    } else {
-      event.target.previousSibling.style.display = 'none'
-    }
-    
-  }
-
-  return ( 
-    // JSX
-    // Fragment
+const BoardDetailUI = (props) => {
+  return(
     <>     
       <Wrapper>
         <DetailSection>
           <DetailHeader>
-            <Title>{data?.fetchBoard.title}</Title>
+            <Title>{props.topic}{props.data?.fetchBoard.title}</Title>
             <UserInfo>
               <UserProfile>
                 <img src="/images/detail/ProfileImg.png" />
                 <ProfileText>
-                  <UserName>{data?.fetchBoard.writer}</UserName>
-                  <UserDate>Date: {date}</UserDate>
+                  <UserName>{props.data?.fetchBoard.writer}</UserName>
+                  <UserDate>Date: {props.date}</UserDate>
                 </ProfileText>
               </UserProfile>
               
               <UserMore>
                 <img src="/images/detail/sns.png" />
                 <Address> 서울특별시 영등포구 양산로 200<br />(영등포동5가, 영등포시장역) 영등포 타임스퀘어 2 층 </Address>
-                <img onClick={handleClickShow} src="/images/detail/zipcode.png" />
+                <img onClick={props.addressShow} src="/images/detail/zipcode.png" />
               </UserMore>
             </UserInfo>
           </DetailHeader>
           <DetailBody>
             <BodyHeader>
               <BodyImg src="/images/detail/contentsImg.jpeg" /> 
-              <span>{data?.fetchBoard.contents}</span>
+              <span>{props.data?.fetchBoard.contents}</span>
             </BodyHeader>
-            <BodyVideo autoplay loop src="videos/detail/contentsVideo.mp4"></BodyVideo>
+            <BodyVideo src="videos/detail/contentsVideo.mp4"></BodyVideo>
             <DetailMoodlet>
               <DetailLike>
                 <img src="/images/detail/Like.png" />
-                <LikeNum>0</LikeNum>
+                <LikeNum>{props.data?.fetchBoard.likeCount}</LikeNum>
               </DetailLike>
               <DetailLike>
                 <img src="/images/detail/UnLike.png" />
-                <UnLikeNum>0</UnLikeNum>
+                <UnLikeNum>{props.data?.fetchBoard.dislikeCount}</UnLikeNum>
               </DetailLike>
             </DetailMoodlet>
           </DetailBody>
@@ -107,3 +74,5 @@ export default function DetailPage() {
     </>
   )
 }
+
+export default BoardDetailUI

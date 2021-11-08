@@ -1,36 +1,35 @@
 function solution(N, stages) {
   var answer = [];
-  let newAnswer = []
+  let totalNum = stages.length
 
-  for (let i = 0; i < N; i++) {
-    let s = 0
-    let d = 0
-    for (let j = 0; j < stages.length; j++) {
-      if (stages[j] > i + 1) {
-        d++
-        answer[i] = Number(s) / Number(d)
-      } else if (stages[j] === i + 1) {
-        s++
-        d++
-        answer[i] = Number(s) / Number(d)
-      } else if (!stages.includes(i + 1)) {
-        answer[i] = 0
-      }
+  for (let i = 1; i <= N; i++) {
+    let failer = stages.filter(element => i === element).length
+    let failRatio = 0
+    if (failer === 0) {
+      failRatio = 0
+    } else {
+      failRatio = failer / totalNum
     }
-  }
-  for (let k = 0; k < N; k++) {
-    let max = 0
-    for (let i = 0; i < answer.length; i++) {
-      if (answer[i] > max && !newAnswer.includes(i + 1)) {
-        max = answer[i]
-      }
-    }
-    for (let j = 0; j < N; j++) {
-      if (answer[j] === max && !newAnswer.includes(j + 1)) {
-        newAnswer.push(j + 1)
-      }
-    }
+    totalNum -= failer
+    answer.push({
+      idx: i,
+      ratio: failRatio
+    })
   }
 
-  return newAnswer;
+  answer.sort((a, b) => {
+    if (a.ratio > b.ratio) {
+      return -1
+    } else if (a.ratio < b.ratio) {
+      return 1
+    } else {
+      if (a.idx > b.idx) {
+        return 1
+      } else {
+        return -1
+      }
+    }
+  })
+
+  return answer.map(element => element.idx);
 }
