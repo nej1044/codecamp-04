@@ -67,7 +67,7 @@ const BoardNewUI = (props) => {
           </ZipcodeForm>
           <BodyForm>
             <MyLabel>SNS 주소</MyLabel>
-            <BasicInput type="text" placeholder="링크를 복사해주세요" />
+            <BasicInput type="text" placeholder="링크를 복사해주세요" onChange={props.changedUrl} />
           </BodyForm>
           <BodyForm>
             <MyLabel>사진 첨부</MyLabel>

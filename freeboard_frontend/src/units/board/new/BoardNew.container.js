@@ -19,6 +19,7 @@ const BoardNew = () => {
   const [errorContents, setErrorContents] = useState('')
   const [topic, setTopic] = useState('')
   const [btnColor, setBtnColor] = useState(false)
+  const [snsUrl, setSNSUrl] = useState('')
 
   function hanldeClickTopic(event) {
     setTopic(event.target.value)
@@ -28,14 +29,12 @@ const BoardNew = () => {
     event.target.style = 'background-color: #8EB695; border: 1px solid #8EB695;'
   }
 
-  let totalTitle = `[${topic}]` + {title}
-
   function handleChangeWriter(event) {
       setWriter(event.target.value)
-      if (event.target.value !== '') {
+      if (event.target.value) {
         setErrorWriter('')
       }
-      if (event.target.value !== '' && password !== '' && title !== '' && contents !== '') {
+      if (event.target.value && password && title && contents) {
         setBtnColor(true)
       } else {
         setBtnColor(false)
@@ -44,10 +43,10 @@ const BoardNew = () => {
 
   function handleChangePassword(event) {
       setPassword(event.target.value)
-      if (event.target.value !== '') {
+      if (event.target.value) {
         setErrorPassword('')
       }
-      if (writer !== '' && event.target.value !== '' && title !== '' && contents !== '') {
+      if (writer && event.target.value && title && contents) {
         setBtnColor(true)
       } else {
         setBtnColor(false)
@@ -56,10 +55,10 @@ const BoardNew = () => {
 
   function handleChangeTitle(event) {
       setTitle(event.target.value)
-      if (event.target.value !== '') {
+      if (event.target.value) {
         setErrorTitle('')
       }
-      if (writer !== '' && password !== '' && event.target.value !== '' && contents !== '') {
+      if (writer && password && event.target.value && contents) {
         setBtnColor(true)
       } else {
         setBtnColor(false)
@@ -68,41 +67,46 @@ const BoardNew = () => {
 
   function handleChangeContents(event) {
       setContents(event.target.value)
-      if (event.target.value !== '') {
+      if (event.target.value) {
         setErrorContents('')
       }
-      if (writer !== '' && password !== '' && title !== '' && event.target.value !== '') {
+      if (writer && password && title && event.target.value) {
         setBtnColor(true)
       } else {
         setBtnColor(false)
       }
   }
 
+  function handleChangeURL(event) {
+    setSNSUrl(event.target.value)
+  }
+
   async function handleClickBoard() {
     // 작성자 검증
-    if (writer === '') {
+    if (!writer) {
       setErrorWriter('이름을 정확히 입력해 주세요.')
     }
 
     // 비밀번호 검증
-    if (password === '') {
+    if (!password) {
       setErrorPassword('비밀번호를 정확히 입력해 주세요.')
     } 
     // 제목 검증
-    if (title === '') {
+    if (!title) {
       setErrorTitle('제목을 입력해 주세요.')
     } 
     // 내용 검증
-    if (contents === '') {
+    if (!contents) {
       setErrorContents('내용을 입력해 주세요.')
     } 
     // 모두 작성되었다면 작성정보전달
-    if (writer !== '' && password !== '' && title !== '' && contents !== '') {
+    if (writer && password && title && contents) {
+      title = `[${topic}] `+ title
       try {
         const result = await createBoard({
           variables: {
             createBoardInput: {
-              writer, password, title, contents
+              writer, password, title, contents, youtubeUrl: snsUrl
             }
           }
         })
@@ -112,14 +116,12 @@ const BoardNew = () => {
       } catch(error) {
         alert(`상품 등록에 실패했습니다. ${error.message}`)
       }
-    } else {
-      
     }
   }
   return (
     <BoardNewUI selectedTopic={hanldeClickTopic} changedWriter={handleChangeWriter} changedPassword = {handleChangePassword} 
     changedTitle = {handleChangeTitle} changedContents = {handleChangeContents} errorWriter = {errorWriter} errorPassword = {errorPassword}
-    errorTitle = {errorTitle} errorContents = {errorContents} sendBoard = {handleClickBoard} btnColor = {btnColor}/>
+    errorTitle = {errorTitle} errorContents = {errorContents} sendBoard = {handleClickBoard} btnColor = {btnColor} snsUrl = {snsUrl} changedUrl = {handleChangeURL} />
   )
 }
 

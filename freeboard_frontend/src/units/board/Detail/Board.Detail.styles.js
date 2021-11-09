@@ -7,6 +7,7 @@ export const Wrapper = styled.section `
   align-items: center;
 `
 
+
 export const DetailSection = styled.section `
   display: flex;
   flex-direction: column;
@@ -109,13 +110,6 @@ export const BodyImg = styled.img `
   width: 100%;
   height: 480px;
   margin-bottom: 40px;
-  object-fit: cover;
-`
-
-export const BodyVideo = styled.video `
-  width: 486px;
-  height: 240px;
-  margin-bottom: 162px;
   object-fit: cover;
 `
 
