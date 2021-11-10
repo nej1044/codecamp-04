@@ -20,6 +20,12 @@ const BoardDetail = () => {
       event.target.previousSibling.style.display = 'none'
     }
   }
+  let likeCount = data?.fetchBoard.likeCount 
+  
+  const upLike=()=> {
+    likeCount++
+    
+  }
 
   async function handleDeleteBoard() {
     try {
@@ -27,18 +33,22 @@ const BoardDetail = () => {
         variables:{boardId: router.query.boardId}
       })
       alert('게시물을 삭제했습니다.')
-      router.push(`/boards/List`)
+      router.push(`/boards`)
     } catch(error) {
       alert(`게시물 삭제에 실패했습니다 ${error.message}`)
     }
   }
 
   function handleList() {
-    router.push(`/boards/List`)
+    router.push(`/boards`)
+  }
+
+  function handleEdit() {
+    router.push(`${router.query.boardId}/edit`)
   }
 
   return (
-    <BoardDetailUI date = {date} addressShow = {handleClickShow} data = {data} handleDeleteBoard={handleDeleteBoard} handleList={handleList}/>
+    <BoardDetailUI upLike={upLike} handleEdit={handleEdit} date = {date} addressShow = {handleClickShow} data = {data} handleDeleteBoard={handleDeleteBoard} handleList={handleList}/>
   )
 
 }

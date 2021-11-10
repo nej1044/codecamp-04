@@ -1,14 +1,18 @@
 import { useRouter } from 'next/router'
-import { useMutation, gql } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useState } from "react"
 import BoardNewUI from './BoardNew.presenter'
-import { CREATE_BOARD } from './BoardNew.queries'
+import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from './BoardNew.queries'
 import { TopicBtn } from './BoardNew.styles'
 
 
-const BoardNew = () => {
+const BoardNew = (props) => {
   const router = useRouter()
   const [ createBoard ] = useMutation(CREATE_BOARD)
+  const [ updateBoard ] = useMutation(UPDATE_BOARD)
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: {boardId: router.query.boardId}
+  })
   const [writer, setWriter] = useState('')
   const [password, setPassword] = useState('')
   const [title, setTitle] = useState('')
@@ -28,6 +32,7 @@ const BoardNew = () => {
     event.target.parentNode.childNodes[2].style = TopicBtn.style
     event.target.style = 'background-color: #8EB695; border: 1px solid #8EB695;'
   }
+  
 
   function handleChangeWriter(event) {
       setWriter(event.target.value)
@@ -81,6 +86,43 @@ const BoardNew = () => {
     setSNSUrl(event.target.value)
   }
 
+  async function handleEditBoard() {
+    // 작성자 검증
+  if (!writer) {
+    setErrorWriter('이름을 정확히 입력해 주세요.')
+  }
+
+  // 비밀번호 검증
+  if (!password) {
+    setErrorPassword('비밀번호를 정확히 입력해 주세요.')
+  } 
+  // 제목 검증
+  if (!title) {
+    setErrorTitle('제목을 입력해 주세요.')
+  } 
+  // 내용 검증
+  if (!contents) {
+    setErrorContents('내용을 입력해 주세요.')
+  }
+    // 모두 작성되었다면 작성정보전달
+  if (writer && password && title && contents) {
+    title = `[${topic}] `+ title
+    try {
+      const result2 = await updateBoard({ variables: {
+        updateBoardInput: { title, contents, youtubeUrl:snsUrl },
+        password,
+        boardId: router.query.boardId
+      }})
+      router.push(`/boards/${router.query.boardId}`)
+      console.log(result2)
+      alert('게시물 수정이 완료되었습니다.')
+    } catch(error) {
+      alert(`게시물 수정에 실패했습니다. ${error.message}`)
+    }
+    
+  }
+}
+
   async function handleClickBoard() {
     // 작성자 검증
     if (!writer) {
@@ -107,7 +149,7 @@ const BoardNew = () => {
           variables: {
             createBoardInput: {
               writer, password, title, contents, youtubeUrl: snsUrl
-            }
+            } 
           }
         })
         console.log(result)
@@ -118,10 +160,11 @@ const BoardNew = () => {
       }
     }
   }
+
   return (
-    <BoardNewUI selectedTopic={hanldeClickTopic} changedWriter={handleChangeWriter} changedPassword = {handleChangePassword} 
+    <BoardNewUI data={data} isEdit={props.isEdit} selectedTopic={hanldeClickTopic} changedWriter={handleChangeWriter} changedPassword = {handleChangePassword} 
     changedTitle = {handleChangeTitle} changedContents = {handleChangeContents} errorWriter = {errorWriter} errorPassword = {errorPassword}
-    errorTitle = {errorTitle} errorContents = {errorContents} sendBoard = {handleClickBoard} btnColor = {btnColor} snsUrl = {snsUrl} changedUrl = {handleChangeURL} />
+    errorTitle = {errorTitle} errorContents = {errorContents} sendBoard = {handleClickBoard} editBoard = {handleEditBoard} btnColor = {btnColor} snsUrl = {snsUrl} changedUrl = {handleChangeURL} />
   )
 }
 

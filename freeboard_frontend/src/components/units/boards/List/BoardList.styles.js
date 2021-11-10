@@ -33,6 +33,7 @@ export const BestBoard = styled.div `
   border: 1px solid #8EB695;
   border-radius: 30px;
   padding: 35px;
+  cursor: pointer;
 `
 
 export const BestTitle = styled.span `
@@ -97,9 +98,18 @@ export const HeaderForm = styled.div `
   width: 100%;
   height: 50px;
 `
+export const Selected = styled.select`
+  width: 100px;
+  height: 100%;
+  padding: 5px;
+  border: 1px solid #FBDEA2;
+  :focus {
+    outline: none;
+  }
+`
 
 export const HeaderInput = styled.input `
-  width: 1000px;
+  width: 800px;
   height: 100%;
   padding: 10px;
   border: 1px solid #FBDEA2;
@@ -122,6 +132,7 @@ export const HeaderBtn = styled.button `
     background-color: #8EB695;
     border: 1px solid #8EB695;
   }
+  cursor: pointer;
 `
 
 export const WriteBtn = styled.button `
@@ -140,6 +151,7 @@ export const WriteBtn = styled.button `
     background-color: #8EB695;
     border: 1px solid #8EB695;
   }
+  cursor: pointer;
 `
 
 export const ListBody = styled.section `
@@ -157,6 +169,7 @@ export const ListBoard = styled.div `
   height: 250px;
   padding: 50px;
   border-bottom: 1px solid #8EB695;
+  cursor: pointer;
 `
 
 export const BoardTitle = styled.span `
@@ -171,7 +184,7 @@ export const BoardContents = styled.span `
 export const BoardUser = styled.div `
   display: flex;
   justify-content: space-between;
-  width: 160px;
+  width: 250px;
   margin-top: 30px;
 `
 export const BoardWriter = styled.span `
@@ -187,7 +200,8 @@ export const ListFooter = styled.section `
   justify-content: space-between;
   align-items: center;
   width: 500px;
-  height: 50px;
+  height: 200px;
+  margin-bottom: 100px;
 `
 
 export const Pages = styled.button `
@@ -201,4 +215,5 @@ export const Pages = styled.button `
     background-color: #8EB695;
     border: 1px solid #8EB695;
   }
+  cursor: pointer;
 `

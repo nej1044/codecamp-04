@@ -1,7 +1,13 @@
-import BoardNew from "../../../src/units/board/new/BoardNew.container"
+import BoardNew from "../../../src/components/units/boards/new/BoardNew.container"
 
-export default function BoardNewPage() {
-  return ( 
-    <BoardNew />
+
+
+const BoardNewPage=()=> {
+  return(
+    <>
+      <BoardNew />
+    </>
   )
 }
+
+export default BoardNewPage

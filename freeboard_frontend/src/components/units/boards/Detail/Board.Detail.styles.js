@@ -21,7 +21,6 @@ export const DetailSection = styled.section `
 export const DetailHeader = styled.section `
   display: flex;
   width: 100%;
-  height: 240px;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 0;
@@ -35,23 +34,20 @@ export const Title = styled.h1 `
 export const UserInfo = styled.div `
   display: flex;
   width: 100%;
-  height: 50px;
   justify-content: space-between;
   align-items: center;
 `
 
 export const UserProfile = styled.div `
   display: flex;
-  height: 100%;
-  justify-content: space-between;
   align-items: center;
-  width: 180px;
+  width: 300px;
 `
 
 export const ProfileText = styled.span `
   display: flex;
-  height: 100%;
   flex-direction: column;
+  margin-left: 30px;
 `
 
 export const UserName = styled.p `
@@ -160,4 +156,5 @@ export const DetailBtn = styled.button `
   background-color: #8EB695;
   border: 1px solid #8EB695;
   border-radius: 10px;
+  cursor: pointer;
 `
