@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-
+import { IBoardNewEmotion } from './BoardNew.types'
 
 export const Wrapper = styled.div `
   display: flex;
@@ -160,7 +160,7 @@ export const AdminBtn = styled.button `
   height: 52px;
   margin-top: 80px;
   border: 0;
-  background-color: ${(props)=>props.btnColor === true ? "#8EB695" : "#FBDEA2" };
+  background-color: ${(props: IBoardNewEmotion)=>props.btnColor === true ? "#8EB695" : "#FBDEA2" };
   color: white;
   font-size: 16px;
   font-weight: 600;

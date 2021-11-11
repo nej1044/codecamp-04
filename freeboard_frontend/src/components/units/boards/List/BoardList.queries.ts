@@ -25,7 +25,7 @@ export const FETCH_BEST = gql`
 `
 
 export const FETCH_PAGES = gql`
-  query {
-    fetchBoardsCount
+  query fetchBoardsCount ($search: String) {
+    fetchBoardsCount(search: $search)
     }
 `

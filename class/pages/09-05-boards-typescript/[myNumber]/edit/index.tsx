@@ -1,0 +1,21 @@
+import BoardWrite from "../../../../src/components/units/board/write4/BoardWrite.container";
+import {gql, useQuery} from '@apollo/client'
+import router from "next/router";
+import { useRouter } from 'next/router'
+
+const FETCH_BOARD = gql`
+  query fetchBoard($number: Int){
+    fetchBoard(number: $number){
+      writer
+      title
+      contents
+    }
+  }
+`
+export default function BoardsEditPage(){
+  const router = useRouter()
+
+  const { data } = useQuery(FETCH_BOARD, {variables: {number: Number(router.query.myNumber)}})
+
+    return <BoardWrite isEdit={true} data={data}/>
+}

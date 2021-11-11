@@ -1,6 +1,7 @@
 import * as S from './BoardNew.styles'
+import { IBoardNewUIProps } from './BoardNew.types'
 
-const BoardNewUI = (props) => {
+const BoardNewUI = (props: IBoardNewUIProps) => {
   return(
     <>
       <S.Wrapper>
@@ -17,12 +18,13 @@ const BoardNewUI = (props) => {
             <S.HeaderForm>
               <S.MyLabel>작성자</S.MyLabel>
               {!props.isEdit &&<S.HeaderInput type="text" placeholder="이름을 적어주세요" onChange={props.changedWriter} />}
-              {props.isEdit && <S.HeaderInput type="text" placeholder="이름을 적어주세요" onChange={props.changedWriter} defaultValue={props.data?.fetchBoard.writer}/>}
+              {props.isEdit && <S.HeaderInput type="text" disabled defaultValue={props.data?.fetchBoard.writer}/>}
               <S.Error>{props.errorWriter}</S.Error>
             </S.HeaderForm>
             <S.HeaderForm>
               <S.MyLabel>비밀번호</S.MyLabel>
-              <S.HeaderInput type="password" placeholder="비밀번호를 입력해주세요." onChange={props.changedPassword} />
+              {!props.isEdit &&<S.HeaderInput type="password" placeholder="비밀번호를 입력해주세요." onChange={props.changedPassword} />}
+              {props.isEdit && <S.HeaderInput type="password" placeholder="이전과 같은 비밀번호를 입력해주세요." onChange={props.changedPassword} />}
               <S.Error>{props.errorPassword}</S.Error>
             </S.HeaderForm>
           </S.BodyHeader>
@@ -34,8 +36,8 @@ const BoardNewUI = (props) => {
           </S.BodyForm>
           <S.BodyForm>
             <S.MyLabel>내용</S.MyLabel>
-            {!props.isEdit &&<S.ContentInput type="text" placeholder="내용을 작성해주세요" onChange={props.changedContents} />}
-            {props.isEdit &&<S.ContentInput type="text" placeholder="내용을 작성해주세요" onChange={props.changedContents} defaultValue={props.data?.fetchBoard.contents}/>}
+            {!props.isEdit &&<S.ContentInput placeholder="내용을 작성해주세요" onChange={props.changedContents} />}
+            {props.isEdit &&<S.ContentInput placeholder="내용을 작성해주세요" onChange={props.changedContents} defaultValue={props.data?.fetchBoard.contents}/>}
             <S.Error>{props.errorContents}</S.Error>
           </S.BodyForm>
           <S.ZipcodeForm>

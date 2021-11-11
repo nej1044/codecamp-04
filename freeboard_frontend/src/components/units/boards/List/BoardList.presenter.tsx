@@ -1,14 +1,14 @@
 import { getDate } from '../../../../commons/libraries/utils'
 import * as S from './BoardList.styles'
- 
+import { IBoardListUIProps } from './BoardList.types'
 
-const BoardListUI=(props)=> {
+const BoardListUI=(props: IBoardListUIProps)=> {
   return(
     <S.Wrapper>
       <S.BestWrapper>
         <h1>베스트 게시글</h1>
         <S.BestList>
-          {props.second?.fetchBoardsOfTheBest.map((el)=>(
+          {props.second?.fetchBoardsOfTheBest.map((el:any)=>(
           <S.BestBoard id={el._id} onClick={props.getDetail}>
             <S.BestTitle>{el?.title}</S.BestTitle>
               <S.BestFooter>
@@ -34,13 +34,13 @@ const BoardListUI=(props)=> {
               <option value="자유주제">자유주제</option>
               <option value="스터디">스터디</option>
             </S.Selected>
-            <S.HeaderInput onChange={props.searchValue}type="text" placeholder="궁금한 질문을 검색해보세요!"/>
-            <S.HeaderBtn>검색</S.HeaderBtn> 
+            <S.HeaderInput onChange={props.changeSearchValue} type="text" placeholder="궁금한 질문을 검색해보세요!"/>
+            <S.HeaderBtn onClick={props.clickSearchValue}>검색</S.HeaderBtn> 
           </S.HeaderForm>
           <S.WriteBtn onClick={props.handleCreate}>게시물 등록하기</S.WriteBtn>        
         </S.ListHeader>
         <S.ListBody>
-          {props.first?.fetchBoards.map((el)=>(
+          {props.first?.fetchBoards.map((el:any)=>(
           <S.ListBoard id={el._id} onClick={props.getDetail}>
             <S.BoardTitle>{el?.title}</S.BoardTitle>
             <S.BoardContents>{el?.contents}</S.BoardContents>

@@ -1,12 +1,13 @@
 import * as S from './Board.Detail.styles'
+import {IBoardDetailUIProps} from './BoardDetail.types'
 
-const BoardDetailUI = (props) => {
+const BoardDetailUI = (props: IBoardDetailUIProps) => {
   return(
     <>     
       <S.Wrapper>
         <S.DetailSection>
           <S.DetailHeader>
-            <S.Title>{props.topic}{props.data?.fetchBoard.title}</S.Title>
+            <S.Title>{props.data?.fetchBoard.title}</S.Title>
             <S.UserInfo>
               <S.UserProfile>
                 <img src="/images/detail/ProfileImg.png" />
@@ -33,13 +34,12 @@ const BoardDetailUI = (props) => {
                 <img src="/images/detail/Like.png" />
                 <S.LikeNum>{props.data?.fetchBoard.likeCount}</S.LikeNum>
               </S.DetailLike>
-              <S.DetailLike>
+              <S.DetailLike onClick={props.downlike}>
                 <img src="/images/detail/UnLike.png" />
                 <S.UnLikeNum>{props.data?.fetchBoard.dislikeCount}</S.UnLikeNum>
               </S.DetailLike>
             </S.DetailMoodlet>
           </S.DetailBody>
-          <section class="footer"></section>
         </S.DetailSection>
         <S.DetailBtnSection>
           <S.DetailBtn onClick={props.handleList}>목록으로</S.DetailBtn>

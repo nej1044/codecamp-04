@@ -34,6 +34,10 @@ export const BestBoard = styled.div `
   border-radius: 30px;
   padding: 35px;
   cursor: pointer;
+  :hover {
+    background-color: #8EB695;
+    color: white
+  }
 `
 
 export const BestTitle = styled.span `
@@ -169,7 +173,10 @@ export const ListBoard = styled.div `
   height: 250px;
   padding: 50px;
   border-bottom: 1px solid #8EB695;
-  cursor: pointer;
+  cursor: pointer;:hover {
+    background-color: #8EB695;
+    color: white
+  }
 `
 
 export const BoardTitle = styled.span `
@@ -205,8 +212,8 @@ export const ListFooter = styled.section `
 `
 
 export const Pages = styled.button `
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #FBDEA2;
   border-radius: 5px;
   background-color: white;
