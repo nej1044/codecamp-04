@@ -19,7 +19,7 @@ const BoardNew = (props: IBoardNewProps) => {
   });
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("");
+  let [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [errorWriter, setErrorWriter] = useState("");
   const [errorPassword, setErrorPassword] = useState("");

@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, ChangeEvent } from "react";
 
 export interface IBoardDetailUIProps {
   data?: any;
@@ -9,4 +9,8 @@ export interface IBoardDetailUIProps {
   handleList: () => void;
   handleEdit: () => void;
   handleDeleteBoard: () => void;
+  handleChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  createComment: () => void;
 }

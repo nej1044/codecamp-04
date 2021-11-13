@@ -16,7 +16,6 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                   <S.UserDate>Date: {props.date}</S.UserDate>
                 </S.ProfileText>
               </S.UserProfile>
-
               <S.UserMore>
                 <a
                   href={props.data?.fetchBoard.youtubeUrl}
@@ -39,6 +38,10 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
             </S.UserInfo>
           </S.DetailHeader>
           <S.DetailBody>
+            <S.DetailBtnSection>
+              <S.DetailBtn onClick={props.handleEdit}>수정</S.DetailBtn>
+              <S.DetailBtn onClick={props.handleDeleteBoard}>삭제</S.DetailBtn>
+            </S.DetailBtnSection>
             <S.BodyHeader>
               <S.BodyImg src="/images/detail/contentsImg.jpeg" />
               <span>{props.data?.fetchBoard.contents}</span>
@@ -54,12 +57,53 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
               </S.DetailLike>
             </S.DetailMoodlet>
           </S.DetailBody>
+          <S.ListBtn onClick={props.handleList}>⇽</S.ListBtn>
         </S.DetailSection>
-        <S.DetailBtnSection>
-          <S.DetailBtn onClick={props.handleList}>목록으로</S.DetailBtn>
-          <S.DetailBtn onClick={props.handleEdit}>수정하기</S.DetailBtn>
-          <S.DetailBtn onClick={props.handleDeleteBoard}>삭제하기</S.DetailBtn>
-        </S.DetailBtnSection>
+        <S.CommentSection>
+          <S.CommentWrapper>
+            <S.CommentHeader>댓글</S.CommentHeader>
+            <S.CommentInputsSection>
+              <S.UserInputWrapper>
+                <S.UserInput
+                  type="text"
+                  placeholder="작성자"
+                  onChange={props.handleChangeWriter}
+                ></S.UserInput>
+                <S.UserInput
+                  type="password"
+                  placeholder="비밀번호"
+                  onChange={props.handleChangePassword}
+                ></S.UserInput>
+                <div class="stars"></div>
+              </S.UserInputWrapper>
+              <S.UserTextarea
+                placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+                onChange={props.handleChangeContents}
+              ></S.UserTextarea>
+              <S.InputFooter>
+                <S.LettersNumber>0/100</S.LettersNumber>
+                <S.CommentAdmin onClick={props.createComment}>
+                  댓글등록
+                </S.CommentAdmin>
+              </S.InputFooter>
+            </S.CommentInputsSection>
+            <S.CommentBody>
+              <S.Comment>
+                <S.CommentImg src="/images/detail/ProfileImg.png" />
+                <S.CommentInfo>
+                  <S.CommentUser>노은정</S.CommentUser>
+                  <S.CommentDate>날짜</S.CommentDate>
+                </S.CommentInfo>
+                <S.CommentContents>
+                  스터디 호스트님~ 제가 방을 만들게요! 추후 들어오셔서 운영
+                  계획이나 규칙 등등 정해서 말씀해주시면 좋을 거 같아요~~ 링크 :
+                  인프런 1일 1잔디심기/1문제풀기 스터디
+                  https://open.kakao.com/o/gTQUQpjd
+                </S.CommentContents>
+              </S.Comment>
+            </S.CommentBody>
+          </S.CommentWrapper>
+        </S.CommentSection>
       </S.Wrapper>
     </>
   );

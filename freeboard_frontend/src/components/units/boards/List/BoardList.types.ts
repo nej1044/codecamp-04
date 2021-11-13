@@ -7,7 +7,6 @@ export interface IBoardListUIProps {
   lastPage: number;
   current: any;
   handleReset: () => void;
-  setCategory: (event: ChangeEvent<HTMLInputElement>) => void;
   changeSearchValue: (event: ChangeEvent<HTMLInputElement>) => void;
   clickSearchValue: (event: MouseEvent<HTMLElement>) => void;
   handleCreate: () => void;
