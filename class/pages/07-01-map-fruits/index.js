@@ -14,9 +14,13 @@ const FRUITS = [
 export default function MapFruitsPage() {
   // const mapFruitsPage = FRUITS.map((el)=><div>{el.number} {el.title}</div>)
 
-  return(
+  return (
     <div>
-      {FRUITS.map((el)=><div>{el.number} {el.title}</div>)}
-    </div> 
-  )
+      {FRUITS.map((el, index) => (
+        <div key={index}>
+          {el.number} {el.title}
+        </div>
+      ))}
+    </div>
+  );
 }

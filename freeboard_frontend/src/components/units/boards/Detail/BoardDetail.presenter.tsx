@@ -1,9 +1,9 @@
-import * as S from './Board.Detail.styles'
-import {IBoardDetailUIProps} from './BoardDetail.types'
+import * as S from "./Board.Detail.styles";
+import { IBoardDetailUIProps } from "./BoardDetail.types";
 
 const BoardDetailUI = (props: IBoardDetailUIProps) => {
-  return(
-    <>     
+  return (
+    <>
       <S.Wrapper>
         <S.DetailSection>
           <S.DetailHeader>
@@ -16,17 +16,31 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                   <S.UserDate>Date: {props.date}</S.UserDate>
                 </S.ProfileText>
               </S.UserProfile>
-              
+
               <S.UserMore>
-                <a href={props.data?.fetchBoard.youtubeUrl} target="_blank"><img src="/images/detail/sns.png" /></a>
-                <S.Address> 서울특별시 영등포구 양산로 200<br />(영등포동5가, 영등포시장역) 영등포 타임스퀘어 2 층 </S.Address>
-                <img onClick={props.addressShow} src="/images/detail/zipcode.png" />
+                <a
+                  href={props.data?.fetchBoard.youtubeUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <img src="/images/detail/sns.png" />
+                </a>
+                <S.Address>
+                  {" "}
+                  서울특별시 영등포구 양산로 200
+                  <br />
+                  (영등포동5가, 영등포시장역) 영등포 타임스퀘어 2 층{" "}
+                </S.Address>
+                <img
+                  onClick={props.addressShow}
+                  src="/images/detail/zipcode.png"
+                />
               </S.UserMore>
             </S.UserInfo>
           </S.DetailHeader>
           <S.DetailBody>
             <S.BodyHeader>
-              <S.BodyImg src="/images/detail/contentsImg.jpeg" /> 
+              <S.BodyImg src="/images/detail/contentsImg.jpeg" />
               <span>{props.data?.fetchBoard.contents}</span>
             </S.BodyHeader>
             <S.DetailMoodlet>
@@ -47,9 +61,8 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
           <S.DetailBtn onClick={props.handleDeleteBoard}>삭제하기</S.DetailBtn>
         </S.DetailBtnSection>
       </S.Wrapper>
-      
     </>
-  )
-}
+  );
+};
 
-export default BoardDetailUI
+export default BoardDetailUI;

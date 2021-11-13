@@ -1,13 +1,12 @@
-import BoardList from "../../src/components/units/boards/List/BoardList.container"
+import BoardList from "../../src/components/units/boards/List/BoardList.container";
 
-
-
-const BoardListPage=()=> {
-  return(
+const BoardListPage = () => {
+  return (
     <>
       <BoardList />
     </>
-  )
-}
+  );
+};
 
-export default BoardListPage
+// temp test
+export default BoardListPage;
