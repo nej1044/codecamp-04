@@ -15,7 +15,7 @@ export const ListBtn = styled.button`
   border: 1px solid #8eb695;
   font-size: 30px;
   border-radius: 10px;
-  background: none;
+  background: white;
   :hover {
     background-color: #8eb695;
     color: white;
@@ -191,7 +191,6 @@ export const CommentHeader = styled.div`
 `;
 
 export const CommentInputsSection = styled.section`
-  position: relative;
   width: 100%;
   padding: 20px 50px;
 `;
@@ -213,6 +212,17 @@ export const UserInput = styled.input`
   }
 `;
 
+export const TextAreaSection = styled.section`
+  position: relative;
+  width: 100%;
+`;
+
+export const EditTextArea = styled.section`
+  display: none;
+  position: relative;
+  width: 100%;
+`;
+
 export const UserTextarea = styled.textarea`
   width: 100%;
   height: 130px;
@@ -226,15 +236,15 @@ export const UserTextarea = styled.textarea`
 `;
 
 export const InputFooter = styled.div`
-  padding-left: 20px;
-  width: 90%;
-  position: absolute;
   display: flex;
   justify-content: space-between;
-  bottom: 25px;
+  width: 100%;
+  position: absolute;
+  bottom: 5px;
 `;
 
 export const LettersNumber = styled.span`
+  padding-left: 30px;
   width: 100px;
 `;
 
@@ -269,8 +279,23 @@ export const CommentImg = styled.img`
   border-radius: 50px;
 `;
 export const CommentInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 10px;
+`;
+
+export const CommentFunc = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 70px;
+`;
+
+export const FuncItem = styled.span`
+  font-size: 14px;
+  :hover {
+    color: gray;
+  }
 `;
 
 export const CommentUser = styled.span`
@@ -287,4 +312,5 @@ export const CommentDate = styled.span`
 export const CommentContents = styled.div`
   width: 100%;
   margin-bottom: 10px;
+  word-break: break-all;
 `;

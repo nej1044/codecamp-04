@@ -1,3 +1,4 @@
+import { getDate } from "../../../../commons/libraries/utils";
 import * as S from "./Board.Detail.styles";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
 
@@ -7,18 +8,18 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
       <S.Wrapper>
         <S.DetailSection>
           <S.DetailHeader>
-            <S.Title>{props.data?.fetchBoard.title}</S.Title>
+            <S.Title>{props.first?.fetchBoard.title}</S.Title>
             <S.UserInfo>
               <S.UserProfile>
                 <img src="/images/detail/ProfileImg.png" />
                 <S.ProfileText>
-                  <S.UserName>{props.data?.fetchBoard.writer}</S.UserName>
+                  <S.UserName>{props.first?.fetchBoard.writer}</S.UserName>
                   <S.UserDate>Date: {props.date}</S.UserDate>
                 </S.ProfileText>
               </S.UserProfile>
               <S.UserMore>
                 <a
-                  href={props.data?.fetchBoard.youtubeUrl}
+                  href={props.first?.fetchBoard.youtubeUrl}
                   rel="noreferrer"
                   target="_blank"
                 >
@@ -44,16 +45,18 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
             </S.DetailBtnSection>
             <S.BodyHeader>
               <S.BodyImg src="/images/detail/contentsImg.jpeg" />
-              <span>{props.data?.fetchBoard.contents}</span>
+              <span>{props.first?.fetchBoard.contents}</span>
             </S.BodyHeader>
             <S.DetailMoodlet>
               <S.DetailLike onClick={props.upLike}>
                 <img src="/images/detail/Like.png" />
-                <S.LikeNum>{props.data?.fetchBoard.likeCount}</S.LikeNum>
+                <S.LikeNum>{props.first?.fetchBoard.likeCount}</S.LikeNum>
               </S.DetailLike>
               <S.DetailLike onClick={props.downlike}>
                 <img src="/images/detail/UnLike.png" />
-                <S.UnLikeNum>{props.data?.fetchBoard.dislikeCount}</S.UnLikeNum>
+                <S.UnLikeNum>
+                  {props.first?.fetchBoard.dislikeCount}
+                </S.UnLikeNum>
               </S.DetailLike>
             </S.DetailMoodlet>
           </S.DetailBody>
@@ -68,39 +71,51 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                   type="text"
                   placeholder="작성자"
                   onChange={props.handleChangeWriter}
+                  value={props.writer}
                 ></S.UserInput>
                 <S.UserInput
                   type="password"
                   placeholder="비밀번호"
                   onChange={props.handleChangePassword}
+                  value={props.password}
                 ></S.UserInput>
-                <div class="stars"></div>
+                <div className="stars"></div>
               </S.UserInputWrapper>
-              <S.UserTextarea
-                placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-                onChange={props.handleChangeContents}
-              ></S.UserTextarea>
-              <S.InputFooter>
-                <S.LettersNumber>0/100</S.LettersNumber>
-                <S.CommentAdmin onClick={props.createComment}>
-                  댓글등록
-                </S.CommentAdmin>
-              </S.InputFooter>
+              <S.TextAreaSection>
+                <S.UserTextarea
+                  placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+                  onChange={props.handleChangeContents}
+                  value={props.contents}
+                ></S.UserTextarea>
+                <S.InputFooter>
+                  <S.LettersNumber>{props.contents.length}/100</S.LettersNumber>
+                  <S.CommentAdmin onClick={props.createComment}>
+                    댓글등록
+                  </S.CommentAdmin>
+                </S.InputFooter>
+              </S.TextAreaSection>
             </S.CommentInputsSection>
             <S.CommentBody>
-              <S.Comment>
-                <S.CommentImg src="/images/detail/ProfileImg.png" />
-                <S.CommentInfo>
-                  <S.CommentUser>노은정</S.CommentUser>
-                  <S.CommentDate>날짜</S.CommentDate>
-                </S.CommentInfo>
-                <S.CommentContents>
-                  스터디 호스트님~ 제가 방을 만들게요! 추후 들어오셔서 운영
-                  계획이나 규칙 등등 정해서 말씀해주시면 좋을 거 같아요~~ 링크 :
-                  인프런 1일 1잔디심기/1문제풀기 스터디
-                  https://open.kakao.com/o/gTQUQpjd
-                </S.CommentContents>
-              </S.Comment>
+              {props.second?.fetchBoardComments.map((el: any) => (
+                <S.Comment key={el?._id}>
+                  <S.CommentImg src="/images/detail/ProfileImg.png" />
+                  <S.CommentInfo>
+                    <div>
+                      <S.CommentUser>{el?.writer}</S.CommentUser>
+                      <S.CommentDate>{getDate(el.createdAt)}</S.CommentDate>
+                    </div>
+                    <S.CommentFunc>
+                      <S.FuncItem id={el?._id} onClick={props.updateComment}>
+                        수정
+                      </S.FuncItem>
+                      <S.FuncItem id={el?._id} onClick={props.deleteComment}>
+                        삭제
+                      </S.FuncItem>
+                    </S.CommentFunc>
+                  </S.CommentInfo>
+                  <S.CommentContents>{el?.contents}</S.CommentContents>
+                </S.Comment>
+              ))}
             </S.CommentBody>
           </S.CommentWrapper>
         </S.CommentSection>
