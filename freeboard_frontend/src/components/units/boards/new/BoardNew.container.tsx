@@ -30,8 +30,7 @@ const BoardNew = (props: IBoardNewProps) => {
   const [snsUrl, setSNSUrl] = useState("");
 
   function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
-    const target = event.target as HTMLInputElement;
-    setTopic(target.value);
+    setTopic(event.target.value);
     event.target.parentNode.childNodes[0].style = TopicBtn.style;
     event.target.parentNode.childNodes[1].style = TopicBtn.style;
     event.target.parentNode.childNodes[2].style = TopicBtn.style;
@@ -109,7 +108,9 @@ const BoardNew = (props: IBoardNewProps) => {
   if (title) {
     myVariables.updateBoardInput.title = `[${topic}] ` + title;
   } else {
-    myVariables.updateBoardInput.title = data?.fetchBoard.title;
+    myVariables.updateBoardInput.title =
+      `[${topic}] ` +
+      data?.fetchBoard.title.split(" ").splice(1, Infinity).join(" ");
   }
 
   if (contents) {
@@ -119,6 +120,7 @@ const BoardNew = (props: IBoardNewProps) => {
   }
 
   async function handleEditBoard() {
+    console.log(title);
     // 비밀번호 검증
     if (!password) {
       setErrorPassword("비밀번호를 정확히 입력해 주세요.");
