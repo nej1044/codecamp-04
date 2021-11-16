@@ -20,6 +20,8 @@ const CommentWrite = () => {
   const [password, setPassword] = useState("");
   const [contents, setContents] = useState("");
   const [rating, setRating] = useState(3);
+  const [editRating, setEditRating] = useState(3);
+  const [disabled, setDisabled] = useState(true);
   const { data, refetch } = useQuery(FECTH_COMMENTS, {
     variables: { boardId: router.query.boardId },
   });
@@ -79,15 +81,23 @@ const CommentWrite = () => {
   const hanldeOpenEdit = (event: MouseEvent<HTMLSpanElement>) => {
     setEditContents(event.target.value);
     const editArea = event.target.parentNode.parentNode.nextSibling;
+    console.log(disabled);
     if (editArea.style.display === "none") {
       editArea.style.display = "block";
+      setDisabled(false);
     } else {
       editArea.style.display = "none";
+      setDisabled(true);
     }
   };
 
   const handleChangeEdit = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setEditContents(event.target.value);
+  };
+
+  const changeEditRating = (editRating: SetStateAction<number>) => {
+    setEditRating(editRating);
+    console.log(editRating);
   };
 
   // 댓글 수정
@@ -104,14 +114,16 @@ const CommentWrite = () => {
 
     if (editContents)
       myVariables.updateBoardCommentInput.contents = editContents;
+    if (editRating) myVariables.updateBoardCommentInput.rating = editRating;
 
     try {
       const result = await updateBoardComment({
         variables: myVariables,
       });
-
+      console.log(result);
       refetch({ boardId: router.query.boardId });
       setEditContents("");
+      setDisabled(true);
       event.target.parentNode.parentNode.style.display = "none";
       alert("댓글을 수정했습니다.");
     } catch (error: any) {
@@ -136,6 +148,9 @@ const CommentWrite = () => {
       updateComment={handleUpdateComment}
       rating={rating}
       changeRating={handleChangeRating}
+      disabled={disabled}
+      editRating={editRating}
+      changeEditRating={changeEditRating}
     />
   );
 };

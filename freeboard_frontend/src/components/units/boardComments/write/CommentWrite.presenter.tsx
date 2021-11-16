@@ -51,7 +51,11 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
                 <div>
                   <S.CommentUser>{el?.writer}</S.CommentUser>
                   <S.CommentDate>{getDate(el.createdAt)}</S.CommentDate>
-                  <S.CommentRate disabled value={el.rating} />
+                  <S.CommentRate
+                    disabled={props.disabled}
+                    value={el.rating}
+                    onChange={props.changeEditRating}
+                  />
                 </div>
                 <S.CommentFunc>
                   <S.FuncItem onClick={props.openEdit}>수정</S.FuncItem>
@@ -68,7 +72,9 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
                   defaultValue={el?.contents}
                 ></S.UserTextarea>
                 <S.InputFooter>
-                  <S.LettersNumber>{props.contents.length}/100</S.LettersNumber>
+                  <S.LettersNumber>
+                    {props.editContents?.length}/100
+                  </S.LettersNumber>
                   <S.CommentAdmin id={el?._id} onClick={props.updateComment}>
                     댓글수정
                   </S.CommentAdmin>
