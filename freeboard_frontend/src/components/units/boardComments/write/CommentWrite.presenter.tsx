@@ -58,7 +58,9 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
                   />
                 </div>
                 <S.CommentFunc>
-                  <S.FuncItem onClick={props.openEdit}>수정</S.FuncItem>
+                  <S.FuncItem id={el?.contents} onClick={props.openEdit}>
+                    수정
+                  </S.FuncItem>
                   <S.FuncItem id={el?._id} onClick={props.deleteComment}>
                     삭제
                   </S.FuncItem>
@@ -68,12 +70,11 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
                 <S.UserTextarea
                   maxLength={100}
                   onChange={props.handleChangeEdit}
-                  value={el?.editContents}
                   defaultValue={el?.contents}
                 ></S.UserTextarea>
                 <S.InputFooter>
                   <S.LettersNumber>
-                    {props.editContents?.length}/100
+                    {props.editContents.length}/100
                   </S.LettersNumber>
                   <S.CommentAdmin id={el?._id} onClick={props.updateComment}>
                     댓글수정

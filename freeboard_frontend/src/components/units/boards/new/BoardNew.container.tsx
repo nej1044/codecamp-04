@@ -6,6 +6,7 @@ import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardNew.queries";
 import { TopicBtn } from "./BoardNew.styles";
 import {
   IBoardNewProps,
+  IMYBoardAddress,
   IMyVariables,
   IUpdateBoardInput,
 } from "./BoardNew.types";
@@ -28,6 +29,10 @@ const BoardNew = (props: IBoardNewProps) => {
   const [topic, setTopic] = useState("");
   const [btnColor, setBtnColor] = useState(false);
   const [snsUrl, setSNSUrl] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
 
   function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
     setTopic(event.target.value);
@@ -91,13 +96,31 @@ const BoardNew = (props: IBoardNewProps) => {
     }
   }
 
-  // 주소
+  const onToggleModal = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const handleComplete = (data: any) => {
+    setIsOpen((prev) => !prev);
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+  };
+
+  const handleChangeDetailAddress = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(event.target.value);
+  };
+
+  // SNS주소
   function handleChangeURL(event: ChangeEvent<HTMLInputElement>) {
     setSNSUrl(event.target.value);
   }
 
   // 수정하기
-  const myUpdateBoardInput: IUpdateBoardInput = {};
+  const myBoardAddress: IMYBoardAddress = {};
+
+  const myUpdateBoardInput: IUpdateBoardInput = {
+    boardAddress: myBoardAddress,
+  };
 
   const myVariables: IMyVariables = {
     updateBoardInput: myUpdateBoardInput,
@@ -117,6 +140,27 @@ const BoardNew = (props: IBoardNewProps) => {
     myVariables.updateBoardInput.contents = contents;
   } else {
     myVariables.updateBoardInput.contents = data?.fetchBoard.contents;
+  }
+
+  if (zipcode) {
+    myUpdateBoardInput.boardAddress.zipcode = zipcode;
+  } else {
+    myUpdateBoardInput.boardAddress.zipcode =
+      data?.fetchBoard?.boardAddress?.zipcode;
+  }
+
+  if (address) {
+    myUpdateBoardInput.boardAddress.address = address;
+  } else {
+    myUpdateBoardInput.boardAddress.address =
+      data?.fetchBoard?.boardAddress?.address;
+  }
+
+  if (addressDetail) {
+    myUpdateBoardInput.boardAddress.addressDetail = addressDetail;
+  } else {
+    myUpdateBoardInput.boardAddress.addressDetail =
+      data?.fetchBoard?.boardAddress?.addressDetail;
   }
 
   async function handleEditBoard() {
@@ -165,6 +209,7 @@ const BoardNew = (props: IBoardNewProps) => {
               title,
               contents,
               youtubeUrl: snsUrl,
+              boardAddress: { zipcode, address, addressDetail },
             },
           },
         });
@@ -194,6 +239,12 @@ const BoardNew = (props: IBoardNewProps) => {
       editBoard={handleEditBoard}
       btnColor={btnColor}
       changedUrl={handleChangeURL}
+      onToggleModal={onToggleModal}
+      isOpen={isOpen}
+      handleComplete={handleComplete}
+      zipcode={zipcode}
+      address={address}
+      changedDetailAddress={handleChangeDetailAddress}
     />
   );
 };

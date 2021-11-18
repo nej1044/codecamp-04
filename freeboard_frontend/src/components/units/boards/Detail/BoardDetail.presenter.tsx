@@ -28,10 +28,9 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                   <img src="/images/detail/sns.png" />
                 </a>
                 <S.Address>
-                  {" "}
-                  서울특별시 영등포구 양산로 200
+                  {props.data?.fetchBoard?.boardAddress?.address}
                   <br />
-                  (영등포동5가, 영등포시장역) 영등포 타임스퀘어 2 층{" "}
+                  {props.data?.fetchBoard?.boardAddress?.addressDetail}
                 </S.Address>
                 <img
                   onClick={props.addressShow}
@@ -60,7 +59,7 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
               </S.DetailLike>
             </S.DetailMoodlet>
           </S.DetailBody>
-          <S.ListBtn onClick={props.handleList}>⇽</S.ListBtn>
+          <S.ListBtn onClick={props.handleList} />
         </S.DetailSection>
       </S.Wrapper>
     </>

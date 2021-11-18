@@ -9,7 +9,7 @@ const BoardListUI = (props: IBoardListUIProps) => {
         <h1>베스트 게시글</h1>
         <S.BestList>
           {props.second?.fetchBoardsOfTheBest.map((el: any) => (
-            <S.BestBoard id={el._id} onClick={props.getDetail}>
+            <S.BestBoard key={el._id} id={el._id} onClick={props.getDetail}>
               <S.BestTitle>{el?.title}</S.BestTitle>
               <S.BestFooter>
                 <S.BestUser>
@@ -29,7 +29,7 @@ const BoardListUI = (props: IBoardListUIProps) => {
         <S.ListHeader>
           <S.HeaderForm>
             <S.Selected>
-              <option value="" disabled selected>
+              <option disabled selected>
                 카테고리 선택
               </option>
               <option value="질문">질문</option>

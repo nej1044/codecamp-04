@@ -1,5 +1,7 @@
 import * as S from "./BoardNew.styles";
 import { IBoardNewUIProps } from "./BoardNew.types";
+import DaumPostcode from "react-daum-postcode";
+import { Modal, Button } from "antd";
 
 const BoardNewUI = (props: IBoardNewUIProps) => {
   return (
@@ -108,12 +110,44 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
           </S.BodyForm>
           <S.ZipcodeForm>
             <S.MyLabel>주소</S.MyLabel>
-            <form>
-              <S.Zipcode type="text" placeholder="07250" disabled />
-              <S.ZipcodeSearch>우편번호 검색</S.ZipcodeSearch>
-            </form>
-            <S.BasicInput type="text" disabled />
-            <S.BasicInput type="text" />
+            <div>
+              <S.Zipcode
+                type="text"
+                placeholder="07250"
+                disabled
+                value={
+                  props.zipcode ||
+                  props.data?.fetchBoard.boardAddress?.zipcode ||
+                  ""
+                }
+              />
+              <S.ZipcodeSearch onClick={props.onToggleModal}>
+                우편번호 검색
+              </S.ZipcodeSearch>
+              {props.isOpen && (
+                <Modal
+                  visible={true}
+                  onOk={props.onToggleModal}
+                  onCancel={props.onToggleModal}
+                >
+                  <DaumPostcode onComplete={props.handleComplete} />
+                </Modal>
+              )}
+            </div>
+            <S.BasicInput
+              type="text"
+              disabled
+              value={
+                props.address ||
+                props.data?.fetchBoard.boardAddress?.address ||
+                ""
+              }
+            />
+            <S.BasicInput
+              type="text"
+              onChange={props.changedDetailAddress}
+              defaultValue={props.data?.fetchBoard.boardAddress?.addressDetail}
+            />
           </S.ZipcodeForm>
           <S.BodyForm>
             <S.MyLabel>SNS 주소</S.MyLabel>

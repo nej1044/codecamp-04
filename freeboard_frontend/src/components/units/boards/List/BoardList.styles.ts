@@ -210,7 +210,7 @@ export const ListFooter = styled.section`
   align-items: center;
   width: 500px;
   height: 200px;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 `;
 
 export const Pages = styled.button`

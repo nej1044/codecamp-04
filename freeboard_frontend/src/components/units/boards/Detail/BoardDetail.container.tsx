@@ -20,11 +20,11 @@ const BoardDetail = () => {
 
   // 주소보여주기
   function handleClickShow(event: MouseEvent<HTMLImageElement>) {
-    const adressBox = event.target.previouSibling;
-    if (adressBox.style.display === "none") {
-      adressBox.style.display = "flex";
+    const addressBox = event.target.previousSibling;
+    if (addressBox.style.display === "none") {
+      addressBox.style.display = "flex";
     } else {
-      adressBox.style.display = "none";
+      addressBox.style.display = "none";
     }
   }
 

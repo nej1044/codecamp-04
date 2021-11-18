@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.section`
   display: flex;
@@ -6,14 +7,15 @@ export const Wrapper = styled.section`
   align-items: center;
 `;
 
-export const ListBtn = styled.button`
+export const ListBtn = styled(ArrowLeftOutlined)`
   position: fixed;
-  left: 300px;
-  top: 180px;
+  left: 100px;
+  bottom: 400px;
   width: 50px;
   height: 50px;
+  line-height: 50px;
   border: 1px solid #8eb695;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 10px;
   background: white;
   :hover {

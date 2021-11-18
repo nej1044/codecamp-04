@@ -15,10 +15,10 @@ const CommentWrite = () => {
   const [createBoardComment] = useMutation(CREATE_COMMENT);
   const [deleteBoardComment] = useMutation(DELETE_COMMENT);
   const [updateBoardComment] = useMutation(UPDATE_COMMENT);
-  const [editContents, setEditContents] = useState("");
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [contents, setContents] = useState("");
+  const [editContents, setEditContents] = useState("");
   const [rating, setRating] = useState(3);
   const [editRating, setEditRating] = useState(3);
   const [disabled, setDisabled] = useState(true);
@@ -56,9 +56,9 @@ const CommentWrite = () => {
         setWriter("");
         setPassword("");
         setContents("");
-        alert("댓글 등록이 완료되었습니다.");
+        alert("댓글을 등록했습니다.");
       } catch (error: any) {
-        alert(`댓글 등록에 실패했습니다. ${error.message}`);
+        alert(`댓글 등록에 실패했습니다 ${error.message}`);
       }
     }
   };
@@ -79,9 +79,9 @@ const CommentWrite = () => {
   };
 
   const hanldeOpenEdit = (event: MouseEvent<HTMLSpanElement>) => {
-    setEditContents(event.target.value);
+    const target = event.target as HTMLSpanElement;
+    setEditContents(target.id);
     const editArea = event.target.parentNode.parentNode.nextSibling;
-    console.log(disabled);
     if (editArea.style.display === "none") {
       editArea.style.display = "block";
       setDisabled(false);
@@ -146,10 +146,10 @@ const CommentWrite = () => {
       handleChangeEdit={handleChangeEdit}
       deleteComment={handleDeleteComment}
       updateComment={handleUpdateComment}
+      editRating={editRating}
       rating={rating}
       changeRating={handleChangeRating}
       disabled={disabled}
-      editRating={editRating}
       changeEditRating={changeEditRating}
     />
   );

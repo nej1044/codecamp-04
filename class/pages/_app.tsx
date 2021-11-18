@@ -1,9 +1,12 @@
 // 설정파일
-import "../styles/globals.css";
 import "antd/dist/antd.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { AppProps } from "next/dist/shared/lib/router/router";
+import Layout from "../src/components/commons/layout";
+import { Global } from "@emotion/react";
+import { globalStyles } from "../src/commons/types/generated/styles/globalstyles";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const client = new ApolloClient({
     uri: "http://example.codebootcamp.co.kr/graphql",
     cache: new InMemoryCache(),
@@ -11,7 +14,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <Global styles={globalStyles} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 }

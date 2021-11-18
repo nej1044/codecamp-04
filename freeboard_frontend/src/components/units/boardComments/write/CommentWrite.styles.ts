@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Rate } from "antd";
+import { Rate, Modal } from "antd";
 
 export const CommentSection = styled.section`
   display: flex;
@@ -27,9 +27,10 @@ export const CommentInputsSection = styled.section`
 `;
 
 export const UserInputWrapper = styled.div`
-  width: 550px;
+  width: 500px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 `;
 
@@ -71,7 +72,7 @@ export const InputFooter = styled.div`
   justify-content: space-between;
   width: 100%;
   position: absolute;
-  bottom: 4px;
+  bottom: 6px;
 `;
 
 export const LettersNumber = styled.span`
@@ -143,6 +144,7 @@ export const CommentDate = styled.span`
 
 export const CommentContents = styled.div`
   width: 100%;
+  min-height: 20px;
   margin-bottom: 10px;
   word-break: break-all;
 `;
