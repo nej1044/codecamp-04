@@ -8,7 +8,7 @@ const FooterDiv = styled.section`
 `;
 
 const Footer = () => {
-  return <FooterDiv></FooterDiv>;
+  return <FooterDiv>1</FooterDiv>;
 };
 
 export default Footer;
