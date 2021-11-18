@@ -27,7 +27,7 @@ const BoardList = () => {
   };
 
   const getDetail = (event: MouseEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLDivElement;
+    const target = event.currentTarget as HTMLDivElement;
     try {
       router.push(`/boards/${target.id}`);
     } catch (error: any) {
@@ -48,6 +48,18 @@ const BoardList = () => {
     refetch({ search: "", page: undefined });
     setCurrent(1);
     setStartPage(1);
+  };
+
+  const onClickPrevPage = () => {
+    if (startPage === 1) return;
+    setStartPage((prev) => prev - 10);
+    setCurrent(current - 10);
+  };
+
+  const onClickNextPage = () => {
+    if (startPage + 10 > lastPage) return;
+    setStartPage((prev) => prev + 10);
+    setCurrent(current + 10);
   };
 
   const onClickPage = (event: MouseEvent<HTMLElement>) => {
@@ -71,6 +83,8 @@ const BoardList = () => {
         second={second}
         handleCreate={handleCreate}
         getDetail={getDetail}
+        onClickPrevPage={onClickPrevPage}
+        onClickNextPage={onClickNextPage}
       />
     </>
   );

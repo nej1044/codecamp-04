@@ -63,7 +63,7 @@ const BoardListUI = (props: IBoardListUIProps) => {
           ))}
         </S.ListBody>
         <S.ListFooter>
-          <span></span>
+          <S.PrevArrow onClick={props.onClickPrevPage} />
           {new Array(10).fill(1).map(
             (_, index) =>
               props.startPage + index <= props.lastPage && (
@@ -71,12 +71,13 @@ const BoardListUI = (props: IBoardListUIProps) => {
                   key={props.startPage + index}
                   onClick={props.onClickPage}
                   id={String(props.startPage + index)}
+                  current={props.startPage + index === props.current}
                 >
                   {props.startPage + index}
                 </S.Pages>
               )
           )}
-          <span></span>
+          <S.NextArrow onClick={props.onClickNextPage} />
         </S.ListFooter>
       </S.ListWrapper>
     </S.Wrapper>

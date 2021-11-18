@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { RocketTwoTone } from "@ant-design/icons";
+import { useRouter } from "next/router";
 
 const HeaderWrapper = styled.section`
   display: flex;
@@ -7,7 +8,7 @@ const HeaderWrapper = styled.section`
   align-items: center;
   width: 100%;
   height: 80px;
-  padding: 0 50px;
+  padding: 0 100px;
   background-color: white;
 
   @font-face {
@@ -23,6 +24,11 @@ const Logo = styled.span`
   cursor: pointer;
 `;
 
+const HeaderMenu = styled.div`
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+`;
 const LoginBtn = styled.button`
   width: 100px;
   height: 40px;
@@ -40,13 +46,21 @@ const LoginBtn = styled.button`
 `;
 
 const Header = () => {
+  const router = useRouter();
+
+  const moveHome = () => {
+    router.push("/");
+  };
   return (
     <HeaderWrapper>
-      <Logo>
+      <Logo onClick={moveHome}>
         <RocketTwoTone twoToneColor="#8eb695" />
         디벨로펌
       </Logo>
-      <LoginBtn>로그인</LoginBtn>
+      <HeaderMenu>
+        <LoginBtn>로그인</LoginBtn>
+        <LoginBtn>회원가입</LoginBtn>
+      </HeaderMenu>
     </HeaderWrapper>
   );
 };
