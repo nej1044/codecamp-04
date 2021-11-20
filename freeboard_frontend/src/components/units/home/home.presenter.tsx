@@ -1,8 +1,9 @@
 import { Header } from "antd/lib/layout/layout";
 import * as S from "./home.styles";
 import { useScrollFadeIn } from "../../../commons/libraries/utils";
+import { getDate } from "../../../commons/libraries/utils";
 
-const HomeUI = () => {
+const HomeUI = (props) => {
   return (
     <>
       <S.Wrapper>
@@ -27,23 +28,41 @@ const HomeUI = () => {
           </S.ProjectSection>
           <S.DeveloperSection>
             <S.DeveloperTitle {...useScrollFadeIn("up", 1, 0)}>
-              이번 주 가장 핫한 디벨로퍼 🔥
+              이번 주 가장 HOT🔥 한 디벨로퍼
             </S.DeveloperTitle>
-            <div class="developer-container" {...useScrollFadeIn("up", 1, 0)}>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <S.DeveloperContainer {...useScrollFadeIn("up", 1, 0)}>
+              {props.data?.fetchBoardsOfTheBest.map((el) => (
+                <S.Developer key={el._id}>
+                  <S.ProfileImg src="/images/detail/ProfileImg.png" />
+                  {el.writer}
+                </S.Developer>
+              ))}
+            </S.DeveloperContainer>
           </S.DeveloperSection>
           <S.PostingSection>
             <S.SectionTitle {...useScrollFadeIn("up", 1, 0)}>
               이번 주 읽어보면 도움이 될 만한 포스팅! 📌
             </S.SectionTitle>
             <S.PostingContainer {...useScrollFadeIn("up", 1, 0)}>
-              <S.Posting></S.Posting>
-              <S.Posting></S.Posting>
-              <S.Posting></S.Posting>
-              <S.Posting></S.Posting>
+              {props.data?.fetchBoardsOfTheBest.map((el) => (
+                <S.Posting key={el._id}>
+                  <div>
+                    <S.ProfileImg src="/images/detail/ProfileImg.png" />
+                    <S.PostingWriter>{el.writer}</S.PostingWriter>
+                  </div>
+                  <S.PostingContents>
+                    <S.PostingDetail>
+                      <S.PostingDate>{getDate(el.createdAt)}</S.PostingDate>
+                      <S.PostingTitle>{el.title}</S.PostingTitle>
+                      <span>{el.contents}</span>
+                    </S.PostingDetail>
+                    <S.PostingLike>
+                      <S.LikeImg src="/images/detail/Like.png" />
+                      <span>{el.likeCount}</span>
+                    </S.PostingLike>
+                  </S.PostingContents>
+                </S.Posting>
+              ))}
             </S.PostingContainer>
           </S.PostingSection>
         </S.HomeBody>

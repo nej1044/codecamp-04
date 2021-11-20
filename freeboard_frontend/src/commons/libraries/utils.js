@@ -9,7 +9,8 @@ export const getDate = (myDate) => {
   return `${year}-${month}-${day}`;
 };
 
-export const useScrollFadeIn = (direction = "up", duration = 1, delay = 0) => {
+// intersection - observer
+export const useScrollFadeIn = (direction, duration, delay) => {
   const element = useRef();
 
   const handleDirection = (name) => {

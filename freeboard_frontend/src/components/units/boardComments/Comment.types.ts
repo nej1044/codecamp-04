@@ -22,17 +22,6 @@ export interface ICommentWriteUIProps {
   changeEditRating: (editRating: SetStateAction<number>) => void;
 }
 
-export interface IMyVariables {
-  updateBoardCommentInput: IMyInputVariables;
-  password: string | null;
-  boardCommentId: string;
-}
-
-export interface IMyInputVariables {
-  rating?: number;
-  contents?: string;
-}
-
 export interface ICommentWriteStyledProps {
   isEdit?: boolean;
 }

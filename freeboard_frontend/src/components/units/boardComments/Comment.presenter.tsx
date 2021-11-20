@@ -1,6 +1,6 @@
-import { getDate } from "../../../../commons/libraries/utils";
-import * as S from "./CommentWrite.styles";
-import { ICommentWriteUIProps } from "./CommentWrite.types";
+import * as S from "./Comment.styles";
+import { ICommentWriteUIProps } from "./Comment.types";
+import InfiniteScroll from "../../commons/infiniteScroll/InfiniteScroll.container";
 
 const CommentWriteUI = (props: ICommentWriteUIProps) => {
   return (
@@ -12,14 +12,16 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
             <S.UserInput
               type="text"
               placeholder="작성자"
-              onChange={props.handleChangeWriter}
-              value={props.writer}
+              name="writer"
+              onChange={props.hanldeChangeInputs}
+              value={props.inputs.writer}
             ></S.UserInput>
             <S.UserInput
               type="password"
               placeholder="비밀번호"
-              onChange={props.handleChangePassword}
-              value={props.password}
+              name="password"
+              value={props.inputs.password}
+              onChange={props.hanldeChangeInputs}
             ></S.UserInput>
             <div>
               <S.CommentRate
@@ -31,12 +33,15 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
           <S.TextAreaSection>
             <S.UserTextarea
               placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-              onChange={props.handleChangeContents}
-              value={props.contents}
+              onChange={props.hanldeChangeInputs}
+              name="contents"
               maxLength={100}
+              value={props.inputs.contents}
             ></S.UserTextarea>
             <S.InputFooter>
-              <S.LettersNumber>{props.contents.length}/100</S.LettersNumber>
+              <S.LettersNumber>
+                {props.inputs.contents.length}/100
+              </S.LettersNumber>
               <S.CommentAdmin onClick={props.createComment}>
                 댓글등록
               </S.CommentAdmin>
@@ -44,7 +49,14 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
           </S.TextAreaSection>
         </S.CommentInputsSection>
         <S.CommentBody>
-          {props.data?.fetchBoardComments.map((el: any) => (
+          <InfiniteScroll
+            data={props.data}
+            fetchMore={props.fetchMore}
+            routerId={props.routerId}
+            refetch={props.refetch}
+            startPage={props.startPage}
+          />
+          {/* {props.data?.fetchBoardComments.map((el: any) => (
             <S.Comment key={el?._id}>
               <S.CommentImg src="/images/detail/ProfileImg.png" />
               <S.CommentInfo>
@@ -83,7 +95,7 @@ const CommentWriteUI = (props: ICommentWriteUIProps) => {
               </S.EditTextArea>
               <S.CommentContents>{el?.contents}</S.CommentContents>
             </S.Comment>
-          ))}
+          ))} */}
         </S.CommentBody>
       </S.CommentWrapper>
     </S.CommentSection>

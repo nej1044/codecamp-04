@@ -79,9 +79,28 @@ export const DeveloperSection = styled.section`
   color: white;
 `;
 
+export const DeveloperContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  padding: 0 40px;
+`;
+
 export const DeveloperTitle = styled.h2`
   color: white;
   font-size: 30px;
+`;
+
+export const Developer = styled.span`
+  font-size: 26px;
+`;
+
+export const ProfileImg = styled.img`
+  background-color: white;
+  border-radius: 50%;
+  margin: 20px;
 `;
 
 export const PostingSection = styled.section`
@@ -89,19 +108,58 @@ export const PostingSection = styled.section`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 750px;
-  padding: 100px;
+  height: 650px;
+  padding: 80px 100px;
 `;
 
 export const PostingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 400px;
 `;
 
 export const Posting = styled.div`
   width: 350px;
-  height: 450px;
-  border: 1px solid #8eb695;
-  border-radius: 40px;
+  height: 300px;
+`;
+
+export const PostingWriter = styled.span`
+  font-size: 20px;
+`;
+
+export const PostingContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px;
+  height: 300px;
+  padding: 30px 40px;
+  border: 1px solid #e9e9e9;
+  background-color: #f7f7f7;
+`;
+
+export const PostingDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PostingDate = styled.span`
+  color: #9f9f9f;
+`;
+
+export const PostingTitle = styled.span`
+  max-height: 100px;
+  overflow: hidden;
+  font-size: 20px;
+  margin: 10px 0;
+`;
+
+export const PostingLike = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const LikeImg = styled.img`
+  margin-right: 10px;
 `;

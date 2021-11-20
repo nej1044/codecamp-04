@@ -20,7 +20,6 @@ const BoardList = () => {
   const { data: third } = useQuery(FETCH_PAGES, {
     variables: { search: confirmSearch },
   });
-  const lastPage = Math.ceil(third?.fetchBoardsCount / 10);
 
   const handleCreate = () => {
     router.push("/boards/new");
@@ -50,41 +49,22 @@ const BoardList = () => {
     setStartPage(1);
   };
 
-  const onClickPrevPage = () => {
-    if (startPage === 1) return;
-    setStartPage((prev) => prev - 10);
-    setCurrent(current - 10);
-  };
-
-  const onClickNextPage = () => {
-    if (startPage + 10 > lastPage) return;
-    setStartPage((prev) => prev + 10);
-    setCurrent(current + 10);
-  };
-
-  const onClickPage = (event: MouseEvent<HTMLElement>) => {
-    const target = event.target as HTMLElement;
-    refetch({
-      page: Number(target.id),
-    });
-    setCurrent(Number(target.id));
-  };
   return (
     <>
       <BoardListUI
         handleReset={clickSearchReset}
         clickSearchValue={clickSearchValue}
+        count={third?.fetchBoardsCount}
         startPage={startPage}
-        current={current}
-        lastPage={lastPage}
-        onClickPage={onClickPage}
+        setStartPage={setStartPage}
         changeSearchValue={changeSearchValue}
         first={first}
         second={second}
         handleCreate={handleCreate}
         getDetail={getDetail}
-        onClickPrevPage={onClickPrevPage}
-        onClickNextPage={onClickNextPage}
+        refetch={refetch}
+        current={current}
+        setCurrent={setCurrent}
       />
     </>
   );

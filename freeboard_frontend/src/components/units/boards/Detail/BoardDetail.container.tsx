@@ -7,7 +7,7 @@ import {
   LIKE_BOARD,
   DISLIKE_BOARD,
 } from "./BoardDetail.queries";
-import { useState, MouseEvent, ChangeEvent } from "react";
+import { useRef, useState, MouseEvent, ChangeEvent } from "react";
 
 const BoardDetail = () => {
   const router = useRouter();
@@ -19,12 +19,12 @@ const BoardDetail = () => {
   });
 
   // 주소보여주기
+  const addressBox = useRef();
   function handleClickShow(event: MouseEvent<HTMLImageElement>) {
-    const addressBox = event.target.previousSibling;
-    if (addressBox.style.display === "none") {
-      addressBox.style.display = "flex";
+    if (addressBox.current.style.display === "none") {
+      addressBox.current.style.display = "flex";
     } else {
-      addressBox.style.display = "none";
+      addressBox.current.style.display = "none";
     }
   }
 
@@ -86,6 +86,7 @@ const BoardDetail = () => {
       downlike={downlike}
       handleEdit={handleEdit}
       addressShow={handleClickShow}
+      addressBox={addressBox}
       data={data}
       handleDeleteBoard={handleDeleteBoard}
       handleList={handleList}

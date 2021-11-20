@@ -7,5 +7,7 @@ export const globalStyles = css`
   }
 
   @font-face {
+    font-family: "Black Han";
+    src: url("/fonts/BlackHanSans-Regular.ttf");
   }
 `;

@@ -1,4 +1,5 @@
 import { getDate } from "../../../../commons/libraries/utils";
+import Pagination from "../../../commons/pagination/pagination.container";
 import * as S from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
 
@@ -63,21 +64,14 @@ const BoardListUI = (props: IBoardListUIProps) => {
           ))}
         </S.ListBody>
         <S.ListFooter>
-          <S.PrevArrow onClick={props.onClickPrevPage} />
-          {new Array(10).fill(1).map(
-            (_, index) =>
-              props.startPage + index <= props.lastPage && (
-                <S.Pages
-                  key={props.startPage + index}
-                  onClick={props.onClickPage}
-                  id={String(props.startPage + index)}
-                  current={props.startPage + index === props.current}
-                >
-                  {props.startPage + index}
-                </S.Pages>
-              )
-          )}
-          <S.NextArrow onClick={props.onClickNextPage} />
+          <Pagination
+            refetch={props.refetch}
+            count={props.count}
+            startPage={props.startPage}
+            setStartPage={props.setStartPage}
+            current={props.current}
+            setCurrent={props.setCurrent}
+          />
         </S.ListFooter>
       </S.ListWrapper>
     </S.Wrapper>

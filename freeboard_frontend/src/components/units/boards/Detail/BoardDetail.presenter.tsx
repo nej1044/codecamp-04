@@ -27,7 +27,7 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                 >
                   <img src="/images/detail/sns.png" />
                 </a>
-                <S.Address>
+                <S.Address ref={props.addressBox}>
                   {props.data?.fetchBoard?.boardAddress?.address}
                   <br />
                   {props.data?.fetchBoard?.boardAddress?.addressDetail}

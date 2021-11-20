@@ -18,9 +18,9 @@ const BoardNew = (props: IBoardNewProps) => {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
+  const [tempTitle, setTempTitle] = useState("");
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
-  let [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [errorWriter, setErrorWriter] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
@@ -50,7 +50,7 @@ const BoardNew = (props: IBoardNewProps) => {
     if (event.target.value) {
       setErrorWriter("");
     }
-    if (event.target.value && password && title && contents) {
+    if (event.target.value && password && tempTitle && contents) {
       setBtnColor(true);
     } else {
       setBtnColor(false);
@@ -63,7 +63,7 @@ const BoardNew = (props: IBoardNewProps) => {
     if (event.target.value) {
       setErrorPassword("");
     }
-    if (writer && event.target.value && title && contents) {
+    if (writer && event.target.value && tempTitle && contents) {
       setBtnColor(true);
     } else {
       setBtnColor(false);
@@ -72,7 +72,7 @@ const BoardNew = (props: IBoardNewProps) => {
 
   // 제목
   function handleChangeTitle(event: ChangeEvent<HTMLInputElement>) {
-    setTitle(event.target.value);
+    setTempTitle(event.target.value);
     if (event.target.value) {
       setErrorTitle("");
     }
@@ -89,7 +89,7 @@ const BoardNew = (props: IBoardNewProps) => {
     if (event.target.value) {
       setErrorContents("");
     }
-    if (writer && password && title && event.target.value) {
+    if (writer && password && tempTitle && event.target.value) {
       setBtnColor(true);
     } else {
       setBtnColor(false);
@@ -115,6 +115,48 @@ const BoardNew = (props: IBoardNewProps) => {
     setSNSUrl(event.target.value);
   }
 
+  async function handleClickBoard() {
+    // 작성자 검증
+    if (!writer) {
+      setErrorWriter("이름을 정확히 입력해 주세요.");
+    }
+    // 비밀번호 검증
+    if (!password) {
+      setErrorPassword("비밀번호를 정확히 입력해 주세요.");
+    }
+    // 제목 검증
+    if (!tempTitle) {
+      setErrorTitle("제목을 입력해 주세요.");
+    }
+    // 내용 검증
+    if (!contents) {
+      setErrorContents("내용을 입력해 주세요.");
+    }
+    // 모두 작성되었다면 작성정보전달
+    if (writer && password && tempTitle && contents) {
+      const title = `[${topic}] ` + tempTitle;
+      try {
+        const result = await createBoard({
+          variables: {
+            createBoardInput: {
+              writer,
+              password,
+              title,
+              contents,
+              youtubeUrl: snsUrl,
+              boardAddress: { zipcode, address, addressDetail },
+            },
+          },
+        });
+        //   console.log(title);
+        alert("게시물 등록이 완료되었습니다.");
+        router.push(`/boards/${result.data.createBoard._id}`);
+      } catch (error: any) {
+        alert(`게시물 등록에 실패했습니다. ${error.message}`);
+      }
+    }
+  }
+
   // 수정하기
   const myBoardAddress: IMYBoardAddress = {};
 
@@ -128,8 +170,8 @@ const BoardNew = (props: IBoardNewProps) => {
     boardId: String(router.query.boardId),
   };
 
-  if (title) {
-    myVariables.updateBoardInput.title = `[${topic}] ` + title;
+  if (tempTitle) {
+    myVariables.updateBoardInput.title = `[${topic}] ` + tempTitle;
   } else {
     myVariables.updateBoardInput.title =
       `[${topic}] ` +
@@ -164,7 +206,6 @@ const BoardNew = (props: IBoardNewProps) => {
   }
 
   async function handleEditBoard() {
-    console.log(title);
     // 비밀번호 검증
     if (!password) {
       setErrorPassword("비밀번호를 정확히 입력해 주세요.");
@@ -176,49 +217,6 @@ const BoardNew = (props: IBoardNewProps) => {
       alert("게시물 수정이 완료되었습니다.");
     } catch (error: any) {
       alert(`게시물 수정에 실패했습니다. ${error.message}`);
-    }
-  }
-
-  async function handleClickBoard() {
-    // 작성자 검증
-    if (!writer) {
-      setErrorWriter("이름을 정확히 입력해 주세요.");
-    }
-
-    // 비밀번호 검증
-    if (!password) {
-      setErrorPassword("비밀번호를 정확히 입력해 주세요.");
-    }
-    // 제목 검증
-    if (!title) {
-      setErrorTitle("제목을 입력해 주세요.");
-    }
-    // 내용 검증
-    if (!contents) {
-      setErrorContents("내용을 입력해 주세요.");
-    }
-    // 모두 작성되었다면 작성정보전달
-    if (writer && password && title && contents) {
-      title = `[${topic}] ` + title;
-      try {
-        const result = await createBoard({
-          variables: {
-            createBoardInput: {
-              writer,
-              password,
-              title,
-              contents,
-              youtubeUrl: snsUrl,
-              boardAddress: { zipcode, address, addressDetail },
-            },
-          },
-        });
-        console.log(result);
-        alert("게시물 등록이 완료되었습니다.");
-        router.push(`/boards/${result.data.createBoard._id}`);
-      } catch (error: any) {
-        alert(`게시물 등록에 실패했습니다. ${error.message}`);
-      }
     }
   }
 

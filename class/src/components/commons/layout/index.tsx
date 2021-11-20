@@ -27,12 +27,12 @@ const BodyWrapper = styled.div`
 
 const Body = styled.section`
   width: 100%;
-  height: 500px;
+  height: 600px;
 `;
 
 const SideBar = styled.div`
   width: 500px;
-  height: 500px;
+  height: 700px;
   background-color: whitesmoke;
 `;
 
