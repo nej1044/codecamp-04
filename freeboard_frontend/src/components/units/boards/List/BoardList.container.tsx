@@ -1,5 +1,11 @@
 import BoardListUI from "./BoardList.presenter";
-import { FETCH_BOARDS, FETCH_BEST, FETCH_PAGES } from "./BoardList.queries";
+import SideBar from "../../../commons/layout/sidebar";
+import {
+  FETCH_BOARDS,
+  FETCH_BEST,
+  FETCH_PAGES,
+  FECTH_COMMENTS,
+} from "./BoardList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState, MouseEvent } from "react";
@@ -19,6 +25,10 @@ const BoardList = () => {
   const { data: second } = useQuery(FETCH_BEST);
   const { data: third } = useQuery(FETCH_PAGES, {
     variables: { search: confirmSearch },
+  });
+
+  const { data: fetchComments } = useQuery(FECTH_COMMENTS, {
+    variables: { boardId: router.query.boardId },
   });
 
   const handleCreate = () => {
@@ -44,7 +54,8 @@ const BoardList = () => {
   };
 
   const clickSearchReset = () => {
-    refetch({ search: "", page: undefined });
+    refetch({ search: "", page: startPage });
+    setConfirm("");
     setCurrent(1);
     setStartPage(1);
   };
@@ -65,7 +76,9 @@ const BoardList = () => {
         refetch={refetch}
         current={current}
         setCurrent={setCurrent}
+        fetchComments={fetchComments}
       />
+      <SideBar refetch={refetch} setConfrim={setConfirm} />
     </>
   );
 };

@@ -1,8 +1,9 @@
 import InfiniteScroll from "react-infinite-scroller";
+import { IInfiniteScrollUI } from "./InfiniteScroll.types";
 import * as S from "./InfiniteScroll.styles";
 import { getDate } from "../../../commons/libraries/utils";
 
-const InfiniteScrollUI = (props) => {
+const InfiniteScrollUI = (props: IInfiniteScrollUI) => {
   return (
     <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
       {props.data?.fetchBoardComments.map((el: any) => (

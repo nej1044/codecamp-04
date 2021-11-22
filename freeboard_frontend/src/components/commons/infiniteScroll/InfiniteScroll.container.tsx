@@ -2,14 +2,29 @@ import InfiniteScrollUI from "./InfiniteScroll.presenter";
 import { useMutation } from "@apollo/client";
 import { SetStateAction, ChangeEvent, MouseEvent, useState } from "react";
 import { DELETE_COMMENT, UPDATE_COMMENT } from "./InfitniteScroll.queries";
-import { IMyVariables, IMyInputVariables } from "./InfiniteScroll.types";
+import {
+  IMyVariables,
+  IMyInputVariables,
+  IInfiniteScroll,
+} from "./InfiniteScroll.types";
+import {
+  IMutation,
+  IMutationDeleteBoardCommentArgs,
+  IMutationUpdateBoardCommentArgs,
+} from "../../../commons/types/generated/types";
 
-const InfiniteScroll = (props) => {
+const InfiniteScroll = (props: IInfiniteScroll) => {
   const [disabled, setDisabled] = useState(true);
   const [editContents, setEditContents] = useState("");
   const [editRating, setEditRating] = useState(3);
-  const [deleteBoardComment] = useMutation(DELETE_COMMENT);
-  const [updateBoardComment] = useMutation(UPDATE_COMMENT);
+  const [deleteBoardComment] = useMutation<
+    Pick<IMutation, "deleteBoardComment">,
+    IMutationDeleteBoardCommentArgs
+  >(DELETE_COMMENT);
+  const [updateBoardComment] = useMutation<
+    Pick<IMutation, "updateBoardComment">,
+    IMutationUpdateBoardCommentArgs
+  >(UPDATE_COMMENT);
 
   // open edit
   const hanldeOpenEdit = (event: MouseEvent<HTMLSpanElement>) => {

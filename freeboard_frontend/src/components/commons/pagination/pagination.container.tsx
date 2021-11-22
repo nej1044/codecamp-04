@@ -1,7 +1,8 @@
 import { useState, MouseEvent } from "react";
-import PaginationUI from "./Pagination.presenter";
+import PaginationUI from "./pagination.presenter";
+import { IPagination } from "./pagination.types";
 
-const Pagination = (props) => {
+const Pagination = (props: IPagination) => {
   const lastPage = Math.ceil(props.count / 10);
 
   const onClickPrevPage = () => {

@@ -1,3 +1,4 @@
+import { ApolloQueryResult } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { ReactChild } from "react";
@@ -5,8 +6,9 @@ import Banner from "./banner";
 import Footer from "./footer";
 import Header from "./header";
 import Navigation from "./navigation";
+import SideBar from "./sidebar";
 
-// const HIDDEN_HEADERS = [];
+// const SHOW_SIDEBAR = ["/boards"];
 
 interface ILayoutProps {
   children: ReactChild;
@@ -25,14 +27,14 @@ const Body = styled.section`
 
 const Layout = (props: ILayoutProps) => {
   const router = useRouter();
-  // const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
+  // const isShowSideBar = SHOW_SIDEBAR.includes(router.asPath);
 
   return (
     <Wrapper>
       <Header />
-      {/* {!isHiddenHeader && <Header />} */}
       <Banner />
       <Navigation />
+      {/* {isShowSideBar && <SideBar />} */}
       <Body>{props.children}</Body>
       <Footer />
     </Wrapper>

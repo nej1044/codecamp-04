@@ -1,9 +1,9 @@
-import { Header } from "antd/lib/layout/layout";
 import * as S from "./home.styles";
 import { useScrollFadeIn } from "../../../commons/libraries/utils";
 import { getDate } from "../../../commons/libraries/utils";
+import { IHomeUI } from "./home.types";
 
-const HomeUI = (props) => {
+const HomeUI = (props: IHomeUI) => {
   return (
     <>
       <S.Wrapper>
@@ -45,7 +45,7 @@ const HomeUI = (props) => {
             </S.SectionTitle>
             <S.PostingContainer {...useScrollFadeIn("up", 1, 0)}>
               {props.data?.fetchBoardsOfTheBest.map((el) => (
-                <S.Posting key={el._id}>
+                <S.Posting onClick={props.getDetail} key={el._id} id={el._id}>
                   <div>
                     <S.ProfileImg src="/images/detail/ProfileImg.png" />
                     <S.PostingWriter>{el.writer}</S.PostingWriter>

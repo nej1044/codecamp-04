@@ -3,6 +3,12 @@ import { useState, ChangeEvent, SetStateAction } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import CommentWriteUI from "./Comment.presenter";
 import { useRouter } from "next/router";
+import {
+  IMutation,
+  IMutationCreateBoardCommentArgs,
+  IQuery,
+  IQueryFetchBoardCommentsArgs,
+} from "../../../commons/types/generated/types";
 
 const CommentWrite = () => {
   const [inputs, setInputs] = useState({
@@ -13,9 +19,15 @@ const CommentWrite = () => {
   const [rating, setRating] = useState(3);
   const router = useRouter();
   const [startPage, setStartPage] = useState(1);
-  const [createBoardComment] = useMutation(CREATE_COMMENT);
-  const routerId = router.query.boardId;
-  const { data, refetch, fetchMore } = useQuery(FECTH_COMMENTS, {
+  const [createBoardComment] = useMutation<
+    Pick<IMutation, "createBoardComment">,
+    IMutationCreateBoardCommentArgs
+  >(CREATE_COMMENT);
+  const routerId = String(router.query.boardId);
+  const { data, refetch, fetchMore } = useQuery<
+    Pick<IQuery, "fetchBoardComments">,
+    IQueryFetchBoardCommentsArgs
+  >(FECTH_COMMENTS, {
     variables: {
       page: startPage,
       boardId: routerId,
@@ -41,10 +53,10 @@ const CommentWrite = () => {
         const result = await createBoardComment({
           variables: {
             createBoardCommentInput: { ...inputs, rating },
-            boardId: router.query.boardId,
+            boardId: String(router.query.boardId),
           },
         });
-        refetch({ boardId: router.query.boardId });
+        refetch({ boardId: String(router.query.boardId) });
         setInputs({
           writer: "",
           password: "",
@@ -64,12 +76,12 @@ const CommentWrite = () => {
       inputs={inputs}
       routerId={routerId}
       refetch={refetch}
-      fetchMore={fetchMore}
-      hanldeChangeInputs={hanldeChangeInputs}
+      handleChangeInputs={hanldeChangeInputs}
       createComment={createComment}
       rating={rating}
       changeRating={handleChangeRating}
       startPage={startPage}
+      fetchMore={fetchMore}
     />
   );
 };

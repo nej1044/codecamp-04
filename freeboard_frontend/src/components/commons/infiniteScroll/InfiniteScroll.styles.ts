@@ -30,6 +30,7 @@ export const CommentFunc = styled.div`
 
 export const FuncItem = styled.span`
   font-size: 14px;
+  cursor: pointer;
   :hover {
     color: gray;
   }

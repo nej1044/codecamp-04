@@ -1,6 +1,7 @@
 import * as S from "./pagination.styles";
+import { IPaginationUI } from "./pagination.types";
 
-const PaginationUI = (props) => {
+const PaginationUI = (props: IPaginationUI) => {
   return (
     <>
       <S.PrevArrow onClick={props.onClickPrevPage} />

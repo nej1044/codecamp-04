@@ -29,18 +29,10 @@ const BoardListUI = (props: IBoardListUIProps) => {
       <S.ListWrapper>
         <S.ListHeader>
           <S.HeaderForm>
-            <S.Selected>
-              <option disabled selected>
-                카테고리 선택
-              </option>
-              <option value="질문">질문</option>
-              <option value="자유주제">자유주제</option>
-              <option value="스터디">스터디</option>
-            </S.Selected>
             <S.HeaderInput
               onChange={props.changeSearchValue}
               type="text"
-              placeholder="궁금한 질문을 검색해보세요!"
+              placeholder="궁금한 내용을 검색해보세요!"
             />
             <S.HeaderBtn onClick={props.clickSearchValue}>검색</S.HeaderBtn>
           </S.HeaderForm>
@@ -54,12 +46,19 @@ const BoardListUI = (props: IBoardListUIProps) => {
         <S.ListBody>
           {props.first?.fetchBoards.map((el: any) => (
             <S.ListBoard key={el._id} id={el._id} onClick={props.getDetail}>
-              <S.BoardTitle>{el?.title}</S.BoardTitle>
-              <S.BoardContents>{el?.contents}</S.BoardContents>
-              <S.BoardUser>
-                <S.BoardWriter>{el?.writer}</S.BoardWriter>
-                <S.BoardCreatedAt>{getDate(el.createdAt)}</S.BoardCreatedAt>
-              </S.BoardUser>
+              <S.BoardWrapper>
+                <S.BoardTitle>{el?.title}</S.BoardTitle>
+                <S.BoardContents>{el?.contents}</S.BoardContents>
+                <S.BoardUser>
+                  <S.BoardWriter>{el?.writer}</S.BoardWriter>
+                  <S.BoardCreatedAt>{getDate(el.createdAt)}</S.BoardCreatedAt>
+                </S.BoardUser>
+              </S.BoardWrapper>
+              <S.ListComment>
+                {/* <span>{props.fetchComments?.fetchBoardComments.length}</span> */}
+                <span>0</span>
+                <span>댓글</span>
+              </S.ListComment>
             </S.ListBoard>
           ))}
         </S.ListBody>

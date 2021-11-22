@@ -1,4 +1,4 @@
-import { MouseEvent, ChangeEvent } from "react";
+import { MouseEvent, ChangeEvent, Dispatch, SetStateAction } from "react";
 
 export interface IBoardDetailUIProps {
   data?: any;

@@ -178,8 +178,8 @@ export const ListBody = styled.section`
 
 export const ListBoard = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 250px;
   padding: 50px;
@@ -191,6 +191,22 @@ export const ListBoard = styled.div`
   }
 `;
 
+export const BoardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const ListComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #8eb695;
+  border-radius: 50%;
+`;
 export const BoardTitle = styled.span`
   width: 100%;
   height: 45px;
@@ -219,34 +235,3 @@ export const ListFooter = styled.section`
   height: 200px;
   margin-bottom: 30px;
 `;
-
-// export const PrevArrow = styled(LeftOutlined)`
-//   :hover {
-//     color: gray;
-//   }
-//   cursor: pointer;
-// `;
-
-// export const NextArrow = styled(RightOutlined)`
-//   :hover {
-//     color: gray;
-//   }
-//   cursor: pointer;
-// `;
-
-// export const Pages = styled.button`
-//   width: 40px;
-//   height: 40px;
-//   color: ${(props) => (props.current === true ? "white" : "black")};
-//   border: ${(props) =>
-//     props.current === true ? "1px solid #8eb695" : "1px solid #fbdea2"};
-//   border-radius: 5px;
-//   background-color: ${(props) =>
-//     props.current === true ? "#8eb695" : "white"};
-//   :hover {
-//     color: white;
-//     background-color: #8eb695;
-//     border: 1px solid #8eb695;
-//   }
-//   cursor: pointer;
-// `;

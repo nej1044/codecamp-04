@@ -8,13 +8,16 @@ import {
   DISLIKE_BOARD,
 } from "./BoardDetail.queries";
 import { useRef, useState, MouseEvent, ChangeEvent } from "react";
+import { IMutation, IQuery } from "../../../../commons/types/generated/types";
 
 const BoardDetail = () => {
   const router = useRouter();
-  const [deleteBoard] = useMutation(DELETE_BOARD);
-  const [likeBoard] = useMutation(LIKE_BOARD);
-  const [dislikeBoard] = useMutation(DISLIKE_BOARD);
-  const { data } = useQuery(FETCH_BOARD, {
+  const [deleteBoard] =
+    useMutation<Pick<IMutation, "deleteBoard">>(DELETE_BOARD);
+  const [likeBoard] = useMutation<Pick<IMutation, "likeBoard">>(LIKE_BOARD);
+  const [dislikeBoard] =
+    useMutation<Pick<IMutation, "dislikeBoard">>(DISLIKE_BOARD);
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">>(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
 
@@ -86,10 +89,10 @@ const BoardDetail = () => {
       downlike={downlike}
       handleEdit={handleEdit}
       addressShow={handleClickShow}
-      addressBox={addressBox}
       data={data}
       handleDeleteBoard={handleDeleteBoard}
       handleList={handleList}
+      addressBox={addressBox}
     />
   );
 };

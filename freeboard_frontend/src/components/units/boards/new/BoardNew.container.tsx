@@ -10,12 +10,15 @@ import {
   IMyVariables,
   IUpdateBoardInput,
 } from "./BoardNew.types";
+import { IMutation, IQuery } from "../../../../commons/types/generated/types";
 
 const BoardNew = (props: IBoardNewProps) => {
   const router = useRouter();
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
-  const { data } = useQuery(FETCH_BOARD, {
+  const [createBoard] =
+    useMutation<Pick<IMutation, "createBoard">>(CREATE_BOARD);
+  const [updateBoard] =
+    useMutation<Pick<IMutation, "updateBoard">>(UPDATE_BOARD);
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">>(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
   const [tempTitle, setTempTitle] = useState("");
@@ -35,12 +38,12 @@ const BoardNew = (props: IBoardNewProps) => {
   const [addressDetail, setAddressDetail] = useState("");
 
   function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
-    setTopic(event.target.value);
-    event.target.parentNode.childNodes[0].style = TopicBtn.style;
-    event.target.parentNode.childNodes[1].style = TopicBtn.style;
-    event.target.parentNode.childNodes[2].style = TopicBtn.style;
-    event.target.style =
-      "background-color: #8EB695; border: 1px solid #8EB695;";
+    const target = event.target as HTMLInputElement;
+    setTopic(target.value);
+    target.parentNode.childNodes[0].style = TopicBtn.style;
+    target.parentNode.childNodes[1].style = TopicBtn.style;
+    target.parentNode.childNodes[2].style = TopicBtn.style;
+    target.style = "background-color: #8EB695; border: 1px solid #8EB695;";
   }
 
   // 등록하기
@@ -150,7 +153,7 @@ const BoardNew = (props: IBoardNewProps) => {
         });
         //   console.log(title);
         alert("게시물 등록이 완료되었습니다.");
-        router.push(`/boards/${result.data.createBoard._id}`);
+        router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error: any) {
         alert(`게시물 등록에 실패했습니다. ${error.message}`);
       }

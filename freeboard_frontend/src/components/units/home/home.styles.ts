@@ -66,6 +66,7 @@ export const Project = styled.div`
   height: 550px;
   border: 1px solid #8eb695;
   border-radius: 40px;
+  cursor: pointer;
 `;
 
 export const DeveloperSection = styled.section`
@@ -122,6 +123,7 @@ export const PostingContainer = styled.div`
 export const Posting = styled.div`
   width: 350px;
   height: 300px;
+  cursor: pointer;
 `;
 
 export const PostingWriter = styled.span`
