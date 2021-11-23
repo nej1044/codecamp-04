@@ -27,11 +27,16 @@ const Menu = styled.div`
 const Navigation = () => {
   const router = useRouter();
 
+  const inNews = () => {
+    router.push("/news");
+  };
+
   const inCommunity = () => {
     router.push("/boards");
   };
   return (
     <NavDiv>
+      <Menu onClick={inNews}>뉴욕타임즈</Menu>
       <Menu onClick={inCommunity}>커뮤니티</Menu>
       <Menu>아웃소싱마켓</Menu>
       <Menu>마이페이지</Menu>

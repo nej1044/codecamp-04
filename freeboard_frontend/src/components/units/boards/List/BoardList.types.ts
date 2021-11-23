@@ -23,4 +23,5 @@ export interface IBoardListUIProps {
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
   setStartPage: Dispatch<SetStateAction<number>>;
   setCurrent: Dispatch<SetStateAction<number>>;
+  categorySelector: (event: MouseEvent<HTMLLIElement>) => void;
 }

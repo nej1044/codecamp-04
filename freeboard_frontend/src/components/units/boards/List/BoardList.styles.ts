@@ -135,22 +135,9 @@ export const HeaderBtn = styled.button`
 
 export const BtnWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  padding: 10px 30px;
-`;
-
-export const ResetBtn = styled.button`
-  width: 180px;
-  height: 50px;
-  font-size: 18px;
-  font-weight: 700;
-  border: 0;
-  background: none;
-  :hover {
-    color: #999999;
-  }
-  cursor: pointer;
+  padding: 20px 30px;
 `;
 
 export const WriteBtn = styled.button`
@@ -186,8 +173,7 @@ export const ListBoard = styled.div`
   border-bottom: 1px solid #8eb695;
   cursor: pointer;
   :hover {
-    background-color: #8eb695;
-    color: white;
+    background-color: #f9f9f9;
   }
 `;
 
@@ -234,4 +220,31 @@ export const ListFooter = styled.section`
   width: 600px;
   height: 200px;
   margin-bottom: 30px;
+`;
+
+export const SideBarWrapper = styled.div`
+  position: absolute;
+  top: 760px;
+  left: 0;
+  width: 300px;
+  height: 700px;
+  padding: 50px;
+  text-align: right;
+`;
+
+export const SideBarTitle = styled.div`
+  margin: 30px 0;
+  color: #9f9f9f;
+`;
+
+export const CategoryWrapper = styled.ul`
+  list-style: none;
+`;
+
+export const Category = styled.li`
+  margin: 10px 0;
+  font-size: 20px;
+  color: ${(props) => (props.active === true ? "#8eb695" : "black")};
+  font-weight: ${(props) => (props.active === true ? "700" : "normal")};
+  cursor: pointer;
 `;
