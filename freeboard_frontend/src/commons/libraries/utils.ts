@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from "react";
 
-export const getDate = (myDate) => {
+export const getDate = (myDate: string) => {
   const date = new Date(myDate);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -10,10 +10,10 @@ export const getDate = (myDate) => {
 };
 
 // intersection - observer
-export const useScrollFadeIn = (direction, duration, delay) => {
-  const element = useRef();
+export const useScrollFadeIn = (direction: any, duration: any, delay: any) => {
+  const element = useRef<HTMLDivElement>(null);
 
-  const handleDirection = (name) => {
+  const handleDirection = (name: any) => {
     switch (name) {
       case "up":
         return "translate3d(0, 50%, 0)";
@@ -24,13 +24,12 @@ export const useScrollFadeIn = (direction, duration, delay) => {
       case "right":
         return "translate3d(-50%, 0, 0)";
       default:
-        return;
     }
   };
 
   const onScroll = useCallback(
     ([entry]) => {
-      const { current } = element;
+      const { current }: any = element;
       if (entry.isIntersecting) {
         current.style.transitionProperty = "all";
         current.style.transitionDuration = `${duration}s`;
@@ -44,7 +43,7 @@ export const useScrollFadeIn = (direction, duration, delay) => {
   );
 
   useEffect(() => {
-    let observer;
+    let observer: any;
 
     if (element.current) {
       observer = new IntersectionObserver(onScroll, { threshold: 0.7 });

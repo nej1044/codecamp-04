@@ -1,12 +1,9 @@
-import { ApolloQueryResult } from "@apollo/client";
 import styled from "@emotion/styled";
-import { useRouter } from "next/router";
 import { ReactChild } from "react";
 import Banner from "./banner";
 import Footer from "./footer";
 import Header from "./header";
 import Navigation from "./navigation";
-import SideBar from "./sidebar";
 
 // const SHOW_SIDEBAR = ["/boards"];
 
@@ -26,7 +23,6 @@ const Body = styled.section`
 `;
 
 const Layout = (props: ILayoutProps) => {
-  const router = useRouter();
   // const isShowSideBar = SHOW_SIDEBAR.includes(router.asPath);
 
   return (

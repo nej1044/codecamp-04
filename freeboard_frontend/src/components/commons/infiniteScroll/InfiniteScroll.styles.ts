@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Rate, Modal } from "antd";
+import { Rate } from "antd";
 
 export const Comment = styled.div`
   position: relative;

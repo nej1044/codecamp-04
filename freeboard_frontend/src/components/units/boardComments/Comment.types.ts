@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import {
   IQueryFetchBoardCommentsArgs,
   IQuery,
@@ -14,10 +14,7 @@ interface IInputs {
 export interface ICommentWriteUIProps {
   isEdit?: boolean;
   data?: any;
-  editContents: string;
   rating: number;
-  editRating: number;
-  disabled: boolean;
   inputs: IInputs;
   routerId: string;
   startPage: number;
@@ -25,15 +22,12 @@ export interface ICommentWriteUIProps {
     event: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>
   ) => void;
   changeRating: (rating: SetStateAction<number>) => void;
-  deleteComment: (event: MouseEvent<HTMLDivElement>) => void;
-  updateComment: (event: MouseEvent<HTMLButtonElement>) => void;
   createComment: () => void;
-  handleChangeEdit: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  openEdit: (event: MouseEvent<HTMLSpanElement>) => void;
-  changeEditRating: (editRating: SetStateAction<number>) => void;
   refetch: (
     variables: Partial<IQueryFetchBoardCommentsArgs>
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardComments">>>;
+  fetchMore: any;
+  setStartPage: Dispatch<SetStateAction<number>>;
 }
 
 export interface ICommentWriteStyledProps {

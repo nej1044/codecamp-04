@@ -7,7 +7,7 @@ import {
   LIKE_BOARD,
   DISLIKE_BOARD,
 } from "./BoardDetail.queries";
-import { useRef, useState, MouseEvent, ChangeEvent } from "react";
+import { useRef, MouseEvent } from "react";
 import { IMutation, IQuery } from "../../../../commons/types/generated/types";
 
 const BoardDetail = () => {
@@ -22,11 +22,11 @@ const BoardDetail = () => {
   });
 
   // 주소보여주기
-  const addressBox = useRef();
+  const addressBox = useRef<HTMLDivElement>(null);
   function handleClickShow(event: MouseEvent<HTMLImageElement>) {
-    if (addressBox.current.style.display === "none") {
+    if (addressBox?.current?.style.display === "none") {
       addressBox.current.style.display = "flex";
-    } else {
+    } else if (addressBox?.current?.style.display === "flex") {
       addressBox.current.style.display = "none";
     }
   }

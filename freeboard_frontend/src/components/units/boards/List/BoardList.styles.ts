@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
   display: flex;

@@ -3,10 +3,9 @@ import { useMutation, useQuery } from "@apollo/client";
 import { MouseEvent, ChangeEvent, useState } from "react";
 import BoardNewUI from "./BoardNew.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardNew.queries";
-import { TopicBtn } from "./BoardNew.styles";
 import {
   IBoardNewProps,
-  IMYBoardAddress,
+  IMyBoardAddress,
   IMyVariables,
   IUpdateBoardInput,
 } from "./BoardNew.types";
@@ -40,10 +39,6 @@ const BoardNew = (props: IBoardNewProps) => {
   function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
     setTopic(target.value);
-    target.parentNode.childNodes[0].style = TopicBtn.style;
-    target.parentNode.childNodes[1].style = TopicBtn.style;
-    target.parentNode.childNodes[2].style = TopicBtn.style;
-    target.style = "background-color: #8EB695; border: 1px solid #8EB695;";
   }
 
   // 등록하기
@@ -161,7 +156,7 @@ const BoardNew = (props: IBoardNewProps) => {
   }
 
   // 수정하기
-  const myBoardAddress: IMYBoardAddress = {};
+  const myBoardAddress: IMyBoardAddress = {};
 
   const myUpdateBoardInput: IUpdateBoardInput = {
     boardAddress: myBoardAddress,
@@ -246,6 +241,7 @@ const BoardNew = (props: IBoardNewProps) => {
       zipcode={zipcode}
       address={address}
       changedDetailAddress={handleChangeDetailAddress}
+      topic={topic}
     />
   );
 };

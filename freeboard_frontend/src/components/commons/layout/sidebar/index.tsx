@@ -1,6 +1,4 @@
 import { ApolloQueryResult } from "@apollo/client";
-import styled from "@emotion/styled";
-import { useState, MouseEvent } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,

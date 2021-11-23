@@ -35,9 +35,11 @@ export const TopicBtn = styled.input`
   color: white;
   font-size: 16px;
   font-weight: 600;
-  border: 1px solid #fbdea2;
+  border: ${(props: IBoardNewEmotion) =>
+    props.topic === true ? "1px solid #8EB695" : "1px solid #fbdea2"};
   border-radius: 5px;
-  background-color: #fbdea2;
+  background-color: ${(props: IBoardNewEmotion) =>
+    props.topic === true ? "#8EB695" : "#fbdea2"};
   &:hover {
     background-color: #8eb695;
     border: 1px solid #8eb695;

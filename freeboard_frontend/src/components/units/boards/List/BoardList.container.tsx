@@ -1,10 +1,8 @@
 import BoardListUI from "./BoardList.presenter";
-import SideBar from "../../../commons/layout/sidebar";
-import { FETCH_BOARDS, FETCH_PAGES, FECTH_COMMENTS } from "./BoardList.queries";
+import { FETCH_BOARDS, FETCH_PAGES } from "./BoardList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState, MouseEvent, useRef } from "react";
-import { ContactsOutlined } from "@ant-design/icons";
+import { ChangeEvent, useState, MouseEvent } from "react";
 
 const BoardList = () => {
   const router = useRouter();
@@ -78,12 +76,11 @@ const BoardList = () => {
         refetch={refetch}
         current={current}
         setCurrent={setCurrent}
-        fetchComments={fetchComments}
+        // fetchComments={fetchComments}
         categorySelector={categorySelector}
         active={active}
-        idx={idx}
-        currentBoard={currentBoard}
-        commentsCount={commentsCount}
+        // currentBoard={currentBoard}
+        // commentsCount={commentsCount}
       />
     </>
   );

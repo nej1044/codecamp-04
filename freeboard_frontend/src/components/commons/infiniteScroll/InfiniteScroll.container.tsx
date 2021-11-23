@@ -30,11 +30,11 @@ const InfiniteScroll = (props: IInfiniteScroll) => {
   const hanldeOpenEdit = (event: MouseEvent<HTMLSpanElement>) => {
     const target = event.target as HTMLSpanElement;
     setEditContents(target.id);
-    const editArea = event.target.parentNode.parentNode.nextSibling;
-    if (editArea.style.display === "none") {
+    const editArea: any = target.parentNode?.parentNode?.nextSibling;
+    if (editArea?.style.display === "none") {
       editArea.style.display = "block";
       setDisabled(false);
-    } else {
+    } else if (editArea?.style.display === "block") {
       editArea.style.display = "none";
       setDisabled(true);
     }
@@ -51,7 +51,7 @@ const InfiniteScroll = (props: IInfiniteScroll) => {
 
   const handleUpdateComment = async (event: MouseEvent<HTMLButtonElement>) => {
     const password = prompt("비밀번호를 입력해 주세요.");
-    const target = event.target as HTMLDivElement;
+    const target: any = event.target as HTMLDivElement;
     const myInputVariables: IMyInputVariables = {};
 
     const myVariables: IMyVariables = {
@@ -72,7 +72,7 @@ const InfiniteScroll = (props: IInfiniteScroll) => {
       props.refetch({ boardId: props.routerId });
       setEditContents("");
       setDisabled(true);
-      event.target.parentNode.parentNode.style.display = "none";
+      target.parentNode.parentNode.style.display = "none";
       alert("댓글을 수정했습니다.");
     } catch (error: any) {
       alert(`댓글 수정에 실패했습니다 ${error.message}`);
@@ -84,7 +84,7 @@ const InfiniteScroll = (props: IInfiniteScroll) => {
     const password = prompt("비밀번호를 입력해 주세요");
     const target = event.target as HTMLDivElement;
     try {
-      const result = await deleteBoardComment({
+      await deleteBoardComment({
         variables: { password, boardCommentId: target.id },
       });
       props.refetch({ boardId: props.routerId });
@@ -102,7 +102,7 @@ const InfiniteScroll = (props: IInfiniteScroll) => {
       variables: {
         page: Math.ceil(props.data?.fetchBoardComments.length / 10) + 1,
       },
-      updateQuery: (prev, { fetchMoreResult }) => {
+      updateQuery: (prev: any, { fetchMoreResult }: any) => {
         if (!fetchMoreResult?.fetchBoardComments)
           return {
             fetchBoardComments: [...prev.fetchBoardComments],

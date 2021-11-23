@@ -57,7 +57,7 @@ const BoardListUI = (props: IBoardListUIProps) => {
             </S.BtnWrapper>
           </S.ListHeader>
           <S.ListBody>
-            {props.first?.fetchBoards.map((el) => (
+            {props.first?.fetchBoards.map((el: any) => (
               <S.ListBoard key={el._id} id={el._id} onClick={props.getDetail}>
                 <S.BoardWrapper>
                   <S.BoardTitle>{el?.title}</S.BoardTitle>

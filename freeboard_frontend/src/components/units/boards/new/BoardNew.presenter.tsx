@@ -1,7 +1,7 @@
 import * as S from "./BoardNew.styles";
 import { IBoardNewUIProps } from "./BoardNew.types";
 import DaumPostcode from "react-daum-postcode";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 
 const BoardNewUI = (props: IBoardNewUIProps) => {
   return (
@@ -15,18 +15,21 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
               type="button"
               name="topic"
               value="질문"
+              topic={props.topic === "질문"}
             />
             <S.TopicBtn
               onClick={props.selectedTopic}
               type="button"
               name="topic"
               value="자유주제"
+              topic={props.topic === "자유주제"}
             />
             <S.TopicBtn
               onClick={props.selectedTopic}
               type="button"
               name="topic"
               value="스터디"
+              topic={props.topic === "스터디"}
             />
           </S.TopicWrapper>
         </S.WrapperHeader>

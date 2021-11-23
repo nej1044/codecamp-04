@@ -1,16 +1,22 @@
 import { ChangeEvent, MouseEvent } from "react";
+import { Maybe } from "../../../../commons/types/generated/types";
 
 export interface IBoardNewProps {
   isEdit?: boolean;
   btnColor?: boolean;
   data?: any;
 }
+export interface IMyBoardAddress {
+  zipcode?: Maybe<string> | undefined;
+  address?: Maybe<string> | undefined;
+  addressDetail?: Maybe<string> | undefined;
+}
 
 export interface IUpdateBoardInput {
   title?: string;
   contents?: string;
   youtubeUrl?: string;
-  boardAddress: IMYBoardAddress;
+  boardAddress: IMyBoardAddress;
 }
 
 export interface IMyVariables {
@@ -19,17 +25,12 @@ export interface IMyVariables {
   boardId: string;
 }
 
-export interface IMYBoardAddress {
-  zipcode?: string;
-  address?: string;
-  addressDetail?: string;
-}
-
 export interface IBoardNewUIProps {
   isEdit?: boolean;
   btnColor?: boolean;
   isOpen: boolean;
   data?: any;
+  topic: string | boolean;
   selectedTopic: (event: MouseEvent<HTMLInputElement>) => void;
   changedWriter: (event: ChangeEvent<HTMLInputElement>) => void;
   changedPassword: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -51,4 +52,5 @@ export interface IBoardNewUIProps {
 
 export interface IBoardNewEmotion {
   btnColor?: boolean;
+  topic?: boolean;
 }

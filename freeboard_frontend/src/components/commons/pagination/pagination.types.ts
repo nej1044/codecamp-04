@@ -10,7 +10,7 @@ export interface IPagination {
   startPage: number;
   setStartPage: Dispatch<SetStateAction<number>>;
   setCurrent: Dispatch<SetStateAction<number>>;
-  current: number;
+  current: any;
   refetch: (
     variables: Partial<IQueryFetchBoardsArgs>
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
@@ -20,7 +20,7 @@ export interface IPaginationUI {
   onClickPrevPage: () => void;
   startPage: number;
   lastPage: number;
-  current: boolean | number;
+  current: any;
   onClickPage: (event: MouseEvent<HTMLElement>) => void;
   onClickNextPage: () => void;
 }

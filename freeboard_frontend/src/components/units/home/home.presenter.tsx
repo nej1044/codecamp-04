@@ -1,6 +1,5 @@
 import * as S from "./home.styles";
-import { useScrollFadeIn } from "../../../commons/libraries/utils";
-import { getDate } from "../../../commons/libraries/utils";
+import { getDate, useScrollFadeIn } from "../../../commons/libraries/utils";
 import { IHomeUI } from "./home.types";
 
 const HomeUI = (props: IHomeUI) => {

@@ -11,17 +11,19 @@ export interface IInfiniteScroll {
     variables: Partial<IQueryFetchBoardCommentsArgs>
   ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardComments">>>;
   routerId: string;
+  fetchMore: any;
+  startPage: number;
+}
+
+export interface IMyInputVariables {
+  rating?: number;
+  contents?: string;
 }
 
 export interface IMyVariables {
   updateBoardCommentInput: IMyInputVariables;
   password: string | null;
   boardCommentId: string;
-}
-
-export interface IMyInputVariables {
-  rating?: number;
-  contents?: string;
 }
 
 export interface IInfiniteScrollUI {
@@ -34,4 +36,5 @@ export interface IInfiniteScrollUI {
   handleChangeEdit: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   editContents: string;
   updateComment: (evnet: MouseEvent<HTMLButtonElement>) => void;
+  editRating: number;
 }

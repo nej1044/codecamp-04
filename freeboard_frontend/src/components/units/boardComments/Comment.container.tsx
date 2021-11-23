@@ -50,7 +50,7 @@ const CommentWrite = () => {
   const createComment = async () => {
     if (inputs) {
       try {
-        const result = await createBoardComment({
+        await createBoardComment({
           variables: {
             createBoardCommentInput: { ...inputs, rating },
             boardId: String(router.query.boardId),
@@ -76,6 +76,7 @@ const CommentWrite = () => {
       inputs={inputs}
       routerId={routerId}
       refetch={refetch}
+      setStartPage={setStartPage}
       handleChangeInputs={hanldeChangeInputs}
       createComment={createComment}
       rating={rating}

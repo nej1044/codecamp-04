@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import PaginationUI from "./pagination.presenter";
 import { IPagination } from "./pagination.types";
 
