@@ -10,12 +10,16 @@ const BannerSection = styled.section`
 `;
 
 const ImgWrapper = styled.div`
+  display: inline-block;
   width: 100%;
-  height: 100%;
 `;
 
 const SlideImg = styled.img`
+  display: inline-block;
   width: 100%;
+  height: 100%;
+  top: 25%;
+  transform: translate(0, -25%);
 `;
 
 const Banner = () => {
@@ -26,9 +30,9 @@ const Banner = () => {
     speed: 1000,
     autoplay: true,
     autoplaySpeed: 5000,
-    center: true,
+    centerMode: true,
+    centerPadding: "0",
     slidesToShow: 1,
-    slidesToScroll: 1,
   };
   return (
     <BannerSection>

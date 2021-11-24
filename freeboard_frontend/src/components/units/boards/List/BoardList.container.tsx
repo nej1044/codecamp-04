@@ -21,12 +21,7 @@ const BoardList = () => {
   const { data: third } = useQuery(FETCH_PAGES, {
     variables: { search: confirmSearch },
   });
-  // const { data: fetchComments } = useQuery(FECTH_COMMENTS, {
-  //   variables: { boardId: currentBoard.current?.id },
-  // });
-  // const commentsCount = fetchComments?.fetchBoardComments.length;
 
-  // console.log();
   const handleCreate = () => {
     router.push("/boards/new");
   };
@@ -53,34 +48,33 @@ const BoardList = () => {
     const target = event.target as HTMLLIElement;
     isActive(target.id);
     if (target.id === "qna") {
-      refetch({ search: "질문" });
+      setConfirm("질문");
     } else if (target.id === "freetalk") {
-      refetch({ search: "자유주제" });
+      setConfirm("자유주제");
     } else if (target.id === "study") {
-      refetch({ search: "스터디" });
+      setConfirm("스터디");
     } else if (target.id === "home") {
-      refetch({ search: "" });
+      setConfirm("");
     }
+    refetch({ search: confirmSearch });
   };
+
   return (
     <>
       <BoardListUI
         clickSearchValue={clickSearchValue}
         count={third?.fetchBoardsCount}
         startPage={startPage}
-        setStartPage={setStartPage}
         changeSearchValue={changeSearchValue}
         first={first}
         handleCreate={handleCreate}
         getDetail={getDetail}
+        setStartPage={setStartPage}
         refetch={refetch}
         current={current}
         setCurrent={setCurrent}
-        // fetchComments={fetchComments}
         categorySelector={categorySelector}
         active={active}
-        // currentBoard={currentBoard}
-        // commentsCount={commentsCount}
       />
     </>
   );

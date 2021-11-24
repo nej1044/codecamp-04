@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IBoardListEmotionProps } from "./BoardList.types";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -243,7 +244,14 @@ export const CategoryWrapper = styled.ul`
 export const Category = styled.li`
   margin: 10px 0;
   font-size: 20px;
-  color: ${(props) => (props.active === true ? "#8eb695" : "black")};
-  font-weight: ${(props) => (props.active === true ? "700" : "normal")};
+  color: ${(props: IBoardListEmotionProps) =>
+    props.active === true ? "#8eb695" : "black"};
+  font-weight: ${(props: IBoardListEmotionProps) =>
+    props.active === true ? "700" : "normal"};
   cursor: pointer;
+`;
+
+export const CommentsCount = styled.span`
+  font-size: 17px;
+  font-weight: 500;
 `;

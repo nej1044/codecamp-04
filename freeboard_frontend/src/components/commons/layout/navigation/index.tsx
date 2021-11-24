@@ -10,7 +10,7 @@ const NavDiv = styled.section`
   align-items: center;
   width: 100%;
   height: 100px;
-  padding: 0 400px;
+  padding: 0 300px;
   background-color: #8eb695;
 `;
 
@@ -34,11 +34,16 @@ const Navigation = () => {
   const inCommunity = () => {
     router.push("/boards");
   };
+
+  const inLecture = () => {
+    router.push("/lecture");
+  };
   return (
     <NavDiv>
       <Menu onClick={inNews}>뉴욕타임즈</Menu>
       <Menu onClick={inCommunity}>커뮤니티</Menu>
       <Menu>아웃소싱마켓</Menu>
+      <Menu onClick={inLecture}>추천강의</Menu>
       <Menu>마이페이지</Menu>
     </NavDiv>
   );

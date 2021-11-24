@@ -1,4 +1,4 @@
-import { getDate } from "../../../../commons/libraries/utils";
+import { getDate, getCommentsCount } from "../../../../commons/libraries/utils";
 import Pagination from "../../../commons/pagination/pagination.container";
 import * as S from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
@@ -67,10 +67,8 @@ const BoardListUI = (props: IBoardListUIProps) => {
                     <S.BoardCreatedAt>{getDate(el.createdAt)}</S.BoardCreatedAt>
                   </S.BoardUser>
                 </S.BoardWrapper>
-                {/* <S.ListComment id={el._id} ref={props.currentBoard}> */}
                 <S.ListComment>
-                  {/* <span>{props.fetchComments?.fetchBoardComments.length}</span> */}
-                  {/* <span>0</span> */}
+                  <S.CommentsCount>{getCommentsCount(el._id)}</S.CommentsCount>
                   <span>댓글</span>
                 </S.ListComment>
               </S.ListBoard>

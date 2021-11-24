@@ -18,3 +18,7 @@ export interface IBoardListUIProps {
   categorySelector: (event: MouseEvent<HTMLLIElement>) => void;
   active: string;
 }
+
+export interface IBoardListEmotionProps {
+  active: boolean;
+}

@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   border: 1px solid #8eb695;
   border-radius: 100px;
 `;
+
 export const H1 = styled.h1`
   font-size: 36px;
 `;
