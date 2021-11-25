@@ -17,6 +17,7 @@ const BoardNew = (props: IBoardNewProps) => {
     useMutation<Pick<IMutation, "createBoard">>(CREATE_BOARD);
   const [updateBoard] =
     useMutation<Pick<IMutation, "updateBoard">>(UPDATE_BOARD);
+
   const { data } = useQuery<Pick<IQuery, "fetchBoard">>(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
@@ -35,6 +36,7 @@ const BoardNew = (props: IBoardNewProps) => {
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+  const [temp, setTemp] = useState([]);
 
   function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
@@ -143,10 +145,11 @@ const BoardNew = (props: IBoardNewProps) => {
               contents,
               youtubeUrl: snsUrl,
               boardAddress: { zipcode, address, addressDetail },
+              images: temp,
             },
           },
         });
-        //   console.log(title);
+        // console.log(result);
         alert("게시물 등록이 완료되었습니다.");
         router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error: any) {
@@ -218,6 +221,7 @@ const BoardNew = (props: IBoardNewProps) => {
     }
   }
 
+  console.log(temp);
   return (
     <BoardNewUI
       data={data}
@@ -242,6 +246,7 @@ const BoardNew = (props: IBoardNewProps) => {
       address={address}
       changedDetailAddress={handleChangeDetailAddress}
       topic={topic}
+      setTemp={setTemp}
     />
   );
 };

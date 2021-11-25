@@ -45,6 +45,10 @@ const BoardDetail = () => {
     }
   }
 
+  // const hanldeError=(event: SyntheticEvent<HTMLImageElement>)=>{
+
+  // }
+
   // 좋아요
   const upLike = async () => {
     try {
@@ -83,6 +87,7 @@ const BoardDetail = () => {
     router.push(`${router.query.boardId}/edit`);
   }
 
+  console.log(data?.fetchBoard.images?.[0]);
   return (
     <BoardDetailUI
       upLike={upLike}

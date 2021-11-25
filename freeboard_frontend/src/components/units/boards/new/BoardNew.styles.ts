@@ -144,20 +144,6 @@ export const ZipcodeSearch = styled.button`
   }
 `;
 
-export const PhotoUpload = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 282px;
-  margin-bottom: 40px;
-`;
-
-export const Photo = styled.div`
-  width: 78px;
-  height: 78px;
-  background-color: #8eb695;
-`;
-
 export const AdminBtn = styled.button`
   width: 179px;
   height: 52px;
@@ -174,4 +160,10 @@ export const Error = styled.p`
   color: red;
   font-size: 15px;
   margin: 10px 0px 0px 0px;
+`;
+
+export const PhotoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
 `;

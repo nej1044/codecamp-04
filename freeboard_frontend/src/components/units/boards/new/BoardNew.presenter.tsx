@@ -2,6 +2,7 @@ import * as S from "./BoardNew.styles";
 import { IBoardNewUIProps } from "./BoardNew.types";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
+import PhotoUpload from "../../../commons/photoUpload/photoUpload.container";
 
 const BoardNewUI = (props: IBoardNewUIProps) => {
   return (
@@ -172,11 +173,11 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
           </S.BodyForm>
           <S.BodyForm>
             <S.MyLabel>사진 첨부</S.MyLabel>
-            <S.PhotoUpload>
-              <S.Photo></S.Photo>
-              <S.Photo></S.Photo>
-              <S.Photo></S.Photo>
-            </S.PhotoUpload>
+            <S.PhotoWrapper>
+              <PhotoUpload setTemp={props.setTemp} />
+              <PhotoUpload setTemp={props.setTemp} />
+              <PhotoUpload setTemp={props.setTemp} />
+            </S.PhotoWrapper>
           </S.BodyForm>
         </S.WrapperBody>
         {!props.isEdit && (

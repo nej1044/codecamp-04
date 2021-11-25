@@ -5,6 +5,7 @@ export const CREATE_BOARD = gql`
     createBoard(createBoardInput: $createBoardInput) {
       _id
       writer
+      images
     }
   }
 `;
@@ -30,6 +31,7 @@ export const UPDATE_BOARD = gql`
         address
         addressDetail
       }
+      images
     }
   }
 `;

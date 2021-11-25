@@ -1,45 +1,46 @@
-import { getDate, getCommentsCount } from "../../../../commons/libraries/utils";
+import { getDate } from "../../../../commons/libraries/utils";
 import Pagination from "../../../commons/pagination/pagination.container";
 import * as S from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
+import { CommentsCount } from "../../../../commons/libraries/CommentsCount";
 
 const BoardListUI = (props: IBoardListUIProps) => {
   return (
     <>
-      <S.SideBarWrapper>
-        <S.SideBarTitle>디벨로펌과 함께 성장해보세요</S.SideBarTitle>
-        <S.CategoryWrapper>
-          <S.Category
-            onClick={props.categorySelector}
-            id="home"
-            active={props.active === "home"}
-          >
-            홈
-          </S.Category>
-          <S.Category
-            onClick={props.categorySelector}
-            id="qna"
-            active={props.active === "qna"}
-          >
-            질문
-          </S.Category>
-          <S.Category
-            onClick={props.categorySelector}
-            id="freetalk"
-            active={props.active === "freetalk"}
-          >
-            자유주제
-          </S.Category>
-          <S.Category
-            onClick={props.categorySelector}
-            id="study"
-            active={props.active === "study"}
-          >
-            스터디
-          </S.Category>
-        </S.CategoryWrapper>
-      </S.SideBarWrapper>
       <S.Wrapper>
+        <S.SideBarWrapper>
+          <S.SideBarTitle>디벨로펌과 함께 성장해보세요</S.SideBarTitle>
+          <S.CategoryWrapper>
+            <S.Category
+              onClick={props.categorySelector}
+              id="home"
+              active={props.active === "home"}
+            >
+              홈
+            </S.Category>
+            <S.Category
+              onClick={props.categorySelector}
+              id="qna"
+              active={props.active === "qna"}
+            >
+              질문
+            </S.Category>
+            <S.Category
+              onClick={props.categorySelector}
+              id="freetalk"
+              active={props.active === "freetalk"}
+            >
+              자유주제
+            </S.Category>
+            <S.Category
+              onClick={props.categorySelector}
+              id="study"
+              active={props.active === "study"}
+            >
+              스터디
+            </S.Category>
+          </S.CategoryWrapper>
+        </S.SideBarWrapper>
         <S.ListWrapper>
           <S.ListHeader>
             <S.HeaderForm>
@@ -68,7 +69,9 @@ const BoardListUI = (props: IBoardListUIProps) => {
                   </S.BoardUser>
                 </S.BoardWrapper>
                 <S.ListComment>
-                  <S.CommentsCount>{getCommentsCount(el._id)}</S.CommentsCount>
+                  <S.CommentsCount>
+                    {<CommentsCount boardId={el._id} />}
+                  </S.CommentsCount>
                   <span>댓글</span>
                 </S.ListComment>
               </S.ListBoard>
@@ -85,6 +88,7 @@ const BoardListUI = (props: IBoardListUIProps) => {
             />
           </S.ListFooter>
         </S.ListWrapper>
+        <S.SideBarWrapper></S.SideBarWrapper>
       </S.Wrapper>
     </>
   );

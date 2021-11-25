@@ -5,18 +5,19 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore/lite";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent, ChangeEvent } from "react";
 import { firebaseApp } from "../../../../pages/_app";
 import * as S from "./lecture.styles";
 import ReactPlayer from "react-player";
 
 const Lecture = () => {
   const [url, setUrl] = useState("");
-  const [data, setData] = useState([]);
-  const [dataId, setDataId] = useState([]);
+  const [data, setData] = useState<any>([]);
+  const [dataId, setDataId] = useState<string[]>([]);
 
-  const handleChangeUrl = (event) => {
+  const handleChangeUrl = (event: ChangeEvent<HTMLInputElement>) => {
     setUrl(event.target.value);
   };
 
@@ -28,24 +29,41 @@ const Lecture = () => {
       password,
     });
     setUrl("");
+    fetchLectures();
+  };
+
+  const fetchLectures = async () => {
+    const lecture = collection(getFirestore(firebaseApp), "lecture");
+    const result = await getDocs(lecture);
+    const lectures = result.docs.map((el) => el.data());
+    const lectureId = result.docs.map((el) => el.id);
+    setData(lectures);
+    setDataId(lectureId);
   };
 
   useEffect(() => {
-    const fetchLectures = async () => {
-      const lecture = collection(getFirestore(firebaseApp), "lecture");
-      const result = await getDocs(lecture);
-      const lectures = result.docs.map((el) => el.data());
-      const lectureId = result.docs.map((el) => el.id);
-      setData(lectures);
-      setDataId(lectureId);
-    };
     fetchLectures();
   }, []);
 
-  const onClickDelete = async (event) => {
-    console.log(event.target.id);
-    const docRef = doc(getFirestore(firebaseApp), "lecture", event.target.id);
-    deleteDoc(docRef);
+  const onClickDelete = async (event: MouseEvent<HTMLSpanElement>) => {
+    const docRef = doc(
+      getFirestore(firebaseApp),
+      "lecture",
+      (event.target as HTMLSpanElement).id
+    );
+    await deleteDoc(docRef);
+    fetchLectures();
+  };
+
+  const onClickUpdate = async (event: MouseEvent<HTMLSpanElement>) => {
+    const edit = prompt("수정할 내용을 입력하세요.");
+    const docRef = doc(
+      getFirestore(firebaseApp),
+      "lecture",
+      (event.target as HTMLSpanElement).id
+    );
+    await updateDoc(docRef, { url: edit });
+    fetchLectures();
   };
 
   return (
@@ -61,11 +79,13 @@ const Lecture = () => {
         </S.InputWrapper>
       </S.LectureHeader>
       <S.LectureBody>
-        {data.map((el, idx) => (
+        {data.map((el: any, idx: any) => (
           <S.Contents key={dataId[idx]}>
             <S.ContentsHeader>
               <S.BtnWrapper>
-                <S.ContentsBtn>수정</S.ContentsBtn>
+                <S.ContentsBtn onClick={onClickUpdate} id={dataId[idx]}>
+                  수정
+                </S.ContentsBtn>
                 <S.ContentsBtn onClick={onClickDelete} id={dataId[idx]}>
                   삭제
                 </S.ContentsBtn>

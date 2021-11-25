@@ -40,7 +40,7 @@ const Navigation = () => {
   };
   return (
     <NavDiv>
-      <Menu onClick={inNews}>뉴욕타임즈</Menu>
+      <Menu onClick={inNews}>실시간뉴스</Menu>
       <Menu onClick={inCommunity}>커뮤니티</Menu>
       <Menu>아웃소싱마켓</Menu>
       <Menu onClick={inLecture}>추천강의</Menu>

@@ -3,71 +3,9 @@ import { IBoardListEmotionProps } from "./BoardList.types";
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 `;
-
-export const BestWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 1200px;
-  margin-top: 100px;
-`;
-
-export const BestList = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 50px;
-`;
-
-export const BestBoard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 250px;
-  height: 250px;
-  border: 1px solid #8eb695;
-  border-radius: 30px;
-  padding: 35px;
-  cursor: pointer;
-  :hover {
-    background-color: #8eb695;
-    color: white;
-  }
-`;
-
-export const BestTitle = styled.span`
-  width: 100%;
-  height: 100px;
-  overflow: hidden;
-  font-size: 20px;
-  font-weight: 700;
-`;
-export const BestFooter = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
-export const BestUser = styled.div``;
-
-export const UserName = styled.div``;
-
-export const BestDate = styled.span``;
-
-export const BestLike = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const BestImg = styled.img``;
-
-export const BestNum = styled.span``;
 
 export const ListWrapper = styled.div`
   display: flex;
@@ -223,11 +161,7 @@ export const ListFooter = styled.section`
 `;
 
 export const SideBarWrapper = styled.div`
-  position: absolute;
-  top: 760px;
-  left: 0;
   width: 300px;
-  height: 700px;
   padding: 50px;
   text-align: right;
 `;

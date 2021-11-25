@@ -45,8 +45,13 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
               <S.DetailBtn onClick={props.handleDeleteBoard}>삭제</S.DetailBtn>
             </S.DetailBtnSection>
             <S.BodyHeader>
-              <S.BodyImg src="/images/detail/contentsImg.jpeg" />
-              <span>{props.data?.fetchBoard.contents}</span>
+              {props.data?.fetchBoard.images.map((el: any, idx: any) => (
+                <S.BodyImg
+                  key={idx}
+                  src={`https://storage.googleapis.com/${el}`}
+                />
+              ))}
+              <S.BodyContents>{props.data?.fetchBoard.contents}</S.BodyContents>
             </S.BodyHeader>
             <S.DetailMoodlet>
               <S.DetailLike onClick={props.upLike}>

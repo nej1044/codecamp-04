@@ -111,16 +111,19 @@ export const DetailBody = styled.section`
 `;
 
 export const BodyHeader = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
   padding: 80px 0 120px 0;
 `;
 export const BodyImg = styled.img`
-  width: 100%;
-  height: 480px;
+  margin: 0 auto;
   margin-bottom: 40px;
-  object-fit: cover;
+`;
+
+export const BodyContents = styled.span`
+  width: 100%;
 `;
 
 export const DetailMoodlet = styled.div`

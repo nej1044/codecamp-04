@@ -19,7 +19,7 @@ const SlideImg = styled.img`
   width: 100%;
   height: 100%;
   top: 25%;
-  transform: translate(0, -25%);
+  transform: translate(0, -20%);
 `;
 
 const Banner = () => {
