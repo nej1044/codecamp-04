@@ -118,6 +118,7 @@ export const BodyHeader = styled.div`
   padding: 80px 0 120px 0;
 `;
 export const BodyImg = styled.img`
+  max-width: 100%;
   margin: 0 auto;
   margin-bottom: 40px;
 `;

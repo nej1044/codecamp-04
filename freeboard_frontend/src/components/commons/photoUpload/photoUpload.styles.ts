@@ -15,4 +15,10 @@ export const Photo = styled.div`
   text-align: center;
   line-height: 78px;
   color: white;
+  cursor: pointer;
+`;
+
+export const InsertedImg = styled.img`
+  width: 78px;
+  height: 78px;
 `;

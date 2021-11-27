@@ -27,7 +27,7 @@ const BodyWrapper = styled.div`
 
 const Body = styled.section`
   width: 100%;
-  height: 600px;
+  height: 700px;
 `;
 
 const SideBar = styled.div`

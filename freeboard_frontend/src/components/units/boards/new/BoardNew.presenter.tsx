@@ -3,7 +3,6 @@ import { IBoardNewUIProps } from "./BoardNew.types";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
 import PhotoUpload from "../../../commons/photoUpload/photoUpload.container";
-
 const BoardNewUI = (props: IBoardNewUIProps) => {
   return (
     <>
@@ -174,9 +173,16 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
           <S.BodyForm>
             <S.MyLabel>사진 첨부</S.MyLabel>
             <S.PhotoWrapper>
-              <PhotoUpload setTemp={props.setTemp} />
-              <PhotoUpload setTemp={props.setTemp} />
-              <PhotoUpload setTemp={props.setTemp} />
+              {new Array(3).fill(1).map((data, index) => (
+                <PhotoUpload
+                  key={`${data}_${index}`}
+                  index={index}
+                  onChangeFiles={props.onChangeFiles}
+                  imgUrl={props.imgUrl}
+                  isEdit={props.isEdit}
+                  data={props.data}
+                />
+              ))}
             </S.PhotoWrapper>
           </S.BodyForm>
         </S.WrapperBody>

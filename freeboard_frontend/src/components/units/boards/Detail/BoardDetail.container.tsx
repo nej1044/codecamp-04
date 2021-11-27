@@ -7,7 +7,7 @@ import {
   LIKE_BOARD,
   DISLIKE_BOARD,
 } from "./BoardDetail.queries";
-import { useRef, MouseEvent } from "react";
+import { useRef, MouseEvent, SyntheticEvent } from "react";
 import { IMutation, IQuery } from "../../../../commons/types/generated/types";
 
 const BoardDetail = () => {
@@ -45,9 +45,10 @@ const BoardDetail = () => {
     }
   }
 
-  // const hanldeError=(event: SyntheticEvent<HTMLImageElement>)=>{
-
-  // }
+  // 이미지 에러 시
+  const imgError = (event: SyntheticEvent<HTMLImageElement>) => {
+    event.target.style = "display: none;";
+  };
 
   // 좋아요
   const upLike = async () => {
@@ -87,7 +88,6 @@ const BoardDetail = () => {
     router.push(`${router.query.boardId}/edit`);
   }
 
-  console.log(data?.fetchBoard.images?.[0]);
   return (
     <BoardDetailUI
       upLike={upLike}
@@ -98,6 +98,7 @@ const BoardDetail = () => {
       handleDeleteBoard={handleDeleteBoard}
       handleList={handleList}
       addressBox={addressBox}
+      imgError={imgError}
     />
   );
 };

@@ -48,6 +48,7 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
               {props.data?.fetchBoard.images.map((el: any, idx: any) => (
                 <S.BodyImg
                   key={idx}
+                  onError={props.imgError}
                   src={`https://storage.googleapis.com/${el}`}
                 />
               ))}

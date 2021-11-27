@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
-import { MouseEvent, ChangeEvent, useState } from "react";
+import { MouseEvent, ChangeEvent, useState, useEffect } from "react";
 import BoardNewUI from "./BoardNew.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardNew.queries";
 import {
@@ -36,7 +36,7 @@ const BoardNew = (props: IBoardNewProps) => {
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
-  const [temp, setTemp] = useState([]);
+  const [imgUrl, setImgUrl] = useState<string[]>([]);
 
   function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
@@ -115,6 +115,19 @@ const BoardNew = (props: IBoardNewProps) => {
     setSNSUrl(event.target.value);
   }
 
+  // 이미지 업로드
+  const onChangeFiles = (idx: number, url: string) => {
+    const images = [...imgUrl];
+
+    if (images[idx]) {
+      images[idx] = url;
+    } else {
+      images.push(url);
+    }
+
+    setImgUrl([...images]);
+  };
+
   async function handleClickBoard() {
     // 작성자 검증
     if (!writer) {
@@ -145,11 +158,10 @@ const BoardNew = (props: IBoardNewProps) => {
               contents,
               youtubeUrl: snsUrl,
               boardAddress: { zipcode, address, addressDetail },
-              images: temp,
+              images: imgUrl,
             },
           },
         });
-        // console.log(result);
         alert("게시물 등록이 완료되었습니다.");
         router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error: any) {
@@ -206,22 +218,29 @@ const BoardNew = (props: IBoardNewProps) => {
       data?.fetchBoard?.boardAddress?.addressDetail;
   }
 
+  useEffect(() => {
+    const imgContainer = data?.fetchBoard.images;
+    imgContainer && setImgUrl([...imgContainer]);
+  }, [data]);
+
+  if (imgUrl) {
+    myVariables.updateBoardInput.images = imgUrl;
+  }
+
   async function handleEditBoard() {
     // 비밀번호 검증
     if (!password) {
       setErrorPassword("비밀번호를 정확히 입력해 주세요.");
     }
     try {
-      const result2 = await updateBoard({ variables: myVariables });
+      await updateBoard({ variables: myVariables });
       router.push(`/boards/${router.query.boardId}`);
-      console.log(result2);
       alert("게시물 수정이 완료되었습니다.");
     } catch (error: any) {
       alert(`게시물 수정에 실패했습니다. ${error.message}`);
     }
   }
 
-  console.log(temp);
   return (
     <BoardNewUI
       data={data}
@@ -246,7 +265,8 @@ const BoardNew = (props: IBoardNewProps) => {
       address={address}
       changedDetailAddress={handleChangeDetailAddress}
       topic={topic}
-      setTemp={setTemp}
+      onChangeFiles={onChangeFiles}
+      imgUrl={imgUrl}
     />
   );
 };

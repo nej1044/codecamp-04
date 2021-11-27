@@ -1,12 +1,16 @@
+import { ChangeEvent, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { UPLOAD_FILE } from "./photoUpload.queries";
-import { ChangeEvent, useState, useRef } from "react";
 import PhotoUploadUI from "./photoUpload.presenter";
+import { IPropsPhotoUpload } from "./photoUpload.types";
 
-const PhotoUpload = (props) => {
+const PhotoUpload = (props: IPropsPhotoUpload) => {
   const [uploadFile] = useMutation(UPLOAD_FILE);
-  const [images, setImages] = useState<string[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const onClickMyImage = () => {
+    fileRef.current?.click();
+  };
 
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -28,24 +32,32 @@ const PhotoUpload = (props) => {
 
     try {
       const result = await uploadFile({ variables: { file } });
-      alert("사진을 업로드 하였습니다.");
-      setImages([result.data.uploadFile.url]);
-      props.setTemp((prev) => [...prev, result.data.uploadFile.url]);
+      props.onChangeFiles(props.index, result.data.uploadFile.url);
     } catch (error) {
-      alert(`사진 업로드에 실패했습니다.`);
+      alert(`이미지 업로드에 실패하였습니다${error.message}`);
     }
   };
-
-  const onClickMyImage = () => {
-    fileRef.current?.click();
-  };
+  // try {
+  //   const result = await uploadFile({ variables: { file } });
+  //   alert("사진을 업로드 하였습니다.");
+  //   setImages([result?.data?.uploadFile?.url]);
+  //   if(props.temp.length === 3) {
+  //     props.temp.filter()
+  //   }
+  //   props.setTemp((prev) => [...prev, result.data.uploadFile.url]);
+  // } catch (error) {
+  //   alert(`사진 업로드에 실패했습니다.`);
+  // }
 
   return (
     <PhotoUploadUI
       onChangeFile={onChangeFile}
       onClickMyImage={onClickMyImage}
-      images={images}
       fileRef={fileRef}
+      fileUrl={props.imgUrl[props.index]}
+      isEdit={props.isEdit}
+      data={props.data}
+      index={props.index}
     />
   );
 };
