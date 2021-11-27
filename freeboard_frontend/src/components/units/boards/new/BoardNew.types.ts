@@ -17,6 +17,7 @@ export interface IUpdateBoardInput {
   contents?: string;
   youtubeUrl?: string;
   boardAddress: IMyBoardAddress;
+  images?: Array<string>;
 }
 
 export interface IMyVariables {
@@ -48,6 +49,9 @@ export interface IBoardNewUIProps {
   address: string;
   handleComplete: (data: any) => void;
   changedDetailAddress: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeFiles: (idx: number, url: string) => void;
+  imgUrl: string[];
+  onClickDeletes: (idx: number) => void;
 }
 
 export interface IBoardNewEmotion {

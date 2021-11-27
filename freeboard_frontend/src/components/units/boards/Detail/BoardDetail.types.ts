@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, SyntheticEvent } from "react";
 
 export interface IBoardDetailUIProps {
   data?: any;
@@ -9,4 +9,5 @@ export interface IBoardDetailUIProps {
   handleEdit: () => void;
   handleDeleteBoard: () => void;
   addressBox: any;
+  imgError: (event: SyntheticEvent<HTMLImageElement>) => void;
 }

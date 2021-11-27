@@ -241,6 +241,12 @@ const BoardNew = (props: IBoardNewProps) => {
     }
   }
 
+  const onClickDeletes = (idx) => {
+    const images = [...imgUrl];
+    images.splice(idx, 1);
+    setImgUrl(images);
+  };
+
   return (
     <BoardNewUI
       data={data}
@@ -267,6 +273,7 @@ const BoardNew = (props: IBoardNewProps) => {
       topic={topic}
       onChangeFiles={onChangeFiles}
       imgUrl={imgUrl}
+      onClickDeletes={onClickDeletes}
     />
   );
 };

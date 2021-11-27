@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { IPaginationStyled } from "./pagination.types";
 
 export const ListFooter = styled.section`
   display: flex;
@@ -27,11 +28,12 @@ export const NextArrow = styled(RightOutlined)`
 export const Pages = styled.button`
   width: 40px;
   height: 40px;
-  color: ${(props) => (props.current === true ? "white" : "black")};
-  border: ${(props) =>
+  color: ${(props: IPaginationStyled) =>
+    props.current === true ? "white" : "black"};
+  border: ${(props: IPaginationStyled) =>
     props.current === true ? "1px solid #8eb695" : "1px solid #fbdea2"};
   border-radius: 5px;
-  background-color: ${(props) =>
+  background-color: ${(props: IPaginationStyled) =>
     props.current === true ? "#8eb695" : "white"};
   :hover {
     color: white;

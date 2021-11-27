@@ -35,7 +35,7 @@ export default function InfiniteScrollerPage() {
   return (
     <>
       <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
-        {data?.fetchBoards.map((el) => (
+        {data?.fetchBoards.map((el: any) => (
           <div key={el._id}>
             <span>{el.writer}</span>
             <span>{el.title}</span>

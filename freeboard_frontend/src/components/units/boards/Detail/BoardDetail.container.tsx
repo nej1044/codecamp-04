@@ -47,7 +47,7 @@ const BoardDetail = () => {
 
   // 이미지 에러 시
   const imgError = (event: SyntheticEvent<HTMLImageElement>) => {
-    event.target.style = "display: none;";
+    (event.target as any).style = "display: none;";
   };
 
   // 좋아요

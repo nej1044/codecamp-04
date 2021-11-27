@@ -75,6 +75,7 @@ const BoardList = () => {
         setCurrent={setCurrent}
         categorySelector={categorySelector}
         active={active}
+        confirmSearch={confirmSearch}
       />
     </>
   );

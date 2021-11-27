@@ -3,6 +3,7 @@ import Pagination from "../../../commons/pagination/pagination.container";
 import * as S from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
 import { CommentsCount } from "../../../../commons/libraries/CommentsCount";
+import { v4 as uuid4 } from "uuid";
 
 const BoardListUI = (props: IBoardListUIProps) => {
   return (
@@ -61,7 +62,22 @@ const BoardListUI = (props: IBoardListUIProps) => {
             {props.first?.fetchBoards.map((el: any) => (
               <S.ListBoard key={el._id} id={el._id} onClick={props.getDetail}>
                 <S.BoardWrapper>
-                  <S.BoardTitle>{el?.title}</S.BoardTitle>
+                  <S.BoardTitle>
+                    {el?.title
+                      .replaceAll(
+                        props.confirmSearch,
+                        `%^&${props.confirmSearch}%^&`
+                      )
+                      .split("%^&")
+                      .map((el: any) => (
+                        <S.KeyTitle
+                          key={uuid4()}
+                          isMatched={el === props.confirmSearch}
+                        >
+                          {el}
+                        </S.KeyTitle>
+                      ))}
+                  </S.BoardTitle>
                   <S.BoardContents>{el?.contents}</S.BoardContents>
                   <S.BoardUser>
                     <S.BoardWriter>{el?.writer}</S.BoardWriter>

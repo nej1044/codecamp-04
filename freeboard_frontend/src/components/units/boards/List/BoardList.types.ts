@@ -17,8 +17,10 @@ export interface IBoardListUIProps {
   setCurrent: Dispatch<SetStateAction<number>>;
   categorySelector: (event: MouseEvent<HTMLLIElement>) => void;
   active: string;
+  confirmSearch: string;
 }
 
 export interface IBoardListEmotionProps {
-  active: boolean;
+  active?: boolean;
+  isMatched?: boolean;
 }

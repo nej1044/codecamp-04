@@ -181,6 +181,7 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
                   imgUrl={props.imgUrl}
                   isEdit={props.isEdit}
                   data={props.data}
+                  onClickDeletes={props.onClickDeletes}
                 />
               ))}
             </S.PhotoWrapper>

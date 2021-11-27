@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { ReactChild } from "react";
 import Banner from "./banner";
 import Footer from "./footer";
-import Header from "./header";
+import Header from "./header/header.container";
 import Navigation from "./navigation";
 
 // const SHOW_SIDEBAR = ["/boards"];

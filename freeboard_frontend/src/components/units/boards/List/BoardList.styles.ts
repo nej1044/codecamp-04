@@ -132,14 +132,16 @@ export const ListComment = styled.div`
   border-radius: 50%;
 `;
 export const BoardTitle = styled.span`
-  width: 100%;
+  width: 900px;
   height: 45px;
   overflow: hidden;
   font-size: 26px;
   font-weight: 700;
 `;
 
-export const BoardContents = styled.span``;
+export const BoardContents = styled.span`
+  width: 900px;
+`;
 
 export const BoardUser = styled.div`
   display: flex;
@@ -188,4 +190,9 @@ export const Category = styled.li`
 export const CommentsCount = styled.span`
   font-size: 17px;
   font-weight: 500;
+`;
+
+export const KeyTitle = styled.span`
+  color: ${(props: IBoardListEmotionProps) =>
+    props.isMatched ? "#8eb695" : "black"};
 `;

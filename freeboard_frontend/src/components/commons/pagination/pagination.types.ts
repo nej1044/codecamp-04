@@ -24,3 +24,7 @@ export interface IPaginationUI {
   onClickPage: (event: MouseEvent<HTMLElement>) => void;
   onClickNextPage: () => void;
 }
+
+export interface IPaginationStyled {
+  current: boolean;
+}
