@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import { ReactChild } from "react";
 import Banner from "./banner";
 import Footer from "./footer";
 import Header from "./header/header.container";
 import Navigation from "./navigation";
 
-// const SHOW_SIDEBAR = ["/boards"];
+const HIDE_BANNER = ["/signup"];
 
 interface ILayoutProps {
   children: ReactChild;
@@ -23,14 +24,14 @@ const Body = styled.section`
 `;
 
 const Layout = (props: ILayoutProps) => {
-  // const isShowSideBar = SHOW_SIDEBAR.includes(router.asPath);
+  const router = useRouter();
+  const isHideBanner = HIDE_BANNER.includes(router.asPath);
 
   return (
     <Wrapper>
       <Header />
-      <Banner />
+      {!isHideBanner && <Banner />}
       <Navigation />
-      {/* {isShowSideBar && <SideBar />} */}
       <Body>{props.children}</Body>
       <Footer />
     </Wrapper>

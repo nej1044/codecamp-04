@@ -6,4 +6,5 @@ export interface IHeaderUIProps {
   isOpen: boolean;
   handleChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickLogin: () => void;
+  moveSignup: () => void;
 }

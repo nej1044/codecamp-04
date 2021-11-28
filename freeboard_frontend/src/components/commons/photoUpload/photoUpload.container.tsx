@@ -32,8 +32,8 @@ const PhotoUpload = (props: IPropsPhotoUpload) => {
 
     try {
       const result = await uploadFile({ variables: { file } });
-      props.onChangeFiles(props.index, result.data.uploadFile.url);
-    } catch (error) {
+      props.onChangeFiles(props.index, result?.data.uploadFile.url);
+    } catch (error: any) {
       alert(`이미지 업로드에 실패하였습니다${error.message}`);
     }
   };

@@ -25,14 +25,19 @@ const Header = () => {
     setInput({ ...input, [event.target.name]: event.target.value });
   };
 
-  const onClickLogin = () => {
+  const onClickLogin = async () => {
     try {
-      loginUser({ variables: { ...input } });
+      await loginUser({ variables: { ...input } });
       alert(`로그인하였습니다.`);
       setIsOpen(!isOpen);
     } catch (error: any) {
       alert(`로그인에 실패했습니다 ${error.message}`);
     }
+  };
+
+  const moveSignup = () => {
+    router.push("/signup");
+    setIsOpen(false);
   };
   return (
     <HeaderUI
@@ -41,6 +46,7 @@ const Header = () => {
       openLogin={openLogin}
       isOpen={isOpen}
       handleChangeInput={hanldeChangeInput}
+      moveSignup={moveSignup}
     />
   );
 };

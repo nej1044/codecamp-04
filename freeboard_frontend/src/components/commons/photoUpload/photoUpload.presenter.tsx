@@ -1,6 +1,7 @@
 import * as S from "./photoUpload.styles";
+import { IPropsPhotoUploadUI } from "./photoUpload.types";
 
-const PhotoUploadUI = (props) => {
+const PhotoUploadUI = (props: IPropsPhotoUploadUI) => {
   return (
     <>
       <S.PhotoUpload>

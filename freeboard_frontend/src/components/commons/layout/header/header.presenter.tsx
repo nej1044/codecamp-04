@@ -12,7 +12,7 @@ const HeaderUI = (props: IHeaderUIProps) => {
       </S.Logo>
       <S.HeaderMenu>
         <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
-        <S.LoginBtn>회원가입</S.LoginBtn>
+        <S.LoginBtn onClick={props.moveSignup}>회원가입</S.LoginBtn>
       </S.HeaderMenu>
       <Modal
         aria-labelledby="hero-header"
@@ -58,7 +58,9 @@ const HeaderUI = (props: IHeaderUIProps) => {
                 <div></div>
               </S.SocialWrapper>
               <span>디벨로펌 회원이 되어보세요</span>
-              <S.FooterBtn>디벨로펌 회원가입</S.FooterBtn>
+              <S.FooterBtn onClick={props.moveSignup}>
+                디벨로펌 회원가입
+              </S.FooterBtn>
             </S.Wrapper>
           </Box>
         </Fade>
