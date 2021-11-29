@@ -15,6 +15,10 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [btnColor, setBtnColor] = useState(false);
 
+  const moveHome = () => {
+    router.push("/");
+  };
+
   const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
@@ -28,8 +32,9 @@ const Signup = () => {
     }
   };
 
+  console.log(/\w+@\w+\.\w+/.test(inputs.email));
   const onClickSignup = async () => {
-    if (!inputs.email.includes("@")) {
+    if (!/\w+@\w+\.\w+/.test(inputs.email)) {
       alert("이메일을 다시 확인하세요");
     }
     if (inputs.password.length < 6) {
@@ -43,7 +48,7 @@ const Signup = () => {
       inputs &&
       inputs.password.length > 5 &&
       inputs.password === password &&
-      inputs.email.includes("@")
+      /\w+@\w+.\w+/.test(inputs.email)
     ) {
       try {
         const result = await createUser({
@@ -63,6 +68,7 @@ const Signup = () => {
   };
   return (
     <SignUpUI
+      moveHome={moveHome}
       handleChangeInputs={handleChangeInputs}
       onClickSignup={onClickSignup}
       btnColor={btnColor}

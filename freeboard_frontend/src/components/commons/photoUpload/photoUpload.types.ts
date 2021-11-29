@@ -1,17 +1,13 @@
-import { SetStateAction, Dispatch, RefObject, ChangeEvent } from "react";
-import { IFileManager } from "../../../commons/types/generated/types";
+import { RefObject, ChangeEvent } from "react";
 
 export interface IPropsPhotoUpload {
   result?: any;
   data?: any;
-  uploadFile: IFileManager | undefined;
-  url: string | undefined;
-  setTemp: Dispatch<SetStateAction<Array<string | undefined>>>;
   onChangeFiles: (idx: number, url: string) => void;
   index: number;
   onClickDeletes: (idx: number) => void;
   imgUrl: string[];
-  isEdit: boolean;
+  isEdit?: boolean;
 }
 
 export interface IPropsPhotoUploadUI {

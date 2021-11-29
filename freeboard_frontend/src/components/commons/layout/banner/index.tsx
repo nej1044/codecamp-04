@@ -5,7 +5,7 @@ import Slider from "react-slick";
 
 const BannerSection = styled.section`
   width: 100%;
-  height: 600px;
+  height: 500px;
   overflow: hidden;
 `;
 

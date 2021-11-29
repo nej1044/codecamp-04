@@ -1,5 +1,5 @@
 import { getDate } from "../../../../commons/libraries/utils";
-import * as S from "./Board.Detail.styles";
+import * as S from "./BoardDetail.styles";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
 
 const BoardDetailUI = (props: IBoardDetailUIProps) => {

@@ -3,6 +3,8 @@ import { IBoardNewUIProps } from "./BoardNew.types";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
 import PhotoUpload from "../../../commons/photoUpload/photoUpload.container";
+import { v4 as uuid4 } from "uuid";
+
 const BoardNewUI = (props: IBoardNewUIProps) => {
   return (
     <>
@@ -175,7 +177,7 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
             <S.PhotoWrapper>
               {new Array(3).fill(1).map((data, index) => (
                 <PhotoUpload
-                  key={`${data}_${index}`}
+                  key={uuid4()}
                   index={index}
                   onChangeFiles={props.onChangeFiles}
                   imgUrl={props.imgUrl}

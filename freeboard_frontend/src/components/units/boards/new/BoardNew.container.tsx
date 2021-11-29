@@ -241,7 +241,7 @@ const BoardNew = (props: IBoardNewProps) => {
     }
   }
 
-  const onClickDeletes = (idx) => {
+  const onClickDeletes = (idx: number) => {
     const images = [...imgUrl];
     images.splice(idx, 1);
     setImgUrl(images);

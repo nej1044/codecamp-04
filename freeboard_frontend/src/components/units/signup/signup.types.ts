@@ -5,6 +5,7 @@ export interface IPropsSignupUI {
   handleChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickSignup: () => void;
   btnColor: boolean;
+  moveHome: () => void;
 }
 
 export interface IPropsSignupStyled {

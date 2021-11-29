@@ -1,4 +1,4 @@
-import BoardList from "../../src/components/units/boards/List/BoardList.container";
+import BoardList from "../../src/components/units/boards/list/BoardList.container";
 
 const BoardListPage = () => {
   return (

@@ -29,7 +29,7 @@ const Layout = (props: ILayoutProps) => {
 
   return (
     <Wrapper>
-      <Header />
+      {!isHideBanner && <Header />}
       {!isHideBanner && <Banner />}
       <Navigation />
       <Body>{props.children}</Body>
