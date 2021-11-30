@@ -10,10 +10,19 @@ const HeaderUI = (props: IHeaderUIProps) => {
         <RocketTwoTone twoToneColor="#8eb695" />
         디벨로펌
       </S.Logo>
-      <S.HeaderMenu>
-        <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
-        <S.LoginBtn onClick={props.moveSignup}>회원가입</S.LoginBtn>
-      </S.HeaderMenu>
+      {!props.isLoggedin && (
+        <S.HeaderMenu>
+          <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
+          <S.LoginBtn onClick={props.moveSignup}>회원가입</S.LoginBtn>
+        </S.HeaderMenu>
+      )}
+      {props.isLoggedin && (
+        <S.UserInfo>
+          <S.UserName>{props.data?.fetchUserLoggedIn.name}</S.UserName>
+          <S.UserText>개발자님, 환영합니다!</S.UserText>
+          <S.LoginBtn onClick={props.logout}>로그아웃</S.LoginBtn>
+        </S.UserInfo>
+      )}
       <Modal
         aria-labelledby="hero-header"
         aria-describedby="login-wrapper"

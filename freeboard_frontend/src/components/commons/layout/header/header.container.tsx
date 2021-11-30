@@ -1,18 +1,32 @@
 import HeaderUI from "./header.presenter";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
-import { LOGIN_USER } from "./header.queries";
-import { useMutation } from "@apollo/client";
-
+import { ChangeEvent, useContext, useState } from "react";
+import { LOGIN_USER, FETCH_USER_LOGGEDIN, LOGOUT_USER } from "./header.queries";
+import { useMutation, useQuery } from "@apollo/client";
+import {
+  IMutation,
+  IMutationLoginUserArgs,
+  IQuery,
+} from "../../../../commons/types/generated/types";
+import { GlobalContext } from "../../../../../pages/_app";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const { setAccessToken } = useContext<any>(GlobalContext);
   const router = useRouter();
-  const [loginUser] = useMutation(LOGIN_USER);
+  const [logoutUser] = useMutation(LOGOUT_USER);
+  const [loginUser] = useMutation<
+    Pick<IMutation, "loginUser">,
+    IMutationLoginUserArgs
+  >(LOGIN_USER);
+  const { data } =
+    useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGEDIN);
   const [input, setInput] = useState({
     password: "",
     email: "",
   });
 
+  console.log(data);
   const moveHome = () => {
     router.push("/");
   };
@@ -27,9 +41,11 @@ const Header = () => {
 
   const onClickLogin = async () => {
     try {
-      await loginUser({ variables: { ...input } });
+      const result = await loginUser({ variables: { ...input } });
+      setAccessToken(result.data?.loginUser.accessToken);
       alert(`로그인하였습니다.`);
       setIsOpen(!isOpen);
+      setIsLoggedIn(true);
     } catch (error: any) {
       alert(`로그인에 실패했습니다 ${error.message}`);
     }
@@ -39,6 +55,12 @@ const Header = () => {
     router.push("/signup");
     setIsOpen(false);
   };
+
+  const logout = async () => {
+    await logoutUser;
+    alert("로그아웃하였습니다.");
+    setIsLoggedIn(false);
+  };
   return (
     <HeaderUI
       moveHome={moveHome}
@@ -47,6 +69,9 @@ const Header = () => {
       isOpen={isOpen}
       handleChangeInput={hanldeChangeInput}
       moveSignup={moveSignup}
+      data={data}
+      isLoggedin={isLoggedin}
+      logout={logout}
     />
   );
 };

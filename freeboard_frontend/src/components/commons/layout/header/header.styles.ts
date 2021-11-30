@@ -27,9 +27,26 @@ export const HeaderMenu = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const UserInfo = styled.div`
+  min-width: 300px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const UserName = styled.span`
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 10px;
+`;
+
+export const UserText = styled.span``;
+
 export const LoginBtn = styled.button`
   width: 100px;
   height: 40px;
+  margin-left: 30px;
   border: 1px solid black;
   border-radius: 15px;
   background-color: white;
