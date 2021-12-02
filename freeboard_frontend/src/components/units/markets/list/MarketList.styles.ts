@@ -14,8 +14,43 @@ export const ListHeader = styled.table`
 
 export const HeaderTitle = styled.th`
   width: 200px;
+  border-right: 1px solid #9f9f9f;
 `;
 
 export const HeaderContents = styled.td`
   width: 200px;
+  text-align: center;
+  cursor: pointer;
+  :hover {
+    background-color: #f9f9f9;
+  }
+`;
+
+export const Footer = styled.section`
+  width: 100%;
+  height: 80px;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  background-color: #f9f9f9;
+`;
+
+export const FooterTitle = styled.span`
+  font-size: 20px;
+`;
+
+export const FooterBtn = styled.button`
+  width: 180px;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #8eb696;
+  :hover {
+    background-color: #8d9696;
+  }
 `;

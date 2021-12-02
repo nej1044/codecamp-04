@@ -35,6 +35,10 @@ const Navigation = () => {
     router.push("/boards");
   };
 
+  const inMarket = () => {
+    router.push("/market");
+  };
+
   const inLecture = () => {
     router.push("/lecture");
   };
@@ -42,7 +46,7 @@ const Navigation = () => {
     <NavDiv>
       <Menu onClick={inNews}>실시간뉴스</Menu>
       <Menu onClick={inCommunity}>커뮤니티</Menu>
-      <Menu>아웃소싱마켓</Menu>
+      <Menu onClick={inMarket}>아웃소싱마켓</Menu>
       <Menu onClick={inLecture}>추천강의</Menu>
       <Menu>마이페이지</Menu>
     </NavDiv>

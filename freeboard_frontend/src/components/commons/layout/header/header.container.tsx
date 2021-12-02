@@ -9,10 +9,10 @@ import {
   IQuery,
 } from "../../../../commons/types/generated/types";
 import { GlobalContext } from "../../../../../pages/_app";
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+
+const Header = (props) => {
   const [isLoggedin, setIsLoggedIn] = useState(false);
-  const { setAccessToken } = useContext<any>(GlobalContext);
+  const { setAccessToken, setIsOpen, isOpen } = useContext<any>(GlobalContext);
   const router = useRouter();
   const [logoutUser] = useMutation(LOGOUT_USER);
   const [loginUser] = useMutation<
@@ -42,10 +42,14 @@ const Header = () => {
   const onClickLogin = async () => {
     try {
       const result = await loginUser({ variables: { ...input } });
+      localStorage.setItem(
+        "accessToken",
+        result.data?.loginUser.accessToken || ""
+      );
       setAccessToken(result.data?.loginUser.accessToken);
       alert(`로그인하였습니다.`);
-      setIsOpen(!isOpen);
       setIsLoggedIn(true);
+      setIsOpen(false);
     } catch (error: any) {
       alert(`로그인에 실패했습니다 ${error.message}`);
     }
@@ -58,6 +62,7 @@ const Header = () => {
 
   const logout = async () => {
     await logoutUser;
+    localStorage.removeItem("accessToken");
     alert("로그아웃하였습니다.");
     setIsLoggedIn(false);
   };

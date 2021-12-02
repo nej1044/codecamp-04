@@ -1,11 +1,7 @@
-import ComponentUI from "./Component.presenter"
+import ComponentUI from "./Component.presenter";
 
+const Component = (props) => {
+  return <ComponentUI isEdit={props.isEdit} />;
+};
 
-const Component=(props)=>{
-  
-  return(
-    <ComponentUI isEdit={props.isEdit}/>
-  )
-}
-
-export default Component
+export default Component;
