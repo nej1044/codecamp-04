@@ -1,5 +1,5 @@
-const FunctionalComponentUI = (props) => {
-  return <div>{props.count}</div>;
-};
+// const FunctionalComponentUI = (props) => {
+//   return <div>{props.count}</div>;
+// };
 
-export default FunctionalComponentUI;
+// export default FunctionalComponentUI;

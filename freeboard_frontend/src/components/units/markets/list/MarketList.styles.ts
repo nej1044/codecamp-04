@@ -44,9 +44,9 @@ export const FooterTitle = styled.span`
 
 export const FooterBtn = styled.button`
   width: 180px;
-  height: 50px;
+  height: 70px;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   border: none;
   border-radius: 10px;
   background-color: #8eb696;

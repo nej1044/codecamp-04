@@ -6,7 +6,6 @@ const ModalBasicPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [myAddress, setMyAddreess] = useState("");
   const [myZonecode, setMyZonecode] = useState("");
-  const [myAddressDeatil, SetMyAddressDetail] = useState("");
 
   const showModal = () => {
     setIsModalVisible(true);

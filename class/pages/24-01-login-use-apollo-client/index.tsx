@@ -1,5 +1,5 @@
 import { ChangeEvent, useContext, useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useApolloClient, useMutation } from "@apollo/client";
 import {
   IMutation,
   IMutationLoginUserArgs,
@@ -13,9 +13,20 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+const FETCH_USER_LOGGEDIN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      email
+      name
+      picture
+    }
+  }
+`;
+
 const LoginPage = () => {
   const router = useRouter();
-  const { setAccessToken } = useContext<any>(GlobalContext);
+  const { setAccessToken, setUserInfo } = useContext<any>(GlobalContext);
   const [loginUser] = useMutation<
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
@@ -25,6 +36,9 @@ const LoginPage = () => {
     password: "",
   });
 
+  // client는 axios다!
+  const client = useApolloClient();
+
   const handleChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
   };
@@ -32,13 +46,20 @@ const LoginPage = () => {
   const onClickLogin = async () => {
     try {
       const result = await loginUser({ variables: { ...inputs } });
-      localStorage.setItem(
-        "accessToken",
-        result.data?.loginUser.accessToken || ""
-      ); // temp
-      setAccessToken(result.data?.loginUser.accessToken); // setAccessToken 필요(글로벌 스테이트에)
+      const accessToken = result.data?.loginUser.accessToken || "";
+      localStorage.setItem("accessToken", accessToken); // temp
+      setAccessToken(accessToken); // setAccessToken 필요(글로벌 스테이트에)
       alert(`로그인하였습니다.`);
       // const result = await axios.get(koreanjason/posts/1) 이러한 방식으로 원하는 곳에서 useQeury 필요
+      const resultUserInfo = await client.query({
+        query: FETCH_USER_LOGGEDIN,
+        context: {
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        },
+      });
+      setUserInfo(resultUserInfo.data?.fetchUserLoggeing);
       // const result = fetchUserLoggedIn()
       // setUserinfo(result.data?.loginUser.accessToken || ""); //
       // 로그인 성공된 페이지로 이동

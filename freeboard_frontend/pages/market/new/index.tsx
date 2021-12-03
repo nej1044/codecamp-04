@@ -1,13 +1,11 @@
-import BoardNew from "../../../src/components/units/boards/new/BoardNew.container"
+import MarketWrite from "../../../src/components/units/markets/write/marketWrite.container";
 
-
-
-const BoardNewPage=()=> {
-  return(
+const MarketNewPage = () => {
+  return (
     <>
-      <BoardNew />
+      <MarketWrite />
     </>
-  )
-}
+  );
+};
 
-export default BoardNewPage
+export default MarketNewPage;

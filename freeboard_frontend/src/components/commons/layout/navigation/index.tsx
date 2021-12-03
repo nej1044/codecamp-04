@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 const NavDiv = styled.section`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;

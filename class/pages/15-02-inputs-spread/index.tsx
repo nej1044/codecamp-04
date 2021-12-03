@@ -1,7 +1,5 @@
-import { PropertySafetyFilled } from "@ant-design/icons";
 import { useMutation, gql } from "@apollo/client";
 import { MouseEvent, useState } from "react";
-import { MouseEvent } from "react";
 
 const CREATE_BOARD = gql`
   mutation createBoard($writer: String, $title: String, $contents: String) {

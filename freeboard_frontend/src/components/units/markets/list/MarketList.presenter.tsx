@@ -34,7 +34,7 @@ const MarketListUI = (props) => {
         <S.FooterTitle>
           프로젝트 의뢰하고 딱 맞는 전문가를 만나보세요!
         </S.FooterTitle>
-        <S.FooterBtn>프로젝트 의뢰하기</S.FooterBtn>
+        <S.FooterBtn onClick={props.moveWrite}>프로젝트 의뢰하기</S.FooterBtn>
       </S.Footer>
     </>
   );

@@ -1,5 +1,5 @@
-import Child1 from "../../src/components/units/stateUp/child1";
-import Child2 from "../../src/components/units/stateUp/child2";
+import Child1 from "../../src/components/units/stateUp/Child1";
+import Child2 from "../../src/components/units/stateUp/Child2";
 import { useState } from "react";
 
 const StateUpPage = () => {

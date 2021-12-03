@@ -47,8 +47,8 @@ const PhotoUpload = (props: IPropsPhotoUpload) => {
       onClickMyImage={onClickMyImage}
       fileRef={fileRef}
       fileUrl={props.imgUrl[props.index]}
-      isEdit={props.isEdit}
-      data={props.data}
+      // isEdit={props.isEdit}
+      // data={props.data}
       index={props.index}
       onClickDelete={onClickDelete}
     />
