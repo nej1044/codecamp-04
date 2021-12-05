@@ -26,6 +26,51 @@ export const HeaderContents = styled.td`
   }
 `;
 
+export const ListBody = styled.section`
+  width: 100%;
+  padding: 50px 30px 0px 80px;
+  margin: 0 auto;
+`;
+
+export const Item = styled.div`
+  width: 280px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  float: left;
+`;
+
+export const ItemImg = styled.img`
+  width: 100%;
+  height: 200px;
+`;
+
+export const ItemInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 20px;
+`;
+
+export const Seller = styled.span`
+  color: #9f9f9f;
+  padding-bottom: 10px;
+`;
+
+export const ItemName = styled.span`
+  font-size: 20px;
+  line-height: 100%;
+  padding-bottom: 10px;
+`;
+
+export const ItemPrice = styled.span`
+  text-align: right;
+  font-size: 24px;
+  font-weight: 600;
+`;
+
+export const Picked = styled.span`
+  text-align: right;
+`;
 export const Footer = styled.section`
   width: 100%;
   height: 80px;

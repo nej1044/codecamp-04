@@ -1,7 +1,7 @@
-import BoardNew from "../../../../src/components/units/boards/new/BoardNew.container";
+import MarketWrite from "../../../../src/components/units/markets/write/marketWrite.container";
 
-const BoardEditPage = () => {
-  return <BoardNew isEdit={true} />;
+const MarketEditPage = () => {
+  return <MarketWrite isEdit={true} />;
 };
 
-export default BoardEditPage;
+export default MarketEditPage;

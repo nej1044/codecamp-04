@@ -1,4 +1,5 @@
 import * as S from "./MarketList.styles";
+import { HeartTwoTone } from "@ant-design/icons";
 
 const MarketListUI = (props) => {
   return (
@@ -29,6 +30,23 @@ const MarketListUI = (props) => {
             </tr>
           </tbody>
         </S.ListHeader>
+        <S.ListBody>
+          {props.data?.fetchUseditems.map((el) => (
+            <S.Item key={el._id} onClick={props.getDetail(el._id)}>
+              <S.ItemImg
+                src={`https://storage.googleapis.com/${el.images[0]}`}
+              />
+              <S.ItemInfo>
+                <S.Seller>{el.seller.name}</S.Seller>
+                <S.ItemName>{el.name}</S.ItemName>
+                <S.ItemPrice>{el.price} 원</S.ItemPrice>
+                <S.Picked>
+                  <HeartTwoTone twoToneColor="#8eb696" /> {el.pickedCount}
+                </S.Picked>
+              </S.ItemInfo>
+            </S.Item>
+          ))}
+        </S.ListBody>
       </S.Wrapper>
       <S.Footer>
         <S.FooterTitle>

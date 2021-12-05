@@ -14,7 +14,8 @@ const marketWriteUI = (props) => {
   return (
     <S.Wrapper onSubmit={handleSubmit(props.onClickCreate)}>
       <S.WriteWrapper>
-        <S.H1>프로젝트 등록하기</S.H1>
+        {!props.isEdit && <S.H1>프로젝트 등록하기</S.H1>}
+        {props.isEdit && <S.H1>프로젝트 수정하기</S.H1>}
         <S.PhotoSection>
           <S.Title>이미지</S.Title>
           <S.PhotoWrapper>
@@ -34,27 +35,46 @@ const marketWriteUI = (props) => {
         <section>
           <S.BodyItem>
             <S.Title>프로젝트명</S.Title>
-            <S.BodyInput type="text" {...register("name")} />
+            <S.BodyInput
+              type="text"
+              {...register("name")}
+              defaultValue={props.data?.fetchUseditem.name}
+            />
             <div>{formState.errors.name?.message}</div>
           </S.BodyItem>
           <S.BodyItem>
             <S.Title>프로젝트 진행 방식</S.Title>
-            <S.BodyInput type="text" {...register("remarks")} />
+            <S.BodyInput
+              type="text"
+              {...register("remarks")}
+              defaultValue={props.data?.fetchUseditem.remarks}
+            />
             <div>{formState.errors.remarks?.message}</div>
           </S.BodyItem>
           <S.BodyItem>
             <S.Title>관련 태그</S.Title>
-            <S.BodyInput type="text" {...register("tags")} />
+            <S.BodyInput
+              type="text"
+              {...register("tags")}
+              defaultValue={props.data?.fetchUseditem.tags}
+            />
             <div>{formState.errors.tags?.message}</div>
           </S.BodyItem>
           <S.BodyTextItem>
             <S.Title>상세 프로젝트 내용</S.Title>
-            <S.BodyTextArea {...register("contents")} />
+            <S.BodyTextArea
+              {...register("contents")}
+              defaultValue={props.data?.fetchUseditem.contents}
+            />
             <div>{formState.errors.contents?.message}</div>
           </S.BodyTextItem>
           <S.BodyItem>
             <S.Title>월 급여</S.Title>
-            <S.BodyInput type="text" {...register("price")} />
+            <S.BodyInput
+              type="text"
+              {...register("price")}
+              defaultValue={props.data?.fetchUseditem.price}
+            />
             <div>{formState.errors.price?.message}</div>
           </S.BodyItem>
           <S.BodyItem>
@@ -64,7 +84,8 @@ const marketWriteUI = (props) => {
         </section>
       </S.WriteWrapper>
       <S.Footer>
-        <S.FooterBtn>등록하기</S.FooterBtn>
+        {!props.isEdit && <S.FooterBtn>등록하기</S.FooterBtn>}
+        {props.isEdit && <S.FooterBtn>수정하기</S.FooterBtn>}
       </S.Footer>
     </S.Wrapper>
   );
