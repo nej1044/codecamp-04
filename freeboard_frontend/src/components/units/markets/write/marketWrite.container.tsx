@@ -87,23 +87,27 @@ const MarketWrite = () => {
   useEffect(() => {
     const imgContainer = data?.fetchUseditem.images;
     imgContainer && setImgUrl([...imgContainer]);
-  }, [data]);
 
-  useEffect(() => {
     const hashContainer = data?.fetchUseditem.tags;
     hashContainer && setHashArr([...hashContainer]);
   }, [data]);
 
-  const handleEditMarket = async (data: FormValues) => {
-    console.log(data);
+  const handleEditMarket = async (formData: FormValues) => {
+    console.log(formData);
     try {
       const result = await updateUseditem({
         variables: {
           updateUseditemInput: {
-            name: data.name,
-            remarks: data.remarks,
-            contents: data.contents,
-            price: Number(data.price),
+            name: formData.name ? formData.name : data?.fetchUseditem.name,
+            remarks: formData.remarks
+              ? formData.remarks
+              : data?.fetchUseditem.remarks,
+            contents: formData.contents
+              ? formData.contents
+              : data?.fetchUseditem.contents,
+            price: Number(
+              formData.price ? formData.price : data?.fetchUseditem.price
+            ),
             tags: hashArr,
             images: imgUrl,
           },

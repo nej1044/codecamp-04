@@ -85,17 +85,30 @@ export const Remarks = styled.span`
   font-size: 20px;
 `;
 
+export const BuyBtnWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Cart = styled.button`
+  width: 48%;
+  height: 80px;
+  color: #8eb696;
+  font-size: 24px;
+  border: 1px solid #8eb696;
+  background-color: white;
+  cursor: pointer;
+`;
+
 export const Buy = styled.button`
-  width: 80%;
+  width: 48%;
   height: 80px;
   color: white;
   font-size: 24px;
   border: none;
-  border-radius: 10px;
   background-color: #8eb696;
-  :hover {
-    background-color: #8d9696;
-  }
+  cursor: pointer;
 `;
 
 export const DetailBody = styled.section`

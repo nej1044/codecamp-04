@@ -1,3 +1,4 @@
+import { ShoppingOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const HeaderWrapper = styled.section`
@@ -23,9 +24,11 @@ export const Logo = styled.span`
 `;
 
 export const HeaderMenu = styled.div`
-  width: 220px;
+  position: relative;
+  width: 290px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const UserInfo = styled.div`
@@ -46,7 +49,7 @@ export const UserText = styled.span``;
 export const LoginBtn = styled.button`
   width: 100px;
   height: 40px;
-  margin-left: 30px;
+  margin-right: 30px;
   border: 1px solid black;
   border-radius: 15px;
   background-color: white;
@@ -57,6 +60,13 @@ export const LoginBtn = styled.button`
     background-color: #8eb695;
     color: white;
     border: none;
+  }
+`;
+
+export const ShoppingCart = styled(ShoppingOutlined)`
+  font-size: 30px;
+  :hover {
+    color: #8eb696;
   }
 `;
 

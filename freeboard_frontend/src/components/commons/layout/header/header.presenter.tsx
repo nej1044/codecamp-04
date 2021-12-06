@@ -14,6 +14,7 @@ const HeaderUI = (props: IHeaderUIProps) => {
         <S.HeaderMenu>
           <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
           <S.LoginBtn onClick={props.moveSignup}>회원가입</S.LoginBtn>
+          <S.ShoppingCart onClick={props.moveCart} />
         </S.HeaderMenu>
       )}
       {props.isLoggedin && (
@@ -21,6 +22,7 @@ const HeaderUI = (props: IHeaderUIProps) => {
           <S.UserName>{props.data?.fetchUserLoggedIn.name}</S.UserName>
           <S.UserText>개발자님, 환영합니다!</S.UserText>
           <S.LoginBtn onClick={props.logout}>로그아웃</S.LoginBtn>
+          <S.ShoppingCart onClick={props.moveCart} />
         </S.UserInfo>
       )}
       <Modal

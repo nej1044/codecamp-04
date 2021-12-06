@@ -1,11 +1,13 @@
 import * as S from "./MarketList.styles";
 import { HeartTwoTone } from "@ant-design/icons";
 import InfiniteScroll from "react-infinite-scroller";
+import TodayItem from "../../../commons/todayItem/todayItem.container";
 
 const MarketListUI = (props) => {
   return (
     <>
       <S.Wrapper>
+        <TodayItem />
         <S.ListHeader>
           <tbody>
             <tr>
@@ -36,9 +38,10 @@ const MarketListUI = (props) => {
             pageStart={0}
             loadMore={props.onLoadMore}
             hasMore={true}
+            threshold={10}
           >
             {props.data?.fetchUseditems.map((el) => (
-              <S.Item key={el._id} onClick={props.getDetail(el._id)}>
+              <S.Item key={el._id} onClick={props.getDetail(el)}>
                 <S.ItemImg
                   src={`https://storage.googleapis.com/${el.images[0]}`}
                 />

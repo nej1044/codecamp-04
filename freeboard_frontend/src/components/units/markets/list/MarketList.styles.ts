@@ -28,8 +28,10 @@ export const HeaderContents = styled.td`
 
 export const ListBody = styled.section`
   width: 100%;
+  height: 800px;
   padding: 50px 30px 0px 80px;
   margin: 0 auto;
+  /* overflow: auto; */
 `;
 
 export const Item = styled.div`

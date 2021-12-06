@@ -64,6 +64,11 @@ const Header = () => {
     alert("로그아웃하였습니다.");
     setIsLoggedIn(false);
   };
+
+  const moveCart = () => {
+    router.push("/cart");
+  };
+
   return (
     <HeaderUI
       moveHome={moveHome}
@@ -75,6 +80,7 @@ const Header = () => {
       data={data}
       isLoggedin={isLoggedin}
       logout={logout}
+      moveCart={moveCart}
     />
   );
 };

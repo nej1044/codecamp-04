@@ -25,7 +25,14 @@ const MarketDetailUI = (props) => {
               <S.Price>{props.data?.fetchUseditem.price} 원</S.Price>
               <S.BuyWrapper>
                 <S.Remarks>{props.data?.fetchUseditem.remarks}</S.Remarks>
-                <S.Buy>구매하기</S.Buy>
+                <S.BuyBtnWrap>
+                  <S.Cart
+                    onClick={props.onClickBasket(props.data?.fetchUseditem)}
+                  >
+                    장바구니
+                  </S.Cart>
+                  <S.Buy>구매하기</S.Buy>
+                </S.BuyBtnWrap>
               </S.BuyWrapper>
             </S.HeaderDetail>
           </S.HeaderText>

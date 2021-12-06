@@ -2,22 +2,34 @@ import { useRouter } from "next/router";
 import MarketListUI from "./MarketList.presenter";
 import { FETCH_USEDITEMS } from "./BoardList.queries";
 import { useQuery } from "@apollo/client";
-import { useState } from "react";
 import {
+  IBoard,
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
 
 const MarketList = () => {
   const router = useRouter();
-  const [startPage] = useState(1);
-  const { data, refetch, fetchMore } = useQuery<
+  // const [startPage] = useState(1);
+  const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
-  >(FETCH_USEDITEMS, { variables: { page: startPage } });
+  >(FETCH_USEDITEMS);
 
-  const getDetail = (id) => () => {
-    router.push(`market/${id}`);
+  const getDetail = (data: IBoard) => () => {
+    router.push(`market/${data._id}`);
+    const todayitem =
+      JSON.parse(localStorage.getItem("todayitems") || "[]") || [];
+
+    let isExists = false;
+    todayitem.forEach((itemEl: IBoard) => {
+      if (data._id === itemEl._id) isExists = true;
+    });
+    if (isExists) return;
+
+    const { __typename, ...newEl } = data;
+    todayitem.push(newEl);
+    localStorage.setItem("todayitems", JSON.stringify(todayitem));
   };
 
   const moveWrite = () => {
@@ -42,14 +54,13 @@ const MarketList = () => {
       },
     });
   };
+
   return (
     <>
       <MarketListUI
         moveWrite={moveWrite}
         getDetail={getDetail}
         data={data}
-        refetch={refetch}
-        fetchMore={fetchMore}
         onLoadMore={onLoadMore}
       />
     </>

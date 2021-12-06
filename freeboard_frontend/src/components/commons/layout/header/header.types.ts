@@ -7,4 +7,8 @@ export interface IHeaderUIProps {
   handleChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickLogin: () => void;
   moveSignup: () => void;
+  data?: any;
+  isLoggedin: boolean;
+  logout: () => void;
+  moveCart: () => void;
 }
