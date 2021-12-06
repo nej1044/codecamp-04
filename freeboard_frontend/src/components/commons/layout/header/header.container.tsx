@@ -10,7 +10,7 @@ import {
 } from "../../../../commons/types/generated/types";
 import { GlobalContext } from "../../../../../pages/_app";
 
-const Header = (props) => {
+const Header = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false);
   const { setAccessToken, setIsOpen, isOpen } = useContext<any>(GlobalContext);
   const router = useRouter();
@@ -25,8 +25,6 @@ const Header = (props) => {
     password: "",
     email: "",
   });
-
-  console.log(data);
   const moveHome = () => {
     router.push("/");
   };

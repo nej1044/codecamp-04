@@ -35,6 +35,10 @@ export const PhotoWrapper = styled.div`
   margin-top: 20px;
 `;
 
+export const InputWrap = styled.div`
+  width: 80%;
+`;
+
 export const BodyItem = styled.div`
   display: flex;
   width: 100%;
@@ -45,14 +49,45 @@ export const BodyItem = styled.div`
 `;
 
 export const BodyInput = styled.input`
-  width: 80%;
+  width: 100%;
   height: 50px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #9f9f9f;
+  border: none;
+  border-bottom: 1px solid #9f9f9f;
   :focus {
     outline: none;
-    border: 3px solid #8eb696;
+  }
+`;
+
+export const HashWrap = styled.div`
+  width: 80%;
+  height: 50px;
+  display: flex;
+  border-bottom: 1px solid #9f9f9f;
+`;
+
+export const HashArr = styled.div`
+  height: 100%;
+  line-height: 50px;
+`;
+
+export const InnerHash = styled.span`
+  background-color: #8eb696;
+  margin-right: 5px;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+`;
+
+export const HashInput = styled.input`
+  height: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  :focus {
+    outline: none;
   }
 `;
 
@@ -65,7 +100,7 @@ export const BodyTextItem = styled.div`
 `;
 
 export const BodyTextArea = styled.textarea`
-  width: 80%;
+  width: 100%;
   min-height: 500px;
   padding: 10px;
   font-size: 16px;

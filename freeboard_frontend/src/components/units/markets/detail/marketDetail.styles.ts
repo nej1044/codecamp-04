@@ -29,6 +29,7 @@ export const HeaderText = styled.div`
 
 export const HeaderEdit = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;
@@ -44,6 +45,10 @@ export const TopText = styled.span`
   :hover {
     color: #9f9f9f;
   }
+`;
+
+export const Picked = styled.div`
+  font-size: 20px;
 `;
 
 export const HeaderTitle = styled.span`

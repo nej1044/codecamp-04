@@ -69,7 +69,6 @@ const CommentWrite = () => {
     }
   };
 
-  console.log(data);
   return (
     <CommentWriteUI
       data={data}

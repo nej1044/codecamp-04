@@ -15,9 +15,11 @@ import {
 } from "../../../../commons/types/generated/types";
 import { useRouter } from "next/router";
 
-const MarketWrite = (props) => {
+const MarketWrite = () => {
   const router = useRouter();
   const [imgUrl, setImgUrl] = useState<string[]>([]);
+  const [, setHashtag] = useState<string | "">("");
+  const [hashArr, setHashArr] = useState<string[] | []>([]);
   const [createUseditem] = useMutation<
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
@@ -43,6 +45,21 @@ const MarketWrite = (props) => {
     setImgUrl([...images]);
   };
 
+  // 해시태그
+  const onKeyUp = (event: any) => {
+    if (event.keyCode === 32 && event.target.value !== " ") {
+      setHashArr([...hashArr, "#" + event.target.value]);
+      setHashtag("");
+      event.target.value = "";
+    }
+  };
+
+  const deleteHash = (idx: number) => () => {
+    hashArr.splice(idx, 1);
+    console.log(hashArr);
+    setHashArr([...hashArr]);
+  };
+
   // 상품등록
   const onClickCreate = async (data: FormValues) => {
     console.log(data);
@@ -54,7 +71,7 @@ const MarketWrite = (props) => {
             remarks: data.remarks,
             contents: data.contents,
             price: Number(data.price),
-            tags: [data.tags],
+            tags: hashArr,
             images: imgUrl,
           },
         },
@@ -72,6 +89,11 @@ const MarketWrite = (props) => {
     imgContainer && setImgUrl([...imgContainer]);
   }, [data]);
 
+  useEffect(() => {
+    const hashContainer = data?.fetchUseditem.tags;
+    hashContainer && setHashArr([...hashContainer]);
+  }, [data]);
+
   const handleEditMarket = async (data: FormValues) => {
     console.log(data);
     try {
@@ -82,7 +104,7 @@ const MarketWrite = (props) => {
             remarks: data.remarks,
             contents: data.contents,
             price: Number(data.price),
-            tags: [data.tags],
+            tags: hashArr,
             images: imgUrl,
           },
           useditemId: String(router.query.useditemId),
@@ -108,8 +130,10 @@ const MarketWrite = (props) => {
       imgUrl={imgUrl}
       onClickCreate={onClickCreate}
       handleEditMarket={handleEditMarket}
-      isEdit={props.isEdit}
       data={data}
+      onKeyUp={onKeyUp}
+      hashArr={hashArr}
+      deleteHash={deleteHash}
     />
   );
 };

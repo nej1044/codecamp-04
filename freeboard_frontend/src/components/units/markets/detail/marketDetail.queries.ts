@@ -15,6 +15,7 @@ export const FETCH_USEDITEM = gql`
         name
       }
       createdAt
+      pickedCount
     }
   }
 `;
