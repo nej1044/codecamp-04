@@ -1,7 +1,9 @@
 import * as S from "./marketDetail.styles";
 import { HeartTwoTone } from "@ant-design/icons";
+import Dompurify from "dompurify";
+import { IMarketDetailUIProps } from "./marketDetail.types";
 
-const MarketDetailUI = (props) => {
+const MarketDetailUI = (props: IMarketDetailUIProps) => {
   return (
     <>
       <S.Wrapper>
@@ -15,7 +17,7 @@ const MarketDetailUI = (props) => {
                 <S.TopText onClick={props.handleEdit}>수정</S.TopText>
                 <S.TopText onClick={props.handleDelete}>삭제</S.TopText>
               </S.TopWrapper>
-              <S.Picked>
+              <S.Picked onClick={props.togglePick}>
                 <HeartTwoTone twoToneColor="#8eb696" /> 찜하기{" "}
                 {props.data?.fetchUseditem.pickedCount}
               </S.Picked>
@@ -40,14 +42,22 @@ const MarketDetailUI = (props) => {
         <S.DetailBody>
           <S.BodyHeader>
             <S.Title>서비스 설명</S.Title>
-            <S.HeaderContents>
-              {props.data?.fetchUseditem.contents}
-            </S.HeaderContents>
+            {process.browser ? (
+              <S.HeaderContents
+                dangerouslySetInnerHTML={{
+                  __html: Dompurify.sanitize(
+                    String(props.data?.fetchUseditem.contents)
+                  ),
+                }}
+              />
+            ) : (
+              <div></div>
+            )}
             <S.PhotoWrapper>
               {props.data?.fetchUseditem.images.map((el: any, idx: any) => (
                 <S.Photo
                   key={idx}
-                  onError={props.imgError}
+                  onError={props.onError}
                   src={`https://storage.googleapis.com/${el}`}
                 />
               ))}
@@ -55,7 +65,7 @@ const MarketDetailUI = (props) => {
           </S.BodyHeader>
 
           <S.Tags>
-            {props.data?.fetchUseditem.tags.map((el, idx) => (
+            {props.data?.fetchUseditem.tags.map((el: any, idx: number) => (
               <span key={idx}>{el}</span>
             ))}
           </S.Tags>

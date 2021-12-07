@@ -62,11 +62,51 @@ export const ProjectContainer = styled.div`
 `;
 
 export const Project = styled.div`
-  width: 500px;
+  display: flex;
+  flex-direction: column;
+  width: 380px;
   height: 550px;
-  border: 1px solid #8eb695;
-  border-radius: 40px;
+  padding: 20px;
   cursor: pointer;
+`;
+
+export const ProjectImg = styled.img`
+  width: 100%;
+  height: 250px;
+  margin-bottom: 10px;
+`;
+
+export const ProjectContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+`;
+
+export const ContentsHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ProjectName = styled.span`
+  width: 100%;
+  font-size: 24px;
+`;
+
+export const ProjectRemarks = styled.span`
+  width: 100%;
+  font-size: 18px;
+  color: #9f9f9f;
+`;
+
+export const Tag = styled.span`
+  background-color: #8eb696;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
 `;
 
 export const DeveloperSection = styled.section`

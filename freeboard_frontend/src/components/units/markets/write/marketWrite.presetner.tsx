@@ -3,17 +3,25 @@ import * as S from "./marketWrite.styles";
 import { v4 as uuid4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import { schema } from "./marketWrite.validation";
+import { schema, nonSchema } from "./marketWrite.validation";
 import { EditContext } from "../../../../../pages/market/[useditemId]/edit";
 import { useContext } from "react";
 import { IMarketWriteUI } from "./marketWrite.types";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const marketWriteUI = (props: IMarketWriteUI) => {
   const { isEdit } = useContext(EditContext);
-  const { handleSubmit, register, formState } = useForm({
+  const { handleSubmit, register, setValue, trigger, formState } = useForm({
     mode: "onChange",
-    resolver: yupResolver(schema),
+    resolver: yupResolver(isEdit ? nonSchema : schema),
   });
+
+  const handleChange = (value: string) => {
+    setValue("contents", value === "<p><br></p>" ? "" : value);
+    trigger("contents");
+  };
 
   return (
     <S.Wrapper
@@ -88,8 +96,8 @@ const marketWriteUI = (props: IMarketWriteUI) => {
           <S.BodyTextItem>
             <S.Title>상세 프로젝트 내용</S.Title>
             <S.InputWrap>
-              <S.BodyTextArea
-                {...register("contents")}
+              <ReactQuill
+                onChange={handleChange}
                 defaultValue={props.data?.fetchUseditem.contents}
               />
               <div>{formState.errors.contents?.message}</div>

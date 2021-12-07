@@ -25,3 +25,9 @@ export const DELETE_USEDITEM = gql`
     deleteUseditem(useditemId: $useditemId)
   }
 `;
+
+export const TOGGLE_USEDITEM_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
+  }
+`;

@@ -93,22 +93,11 @@ export const HashInput = styled.input`
 
 export const BodyTextItem = styled.div`
   display: flex;
+  height: 400px;
   justify-content: space-between;
   align-items: flex-start;
   padding: 20px 10px;
   border-bottom: 1px solid #9f9f9f;
-`;
-
-export const BodyTextArea = styled.textarea`
-  width: 100%;
-  min-height: 500px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #9f9f9f;
-  :focus {
-    outline: none;
-    border: 3px solid #8eb696;
-  }
 `;
 
 export const Footer = styled.section`

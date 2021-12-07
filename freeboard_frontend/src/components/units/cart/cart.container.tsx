@@ -6,14 +6,14 @@ const Cart = () => {
   const router = useRouter();
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  const getDetail = (id) => () => {
+  const getDetail = (id: String) => () => {
     router.push(`market/${id}`);
   };
 
-  const onClickDelete = (id) => () => {
+  const onClickDelete = (id: String) => () => {
     const basket = JSON.parse(localStorage.getItem("baskets") || "[]");
 
-    const newBasket = basket.filter((el) => el._id !== id);
+    const newBasket = basket.filter((el: any) => el._id !== id);
     localStorage.setItem("baskets", JSON.stringify(newBasket));
     alert("상품이 삭제되었습니다.");
   };

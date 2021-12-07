@@ -2,8 +2,9 @@ import * as S from "./MarketList.styles";
 import { HeartTwoTone } from "@ant-design/icons";
 import InfiniteScroll from "react-infinite-scroller";
 import TodayItem from "../../../commons/todayItem/todayItem.container";
+import { IMarketListUI } from "./BoardList.types";
 
-const MarketListUI = (props) => {
+const MarketListUI = (props: IMarketListUI) => {
   return (
     <>
       <S.Wrapper>
@@ -38,11 +39,12 @@ const MarketListUI = (props) => {
             pageStart={0}
             loadMore={props.onLoadMore}
             hasMore={true}
-            threshold={10}
+            useWindow={false}
           >
-            {props.data?.fetchUseditems.map((el) => (
+            {props.data?.fetchUseditems.map((el: any) => (
               <S.Item key={el._id} onClick={props.getDetail(el)}>
                 <S.ItemImg
+                  onError={props.onError}
                   src={`https://storage.googleapis.com/${el.images[0]}`}
                 />
                 <S.ItemInfo>

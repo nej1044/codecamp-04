@@ -11,4 +11,5 @@ export interface IHeaderUIProps {
   isLoggedin: boolean;
   logout: () => void;
   moveCart: () => void;
+  shoppingCart: string[];
 }

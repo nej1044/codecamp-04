@@ -31,7 +31,11 @@ export const ListBody = styled.section`
   height: 800px;
   padding: 50px 30px 0px 80px;
   margin: 0 auto;
-  /* overflow: auto; */
+  overflow: auto;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Item = styled.div`

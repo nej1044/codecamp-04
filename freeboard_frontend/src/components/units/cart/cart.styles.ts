@@ -77,7 +77,8 @@ export const ItemInfo = styled.span`
 `;
 
 export const ItemImg = styled.img`
-  height: 220px;
+  width: 200px;
+  height: 120px;
   margin-right: 10px;
 `;
 

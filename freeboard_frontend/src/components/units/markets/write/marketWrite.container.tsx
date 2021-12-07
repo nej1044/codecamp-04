@@ -92,22 +92,21 @@ const MarketWrite = () => {
     hashContainer && setHashArr([...hashContainer]);
   }, [data]);
 
-  const handleEditMarket = async (formData: FormValues) => {
-    console.log(formData);
+  const handleEditMarket = async (editData: FormValues) => {
     try {
       const result = await updateUseditem({
         variables: {
           updateUseditemInput: {
-            name: formData.name ? formData.name : data?.fetchUseditem.name,
-            remarks: formData.remarks
-              ? formData.remarks
+            name: editData.name ? editData.name : data?.fetchUseditem.name,
+            remarks: editData.remarks
+              ? editData.remarks
               : data?.fetchUseditem.remarks,
-            contents: formData.contents
-              ? formData.contents
+            contents: editData.contents
+              ? editData.contents
               : data?.fetchUseditem.contents,
-            price: Number(
-              formData.price ? formData.price : data?.fetchUseditem.price
-            ),
+            price: editData.price
+              ? Number(editData.price)
+              : Number(data?.fetchUseditem.price),
             tags: hashArr,
             images: imgUrl,
           },

@@ -7,6 +7,7 @@ import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
+import { SyntheticEvent } from "react";
 
 const MarketList = () => {
   const router = useRouter();
@@ -36,6 +37,11 @@ const MarketList = () => {
     router.push("/market/new");
   };
 
+  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
+    (event.target as any).src =
+      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
+  };
+
   // lodemore
   const onLoadMore = () => {
     if (!data) return;
@@ -62,6 +68,7 @@ const MarketList = () => {
         getDetail={getDetail}
         data={data}
         onLoadMore={onLoadMore}
+        onError={onError}
       />
     </>
   );

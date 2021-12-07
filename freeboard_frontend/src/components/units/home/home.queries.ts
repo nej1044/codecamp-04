@@ -12,3 +12,23 @@ export const FETCH_BEST = gql`
     }
   }
 `;
+
+export const FETCH_USEDITEM_BEST = gql`
+  query {
+    fetchUseditemsOfTheBest {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+      pickedCount
+      seller {
+        _id
+        email
+        name
+      }
+    }
+  }
+`;

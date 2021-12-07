@@ -20,9 +20,27 @@ const HomeUI = (props: IHomeUI) => {
               디벨로펌만의 새로운 프로젝트 OPEN 📣
             </S.SectionTitle>
             <S.ProjectContainer {...useScrollFadeIn("up", 1, 0)}>
-              <S.Project></S.Project>
-              <S.Project></S.Project>
-              <S.Project></S.Project>
+              {props.fetchUseditemBest?.fetchUseditemsOfTheBest.map(
+                (el: any) => (
+                  <S.Project key={el._id} onClick={props.getProject(el._id)}>
+                    <S.ProjectImg
+                      onError={props.onError}
+                      src={`https://storage.googleapis.com/${el.images[0]}`}
+                    />
+                    <S.ProjectContents>
+                      <S.ContentsHeader>
+                        <S.ProjectName>{el.name}</S.ProjectName>
+                        <S.ProjectRemarks>{el.remarks}</S.ProjectRemarks>
+                      </S.ContentsHeader>
+                      <span>
+                        {el.tags.map((el: any, idx: any) => (
+                          <S.Tag key={idx}>{el}</S.Tag>
+                        ))}
+                      </span>
+                    </S.ProjectContents>
+                  </S.Project>
+                )
+              )}
             </S.ProjectContainer>
           </S.ProjectSection>
           <S.DeveloperSection>

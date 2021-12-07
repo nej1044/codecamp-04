@@ -1,6 +1,6 @@
 import HeaderUI from "./header.presenter";
 import { useRouter } from "next/router";
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useState, useEffect } from "react";
 import { LOGIN_USER, FETCH_USER_LOGGEDIN, LOGOUT_USER } from "./header.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -12,6 +12,7 @@ import { GlobalContext } from "../../../../../pages/_app";
 
 const Header = () => {
   const [isLoggedin, setIsLoggedIn] = useState(false);
+  const [shoppingCart, setShoppingCart] = useState([]);
   const { setAccessToken, setIsOpen, isOpen } = useContext<any>(GlobalContext);
   const router = useRouter();
   const [logoutUser] = useMutation(LOGOUT_USER);
@@ -69,6 +70,10 @@ const Header = () => {
     router.push("/cart");
   };
 
+  useEffect(() => {
+    setShoppingCart(JSON.parse(localStorage.getItem("baskets") || "[]"));
+  }, []);
+
   return (
     <HeaderUI
       moveHome={moveHome}
@@ -81,6 +86,7 @@ const Header = () => {
       isLoggedin={isLoggedin}
       logout={logout}
       moveCart={moveCart}
+      shoppingCart={shoppingCart}
     />
   );
 };

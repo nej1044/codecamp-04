@@ -1,7 +1,19 @@
 import * as S from "./header.styles";
 import { RocketTwoTone } from "@ant-design/icons";
-import { Backdrop, Box, Modal, Fade } from "@material-ui/core";
+import { Backdrop, Box, Modal, Fade, IconButton } from "@material-ui/core";
 import { IHeaderUIProps } from "./header.types";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
 const HeaderUI = (props: IHeaderUIProps) => {
   return (
@@ -14,7 +26,11 @@ const HeaderUI = (props: IHeaderUIProps) => {
         <S.HeaderMenu>
           <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
           <S.LoginBtn onClick={props.moveSignup}>회원가입</S.LoginBtn>
-          <S.ShoppingCart onClick={props.moveCart} />
+          <IconButton aria-label="cart" onClick={props.moveCart}>
+            <StyledBadge badgeContent={props.shoppingCart.length} color="error">
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
         </S.HeaderMenu>
       )}
       {props.isLoggedin && (
@@ -22,7 +38,11 @@ const HeaderUI = (props: IHeaderUIProps) => {
           <S.UserName>{props.data?.fetchUserLoggedIn.name}</S.UserName>
           <S.UserText>개발자님, 환영합니다!</S.UserText>
           <S.LoginBtn onClick={props.logout}>로그아웃</S.LoginBtn>
-          <S.ShoppingCart onClick={props.moveCart} />
+          <IconButton aria-label="cart" onClick={props.moveCart}>
+            <StyledBadge badgeContent={props.shoppingCart.length} color="error">
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
         </S.UserInfo>
       )}
       <Modal
