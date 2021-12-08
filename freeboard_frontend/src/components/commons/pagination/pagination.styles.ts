@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { IPaginationStyled } from "./pagination.types";
 
+
 export const ListFooter = styled.section`
   display: flex;
   justify-content: space-between;
@@ -42,3 +43,4 @@ export const Pages = styled.button`
   }
   cursor: pointer;
 `;
+

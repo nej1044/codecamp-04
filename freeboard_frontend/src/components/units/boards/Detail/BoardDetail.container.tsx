@@ -17,6 +17,7 @@ const BoardDetail = () => {
   const [likeBoard] = useMutation<Pick<IMutation, "likeBoard">>(LIKE_BOARD);
   const [dislikeBoard] =
     useMutation<Pick<IMutation, "dislikeBoard">>(DISLIKE_BOARD);
+
   const { data } = useQuery<Pick<IQuery, "fetchBoard">>(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });

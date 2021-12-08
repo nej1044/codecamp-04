@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
 const NavDiv = styled.section`
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  /* position: sticky; */
+  /* top: 0; */
+  /* z-index: 0; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,13 +42,17 @@ const Navigation = () => {
   const inLecture = () => {
     router.push("/lecture");
   };
+
+  const inMyPage = () => {
+    router.push("/mypage");
+  };
   return (
     <NavDiv>
       <Menu onClick={inNews}>실시간뉴스</Menu>
       <Menu onClick={inCommunity}>커뮤니티</Menu>
       <Menu onClick={inMarket}>아웃소싱마켓</Menu>
       <Menu onClick={inLecture}>추천강의</Menu>
-      <Menu>마이페이지</Menu>
+      <Menu onClick={inMyPage}>마이페이지</Menu>
     </NavDiv>
   );
 };

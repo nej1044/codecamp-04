@@ -13,10 +13,11 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const marketWriteUI = (props: IMarketWriteUI) => {
   const { isEdit } = useContext(EditContext);
-  const { handleSubmit, register, setValue, trigger, formState } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(isEdit ? nonSchema : schema),
-  });
+  const { handleSubmit, register, setValue, trigger, getValues, formState } =
+    useForm({
+      mode: "onChange",
+      resolver: yupResolver(isEdit ? nonSchema : schema),
+    });
 
   const handleChange = (value: string) => {
     setValue("contents", value === "<p><br></p>" ? "" : value);
@@ -98,7 +99,12 @@ const marketWriteUI = (props: IMarketWriteUI) => {
             <S.InputWrap>
               <ReactQuill
                 onChange={handleChange}
-                defaultValue={props.data?.fetchUseditem.contents}
+                style={{ height: "300px" }}
+                value={
+                  getValues("contents") ||
+                  props.data?.fetchUseditem.contents ||
+                  ""
+                }
               />
               <div>{formState.errors.contents?.message}</div>
             </S.InputWrap>

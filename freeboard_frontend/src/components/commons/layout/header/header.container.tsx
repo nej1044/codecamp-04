@@ -11,9 +11,9 @@ import {
 import { GlobalContext } from "../../../../../pages/_app";
 
 const Header = () => {
-  const [isLoggedin, setIsLoggedIn] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const { setAccessToken, setIsOpen, isOpen } = useContext<any>(GlobalContext);
+  const { accessToken, setAccessToken, setIsOpen, isOpen } =
+    useContext<any>(GlobalContext);
   const router = useRouter();
   const [logoutUser] = useMutation(LOGOUT_USER);
   const [loginUser] = useMutation<
@@ -47,7 +47,6 @@ const Header = () => {
       );
       setAccessToken(result.data?.loginUser.accessToken);
       alert(`로그인하였습니다.`);
-      setIsLoggedIn(true);
       setIsOpen(false);
     } catch (error: any) {
       alert(`로그인에 실패했습니다 ${error.message}`);
@@ -62,8 +61,8 @@ const Header = () => {
   const logout = async () => {
     await logoutUser;
     localStorage.removeItem("accessToken");
+    setAccessToken("");
     alert("로그아웃하였습니다.");
-    setIsLoggedIn(false);
   };
 
   const moveCart = () => {
@@ -83,10 +82,10 @@ const Header = () => {
       handleChangeInput={hanldeChangeInput}
       moveSignup={moveSignup}
       data={data}
-      isLoggedin={isLoggedin}
       logout={logout}
       moveCart={moveCart}
       shoppingCart={shoppingCart}
+      accessToken={accessToken}
     />
   );
 };

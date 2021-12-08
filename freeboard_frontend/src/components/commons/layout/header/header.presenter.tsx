@@ -22,7 +22,7 @@ const HeaderUI = (props: IHeaderUIProps) => {
         <RocketTwoTone twoToneColor="#8eb695" />
         디벨로펌
       </S.Logo>
-      {!props.isLoggedin && (
+      {!props.accessToken && (
         <S.HeaderMenu>
           <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
           <S.LoginBtn onClick={props.moveSignup}>회원가입</S.LoginBtn>
@@ -33,7 +33,7 @@ const HeaderUI = (props: IHeaderUIProps) => {
           </IconButton>
         </S.HeaderMenu>
       )}
-      {props.isLoggedin && (
+      {props.accessToken && (
         <S.UserInfo>
           <S.UserName>{props.data?.fetchUserLoggedIn.name}</S.UserName>
           <S.UserText>개발자님, 환영합니다!</S.UserText>

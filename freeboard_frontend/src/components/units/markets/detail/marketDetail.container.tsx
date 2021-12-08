@@ -1,12 +1,18 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { SyntheticEvent } from "react";
-import { IBoard, IQuery } from "../../../../commons/types/generated/types";
+import {
+  IBoard,
+  IMutation,
+  IMutationCreatePointTransactionOfBuyingAndSellingArgs,
+  IQuery,
+} from "../../../../commons/types/generated/types";
 import MarketDetailUI from "./marketDetail.presenter";
 import {
   FETCH_USEDITEM,
   DELETE_USEDITEM,
   TOGGLE_USEDITEM_PICK,
+  BUY_USEDITEM,
 } from "./marketDetail.queries";
 
 const MarketDetail = () => {
@@ -16,6 +22,10 @@ const MarketDetail = () => {
   });
   const [deleteUseditem] = useMutation(DELETE_USEDITEM);
   const [toggleUseditemPick] = useMutation(TOGGLE_USEDITEM_PICK);
+  const [buyUseditem] = useMutation<
+    Pick<IMutation, "createPointTransactionOfBuyingAndSelling">,
+    IMutationCreatePointTransactionOfBuyingAndSellingArgs
+  >(BUY_USEDITEM);
 
   // 수정으로 이동
   const handleEdit = () => {
@@ -71,6 +81,15 @@ const MarketDetail = () => {
     (event.target as any).src =
       "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
   };
+
+  // 구매하기
+  const buyItem = (id: string) => async () => {
+    await buyUseditem({
+      variables: { useritemId: id },
+    });
+    alert("프로젝트를 구매하셨습니다.");
+  };
+
   return (
     <MarketDetailUI
       data={data}
@@ -79,6 +98,7 @@ const MarketDetail = () => {
       onClickBasket={onClickBasket}
       togglePick={togglePick}
       onError={onError}
+      buyItem={buyItem}
     />
   );
 };

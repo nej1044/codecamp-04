@@ -26,24 +26,6 @@ export const CommentInputsSection = styled.section`
   padding: 20px 50px;
 `;
 
-export const UserInputWrapper = styled.div`
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-`;
-
-export const UserInput = styled.input`
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #8eb695;
-  :focus {
-    outline: 2px solid #8eb695;
-    border-radius: 3px;
-  }
-`;
-
 export const CommentBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,39 +39,38 @@ export const CommentRate = styled(Rate)`
 `;
 
 export const TextAreaSection = styled.section`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
+  height: 180px;
+  padding: 20px;
+  background-color: white;
+  outline: 2px solid #8eb695;
+  border-radius: 3px;
 `;
 
 export const UserTextarea = styled.textarea`
   width: 100%;
-  height: 130px;
-  padding: 10px;
-  border: 1px solid #8eb695;
-  font-family: Arial, Helvetica, sans-serif;
+  height: 80px;
+  border: none;
+  resize: none;
   :focus {
-    outline: 2px solid #8eb695;
-    border-radius: 3px;
+    outline: none;
   }
 `;
 
 export const InputFooter = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  position: absolute;
-  bottom: 6px;
-`;
-
-export const LettersNumber = styled.span`
-  padding-left: 30px;
-  width: 100px;
 `;
 
 export const CommentAdmin = styled.button`
   width: 100px;
   height: 35px;
-  color: white;
-  background-color: #8eb695;
-  border: 1px solid #8eb695;
+  color: #8eb696;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
