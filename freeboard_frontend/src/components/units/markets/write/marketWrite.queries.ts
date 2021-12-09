@@ -10,6 +10,11 @@ export const CREATE_USEDITEM = gql`
       price
       tags
       images
+      useditemAddress {
+        zipcode
+        address
+        addressDetail
+      }
     }
   }
 `;

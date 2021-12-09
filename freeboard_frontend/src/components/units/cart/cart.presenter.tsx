@@ -28,7 +28,9 @@ const CartUI = (props: ICartUI) => {
               <S.ItemInfo>{el.price} 원</S.ItemInfo>
               <S.ItemInfo>{el.seller.name}</S.ItemInfo>
               <S.InfoBtnWrap>
-                <S.InfoBtnBuy>바로구매</S.InfoBtnBuy>
+                <S.InfoBtnBuy onClick={props.buyItem(el._id)}>
+                  바로구매
+                </S.InfoBtnBuy>
                 <S.InfoBtn>
                   <S.Heart twoToneColor="8eb696" />
                   찜하기

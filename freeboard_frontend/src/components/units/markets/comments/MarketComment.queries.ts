@@ -27,3 +27,16 @@ export const CREATE_USEDITEM_QUESTION = gql`
     }
   }
 `;
+
+export const FETCH_QUESTIONS = gql`
+  query fetchUseditemQuestions($useditemId: ID!) {
+    fetchUseditemQuestions(useditemId: $useditemId) {
+      _id
+      contents
+      user {
+        name
+        picture
+      }
+    }
+  }
+`;

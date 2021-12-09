@@ -66,7 +66,10 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
               ))}
             </S.PhotoWrapper>
           </S.BodyHeader>
-
+          <S.BodyHeader>
+            <S.Title>사무실 위치</S.Title>
+            <div id="map" style={{ width: "500px", height: "400px" }}></div>
+          </S.BodyHeader>
           <S.Tags>
             {props.data?.fetchUseditem.tags.map((el: any, idx: number) => (
               <span key={idx}>{el}</span>

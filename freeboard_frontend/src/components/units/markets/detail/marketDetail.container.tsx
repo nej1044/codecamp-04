@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { SyntheticEvent } from "react";
+import { SyntheticEvent, useEffect } from "react";
 import {
   IBoard,
   IMutation,
@@ -14,6 +14,10 @@ import {
   TOGGLE_USEDITEM_PICK,
   BUY_USEDITEM,
 } from "./marketDetail.queries";
+
+declare const window: typeof globalThis & {
+  kakao: any;
+};
 
 const MarketDetail = () => {
   const router = useRouter();
@@ -90,6 +94,57 @@ const MarketDetail = () => {
     alert("프로젝트를 구매하셨습니다.");
   };
 
+  // 지도
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=d4229cbd5327d5a024d3ab1a7e618796&libraries=services";
+
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(
+            37.49803863699234,
+            127.02763189742201
+          ),
+          level: 3,
+        };
+
+        const map = new window.kakao.maps.Map(container, options);
+
+        const geocoder = new window.kakao.maps.services.Geocoder();
+
+        geocoder.addressSearch(
+          data?.fetchUseditem.useditemAddress.address,
+          function (result, status) {
+            // 정상적으로 검색이 완료됐으면
+            if (status === window.kakao.maps.services.Status.OK) {
+              const coords = new window.kakao.maps.LatLng(
+                result[0].y,
+                result[0].x
+              );
+
+              const marker = new window.kakao.maps.Marker({
+                map: map,
+                position: coords,
+              });
+
+              const infowindow = new window.kakao.maps.InfoWindow({
+                content:
+                  '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
+              });
+              infowindow.open(map, marker);
+
+              map.setCenter(coords);
+            }
+          }
+        );
+      });
+    };
+  }, [data]);
   return (
     <MarketDetailUI
       data={data}

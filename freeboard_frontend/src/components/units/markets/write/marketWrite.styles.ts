@@ -125,3 +125,29 @@ export const FooterBtn = styled.button`
     background-color: #8d9696;
   }
 `;
+
+export const ZipcodeForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 270px;
+`;
+export const Zipcode = styled.input`
+  width: 77px;
+  height: 52px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  font-size: 16px;
+  text-align: center;
+`;
+export const ZipcodeSearch = styled.input`
+  width: 124px;
+  height: 52px;
+  border: 0;
+  background-color: #8eb696;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #8eb696;
+  cursor: pointer;
+`;

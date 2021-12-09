@@ -14,6 +14,7 @@ import { createUploadLink } from "apollo-upload-client";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createContext, useEffect, useState } from "react";
+// import Head from "next/head";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -62,14 +63,22 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <GlobalContext.Provider value={myValue}>
-      <ApolloProvider client={client}>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
-    </GlobalContext.Provider>
+    <>
+      {/* <Head> 모든 페이지에서 카카오맵 다운로드 받으므로 비효율적!!!
+        <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d4229cbd5327d5a024d3ab1a7e618796"
+        ></script>
+      </Head> */}
+      <GlobalContext.Provider value={myValue}>
+        <ApolloProvider client={client}>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </GlobalContext.Provider>
+    </>
   );
 }
 

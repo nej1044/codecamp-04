@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import MarketWriteUI from "./marketWrite.presetner";
 import { FormValues } from "./marketWrite.types";
 import {
@@ -17,9 +17,6 @@ import { useRouter } from "next/router";
 
 const MarketWrite = () => {
   const router = useRouter();
-  const [imgUrl, setImgUrl] = useState<string[]>([]);
-  const [, setHashtag] = useState<string | "">("");
-  const [hashArr, setHashArr] = useState<string[] | []>([]);
   const [createUseditem] = useMutation<
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
@@ -31,6 +28,13 @@ const MarketWrite = () => {
   const { data } = useQuery<Pick<IQuery, "fetchUseditem">>(FETCH_USEDITEM, {
     variables: { useditemId: router.query.useditemId },
   });
+  const [imgUrl, setImgUrl] = useState<string[]>([]);
+  const [, setHashtag] = useState<string | "">("");
+  const [hashArr, setHashArr] = useState<string[] | []>([]);
+  const [isOpenAddress, setIsOpenAddress] = useState(false);
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
 
   // 이미지
   const onChangeFiles = (idx: number, url: string) => {
@@ -60,6 +64,21 @@ const MarketWrite = () => {
     setHashArr([...hashArr]);
   };
 
+  // 주소작성
+  const onToggleModal = () => {
+    setIsOpenAddress((prev) => !prev);
+  };
+
+  const handleComplete = (data: any) => {
+    setIsOpenAddress((prev) => !prev);
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+  };
+
+  const handleChangeDetailAddress = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(event.target.value);
+  };
+
   // 상품등록
   const onClickCreate = async (data: FormValues) => {
     console.log(data);
@@ -73,10 +92,14 @@ const MarketWrite = () => {
             price: Number(data.price),
             tags: hashArr,
             images: imgUrl,
+            useditemAddress: {
+              zipcode,
+              address,
+              addressDetail,
+            },
           },
         },
       });
-      console.log(result);
       router.push(`/market/${result.data?.createUseditem._id}`);
     } catch (error) {
       alert(`프로젝트 등록에 실패했습니다.`);
@@ -137,6 +160,12 @@ const MarketWrite = () => {
       onKeyUp={onKeyUp}
       hashArr={hashArr}
       deleteHash={deleteHash}
+      isOpenAddress={isOpenAddress}
+      zipcode={zipcode}
+      onToggleModal={onToggleModal}
+      handleComplete={handleComplete}
+      address={address}
+      changedDetailAddress={handleChangeDetailAddress}
     />
   );
 };
