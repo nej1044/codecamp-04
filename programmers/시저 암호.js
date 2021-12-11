@@ -74,7 +74,7 @@ function solution(s, n) {
   const answer = s.split("").map((str) => {
     if (str === " ") return str;
     const word = lower.includes(str) ? lower : upper;
-    let index = word.indexOf(str) + ㅜ;
+    let index = word.indexOf(str) + n;
 
     if (index >= 26) {
       index -= 26;
