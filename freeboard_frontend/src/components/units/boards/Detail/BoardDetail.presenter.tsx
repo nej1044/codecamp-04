@@ -1,3 +1,4 @@
+import { Avatar, Image } from "antd";
 import { getDate } from "../../../../commons/libraries/utils";
 import * as S from "./BoardDetail.styles";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
@@ -11,7 +12,15 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
             <S.Title>{props.data?.fetchBoard.title}</S.Title>
             <S.UserInfo>
               <S.UserProfile>
-                <img src="/images/detail/ProfileImg.png" />
+                <Avatar
+                  src={
+                    <Image
+                      src="https://joeschmoe.io/api/v1/random"
+                      style={{ width: 50 }}
+                    />
+                  }
+                  style={{ width: 50, height: 50 }}
+                />
                 <S.ProfileText>
                   <S.UserName>{props.data?.fetchBoard.writer}</S.UserName>
                   <S.UserDate>

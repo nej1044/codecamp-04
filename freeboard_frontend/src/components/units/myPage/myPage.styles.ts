@@ -11,13 +11,30 @@ export const MyPageHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 30px;
+`;
+
+export const HeaderLeft = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 49%;
+  height: 300px;
+  padding: 50px;
+  background-color: white;
+`;
+
+export const MyCoin = styled.span`
+  width: 140px;
+  height: 50px;
+  font-size: 30px;
+  border-bottom: 3px solid black;
+  text-align: center;
 `;
 
 export const HeaderRight = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  width: 50%;
+  width: 49%;
   height: 300px;
   padding: 50px;
   background-color: white;
@@ -34,6 +51,7 @@ export const CoinSection = styled.section`
 
 export const CoinTitle = styled.h2`
   width: 120px;
+  height: 50px;
   font-size: 30px;
   border-bottom: 3px solid black;
   text-align: center;
@@ -44,6 +62,7 @@ export const CoinCountWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-right: 50px;
 `;
 
 export const PointAmount = styled.span`
@@ -61,6 +80,28 @@ export const CoinBtn = styled.button`
   font-size: 20px;
   color: white;
   background-color: black;
+`;
+
+export const ProfileSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+`;
+
+export const ProfileName = styled.span`
+  font-size: 25px;
+`;
+
+export const MyPageBody = styled.div`
+  display: flex;
+  width: 100%;
+  height: 500px;
+  padding: 50px;
+  background-color: white;
 `;
 
 export const StyledModal = styled(ModalUnstyled)`

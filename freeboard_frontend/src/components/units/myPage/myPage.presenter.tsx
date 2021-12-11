@@ -1,4 +1,5 @@
 import { Box } from "@mui/system";
+import { Avatar, Image } from "antd";
 import Head from "next/head";
 
 import * as S from "./myPage.styles";
@@ -18,7 +19,10 @@ const MyPageUI = (props) => {
       </Head>
       <S.Wrapper>
         <S.MyPageHeader>
-          <div style={{ width: "50%" }}></div>
+          <S.HeaderLeft>
+            <S.CoinTitle>충전내역</S.CoinTitle>
+            <div></div>
+          </S.HeaderLeft>
           <S.HeaderRight>
             <S.CoinSection>
               <S.CoinTitle>로켓코인</S.CoinTitle>
@@ -30,8 +34,25 @@ const MyPageUI = (props) => {
               </S.CoinCountWrap>
               <S.CoinBtn onClick={props.handleOpen}>충전</S.CoinBtn>
             </S.CoinSection>
+            <S.ProfileSection>
+              <Avatar
+                src={
+                  <Image
+                    src="https://joeschmoe.io/api/v1/random"
+                    style={{ width: 150 }}
+                  />
+                }
+                style={{ width: 150, height: 150 }}
+              />
+              <S.ProfileName>
+                {props.data?.fetchUserLoggedIn.name}
+              </S.ProfileName>
+            </S.ProfileSection>
           </S.HeaderRight>
         </S.MyPageHeader>
+        <S.MyPageBody>
+          <S.MyCoin>내 프로젝트</S.MyCoin>
+        </S.MyPageBody>
       </S.Wrapper>
       <S.StyledModal
         open={props.open}

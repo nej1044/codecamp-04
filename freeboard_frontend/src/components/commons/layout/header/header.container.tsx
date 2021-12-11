@@ -41,10 +41,11 @@ const Header = () => {
   const onClickLogin = async () => {
     try {
       const result = await loginUser({ variables: { ...input } });
-      localStorage.setItem(
-        "accessToken",
-        result.data?.loginUser.accessToken || ""
-      );
+      // localStorage.setItem(
+      //   "accessToken",
+      //   result.data?.loginUser.accessToken || ""
+      // );
+      localStorage.setItem("isLoggedIn", "true");
       setAccessToken(result.data?.loginUser.accessToken);
       alert(`로그인하였습니다.`);
       setIsOpen(false);
@@ -60,7 +61,7 @@ const Header = () => {
 
   const logout = async () => {
     await logoutUser;
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("isLoggesIn");
     setAccessToken("");
     alert("로그아웃하였습니다.");
   };

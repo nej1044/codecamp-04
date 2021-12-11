@@ -118,7 +118,8 @@ const MarketDetail = () => {
         const geocoder = new window.kakao.maps.services.Geocoder();
 
         geocoder.addressSearch(
-          data?.fetchUseditem.useditemAddress.address,
+          data?.fetchUseditem.useditemAddress?.address ||
+            "서울특별시 구로구 디지털로 300",
           function (result, status) {
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {

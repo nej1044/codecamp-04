@@ -78,12 +78,12 @@ const HeaderUI = (props: IHeaderUIProps) => {
                 onChange={props.handleChangeInput}
               />
               <S.WrapperBtn onClick={props.onClickLogin}>로그인</S.WrapperBtn>
-              <S.BodyFooter>
+              {/* <S.BodyFooter>
                 <span>
                   <input type="checkbox" /> 로그인 유지
                 </span>
                 <span>아이디 비밀번호 찾기</span>
-              </S.BodyFooter>
+              </S.BodyFooter> */}
               <S.SocialWrapper>
                 <span>SNS 계정으로 간편 로그인</span>
                 <div></div>

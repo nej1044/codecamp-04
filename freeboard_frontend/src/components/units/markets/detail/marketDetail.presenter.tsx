@@ -10,6 +10,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       <S.Wrapper>
         <S.DetailHeader>
           <S.HeaderImg
+            onError={props.onError}
             src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`}
           />
           <S.HeaderText>
