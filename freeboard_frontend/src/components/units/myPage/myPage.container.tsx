@@ -1,19 +1,31 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { SyntheticEvent, useState } from "react";
 import MyPageUI from "./myPage.presenter";
-import { CREATE_POINT, FETCH_USER } from "./myPage.queries";
+import {
+  CREATE_POINT,
+  FETCH_USER,
+  FETCH_POINT,
+  FETCH_PICK,
+} from "./myPage.queries";
 
 const MyPage = () => {
   const { data } = useQuery(FETCH_USER);
+  const { data: fetchPoint, fetchMore } = useQuery(FETCH_POINT);
+  const { data: fetchPick } = useQuery(FETCH_PICK);
   const [createPoint] = useMutation(CREATE_POINT);
+  const router = useRouter();
   const [coin, setCoin] = useState(0);
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleChangeCoin = (event) => {
     setCoin(event.target.value);
   };
+
+  console.log(fetchPick);
 
   const onClickPayment = () => {
     setOpen(false);
@@ -44,6 +56,35 @@ const MyPage = () => {
     );
   };
 
+  const getDetail = (id: String) => () => {
+    router.push(`market/${id}`);
+  };
+
+  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
+    (event.target as any).src =
+      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
+  };
+
+  const onLoadMore = () => {
+    if (!fetchPoint) return;
+
+    fetchMore({
+      variables: {
+        page: Math.ceil(fetchPoint?.fetchPointTransactions.length / 10) + 1,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult?.fetchPointTransactions)
+          return { fetchPointTransactions: [...prev.fetchPointTransactions] };
+        return {
+          fetchPointTransactions: [
+            ...prev.fetchPointTransactions,
+            ...fetchMoreResult.fetchPointTransactions,
+          ],
+        };
+      },
+    });
+  };
+
   return (
     <MyPageUI
       handleOpen={handleOpen}
@@ -52,6 +93,11 @@ const MyPage = () => {
       onClickPayment={onClickPayment}
       handleChangeCoin={handleChangeCoin}
       data={data}
+      fetchPoint={fetchPoint}
+      fetchPick={fetchPick}
+      getDetail={getDetail}
+      onError={onError}
+      onLoadMore={onLoadMore}
     />
   );
 };

@@ -2,7 +2,6 @@ import * as S from "./marketDetail.styles";
 import { HeartTwoTone } from "@ant-design/icons";
 import Dompurify from "dompurify";
 import { IMarketDetailUIProps } from "./marketDetail.types";
-import MarketComment from "../comments/marketComment.container";
 
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
   return (
@@ -78,7 +77,6 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
           </S.Tags>
         </S.DetailBody>
       </S.Wrapper>
-      <MarketComment />
     </>
   );
 };

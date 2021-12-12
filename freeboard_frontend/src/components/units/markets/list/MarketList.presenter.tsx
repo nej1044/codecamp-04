@@ -2,7 +2,10 @@ import * as S from "./MarketList.styles";
 import { HeartTwoTone } from "@ant-design/icons";
 import InfiniteScroll from "react-infinite-scroller";
 import TodayItem from "../../../commons/todayItem/todayItem.container";
-import { IMarketListUI } from "./BoardList.types";
+import { IMarketListUI } from "./MarketList.types";
+import Checkbox from "@mui/material/Checkbox";
+
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const MarketListUI = (props: IMarketListUI) => {
   return (
@@ -10,29 +13,22 @@ const MarketListUI = (props: IMarketListUI) => {
       <S.Wrapper>
         <TodayItem />
         <S.ListHeader>
-          <tbody>
-            <tr>
-              <S.HeaderTitle>기술 수준</S.HeaderTitle>
-              <S.HeaderContents>초급</S.HeaderContents>
-              <S.HeaderContents>중급</S.HeaderContents>
-              <S.HeaderContents>고급</S.HeaderContents>
-            </tr>
-            <tr>
-              <S.HeaderTitle>팀 규모</S.HeaderTitle>
-              <S.HeaderContents>1인</S.HeaderContents>
-              <S.HeaderContents>2인 이상 5인 미만</S.HeaderContents>
-              <S.HeaderContents>5인 이상 30인 미만</S.HeaderContents>
-              <S.HeaderContents>30인 이상</S.HeaderContents>
-            </tr>
-            <tr>
-              <S.HeaderTitle>상주 여부</S.HeaderTitle>
-              <S.HeaderContents>상주 가능</S.HeaderContents>
-              <S.HeaderContents>상주 불가능</S.HeaderContents>
-            </tr>
-            <tr>
-              <S.HeaderTitle>선택한 필터</S.HeaderTitle>
-            </tr>
-          </tbody>
+          <S.SellingView>
+            <Checkbox
+              {...label}
+              sx={{
+                color: "#8eb696",
+                "&.Mui-checked": {
+                  color: "#8eb696",
+                },
+              }}
+            />
+            판매 왼료된 프로젝트
+          </S.SellingView>
+          <div>
+            <S.SearchInput type="text" placeholder="검색어를 입력하세요" />
+            <S.SearchBtn>검색</S.SearchBtn>
+          </div>
         </S.ListHeader>
         <S.ListBody>
           <InfiniteScroll

@@ -21,6 +21,7 @@ const CartUI = (props: ICartUI) => {
             <S.CartItem key={el._id}>
               <S.ProductInfo onClick={props.getDetail(el._id)}>
                 <S.ItemImg
+                  onError={props.onError}
                   src={`https://storage.googleapis.com/${el.images[0]}`}
                 />
                 {el.name}
@@ -31,7 +32,7 @@ const CartUI = (props: ICartUI) => {
                 <S.InfoBtnBuy onClick={props.buyItem(el._id)}>
                   바로구매
                 </S.InfoBtnBuy>
-                <S.InfoBtn>
+                <S.InfoBtn onClick={props.togglePick(el._id)}>
                   <S.Heart twoToneColor="8eb696" />
                   찜하기
                 </S.InfoBtn>

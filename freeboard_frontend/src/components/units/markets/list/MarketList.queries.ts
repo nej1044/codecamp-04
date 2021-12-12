@@ -11,6 +11,9 @@ export const FETCH_USEDITEMS = gql`
       seller {
         name
       }
+      buyer {
+        _id
+      }
     }
   }
 `;

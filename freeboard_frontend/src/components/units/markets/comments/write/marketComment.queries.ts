@@ -22,7 +22,6 @@ export const CREATE_USEDITEM_QUESTION = gql`
       contents
       user {
         name
-        picture
       }
     }
   }
@@ -36,6 +35,24 @@ export const FETCH_QUESTIONS = gql`
       user {
         name
         picture
+      }
+    }
+  }
+`;
+
+export const UPDATE_QUESTION = gql`
+  mutation updateUseditemQuestion(
+    $updateUseditemQuestionInput: UpdateUseditemQuestionInput!
+    $useditemQuestionId: ID!
+  ) {
+    updateUseditemQuestion(
+      updateUseditemQuestionInput: $updateUseditemQuestionInput
+      useditemQuestionId: $useditemQuestionId
+    ) {
+      _id
+      contents
+      user {
+        name
       }
     }
   }

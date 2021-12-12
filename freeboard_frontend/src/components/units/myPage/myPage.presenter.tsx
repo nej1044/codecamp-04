@@ -1,8 +1,12 @@
+import { HeartTwoTone } from "@ant-design/icons";
 import { Box } from "@mui/system";
 import { Avatar, Image } from "antd";
 import Head from "next/head";
+import { getDate } from "../../../commons/libraries/utils";
+import InfiniteScroll from "react-infinite-scroller";
 
 import * as S from "./myPage.styles";
+import MyPageProject from "./project/project.containter";
 
 const MyPageUI = (props) => {
   return (
@@ -20,8 +24,31 @@ const MyPageUI = (props) => {
       <S.Wrapper>
         <S.MyPageHeader>
           <S.HeaderLeft>
-            <S.CoinTitle>충전내역</S.CoinTitle>
-            <div></div>
+            <S.CoinTitle>마이코인</S.CoinTitle>
+            <S.Transaction>
+              <InfiniteScroll
+                pageStart={0}
+                hasMore={true}
+                loadMore={props.onLoadMore}
+                useWindow={false}
+              >
+                {props.fetchPoint?.fetchPointTransactions.map((el) => (
+                  <S.TransHeader key={el._id}>
+                    <S.TransBasic>{getDate(el.createdAt)}</S.TransBasic>
+                    <S.TransContents status={el.status === "구매"}>
+                      {el.status}
+                    </S.TransContents>
+                    <S.TransContents status={el.status === "구매"}>
+                      {el.amount}
+                    </S.TransContents>
+                    <S.TransContents status={el.status === "구매"}>
+                      {el.balance}
+                    </S.TransContents>
+                    {/* <S.TransContents>{el.seller.name}</S.TransContents> */}
+                  </S.TransHeader>
+                ))}
+              </InfiniteScroll>
+            </S.Transaction>
           </S.HeaderLeft>
           <S.HeaderRight>
             <S.CoinSection>
@@ -50,8 +77,30 @@ const MyPageUI = (props) => {
             </S.ProfileSection>
           </S.HeaderRight>
         </S.MyPageHeader>
+        <MyPageProject />
         <S.MyPageBody>
-          <S.MyCoin>내 프로젝트</S.MyCoin>
+          <S.ProjectHeader>
+            <S.SoldTitle>찜한 프로젝트</S.SoldTitle>
+            <S.More>더보기</S.More>
+          </S.ProjectHeader>
+          <S.ListBody>
+            {props.fetchPick?.fetchUseditemsIPicked.map((el: any) => (
+              <S.Item key={el._id} onClick={props.getDetail(el._id)}>
+                <S.ItemImg
+                  onError={props.onError}
+                  src={`https://storage.googleapis.com/${el.images[0]}`}
+                />
+                <S.ItemInfo>
+                  <S.Seller>{el.seller.name}</S.Seller>
+                  <S.ItemName>{el.name}</S.ItemName>
+                  <S.ItemPrice>{el.price} 원</S.ItemPrice>
+                  <S.Picked>
+                    <HeartTwoTone twoToneColor="#8eb696" /> {el.pickedCount}
+                  </S.Picked>
+                </S.ItemInfo>
+              </S.Item>
+            ))}
+          </S.ListBody>
         </S.MyPageBody>
       </S.Wrapper>
       <S.StyledModal

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import MarketListUI from "./MarketList.presenter";
-import { FETCH_USEDITEMS } from "./BoardList.queries";
+import { FETCH_USEDITEMS } from "./MarketList.queries";
 import { useQuery } from "@apollo/client";
 import {
   IBoard,

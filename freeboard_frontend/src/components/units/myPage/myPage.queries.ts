@@ -29,3 +29,31 @@ export const FETCH_USER = gql`
     }
   }
 `;
+
+export const FETCH_POINT = gql`
+  query fetchPointTransactions($search: String, $page: Int) {
+    fetchPointTransactions(search: $search, page: $page) {
+      _id
+      amount
+      balance
+      status
+      statusDetail
+      createdAt
+    }
+  }
+`;
+
+export const FETCH_PICK = gql`
+  query fetchUseditemsIPicked($search: String, $page: Int) {
+    fetchUseditemsIPicked(search: $search, page: $page) {
+      _id
+      name
+      price
+      pickedCount
+      seller {
+        name
+      }
+      images
+    }
+  }
+`;

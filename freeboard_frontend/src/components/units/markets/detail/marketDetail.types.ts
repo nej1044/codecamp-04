@@ -8,4 +8,5 @@ export interface IMarketDetailUIProps {
   data?: any;
   onClickBasket: (data: IBoard) => () => void;
   onError: (event: SyntheticEvent<HTMLImageElement>) => void;
+  buyItem: (id: string) => () => void;
 }

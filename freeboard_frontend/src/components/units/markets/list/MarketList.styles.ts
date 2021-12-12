@@ -6,15 +6,21 @@ export const Wrapper = styled.div`
   padding: 50px;
 `;
 export const ListHeader = styled.table`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 250px;
-  border: 1px solid #9f9f9f;
+  height: 150px;
+  padding: 50px;
   font-size: 16px;
 `;
 
-export const HeaderTitle = styled.th`
+export const SellingView = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 200px;
-  border-right: 1px solid #9f9f9f;
+  align-items: center;
+  font-size: 20px;
 `;
 
 export const HeaderContents = styled.td`
@@ -24,6 +30,27 @@ export const HeaderContents = styled.td`
   :hover {
     background-color: #f9f9f9;
   }
+`;
+
+export const SearchInput = styled.input`
+  width: 500px;
+  height: 40px;
+  padding: 15px;
+  border: none;
+  border-radius: 5px 0px 0px 5px;
+  background-color: #f5f5f5;
+  :focus {
+    outline: none;
+  }
+`;
+
+export const SearchBtn = styled.button`
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  color: white;
+  background-color: #8eb696;
 `;
 
 export const ListBody = styled.section`

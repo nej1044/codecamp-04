@@ -8,8 +8,8 @@ export interface IHeaderUIProps {
   onClickLogin: () => void;
   moveSignup: () => void;
   data?: any;
-  isLoggedin: boolean;
   logout: () => void;
   moveCart: () => void;
   shoppingCart: string[];
+  accessToken: string;
 }

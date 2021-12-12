@@ -6,7 +6,7 @@ export const withAuth = (Component) => (props) => {
   const router = useRouter();
   const { setIsOpen } = useContext(GlobalContext);
   useEffect(() => {
-    if (!localStorage.getItem("accessToken")) {
+    if (!localStorage.getItem("isLoggedIn")) {
       alert("로그인이 필요합니다.");
       router.push("/");
       setIsOpen(true);

@@ -1,15 +1,16 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfBuyingAndSellingArgs,
 } from "../../../commons/types/generated/types";
 import CartUI from "./cart.presenter";
-import { BUY_USEDITEM } from "./ cart.queries";
+import { BUY_USEDITEM, TOGGLE_USEDITEM_PICK } from "./cart.queries";
 
 const Cart = () => {
   const router = useRouter();
+  const [toggleUseditemPick] = useMutation(TOGGLE_USEDITEM_PICK);
   const [buyUseditem] = useMutation<
     Pick<IMutation, "createPointTransactionOfBuyingAndSelling">,
     IMutationCreatePointTransactionOfBuyingAndSellingArgs
@@ -50,12 +51,26 @@ const Cart = () => {
     getBaskets();
   }, []);
 
+  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
+    (event.target as any).src =
+      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
+  };
+
+  const togglePick = (id: string) => async () => {
+    await toggleUseditemPick({
+      variables: { useditemId: id },
+    });
+    alert("관심상품에 담았습니다.");
+  };
+
   return (
     <CartUI
       shoppingCart={shoppingCart}
       onClickDelete={onClickDelete}
       getDetail={getDetail}
       buyItem={buyItem}
+      onError={onError}
+      togglePick={togglePick}
     />
   );
 };
