@@ -2,20 +2,22 @@ import { useRouter } from "next/router";
 import MarketListUI from "./MarketList.presenter";
 import { FETCH_USEDITEMS } from "./MarketList.queries";
 import { useQuery } from "@apollo/client";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import {
   IBoard,
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
-import { SyntheticEvent } from "react";
 
 const MarketList = () => {
   const router = useRouter();
-  // const [startPage] = useState(1);
-  const { data, fetchMore } = useQuery<
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [confirmSearch, setConfirm] = useState<string>("");
+  const [isSoldout, setIsSoldout] = useState<boolean>(false);
+  const { data, refetch, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
-  >(FETCH_USEDITEMS);
+  >(FETCH_USEDITEMS, { variables: { search: confirmSearch, isSoldout } });
 
   const getDetail = (data: IBoard) => () => {
     router.push(`market/${data._id}`);
@@ -37,12 +39,19 @@ const MarketList = () => {
     router.push("/market/new");
   };
 
-  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
-    (event.target as any).src =
-      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
+  const changeSearchValue = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
   };
 
-  // lodemore
+  const clickSearchValue = () => {
+    setConfirm(searchValue);
+    refetch({ search: confirmSearch });
+  };
+
+  const getSoldout = (event: MouseEvent<HTMLButtonElement>) => {
+    setIsSoldout((event.target as HTMLInputElement).checked);
+  };
+
   const onLoadMore = () => {
     if (!data) return;
 
@@ -68,7 +77,10 @@ const MarketList = () => {
         getDetail={getDetail}
         data={data}
         onLoadMore={onLoadMore}
-        onError={onError}
+        changeSearchValue={changeSearchValue}
+        clickSearchValue={clickSearchValue}
+        confirmSearch={confirmSearch}
+        getSoldout={getSoldout}
       />
     </>
   );

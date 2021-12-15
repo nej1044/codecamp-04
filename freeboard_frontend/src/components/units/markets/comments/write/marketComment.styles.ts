@@ -8,7 +8,8 @@ export const CommentSection = styled.section`
 `;
 export const CommentWrapper = styled.div`
   width: 1200px;
-  padding: 0px 102px 30px 102px;
+  padding: ${(props) =>
+    props.isAnswer || props.isAnswerEdit ? "20px 0" : "0px 102px 30px 102px"};
 `;
 
 export const CommentHeader = styled.div`
@@ -22,7 +23,8 @@ export const CommentHeader = styled.div`
 
 export const CommentInputsSection = styled.section`
   width: 100%;
-  padding: 20px 50px;
+  padding: ${(props) =>
+    props.isAnswer || props.isAnswerEdit ? "0" : "20px 50px"};
 `;
 
 export const TextAreaSection = styled.section`

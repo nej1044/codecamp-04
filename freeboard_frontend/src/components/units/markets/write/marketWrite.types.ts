@@ -1,3 +1,6 @@
+import { ChangeEvent } from "react";
+import { Address } from "react-daum-postcode";
+
 export interface FormValues {
   name: string;
   remarks: string;
@@ -16,4 +19,10 @@ export interface IMarketWriteUI {
   hashArr: string[] | [];
   deleteHash: (idx: number) => () => void;
   onKeyUp: (event: any) => void;
+  isOpenAddress: boolean;
+  zipcode: string;
+  onToggleModal: () => void;
+  handleComplete: (data: Address) => void;
+  address: string;
+  changedDetailAddress: (event: ChangeEvent<HTMLInputElement>) => void;
 }

@@ -42,18 +42,3 @@ export const FETCH_POINT = gql`
     }
   }
 `;
-
-export const FETCH_PICK = gql`
-  query fetchUseditemsIPicked($search: String, $page: Int) {
-    fetchUseditemsIPicked(search: $search, page: $page) {
-      _id
-      name
-      price
-      pickedCount
-      seller {
-        name
-      }
-      images
-    }
-  }
-`;

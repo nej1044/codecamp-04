@@ -9,10 +9,13 @@ import MarketComment from "../write/marketComment.container";
 import { IMarketCommentListUIItem } from "./marketComment.List.types";
 import { DELETE_QUESTION, FETCH_QUESTIONS } from "./marketCommentList.queries";
 import * as S from "./marketCommetnList.styles";
+import { getDate } from "../../../../../commons/libraries/utils";
+import AnswerListUI from "./answerList.presenter";
 
 const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
+  const [isAnswer, setIsAnswer] = useState(false);
   const { refetch } = useQuery(FETCH_QUESTIONS);
   const [deleteMarketComment] = useMutation<
     Pick<IMutation, "deleteUseditemQuestion">,
@@ -37,6 +40,10 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
     }
   };
 
+  const onClickAnswer = () => {
+    setIsAnswer(true);
+  };
+
   return (
     <>
       {!isEdit && (
@@ -54,6 +61,18 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
             </S.CommentFunc>
           </S.CommentInfo>
           <S.CommentContents>{props.el?.contents}</S.CommentContents>
+          <S.CommentFooter>
+            <S.CommentDate>{getDate(props.el?.createdAt)}</S.CommentDate>
+            <span onClick={onClickAnswer}>답글쓰기</span>
+          </S.CommentFooter>
+          {isAnswer && (
+            <MarketComment
+              isAnswer={true}
+              setIsAnswer={setIsAnswer}
+              el={props.el}
+            />
+          )}
+          <AnswerListUI el={props.el} />
         </S.Comment>
       )}
       {isEdit && (

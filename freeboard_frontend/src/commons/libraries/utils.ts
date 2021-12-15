@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, SyntheticEvent } from "react";
 
 export const getDate = (myDate: string) => {
   const date = new Date(myDate);
@@ -9,7 +9,6 @@ export const getDate = (myDate: string) => {
   return `${year}-${month}-${day}`;
 };
 
-// intersection - observer
 export const useScrollFadeIn = (direction: any, duration: any, delay: any) => {
   const element = useRef<HTMLDivElement>(null);
 
@@ -57,4 +56,9 @@ export const useScrollFadeIn = (direction: any, duration: any, delay: any) => {
     ref: element,
     style: { opacity: 0, transform: handleDirection(direction) },
   };
+};
+
+export const onError = (event: SyntheticEvent<HTMLImageElement>) => {
+  (event.target as any).src =
+    "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
 };

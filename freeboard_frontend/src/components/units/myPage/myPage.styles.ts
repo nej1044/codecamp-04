@@ -140,14 +140,6 @@ export const SoldTitle = styled.span`
   cursor: pointer;
 `;
 
-export const More = styled.span`
-  color: gray;
-  :hover {
-    color: black;
-  }
-  cursor: pointer;
-`;
-
 export const ListBody = styled.section`
   width: 100%;
   padding: 40px 40px 0px 40px;

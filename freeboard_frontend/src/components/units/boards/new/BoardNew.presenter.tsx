@@ -2,7 +2,7 @@ import * as S from "./BoardNew.styles";
 import { IBoardNewUIProps } from "./BoardNew.types";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
-import PhotoUpload from "../../../commons/photoUpload/photoUpload.container";
+import PhotoUpload from "../../../commons/photoUpload/photoUpload01/photoUpload01.container";
 import { v4 as uuid4 } from "uuid";
 
 const BoardNewUI = (props: IBoardNewUIProps) => {

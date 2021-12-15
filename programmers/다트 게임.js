@@ -3,29 +3,60 @@ function solution(dartResult) {
   let score = 0;
   let cnt = [];
   for (let i = 0; i < dartResult.length; i++) {
-    //점수가 주어질때 
+    //점수가 주어질때
     if (!isNaN(dartResult[i])) {
-      //i-1이 1이고 i가 숫자면 10점.. 
-      //즉 10점인 경우와 그 외의 경우 처리 
+      //i-1이 1이고 i가 숫자면 10점..
+      //즉 10점인 경우와 그 외의 경우 처리
       score = Number(dartResult[i - 1]) === 1 ? 10 : Number(dartResult[i]);
-      //보너스 S일때 
+      //보너스 S일때
     } else if (dartResult[i] === "S") {
       cnt.push(score);
-      //보너스 D일때 
+      //보너스 D일때
     } else if (dartResult[i] === "D") {
       cnt.push(Math.pow(score, 2));
-      //보너스 T일때 
+      //보너스 T일때
     } else if (dartResult[i] === "T") {
       cnt.push(Math.pow(score, 3));
-      //옵션 *일떄 
+      //옵션 *일떄
     } else if (dartResult[i] === "*") {
       cnt[cnt.length - 2] = cnt[cnt.length - 2] * 2;
       cnt[cnt.length - 1] = cnt[cnt.length - 1] * 2;
-      //옵션 #일때 
+      //옵션 #일때
     } else if (dartResult[i] === "#") {
       cnt[cnt.length - 1] = -1 * cnt[cnt.length - 1];
     }
-  } //3개의 점수 합산 
+  } //3개의 점수 합산
   answer = cnt.reduce((acc, cur) => acc + cur, 0);
   return answer;
+}
+
+// 메서드로 풀어보기
+const bounus = ["S", "D", "T"];
+function solution(dartResult) {
+  const answer = [];
+
+  let score = "";
+  dartResult.split("").forEach((el) => {
+    if (!isNaN(Number(el))) {
+      scrore += el;
+    } else if (bounus.includes(el)) {
+      if (el === "D") {
+        score = Math.pow(score, 2);
+      } else if (el === "T") {
+        score = Math.pow(score, 3);
+      }
+      answer.push(Number(score));
+      score = "";
+    } else {
+      if (el === "#") {
+        answer[answer.length - 1] *= -1;
+      } else {
+        answer[answer.length - 1] *= 2;
+        if (answer.length >= 2) {
+          answer[answer.length - 2] *= 2;
+        }
+      }
+    }
+  });
+  return answer.reduce((acc, cur) => acc + cur);
 }

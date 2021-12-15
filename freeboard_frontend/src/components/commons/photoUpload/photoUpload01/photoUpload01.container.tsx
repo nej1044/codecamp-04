@@ -1,8 +1,8 @@
 import { ChangeEvent, useRef } from "react";
 import { useMutation } from "@apollo/client";
-import { UPLOAD_FILE } from "./photoUpload.queries";
-import PhotoUploadUI from "./photoUpload.presenter";
-import { IPropsPhotoUpload } from "./photoUpload.types";
+import { UPLOAD_FILE } from "./photoUpload01.queries";
+import PhotoUploadUI from "./photoUpload01.presenter";
+import { IPropsPhotoUpload } from "./photoUpload01.types";
 
 const PhotoUpload = (props: IPropsPhotoUpload) => {
   const [uploadFile] = useMutation(UPLOAD_FILE);
@@ -47,8 +47,6 @@ const PhotoUpload = (props: IPropsPhotoUpload) => {
       onClickMyImage={onClickMyImage}
       fileRef={fileRef}
       fileUrl={props.imgUrl[props.index]}
-      // isEdit={props.isEdit}
-      // data={props.data}
       index={props.index}
       onClickDelete={onClickDelete}
     />

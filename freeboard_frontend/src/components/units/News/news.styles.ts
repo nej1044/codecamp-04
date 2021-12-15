@@ -2,7 +2,14 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+`;
+
+export const NewsWrap = styled.div`
+  width: 100%;
 `;
 
 export const NewsTitle = styled.h2`
@@ -32,6 +39,15 @@ export const NewsList = styled.a`
   :visited :focus-visible {
     color: #9f9f9f;
   }
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+  /* @media only screen and (min-width: 600px) {
+    flex-direction: column;
+  }
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+  } */
 `;
 
 export const ContentsIdx = styled.span`
@@ -48,5 +64,18 @@ export const ContentsTitle = styled.span`
 `;
 
 export const ContentsDate = styled.span`
-  width: 100px;
+  display: block;
+  width: 120px;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+  @media only screen and (min-width: 992px) {
+    display: block;
+  }
 `;

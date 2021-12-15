@@ -1,4 +1,3 @@
-import { HeartTwoTone } from "@ant-design/icons";
 import { Box } from "@mui/system";
 import { Avatar, Image } from "antd";
 import Head from "next/head";
@@ -7,6 +6,7 @@ import InfiniteScroll from "react-infinite-scroller";
 
 import * as S from "./myPage.styles";
 import MyPageProject from "./project/project.containter";
+import Pick from "./pick/pick.container";
 
 const MyPageUI = (props) => {
   return (
@@ -78,30 +78,7 @@ const MyPageUI = (props) => {
           </S.HeaderRight>
         </S.MyPageHeader>
         <MyPageProject />
-        <S.MyPageBody>
-          <S.ProjectHeader>
-            <S.SoldTitle>찜한 프로젝트</S.SoldTitle>
-            <S.More>더보기</S.More>
-          </S.ProjectHeader>
-          <S.ListBody>
-            {props.fetchPick?.fetchUseditemsIPicked.map((el: any) => (
-              <S.Item key={el._id} onClick={props.getDetail(el._id)}>
-                <S.ItemImg
-                  onError={props.onError}
-                  src={`https://storage.googleapis.com/${el.images[0]}`}
-                />
-                <S.ItemInfo>
-                  <S.Seller>{el.seller.name}</S.Seller>
-                  <S.ItemName>{el.name}</S.ItemName>
-                  <S.ItemPrice>{el.price} 원</S.ItemPrice>
-                  <S.Picked>
-                    <HeartTwoTone twoToneColor="#8eb696" /> {el.pickedCount}
-                  </S.Picked>
-                </S.ItemInfo>
-              </S.Item>
-            ))}
-          </S.ListBody>
-        </S.MyPageBody>
+        <Pick />
       </S.Wrapper>
       <S.StyledModal
         open={props.open}

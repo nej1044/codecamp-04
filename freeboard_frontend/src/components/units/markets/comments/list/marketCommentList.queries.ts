@@ -1,14 +1,15 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_QUESTIONS = gql`
-  query fetchUseditemQuestions($useditemId: ID!) {
-    fetchUseditemQuestions(useditemId: $useditemId) {
+  query fetchUseditemQuestions($page: Int, $useditemId: ID!) {
+    fetchUseditemQuestions(page: $page, useditemId: $useditemId) {
       _id
       contents
       user {
         name
         picture
       }
+      createdAt
     }
   }
 `;
@@ -16,5 +17,29 @@ export const FETCH_QUESTIONS = gql`
 export const DELETE_QUESTION = gql`
   mutation deleteUseditemQuestion($useditemQuestionId: ID!) {
     deleteUseditemQuestion(useditemQuestionId: $useditemQuestionId)
+  }
+`;
+
+export const FETCH_ANSWERS = gql`
+  query fetchUseditemQuestionAnswers($page: Int, $useditemQuestionId: ID!) {
+    fetchUseditemQuestionAnswers(
+      page: $page
+      useditemQuestionId: $useditemQuestionId
+    ) {
+      _id
+      contents
+      user {
+        name
+      }
+      createdAt
+    }
+  }
+`;
+
+export const DELETE_ANSWER = gql`
+  mutation deleteUseditemQuestionAnswer($useditemQuestionAnswerId: ID!) {
+    deleteUseditemQuestionAnswer(
+      useditemQuestionAnswerId: $useditemQuestionAnswerId
+    )
   }
 `;

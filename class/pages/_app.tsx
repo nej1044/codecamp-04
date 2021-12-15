@@ -101,9 +101,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalContext.Provider value={myValue}>
         <ApolloProvider client={client}>
           <Global styles={globalStyles} />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          {/* <Layout> */}
+          <Component {...pageProps} />
+          {/* </Layout> */}
         </ApolloProvider>
       </GlobalContext.Provider>
     </>

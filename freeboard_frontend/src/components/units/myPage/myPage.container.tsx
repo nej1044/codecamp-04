@@ -1,19 +1,25 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { SyntheticEvent, useState } from "react";
-import MyPageUI from "./myPage.presenter";
+import { ChangeEvent, SyntheticEvent, useState } from "react";
 import {
-  CREATE_POINT,
-  FETCH_USER,
-  FETCH_POINT,
-  FETCH_PICK,
-} from "./myPage.queries";
+  IMutation,
+  IMutationCreatePointTransactionOfLoadingArgs,
+  IQuery,
+  IQueryFetchPointTransactionsOfLoadingArgs,
+} from "../../../commons/types/generated/types";
+import MyPageUI from "./myPage.presenter";
+import { CREATE_POINT, FETCH_USER, FETCH_POINT } from "./myPage.queries";
 
 const MyPage = () => {
-  const { data } = useQuery(FETCH_USER);
-  const { data: fetchPoint, fetchMore } = useQuery(FETCH_POINT);
-  const { data: fetchPick } = useQuery(FETCH_PICK);
-  const [createPoint] = useMutation(CREATE_POINT);
+  const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
+  const { data: fetchPoint, fetchMore } = useQuery<
+    Pick<IQuery, "fetchPointTransactionsOfLoading">,
+    IQueryFetchPointTransactionsOfLoadingArgs
+  >(FETCH_POINT);
+  const [createPoint] = useMutation<
+    Pick<IMutation, "createPointTransactionOfLoading">,
+    IMutationCreatePointTransactionOfLoadingArgs
+  >(CREATE_POINT);
   const router = useRouter();
   const [coin, setCoin] = useState(0);
   const [open, setOpen] = useState(false);
@@ -21,11 +27,9 @@ const MyPage = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleChangeCoin = (event) => {
+  const handleChangeCoin = (event: ChangeEvent<HTMLInputElement>) => {
     setCoin(event.target.value);
   };
-
-  console.log(fetchPick);
 
   const onClickPayment = () => {
     setOpen(false);
@@ -46,7 +50,6 @@ const MyPage = () => {
       },
       (rsp) => {
         if (rsp.success) {
-          console.log(rsp);
           createPoint({
             variables: { impUid: rsp.imp_uid },
             refetchQueries: [{ query: FETCH_USER }],
@@ -94,7 +97,6 @@ const MyPage = () => {
       handleChangeCoin={handleChangeCoin}
       data={data}
       fetchPoint={fetchPoint}
-      fetchPick={fetchPick}
       getDetail={getDetail}
       onError={onError}
       onLoadMore={onLoadMore}

@@ -12,8 +12,7 @@ export const CommentBody = styled.div`
 export const Comment = styled.div`
   position: relative;
   width: 800px;
-  border-left: 1px solid #8eb695;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   padding-left: 30px;
   margin: 0 auto;
 `;
@@ -25,6 +24,7 @@ export const CommentImg = styled.img`
   background-color: white;
   border-radius: 50px;
 `;
+
 export const CommentInfo = styled.div`
   display: flex;
   justify-content: space-between;
@@ -54,8 +54,11 @@ export const CommentUser = styled.span`
 
 export const CommentDate = styled.span`
   color: gray;
-  font-size: 16px;
   margin-right: 10px;
+`;
+
+export const CommentAns = styled.span`
+  cursor: pointer;
 `;
 
 export const CommentContents = styled.div`
@@ -65,13 +68,22 @@ export const CommentContents = styled.div`
   word-break: break-all;
 `;
 
-export const EditTextArea = styled.div`
-  display: none;
-  position: relative;
-  width: 100%;
+export const CommentFooter = styled.div`
+  margin-bottom: 20px;
 `;
 
-export const LettersNumber = styled.span`
+export const Answer = styled.div`
+  position: relative;
+  width: 800px;
+  padding-bottom: 20px;
   padding-left: 30px;
-  width: 100px;
+  border-left: 1px solid #8eb696;
+`;
+
+export const AnswerImg = styled.img`
+  position: absolute;
+  top: -10px;
+  left: -25px;
+  background-color: white;
+  border-radius: 50px;
 `;

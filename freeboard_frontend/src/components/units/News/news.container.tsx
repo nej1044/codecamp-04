@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import NewsUI from "./news.presenter";
+import * as S from "./news.styles";
+import { getDate } from "../../../commons/libraries/utils";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -13,11 +14,21 @@ const News = () => {
       setNews(result.data.results);
     };
     fetchNews();
-  });
+  }, []);
   return (
-    <>
-      <NewsUI news={news} />
-    </>
+    <S.Wrapper>
+      <S.NewsWrap>
+        <S.NewsTitle>실시간 뉴스 TOP 20</S.NewsTitle>
+        <S.Line></S.Line>
+        {news?.map((el: any, idx: any) => (
+          <S.NewsList href={el.url} key={el.uri}>
+            <S.ContentsIdx>{idx + 1}</S.ContentsIdx>
+            <S.ContentsTitle>{el.title}</S.ContentsTitle>
+            <S.ContentsDate>{getDate(el.updated)}</S.ContentsDate>
+          </S.NewsList>
+        ))}
+      </S.NewsWrap>
+    </S.Wrapper>
   );
 };
 

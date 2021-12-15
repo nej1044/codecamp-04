@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client";
 
+export const FETCH_USER = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+    }
+  }
+`;
+
 export const FETCH_USEDITEM = gql`
   query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {
@@ -11,6 +19,7 @@ export const FETCH_USEDITEM = gql`
       tags
       images
       seller {
+        _id
         email
         name
       }

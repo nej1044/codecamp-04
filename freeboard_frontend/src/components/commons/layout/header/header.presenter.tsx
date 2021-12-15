@@ -20,7 +20,7 @@ const HeaderUI = (props: IHeaderUIProps) => {
     <S.HeaderWrapper>
       <S.Logo onClick={props.moveHome}>
         <RocketTwoTone twoToneColor="#8eb695" />
-        디벨로펌
+        <S.LogoTitle>디벨로펌</S.LogoTitle>
       </S.Logo>
       {!props.accessToken && (
         <S.HeaderMenu>
@@ -78,16 +78,6 @@ const HeaderUI = (props: IHeaderUIProps) => {
                 onChange={props.handleChangeInput}
               />
               <S.WrapperBtn onClick={props.onClickLogin}>로그인</S.WrapperBtn>
-              {/* <S.BodyFooter>
-                <span>
-                  <input type="checkbox" /> 로그인 유지
-                </span>
-                <span>아이디 비밀번호 찾기</span>
-              </S.BodyFooter> */}
-              <S.SocialWrapper>
-                <span>SNS 계정으로 간편 로그인</span>
-                <div></div>
-              </S.SocialWrapper>
               <span>디벨로펌 회원이 되어보세요</span>
               <S.FooterBtn onClick={props.moveSignup}>
                 디벨로펌 회원가입

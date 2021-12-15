@@ -13,7 +13,9 @@ const MarketCommentListUI = (props: IMarketCommentListUI) => {
           hasMore={true}
         >
           {props.data?.fetchUseditemQuestions.map((el: any) => (
-            <MarketCommentListUIItem el={el} key={el?._id} />
+            <>
+              <MarketCommentListUIItem el={el} key={el?._id} />
+            </>
           ))}
         </InfiniteScroll>
       </S.CommentBody>

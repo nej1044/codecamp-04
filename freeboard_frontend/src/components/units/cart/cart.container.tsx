@@ -4,13 +4,17 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfBuyingAndSellingArgs,
+  IMutationToggleUseditemPickArgs,
 } from "../../../commons/types/generated/types";
 import CartUI from "./cart.presenter";
 import { BUY_USEDITEM, TOGGLE_USEDITEM_PICK } from "./cart.queries";
 
 const Cart = () => {
   const router = useRouter();
-  const [toggleUseditemPick] = useMutation(TOGGLE_USEDITEM_PICK);
+  const [toggleUseditemPick] = useMutation<
+    Pick<IMutation, "toggleUseditemPick">,
+    IMutationToggleUseditemPickArgs
+  >(TOGGLE_USEDITEM_PICK);
   const [buyUseditem] = useMutation<
     Pick<IMutation, "createPointTransactionOfBuyingAndSelling">,
     IMutationCreatePointTransactionOfBuyingAndSellingArgs

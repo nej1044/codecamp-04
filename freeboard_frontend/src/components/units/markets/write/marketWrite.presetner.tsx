@@ -1,4 +1,4 @@
-import PhotoUpload from "../../../commons/photoUpload/photoUpload.container";
+import PhotoUpload from "../../../commons/photoUpload/photoUpload01/photoUpload01.container";
 import * as S from "./marketWrite.styles";
 import { v4 as uuid4 } from "uuid";
 import { useForm } from "react-hook-form";
@@ -40,6 +40,7 @@ const marketWriteUI = (props: IMarketWriteUI) => {
           {isEdit && <S.H1>프로젝트 수정하기</S.H1>}
           <S.PhotoSection>
             <S.Title>이미지</S.Title>
+            {/* <DragDropUpload /> */}
             <S.PhotoWrapper>
               {new Array(5).fill(1).map((_, index) => (
                 <PhotoUpload
@@ -101,7 +102,7 @@ const marketWriteUI = (props: IMarketWriteUI) => {
               <S.InputWrap>
                 <ReactQuill
                   onChange={handleChange}
-                  style={{ height: "300px" }}
+                  style={{ height: "20em" }}
                   value={
                     getValues("contents") ||
                     props.data?.fetchUseditem.contents ||

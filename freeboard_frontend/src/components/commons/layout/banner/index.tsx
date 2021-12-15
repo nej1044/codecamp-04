@@ -5,8 +5,23 @@ import Slider from "react-slick";
 
 const BannerSection = styled.section`
   width: 100%;
-  height: 500px;
+  height: 400px;
   overflow: hidden;
+  @media only screen and (max-width: 600px) {
+    height: 150px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 200px;
+  }
+  @media only screen and (min-width: 768px) {
+    height: 250px;
+  }
+  @media only screen and (min-width: 992px) {
+    height: 300px;
+  }
+  @media only screen and (min-width: 1200px) {
+    height: 350px;
+  }
 `;
 
 const ImgWrapper = styled.div`
@@ -18,8 +33,6 @@ const SlideImg = styled.img`
   display: inline-block;
   width: 100%;
   height: 100%;
-  top: 25%;
-  transform: translate(0, -20%);
 `;
 
 const Banner = () => {

@@ -1,5 +1,5 @@
-import * as S from "./photoUpload.styles";
-import { IPropsPhotoUploadUI } from "./photoUpload.types";
+import * as S from "./photoUpload01.styles";
+import { IPropsPhotoUploadUI } from "./photoUpload01.types";
 
 const PhotoUploadUI = (props: IPropsPhotoUploadUI) => {
   return (

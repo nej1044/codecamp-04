@@ -14,6 +14,7 @@ import {
   IQuery,
 } from "../../../../commons/types/generated/types";
 import { useRouter } from "next/router";
+import { Address } from "react-daum-postcode";
 
 const MarketWrite = () => {
   const router = useRouter();
@@ -31,12 +32,11 @@ const MarketWrite = () => {
   const [imgUrl, setImgUrl] = useState<string[]>([]);
   const [, setHashtag] = useState<string | "">("");
   const [hashArr, setHashArr] = useState<string[] | []>([]);
-  const [isOpenAddress, setIsOpenAddress] = useState(false);
-  const [address, setAddress] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [addressDetail, setAddressDetail] = useState("");
+  const [isOpenAddress, setIsOpenAddress] = useState<boolean>(false);
+  const [address, setAddress] = useState<string>("");
+  const [zipcode, setZipcode] = useState<string>("");
+  const [addressDetail, setAddressDetail] = useState<string>("");
 
-  // 이미지
   const onChangeFiles = (idx: number, url: string) => {
     const images = [...imgUrl];
 
@@ -49,7 +49,12 @@ const MarketWrite = () => {
     setImgUrl([...images]);
   };
 
-  // 해시태그
+  const onClickDeletes = (idx: number) => {
+    const images = [...imgUrl];
+    images.splice(idx, 1);
+    setImgUrl(images);
+  };
+
   const onKeyUp = (event: any) => {
     if (event.keyCode === 32 && event.target.value !== " ") {
       setHashArr([...hashArr, "#" + event.target.value]);
@@ -64,12 +69,11 @@ const MarketWrite = () => {
     setHashArr([...hashArr]);
   };
 
-  // 주소작성
   const onToggleModal = () => {
     setIsOpenAddress((prev) => !prev);
   };
 
-  const handleComplete = (data: any) => {
+  const handleComplete = (data: Address) => {
     setIsOpenAddress((prev) => !prev);
     setAddress(data.address);
     setZipcode(data.zonecode);
@@ -79,7 +83,6 @@ const MarketWrite = () => {
     setAddressDetail(event.target.value);
   };
 
-  // 상품등록
   const onClickCreate = async (data: FormValues) => {
     console.log(data);
     try {
@@ -106,7 +109,6 @@ const MarketWrite = () => {
     }
   };
 
-  // 상품수정
   useEffect(() => {
     const imgContainer = data?.fetchUseditem.images;
     imgContainer && setImgUrl([...imgContainer]);
@@ -117,7 +119,7 @@ const MarketWrite = () => {
 
   const handleEditMarket = async (editData: FormValues) => {
     try {
-      const result = await updateUseditem({
+      await updateUseditem({
         variables: {
           updateUseditemInput: {
             name: editData.name ? editData.name : data?.fetchUseditem.name,
@@ -136,7 +138,6 @@ const MarketWrite = () => {
           useditemId: String(router.query.useditemId),
         },
       });
-      console.log(result);
       router.push(`/market/${router.query.useditemId}`);
       alert("게시물 수정이 완료되었습니다.");
     } catch (error: any) {
@@ -144,11 +145,7 @@ const MarketWrite = () => {
     }
   };
 
-  const onClickDeletes = (idx: number) => {
-    const images = [...imgUrl];
-    images.splice(idx, 1);
-    setImgUrl(images);
-  };
+  console.log(data);
   return (
     <MarketWriteUI
       onChangeFiles={onChangeFiles}

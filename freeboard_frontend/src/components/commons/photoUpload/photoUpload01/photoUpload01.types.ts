@@ -16,7 +16,7 @@ export interface IPropsPhotoUploadUI {
   fileRef: RefObject<HTMLInputElement>;
   onClickDelete: () => void;
   onChangeFile: (evner: ChangeEvent<HTMLInputElement>) => void;
-  isEdit: boolean;
+  isEdit?: boolean;
   data?: any;
   index: number;
 }

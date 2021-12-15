@@ -3,23 +3,43 @@ import styled from "@emotion/styled";
 export const HeaderWrapper = styled.section`
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
   align-items: center;
   width: 100%;
   height: 80px;
   padding: 0 100px;
   background-color: white;
-
   @font-face {
     font-family: "Black Han";
     src: url("/fonts/BlackHanSans-Regular.ttf");
   }
+  @media only screen and (max-width: 600px) {
+    padding: 10px;
+  }
 `;
 
 export const Logo = styled.span`
+  display: flex;
+  align-items: center;
   font-family: "Black Han";
   font-size: 40px;
   color: #8eb695;
   cursor: pointer;
+`;
+export const LogoTitle = styled.span`
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 768px) {
+    display: inline-block;
+    font-size: 30px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 40px;
+  }
 `;
 
 export const HeaderMenu = styled.div`
@@ -28,6 +48,9 @@ export const HeaderMenu = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    width: 250px;
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -36,6 +59,9 @@ export const UserInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    width: 200px;
+  }
 `;
 export const UserName = styled.span`
   font-size: 20px;
@@ -45,12 +71,15 @@ export const UserName = styled.span`
 
 export const UserText = styled.span`
   margin-right: 20px;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const LoginBtn = styled.button`
   width: 100px;
   height: 40px;
-  margin-right: 30px;
+  margin-right: 20px;
   border: 1px solid black;
   border-radius: 15px;
   background-color: white;
@@ -70,7 +99,10 @@ export const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 1000,
+  width: "50%",
+  "@media only screen and (max-width: 600px)": { width: "90%" },
+  "@media only screen and (min-width: 600px)": { width: "90%" },
+  "@media only screen and (min-width: 768px)": { width: "55%" },
   bgcolor: "background.paper",
   borderRadius: 20,
   overflow: "hidden",
@@ -81,27 +113,42 @@ export const modalStyle = {
 export const HeroHeader = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 500px;
+  width: 50%;
   height: 700px;
   padding: 50px;
   background-color: #8eb695;
+  @media only screen and (max-width: 996px) {
+    display: none;
+  }
+  @media only screen and (min-width: 996px) {
+    display: none;
+  }
+  @media only screen and (min-width: 1200px) {
+    display: flex;
+  }
 `;
 
 export const HeaderImg = styled.img`
   width: 400px;
   filter: invert(100%);
+  @media only screen and (min-width: 996px) {
+    width: 300px;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 400px;
+  }
 `;
 
 export const HeaderSubTitle = styled.h1`
-  font-size: 26px;
+  font-size: 21px;
   color: white;
 `;
 
 export const HeaderTitle = styled.h2`
   font-family: "Black Han";
-  font-size: 100px;
+  font-size: 70px;
   color: white;
 `;
 
@@ -109,9 +156,18 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 500px;
+  width: 50%;
   height: 700px;
-  padding: 50px;
+  padding: 100px 50px;
+  @media only screen and (max-width: 996px) {
+    width: 100%;
+  }
+  @media only screen and (min-width: 996px) {
+    width: 100%;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 50%;
+  }
 `;
 
 export const LoginInput = styled.input`
