@@ -11,15 +11,9 @@ const BannerSection = styled.section`
     height: 150px;
   }
   @media only screen and (min-width: 600px) {
-    height: 200px;
-  }
-  @media only screen and (min-width: 768px) {
     height: 250px;
   }
-  @media only screen and (min-width: 992px) {
-    height: 300px;
-  }
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 996px) {
     height: 350px;
   }
 `;

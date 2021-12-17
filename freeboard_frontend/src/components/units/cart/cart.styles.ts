@@ -2,9 +2,13 @@ import styled from "@emotion/styled";
 import { HeartTwoTone } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
-  width: 1200px;
-  margin: 0 auto;
-  padding: 50px;
+  width: 100%;
+  @media only screen and (max-width: 600px) {
+    padding: 20px 50px;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 100px 200px;
+  }
 `;
 
 export const Header = styled.div`
@@ -13,18 +17,31 @@ export const Header = styled.div`
 `;
 
 export const HeaderTitle = styled.span`
-  font-size: 40px;
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 40px;
+  }
 `;
 
 export const Count = styled.span`
-  width: 40px;
-  height: 40px;
   color: white;
-  font-size: 20px;
   background-color: red;
   text-align: center;
   border-radius: 50%;
-  line-height: 40px;
+  @media only screen and (max-width: 600px) {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+  }
 `;
 
 export const Body = styled.section`
@@ -52,12 +69,20 @@ export const ProductTitle = styled.span`
 
 export const CartItem = styled.div`
   width: 100%;
-  height: 250px;
   padding: 10px;
   border-bottom: 1px solid #9f9f9f;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    min-height: 150px;
+  }
+  @media only screen and (min-width: 600px) {
+    min-height: 150px;
+  }
+  @media only screen and (min-width: 996px) {
+    min-height: 250px;
+  }
 `;
 
 export const ProductInfo = styled.span`
@@ -77,8 +102,8 @@ export const ItemInfo = styled.span`
 `;
 
 export const ItemImg = styled.img`
-  width: 200px;
-  height: 120px;
+  width: 50%;
+  height: auto;
   margin-right: 10px;
 `;
 

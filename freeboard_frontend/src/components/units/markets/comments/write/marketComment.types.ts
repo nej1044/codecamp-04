@@ -23,7 +23,12 @@ export interface IMarketComment {
   setIsEdit?: Dispatch<SetStateAction<boolean>>;
   isEdit?: boolean;
   isAnswer?: boolean;
-  isAnswerEdit: boolean;
+  isAnswerEdit?: boolean;
   setIsAnswer?: Dispatch<SetStateAction<boolean>>;
   setIsAnswerEdit?: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface IMarketCommentStyled {
+  isAnswer?: boolean;
+  isAnswerEdit?: boolean;
 }

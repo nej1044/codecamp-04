@@ -18,6 +18,7 @@ export const DetailHeader = styled.section`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const HeaderImg = styled.img`
@@ -30,9 +31,11 @@ export const HeaderText = styled.div`
   width: 50%;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 50px;
   @media only screen and (max-width: 600px) {
     padding-left: 25px;
+  }
+  @media only screen and (min-width: 600px) {
+    padding-left: 50px;
   }
 `;
 
@@ -46,11 +49,13 @@ export const HeaderEdit = styled.div`
 export const TopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80px;
-  font-size: 17px;
   @media only screen and (max-width: 600px) {
     width: 50px;
     font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 80px;
+    font-size: 17px;
   }
 `;
 
@@ -61,36 +66,54 @@ export const TopText = styled.span`
 `;
 
 export const Picked = styled.div`
-  font-size: 20px;
   @media only screen and (max-width: 600px) {
     font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 20px;
   }
 `;
 
 export const HeaderTitle = styled.span`
   width: 100%;
-  font-size: 32px;
   @media only screen and (max-width: 600px) {
     font-size: 16px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 20px;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 32px;
   }
 `;
 
 export const HeaderDetail = styled.div`
   width: 100%;
-  height: 400px;
-  padding: 30px;
   border: 1px solid black;
   @media only screen and (max-width: 600px) {
-    height: 100px;
+    min-height: 100px;
     padding: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    min-height: 150px;
+    padding: 20px;
+  }
+  @media only screen and (min-width: 996px) {
+    min-height: 300px;
+    padding: 40px;
   }
 `;
 
 export const Price = styled.span`
-  font-size: 30px;
   font-weight: 600;
   @media only screen and (max-width: 600px) {
     font-size: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 20px;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 30px;
   }
 `;
 
@@ -100,15 +123,23 @@ export const BuyWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 250px;
-  border-top: 1px solid #9f9f9f;
-  margin-top: 30px;
-  padding-top: 30px;
   @media only screen and (max-width: 600px) {
     margin: 0;
     padding: 0;
     height: 50px;
     border: 0;
+  }
+  @media only screen and (min-width: 600px) {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    border: 0;
+  }
+  @media only screen and (min-width: 996px) {
+    margin-top: 30px;
+    padding-top: 30px;
+    height: 250px;
+    border-top: 1px solid #9f9f9f;
   }
 `;
 
@@ -119,6 +150,9 @@ export const Remarks = styled.span`
     display: none;
   }
   @media only screen and (min-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 996px) {
     display: block;
   }
 `;
@@ -131,9 +165,7 @@ export const BuyBtnWrap = styled.div`
 
 export const Cart = styled.button`
   width: 48%;
-  height: 80px;
   color: #8eb696;
-  font-size: 24px;
   border: 1px solid #8eb696;
   background-color: white;
   cursor: pointer;
@@ -141,19 +173,33 @@ export const Cart = styled.button`
     height: 40px;
     font-size: 12px;
   }
+  @media only screen and (min-width: 600px) {
+    height: 60px;
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 80px;
+    font-size: 24px;
+  }
 `;
 
 export const Buy = styled.button`
   width: 48%;
-  height: 80px;
   color: white;
-  font-size: 24px;
   border: none;
   background-color: #8eb696;
   cursor: pointer;
   @media only screen and (max-width: 600px) {
     height: 40px;
     font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 60px;
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 80px;
+    font-size: 24px;
   }
 `;
 
@@ -198,11 +244,9 @@ export const PhotoWrapper = styled.div`
 `;
 
 export const Photo = styled.img`
-  max-width: 1000px;
+  width: 100%;
+  height: auto;
   margin-bottom: 50px;
-  @media only screen and (max-width: 600px) {
-    width: 250px;
-  }
 `;
 export const Tags = styled.span`
   width: 100%;

@@ -9,9 +9,9 @@ export const Wrapper = styled.div`
     padding: 55px;
   }
   @media only screen and (min-width: 600px) {
-    padding: 55px;
+    padding: 55px 45px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 996px) {
     padding: 55px 90px;
   }
 `;
@@ -24,9 +24,16 @@ export const ListHeader = styled.table`
   @media only screen and (max-width: 600px) {
     flex-direction: column;
     align-items: flex-start;
+    font-size: 20px;
     padding: 30px;
   }
   @media only screen and (min-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+    padding: 60px;
+  }
+  @media only screen and (min-width: 996px) {
     flex-direction: row;
     align-items: center;
     font-size: 20px;
@@ -38,22 +45,17 @@ export const SellingView = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     width: 160px;
     font-size: 15px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
+    width: 180px;
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
     width: 200px;
     font-size: 20px;
-  }
-`;
-
-export const HeaderContents = styled.td`
-  width: 200px;
-  text-align: center;
-  cursor: pointer;
-  :hover {
-    background-color: #f9f9f9;
   }
 `;
 
@@ -68,15 +70,15 @@ export const SearchInput = styled.input`
   }
   @media only screen and (max-width: 600px) {
     width: 200px;
+    font-size: 15px;
   }
   @media only screen and (min-width: 600px) {
-    width: 200px;
-  }
-  @media only screen and (min-width: 768px) {
-    width: 250px;
+    width: 350px;
+    font-size: 18px;
   }
   @media only screen and (min-width: 996px) {
     width: 500px;
+    font-size: 20px;
   }
 `;
 
@@ -87,17 +89,31 @@ export const SearchBtn = styled.button`
   border-radius: 0px 5px 5px 0px;
   color: white;
   background-color: #8eb696;
+  @media only screen and (max-width: 600px) {
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 20px;
+  }
 `;
 
 export const ListBody = styled.section`
-  width: 90%;
   height: 800px;
   overflow: auto;
   -ms-overflow-style: none;
   ::-webkit-scrollbar {
     display: none;
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 600px) {
+    width: 95%;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 95%;
+  }
+  @media only screen and (min-width: 996px) {
     width: 100%;
   }
 `;
@@ -107,24 +123,23 @@ export const Item = styled.div`
   margin-bottom: 50px;
   float: left;
   opacity: ${(props: IMarketListStyled) => (props.isSoldout ? 0.5 : 1)};
-  @media only screen and (max-width: 768px) {
-    width: 130px;
+  @media only screen and (max-width: 600px) {
+    width: 120px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     width: 240px;
   }
   @media only screen and (min-width: 996px) {
-    width: 330px;
+    width: 360px;
   }
 `;
 
 export const ItemImg = styled.img`
   width: 100%;
-  height: 200px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     height: 100px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     height: 150px;
   }
   @media only screen and (min-width: 996px) {
@@ -145,25 +160,29 @@ export const Seller = styled.span`
 `;
 
 export const ItemName = styled.span`
-  font-size: 20px;
   line-height: 100%;
   padding-bottom: 10px;
   @media only screen and (max-width: 600px) {
-    font-size: 11px;
+    font-size: 10px;
   }
   @media only screen and (min-width: 600px) {
+    height: 15px;
+  }
+  @media only screen and (min-width: 996px) {
     font-size: 20px;
   }
 `;
 
 export const ItemPrice = styled.span`
   text-align: right;
-  font-size: 24px;
   font-weight: 600;
   @media only screen and (max-width: 600px) {
     font-size: 16px;
   }
   @media only screen and (min-width: 600px) {
+    font-size: 20px;
+  }
+  @media only screen and (min-width: 996px) {
     font-size: 24px;
   }
 `;
@@ -179,18 +198,28 @@ export const Footer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
   background-color: #f9f9f9;
   word-break: keep-all;
   @media only screen and (max-width: 600px) {
     padding: 0 30px;
   }
+  @media only screen and (min-width: 600px) {
+    padding: 0 40px;
+  }
+  @media only screen and (min-width: 996px) {
+    padding: 0 50px;
+  }
 `;
 
 export const FooterTitle = styled.span`
-  font-size: 20px;
   @media only screen and (max-width: 600px) {
     font-size: 16px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 20px;
   }
 `;
 
@@ -198,7 +227,7 @@ export const FooterBtn = styled.button`
   width: 180px;
   height: 70px;
   color: white;
-  font-size: 22px;
+
   border: none;
   border-radius: 10px;
   background-color: #8eb696;
@@ -208,6 +237,12 @@ export const FooterBtn = styled.button`
   }
   @media only screen and (max-width: 600px) {
     font-size: 16px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 19px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 22px;
   }
 `;
 
@@ -221,14 +256,13 @@ export const Soldout = styled.span`
   top: 0;
   text-align: center;
   color: white;
-
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     width: 130px;
     height: 100px;
     line-height: 100px;
     font-size: 20px;
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     width: 240px;
     height: 150px;
     line-height: 150px;

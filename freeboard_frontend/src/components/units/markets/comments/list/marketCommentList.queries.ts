@@ -6,6 +6,7 @@ export const FETCH_QUESTIONS = gql`
       _id
       contents
       user {
+        _id
         name
         picture
       }
@@ -41,5 +42,13 @@ export const DELETE_ANSWER = gql`
     deleteUseditemQuestionAnswer(
       useditemQuestionAnswerId: $useditemQuestionAnswerId
     )
+  }
+`;
+
+export const FETCH_USER = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+    }
   }
 `;

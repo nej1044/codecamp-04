@@ -5,7 +5,7 @@ import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
   IQuery,
-  IQueryFetchPointTransactionsOfLoadingArgs,
+  IQueryFetchPointTransactionsArgs,
 } from "../../../commons/types/generated/types";
 import MyPageUI from "./myPage.presenter";
 import { CREATE_POINT, FETCH_USER, FETCH_POINT } from "./myPage.queries";
@@ -13,8 +13,8 @@ import { CREATE_POINT, FETCH_USER, FETCH_POINT } from "./myPage.queries";
 const MyPage = () => {
   const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
   const { data: fetchPoint, fetchMore } = useQuery<
-    Pick<IQuery, "fetchPointTransactionsOfLoading">,
-    IQueryFetchPointTransactionsOfLoadingArgs
+    Pick<IQuery, "fetchPointTransactions">,
+    IQueryFetchPointTransactionsArgs
   >(FETCH_POINT);
   const [createPoint] = useMutation<
     Pick<IMutation, "createPointTransactionOfLoading">,
@@ -28,7 +28,7 @@ const MyPage = () => {
   const handleClose = () => setOpen(false);
 
   const handleChangeCoin = (event: ChangeEvent<HTMLInputElement>) => {
-    setCoin(event.target.value);
+    setCoin(Number(event.target.value));
   };
 
   const onClickPayment = () => {
@@ -48,7 +48,7 @@ const MyPage = () => {
         buyer_postcode: "01181",
         m_redirect_url: "localhost:3000/28-01-payment",
       },
-      (rsp) => {
+      (rsp: any) => {
         if (rsp.success) {
           createPoint({
             variables: { impUid: rsp.imp_uid },

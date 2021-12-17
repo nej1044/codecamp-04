@@ -5,8 +5,14 @@ import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
   width: 220px;
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 600px) {
     display: none;
+  }
+  @media only screen and (min-width: 600px) {
+    display: block;
+  }
+  @media only screen and (min-width: 996px) {
+    display: block;
   }
 `;
 

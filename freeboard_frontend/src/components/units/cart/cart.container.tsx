@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfBuyingAndSellingArgs,
@@ -38,7 +38,6 @@ const Cart = () => {
     getBaskets();
   };
 
-  // 구매하기
   const buyItem = (id: string) => async () => {
     await buyUseditem({
       variables: { useritemId: id },
@@ -55,11 +54,6 @@ const Cart = () => {
     getBaskets();
   }, []);
 
-  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
-    (event.target as any).src =
-      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
-  };
-
   const togglePick = (id: string) => async () => {
     await toggleUseditemPick({
       variables: { useditemId: id },
@@ -73,7 +67,6 @@ const Cart = () => {
       onClickDelete={onClickDelete}
       getDetail={getDetail}
       buyItem={buyItem}
-      onError={onError}
       togglePick={togglePick}
     />
   );

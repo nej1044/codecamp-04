@@ -21,6 +21,12 @@ export const Photo = styled.div`
     font-size: 10px;
   }
   @media only screen and (min-width: 600px) {
+    width: 66px;
+    height: 66px;
+    line-height: 66px;
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 996px) {
     width: 78px;
     height: 78px;
     line-height: 78px;
@@ -34,6 +40,10 @@ export const InsertedImg = styled.img`
     height: 42px;
   }
   @media only screen and (min-width: 600px) {
+    width: 66px;
+    height: 66px;
+  }
+  @media only screen and (min-width: 996px) {
     width: 78px;
     height: 78px;
   }
@@ -49,6 +59,11 @@ export const CloseCircle = styled(CloseCircleFilled)`
     font-size: 10px;
   }
   @media only screen and (min-width: 600px) {
+    top: 5px;
+    right: 30px;
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 996px) {
     top: 5px;
     right: 30px;
     font-size: 14px;

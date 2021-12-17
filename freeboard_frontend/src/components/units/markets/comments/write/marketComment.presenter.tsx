@@ -7,6 +7,7 @@ const MarketCommentUI = (props: IMarketCommentUI) => {
       <S.CommentWrapper
         isAnswer={props.isAnswer}
         isAnswerEdit={props.isAnswerEdit}
+        isEdit={props.isEdit}
       >
         {!props.isEdit && !props.isAnswer && !props.isAnswerEdit && (
           <S.CommentHeader>Q & A</S.CommentHeader>

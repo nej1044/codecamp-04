@@ -8,11 +8,11 @@ export const WriteWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     padding: 50px 50px;
   }
-  @media only screen and (min-width: 768px) {
-    padding: 50px 100px;
+  @media only screen and (min-width: 600px) {
+    padding: 75px 100px;
   }
   @media only screen and (min-width: 996px) {
     padding: 100px 200px;
@@ -27,6 +27,9 @@ export const H1 = styled.h1`
     font-size: 25px;
   }
   @media only screen and (min-width: 600px) {
+    font-size: 30px;
+  }
+  @media only screen and (min-width: 996px) {
     font-size: 36px;
   }
 `;
@@ -43,6 +46,9 @@ export const Title = styled.label`
     font-size: 12px;
   }
   @media only screen and (min-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
     font-size: 24px;
   }
 `;
@@ -55,6 +61,9 @@ export const PhotoWrapper = styled.div`
     width: 250px;
   }
   @media only screen and (min-width: 600px) {
+    width: 450px;
+  }
+  @media only screen and (min-width: 996px) {
     width: 500px;
   }
 `;
@@ -80,12 +89,15 @@ export const BodyInput = styled.input`
   border-bottom: 1px solid #9f9f9f;
   :focus {
     outline: none;
-    @media only screen and (max-width: 600px) {
-      font-size: 12px;
-    }
-    @media only screen and (min-width: 600px) {
-      font-size: 16px;
-    }
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 14px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 16px;
   }
 `;
 
@@ -121,6 +133,9 @@ export const HashInput = styled.input`
     font-size: 12px;
   }
   @media only screen and (min-width: 600px) {
+    font-size: 14px;
+  }
+  @media only screen and (min-width: 996px) {
     font-size: 16px;
   }
 `;

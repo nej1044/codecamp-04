@@ -1,6 +1,7 @@
 import * as S from "./cart.styles";
 import { CloseOutlined } from "@ant-design/icons";
 import { ICartUI } from "./cart.types";
+import { onError } from "../../../commons/libraries/utils";
 
 const CartUI = (props: ICartUI) => {
   return (
@@ -21,7 +22,7 @@ const CartUI = (props: ICartUI) => {
             <S.CartItem key={el._id}>
               <S.ProductInfo onClick={props.getDetail(el._id)}>
                 <S.ItemImg
-                  onError={props.onError}
+                  onError={onError}
                   src={`https://storage.googleapis.com/${el.images[0]}`}
                 />
                 {el.name}

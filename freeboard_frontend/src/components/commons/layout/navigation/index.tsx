@@ -5,7 +5,6 @@ const NavDiv = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 100px;
   width: 100%;
   height: 100px;
   background-color: #8eb695;
@@ -13,9 +12,6 @@ const NavDiv = styled.section`
     padding: 0;
   }
   @media only screen and (min-width: 600px) {
-    padding: 0 50px;
-  }
-  @media only screen and (min-width: 768px) {
     padding: 0 50px;
   }
   @media only screen and (min-width: 996px) {
@@ -28,7 +24,6 @@ const Menu = styled.div`
   height: 100%
   height: 50px;
   color: white;
-  font-size: 25px;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
@@ -36,9 +31,6 @@ const Menu = styled.div`
     font-size: 14px;
   }
   @media only screen and (min-width: 600px) {
-    font-size: 14px;
-  }
-  @media only screen and (min-width: 768px) {
     font-size: 20px;
   }
   @media only screen and (min-width: 996px) {

@@ -72,15 +72,26 @@ const MarketDetail = () => {
   };
 
   const togglePick = async () => {
-    await toggleUseditemPick({
+    const result = await toggleUseditemPick({
       variables: { useditemId: String(router.query.useditemId) },
-      refetchQueries: [
-        {
+      optimisticResponse: {
+        toggleUseditemPick: data?.fetchUseditem.pickedCount || 0,
+      },
+      update(cache, { data }) {
+        cache.writeQuery({
           query: FETCH_USEDITEM,
-          variables: { useditemId: router.query.useditemId },
-        },
-      ],
+          variables: { useditemId: String(router.query.useditemId) },
+          data: {
+            fetchUseditem: {
+              _id: String(router.query.useditemId),
+              __typename: "Useditem",
+              pickedCount: data?.toggleUseditemPick,
+            },
+          },
+        });
+      },
     });
+    console.log(result);
   };
 
   const buyItem = (id: string) => async () => {

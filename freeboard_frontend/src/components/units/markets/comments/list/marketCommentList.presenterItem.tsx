@@ -4,10 +4,15 @@ import { useState } from "react";
 import {
   IMutation,
   IMutationDeleteUseditemQuestionArgs,
+  // IQuery,
 } from "../../../../../commons/types/generated/types";
 import MarketComment from "../write/marketComment.container";
 import { IMarketCommentListUIItem } from "./marketComment.List.types";
-import { DELETE_QUESTION, FETCH_QUESTIONS } from "./marketCommentList.queries";
+import {
+  DELETE_QUESTION,
+  FETCH_QUESTIONS,
+  // FETCH_USER,
+} from "./marketCommentList.queries";
 import * as S from "./marketCommetnList.styles";
 import { getDate } from "../../../../../commons/libraries/utils";
 import AnswerListUI from "./answerList.presenter";
@@ -17,6 +22,8 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
   const [isEdit, setIsEdit] = useState(false);
   const [isAnswer, setIsAnswer] = useState(false);
   const { refetch } = useQuery(FETCH_QUESTIONS);
+  // const { data: fetchUser } =
+  //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
   const [deleteMarketComment] = useMutation<
     Pick<IMutation, "deleteUseditemQuestion">,
     IMutationDeleteUseditemQuestionArgs

@@ -8,8 +8,9 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
+import * as Sentry from "@sentry/nextjs";
 import { AppProps } from "next/dist/shared/lib/router/router";
-import Layout from "../src/components/commons/layout";
+// import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalstyles";
 import { createUploadLink } from "apollo-upload-client";
@@ -37,6 +38,9 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 export const GlobalContext = createContext<any>(null);
 
+Sentry.init({
+  dsn: "https://79a10db5ceca46e9a31c7a09062cf2bd@o1091876.ingest.sentry.io/6109519",
+});
 function MyApp({ Component, pageProps }: AppProps) {
   const [myAccessToken, setMyAccessToken] = useState("");
   const [myUserInfo, setMyUserInfo] = useState({});

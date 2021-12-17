@@ -42,12 +42,12 @@ export const NewsList = styled.a`
   @media only screen and (max-width: 600px) {
     flex-direction: column;
   }
-  /* @media only screen and (min-width: 600px) {
-    flex-direction: column;
-  }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 600px) {
     flex-direction: row;
-  } */
+  }
+  @media only screen and (min-width: 996px) {
+    flex-direction: row;
+  }
 `;
 
 export const ContentsIdx = styled.span`
@@ -72,10 +72,7 @@ export const ContentsDate = styled.span`
   @media only screen and (min-width: 600px) {
     display: none;
   }
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 996px) {
     display: block;
   }
 `;

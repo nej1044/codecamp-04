@@ -32,12 +32,21 @@ export const HeaderSubtitle = styled.p`
 
 export const InputWrapper = styled.div`
   display: flex;
-  width: 1200px;
-  height: 80px;
+  justify-content: center;
+  width: 100%;
+  @media only screen and (max-width: 600px) {
+    height: 50px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 75px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 80px;
+  }
 `;
 
 export const HeaderInput = styled.input`
-  width: 1150px;
+  width: 70%;
   height: 100%;
   padding: 20px;
   border: 1px solid white;
@@ -49,7 +58,6 @@ export const HeaderInput = styled.input`
 `;
 
 export const HeaderBtn = styled.button`
-  width: 150px;
   height: 100%;
   color: white;
   font-size: 18px;
@@ -58,13 +66,35 @@ export const HeaderBtn = styled.button`
   border-radius: 0 5px 5px 0;
   background-color: #8eb695;
   cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    width: 100px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 125px;
+  }
+  @media only screen and (min-width: 996px) {
+    width: 150px;
+  }
 `;
 
 export const LectureBody = styled.section`
   width: 100%;
-  min-height: 100px;
-  padding: 50px 145px;
+  /* min-height: 100px; */
+  @media only screen and (max-width: 600px) {
+    padding: 25px 0px;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 50px 10px;
+  }
+  @media only screen and (min-width: 996px) {
+    padding: 50px 145px;
+  }
 `;
+
+export const Reactstyle = {
+  width: "700px",
+  height: "auto",
+};
 
 export const ContentsHeader = styled.div`
   width: 100%;
