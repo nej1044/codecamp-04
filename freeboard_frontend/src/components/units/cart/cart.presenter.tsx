@@ -31,7 +31,7 @@ const CartUI = (props: ICartUI) => {
               <S.ItemInfo>{el.seller.name}</S.ItemInfo>
               <S.InfoBtnWrap>
                 <S.InfoBtnBuy onClick={props.buyItem(el._id)}>
-                  바로구매
+                  구매
                 </S.InfoBtnBuy>
                 <S.InfoBtn onClick={props.togglePick(el._id)}>
                   <S.Heart twoToneColor="8eb696" />

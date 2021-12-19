@@ -78,11 +78,17 @@ const MarketDetail = () => {
         toggleUseditemPick: data?.fetchUseditem.pickedCount || 0,
       },
       update(cache, { data }) {
+        const prevData: Pick<IQuery, "fetchUseditem"> | null = cache.readQuery({
+          query: FETCH_USEDITEM,
+          variables: { useditemId: String(router.query.useditemId) },
+        });
+        const prevFetch = prevData || { fetchUseditem: {} };
         cache.writeQuery({
           query: FETCH_USEDITEM,
           variables: { useditemId: String(router.query.useditemId) },
           data: {
             fetchUseditem: {
+              ...prevFetch.fetchUseditem,
               _id: String(router.query.useditemId),
               __typename: "Useditem",
               pickedCount: data?.toggleUseditemPick,

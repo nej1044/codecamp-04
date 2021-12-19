@@ -91,11 +91,7 @@ const LecturePage = () => {
                 </S.ContentsBtn>
               </S.BtnWrapper>
             </S.ContentsHeader>
-            <ReactPlayer
-              width="600px"
-              height="400px"
-              url={el.url}
-            ></ReactPlayer>
+            <ReactPlayer width="100%" height="100%" url={el.url}></ReactPlayer>
           </S.Contents>
         ))}
       </S.LectureBody>

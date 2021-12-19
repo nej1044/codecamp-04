@@ -23,13 +23,12 @@ const MarketList = () => {
     router.push(`market/${data._id}`);
     const todayitem =
       JSON.parse(localStorage.getItem("todayitems") || "[]") || [];
-
+    if (todayitem.length === 5) todayitem.shift();
     let isExists = false;
     todayitem.forEach((itemEl: IBoard) => {
       if (data._id === itemEl._id) isExists = true;
     });
     if (isExists) return;
-
     const { __typename, ...newEl } = data;
     todayitem.push(newEl);
     localStorage.setItem("todayitems", JSON.stringify(todayitem));

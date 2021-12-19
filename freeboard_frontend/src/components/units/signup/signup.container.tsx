@@ -51,14 +51,13 @@ const Signup = () => {
       /\w+@\w+.\w+/.test(inputs.email)
     ) {
       try {
-        const result = await createUser({
+        await createUser({
           variables: {
             createUserInput: {
               ...inputs,
             },
           },
         });
-        console.log(result);
         alert("회원가입이 완료되었습니다.");
         router.push("/");
       } catch (error: any) {

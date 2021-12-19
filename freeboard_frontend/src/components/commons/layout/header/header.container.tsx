@@ -60,7 +60,7 @@ const Header = () => {
 
   const logout = async () => {
     await logoutUser;
-    localStorage.removeItem("isLoggesIn");
+    localStorage.removeItem("isLoggedIn");
     setAccessToken("");
     alert("로그아웃하였습니다.");
   };

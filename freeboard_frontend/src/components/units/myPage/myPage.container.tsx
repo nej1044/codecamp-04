@@ -4,11 +4,17 @@ import { ChangeEvent, SyntheticEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
+  IMutationUpdateUserArgs,
   IQuery,
   IQueryFetchPointTransactionsArgs,
 } from "../../../commons/types/generated/types";
 import MyPageUI from "./myPage.presenter";
-import { CREATE_POINT, FETCH_USER, FETCH_POINT } from "./myPage.queries";
+import {
+  CREATE_POINT,
+  FETCH_USER,
+  FETCH_POINT,
+  UPDATE_USER,
+} from "./myPage.queries";
 
 const MyPage = () => {
   const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
@@ -20,7 +26,13 @@ const MyPage = () => {
     Pick<IMutation, "createPointTransactionOfLoading">,
     IMutationCreatePointTransactionOfLoadingArgs
   >(CREATE_POINT);
+  const [updateUser] = useMutation<
+    Pick<IMutation, "updateUser">,
+    IMutationUpdateUserArgs
+  >(UPDATE_USER);
   const router = useRouter();
+  const [isEdit, setisEdit] = useState(false);
+  const [name, setName] = useState("");
   const [coin, setCoin] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -88,6 +100,28 @@ const MyPage = () => {
     });
   };
 
+  const openUpdateUser = () => {
+    setisEdit(true);
+  };
+
+  const onChangeName = (event) => {
+    setName(event.target.value);
+  };
+
+  const updateName = async () => {
+    try {
+      await updateUser({
+        variables: {
+          updateUserInput: { name: name || data?.fetchUserLoggedIn.name },
+        },
+      });
+      alert("별병이 변경되었습니다.");
+      setisEdit(false);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <MyPageUI
       handleOpen={handleOpen}
@@ -100,6 +134,10 @@ const MyPage = () => {
       getDetail={getDetail}
       onError={onError}
       onLoadMore={onLoadMore}
+      openUpdateUser={openUpdateUser}
+      isEdit={isEdit}
+      onChangeName={onChangeName}
+      updateName={updateName}
     />
   );
 };

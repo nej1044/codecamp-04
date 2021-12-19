@@ -84,23 +84,28 @@ export const LectureBody = styled.section`
     padding: 25px 0px;
   }
   @media only screen and (min-width: 600px) {
-    padding: 50px 10px;
+    padding: 50px 70px;
   }
   @media only screen and (min-width: 996px) {
-    padding: 50px 145px;
+    padding: 50px 155px;
   }
 `;
 
-export const Reactstyle = {
-  width: "700px",
-  height: "auto",
-};
-
 export const ContentsHeader = styled.div`
   width: 100%;
-  height: 60px;
   background-color: #8eb695;
-  padding: 0 50px;
+  @media only screen and (max-width: 600px) {
+    height: 40px;
+    padding: 0 30px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 40px;
+    padding: 0 50px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 60px;
+    padding: 0 50px;
+  }
 `;
 
 export const Contents = styled.div`
@@ -109,6 +114,18 @@ export const Contents = styled.div`
   border: 1px solid #8eb695;
   overflow: hidden;
   border-radius: 10px 10px 0px 0px;
+  @media only screen and (max-width: 600px) {
+    width: 270px;
+    height: 250px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 520px;
+    height: 350px;
+  }
+  @media only screen and (min-width: 996px) {
+    width: 640px;
+    height: 400px;
+  }
 `;
 
 export const BtnWrapper = styled.div`

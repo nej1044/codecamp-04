@@ -30,6 +30,7 @@ export const FETCH_ANSWERS = gql`
       _id
       contents
       user {
+        _id
         name
       }
       createdAt

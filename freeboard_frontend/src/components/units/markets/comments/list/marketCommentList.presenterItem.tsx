@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   IMutation,
   IMutationDeleteUseditemQuestionArgs,
+  IQuery,
   // IQuery,
 } from "../../../../../commons/types/generated/types";
 import MarketComment from "../write/marketComment.container";
@@ -11,6 +12,7 @@ import { IMarketCommentListUIItem } from "./marketComment.List.types";
 import {
   DELETE_QUESTION,
   FETCH_QUESTIONS,
+  FETCH_USER,
   // FETCH_USER,
 } from "./marketCommentList.queries";
 import * as S from "./marketCommetnList.styles";
@@ -22,8 +24,7 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
   const [isEdit, setIsEdit] = useState(false);
   const [isAnswer, setIsAnswer] = useState(false);
   const { refetch } = useQuery(FETCH_QUESTIONS);
-  // const { data: fetchUser } =
-  //   useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
+  const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
   const [deleteMarketComment] = useMutation<
     Pick<IMutation, "deleteUseditemQuestion">,
     IMutationDeleteUseditemQuestionArgs
@@ -60,12 +61,12 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
             <div>
               <S.CommentUser>{props.el?.user.name}</S.CommentUser>
             </div>
-            <S.CommentFunc>
-              <S.FuncItem id={props.el?.contents} onClick={onClickUpdate}>
-                수정
-              </S.FuncItem>
-              <S.FuncItem onClick={onClickDelete}>삭제</S.FuncItem>
-            </S.CommentFunc>
+            {props.el.user._id === data?.fetchUserLoggedIn._id && (
+              <S.CommentFunc>
+                <S.FuncItem onClick={onClickUpdate}>수정</S.FuncItem>
+                <S.FuncItem onClick={onClickDelete}>삭제</S.FuncItem>
+              </S.CommentFunc>
+            )}
           </S.CommentInfo>
           <S.CommentContents>{props.el?.contents}</S.CommentContents>
           <S.CommentFooter>

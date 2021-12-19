@@ -35,7 +35,7 @@ const Item = styled.div`
 
 const ItemImg = styled.img`
   width: 100%;
-  height: 120px;
+  height: 90px;
   margin-bottom: 5px;
 `;
 
@@ -64,7 +64,7 @@ const TodayItem = () => {
       <Wrapper>
         <TodayTitle>오늘 본 상품</TodayTitle>
         <ItemWrap>
-          {todayItem.slice(-5, -1).map((el: any) => (
+          {todayItem.map((el: any) => (
             <Item key={el._id} onClick={getDetail(el._id)}>
               <ItemImg
                 onError={onError}

@@ -111,6 +111,35 @@ export const ProfileSection = styled.section`
   background-color: white;
 `;
 
+export const Password = styled.span`
+  width: 100%;
+  color: #9f9f9f;
+  text-decoration: underline;
+  text-align: right;
+`;
+
+export const PasswordWrap = styled.div`
+  display: flex;
+  margin-top: 20px;
+`;
+
+export const PasswordInput = styled.input`
+  padding: 5px;
+  border: 1px solid #9f9f9f;
+  :focus {
+    outline: none;
+    border: 1px solid black;
+  }
+`;
+
+export const PasswordBtn = styled.button`
+  height: 40px;
+  width: 50px;
+  font-size: 14px;
+  color: white;
+  background-color: black;
+`;
+
 export const ProfileName = styled.span`
   font-size: 25px;
 `;

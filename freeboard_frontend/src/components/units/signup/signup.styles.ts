@@ -15,12 +15,19 @@ export const Logo = styled.span`
     font-family: "Black Han";
     src: url("/fonts/BlackHanSans-Regular.ttf");
   }
-
   margin-bottom: 30px;
   font-family: "Black Han";
-  font-size: 40px;
   color: #8eb695;
   cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    font-size: 30px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 40px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 40px;
+  }
 `;
 
 export const SignUpBody = styled.section`
@@ -28,14 +35,32 @@ export const SignUpBody = styled.section`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 700px;
   border: 1px solid #9f9f9f;
-  padding: 50px;
+  @media only screen and (max-width: 600px) {
+    width: 300px;
+    padding: 30px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 700px;
+    padding: 50px;
+  }
+  @media only screen and (min-width: 996px) {
+    width: 700px;
+    padding: 50px;
+  }
 `;
 
 export const BodyTitle = styled.h2`
-  font-size: 36px;
   margin-bottom: 30px;
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 36px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 36px;
+  }
 `;
 
 export const BodyContainer = styled.div`
@@ -45,11 +70,18 @@ export const BodyContainer = styled.div`
 `;
 
 export const BodySubTitle = styled.h3`
-  font-size: 24px;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 24px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 24px;
+  }
 `;
 
 export const BodyInput = styled.input`
-  height: 70px;
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #9f9f9f;
@@ -58,12 +90,22 @@ export const BodyInput = styled.input`
     outline: none;
     border: 2px solid #8eb695;
   }
-  font-size: 18px;
+  @media only screen and (max-width: 600px) {
+    height: 35px;
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 70px;
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 70px;
+    font-size: 18px;
+  }
 `;
 
 export const SignupBtn = styled.button`
   width: 100%;
-  height: 70px;
   margin-top: 30px;
   border-radius: 5px;
   border: none;
@@ -74,5 +116,16 @@ export const SignupBtn = styled.button`
   background-color: ${(props: IPropsSignupStyled) =>
     props.btnColor === true ? "#8eb695" : "9f9f9f"};
   color: white;
-  font-size: 24px;
+  @media only screen and (max-width: 600px) {
+    height: 35px;
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 70px;
+    font-size: 24px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 70px;
+    font-size: 24px;
+  }
 `;

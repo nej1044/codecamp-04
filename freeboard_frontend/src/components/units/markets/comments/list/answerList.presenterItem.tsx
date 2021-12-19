@@ -3,7 +3,11 @@ import { useState } from "react";
 import { getDate } from "../../../../../commons/libraries/utils";
 import MarketComment from "../write/marketComment.container";
 import { useMutation, useQuery } from "@apollo/client";
-import { DELETE_ANSWER, FETCH_ANSWERS } from "./marketCommentList.queries";
+import {
+  DELETE_ANSWER,
+  FETCH_ANSWERS,
+  FETCH_USER,
+} from "./marketCommentList.queries";
 import {
   IMutation,
   IMutationDeleteUseditemQuestionAnswerArgs,
@@ -12,6 +16,7 @@ import {
 import { IAnswerListUIItem } from "./marketComment.List.types";
 
 const AnswerListUIITEM = (props: IAnswerListUIItem) => {
+  const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
   const { refetch } =
     useQuery<Pick<IQuery, "fetchUseditemQuestionAnswers">>(FETCH_ANSWERS);
   const [isAnswerEdit, setIsAnswerEdit] = useState(false);
@@ -47,12 +52,12 @@ const AnswerListUIITEM = (props: IAnswerListUIItem) => {
             <div>
               <S.CommentUser>{props.answerEl?.user.name}</S.CommentUser>
             </div>
-            <S.CommentFunc>
-              <S.FuncItem id={props.answerEl?.contents} onClick={onClickUpdate}>
-                수정
-              </S.FuncItem>
-              <S.FuncItem onClick={onClickDelete}>삭제</S.FuncItem>
-            </S.CommentFunc>
+            {props.answerEl.user._id === data?.fetchUserLoggedIn._id && (
+              <S.CommentFunc>
+                <S.FuncItem onClick={onClickUpdate}>수정</S.FuncItem>
+                <S.FuncItem onClick={onClickDelete}>삭제</S.FuncItem>
+              </S.CommentFunc>
+            )}
           </S.CommentInfo>
           <S.CommentContents>{props.answerEl?.contents}</S.CommentContents>
           <div>

@@ -18,7 +18,6 @@ export const FETCH_USER = gql`
       _id
       email
       name
-      picture
       userPoint {
         _id
         amount
@@ -39,6 +38,22 @@ export const FETCH_POINT = gql`
       status
       statusDetail
       createdAt
+    }
+  }
+`;
+
+export const RESET_PASSWORD = gql`
+  mutation resetUserPassword($password: String!) {
+    resetUserPassword(password: $password)
+  }
+`;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($updateUserInput: UpdateUserInput!) {
+    updateUser(updateUserInput: $updateUserInput) {
+      _id
+      email
+      name
     }
   }
 `;

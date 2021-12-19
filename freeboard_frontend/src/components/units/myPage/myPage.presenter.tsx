@@ -3,10 +3,10 @@ import { Avatar, Image } from "antd";
 import Head from "next/head";
 import { getDate } from "../../../commons/libraries/utils";
 import InfiniteScroll from "react-infinite-scroller";
-
 import * as S from "./myPage.styles";
 import MyPageProject from "./project/project.containter";
 import Pick from "./pick/pick.container";
+import { EditOutlined } from "@ant-design/icons";
 
 const MyPageUI = (props) => {
   return (
@@ -44,7 +44,6 @@ const MyPageUI = (props) => {
                     <S.TransContents status={el.status === "구매"}>
                       {el.balance}
                     </S.TransContents>
-                    {/* <S.TransContents>{el.seller.name}</S.TransContents> */}
                   </S.TransHeader>
                 ))}
               </InfiniteScroll>
@@ -62,6 +61,7 @@ const MyPageUI = (props) => {
               <S.CoinBtn onClick={props.handleOpen}>충전</S.CoinBtn>
             </S.CoinSection>
             <S.ProfileSection>
+              <S.Password>비밀번호변경</S.Password>
               <Avatar
                 src={
                   <Image
@@ -71,9 +71,27 @@ const MyPageUI = (props) => {
                 }
                 style={{ width: 150, height: 150 }}
               />
-              <S.ProfileName>
-                {props.data?.fetchUserLoggedIn.name}
-              </S.ProfileName>
+              {!props.isEdit && (
+                <div>
+                  <S.ProfileName>
+                    {props.data?.fetchUserLoggedIn.name}
+                  </S.ProfileName>
+                  <EditOutlined
+                    style={{ fontSize: "15px" }}
+                    onClick={props.openUpdateUser}
+                  />
+                </div>
+              )}
+              {props.isEdit && (
+                <S.PasswordWrap>
+                  <S.PasswordInput
+                    type="text"
+                    defaultValue={props.data?.fetchUserLoggedIn.name}
+                    onChange={props.onChangeName}
+                  />
+                  <S.PasswordBtn onClick={props.updateName}>변경</S.PasswordBtn>
+                </S.PasswordWrap>
+              )}
             </S.ProfileSection>
           </S.HeaderRight>
         </S.MyPageHeader>

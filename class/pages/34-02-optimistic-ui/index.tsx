@@ -28,7 +28,6 @@ const OptimisticUIPage = () => {
     FETCH_BOARD,
     { variables: { boardId: "61b816aa717be5002baa70a8" } }
   );
-
   const onClicklike = () => {
     fetchLike({
       variables: { boardId: "61b816aa717be5002baa70a8" },

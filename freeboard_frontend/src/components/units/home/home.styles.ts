@@ -18,20 +18,35 @@ export const HomeHeader = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 400px;
   background-color: #8eb695;
   border-top: 1px solid white;
+  @media only screen and (max-width: 600px) {
+    height: 200px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 400px;
+  }
 `;
 
 export const HeaderTitle = styled.h1`
-  font-size: 26px;
   color: white;
+  @media only screen and (max-width: 600px) {
+    font-size: 13px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 26px;
+  }
 `;
 
 export const HeaderSubTitle = styled.h2`
   font-family: "Black Han";
-  font-size: 100px;
   color: white;
+  @media only screen and (max-width: 600px) {
+    font-size: 50px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 100px;
+  }
 `;
 
 export const HomeBody = styled.div`
@@ -47,33 +62,61 @@ export const ProjectSection = styled.section`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 850px;
-  padding: 100px;
+  @media only screen and (max-width: 600px) {
+    padding: 50px;
+    align-items: center;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 100px;
+  }
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 30px;
+  @media only screen and (max-width: 600px) {
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 export const ProjectContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Project = styled.div`
   display: flex;
   flex-direction: column;
-  width: 380px;
-  height: 550px;
-  padding: 20px;
   cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    width: 220px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 380px;
+  }
 `;
 
 export const ProjectImg = styled.img`
   width: 100%;
-  height: 250px;
   margin-bottom: 10px;
+  @media only screen and (max-width: 600px) {
+    height: 140px;
+    padding: 5px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 120px;
+    padding: 5px;
+  }
+  @media only screen and (min-width: 996px) {
+    height: 250px;
+    padding: 20px;
+  }
 `;
 
 export const ProjectContents = styled.div`
@@ -81,7 +124,6 @@ export const ProjectContents = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 200px;
   padding: 10px;
 `;
 
@@ -92,13 +134,29 @@ export const ContentsHeader = styled.div`
 
 export const ProjectName = styled.span`
   width: 100%;
-  font-size: 24px;
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 16px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 24px;
+  }
 `;
 
 export const ProjectRemarks = styled.span`
   width: 100%;
-  font-size: 18px;
   color: #9f9f9f;
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 14px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 18px;
+  }
 `;
 
 export const Tag = styled.span`
@@ -107,6 +165,15 @@ export const Tag = styled.span`
   padding: 10px;
   border-radius: 20px;
   color: white;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 996px) {
+    display: inline-block;
+  }
 `;
 
 export const DeveloperSection = styled.section`
@@ -114,10 +181,17 @@ export const DeveloperSection = styled.section`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 300px;
-  padding: 60px 100px;
   background-color: #8eb695;
   color: white;
+  @media only screen and (max-width: 600px) {
+    height: 150px;
+    padding: 30px 50px;
+    align-items: center;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 300px;
+    padding: 60px 100px;
+  }
 `;
 
 export const DeveloperContainer = styled.div`
@@ -126,22 +200,52 @@ export const DeveloperContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 200px;
-  padding: 0 40px;
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 0 40px;
+  }
 `;
 
 export const DeveloperTitle = styled.h2`
   color: white;
   font-size: 30px;
+  @media only screen and (max-width: 600px) {
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 export const Developer = styled.span`
-  font-size: 26px;
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 18px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 26px;
+  }
 `;
 
 export const ProfileImg = styled.img`
   background-color: white;
   border-radius: 50%;
-  margin: 20px;
+  @media only screen and (max-width: 600px) {
+    width: 16px;
+    margin: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 32px;
+    margin: 15px;
+  }
+  @media only screen and (min-width: 996px) {
+    width: 52px;
+    margin: 20px;
+  }
 `;
 
 export const PostingSection = styled.section`
@@ -149,36 +253,65 @@ export const PostingSection = styled.section`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 650px;
-  padding: 80px 100px;
+  @media only screen and (max-width: 600px) {
+    padding: 40px 50px;
+    align-items: center;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 80px 100px;
+  }
 `;
 
 export const PostingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 400px;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const Posting = styled.div`
-  width: 350px;
-  height: 300px;
   cursor: pointer;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 230px;
+  }
+  @media only screen and (min-width: 996px) {
+    width: 350px;
+  }
 `;
 
 export const PostingWriter = styled.span`
-  font-size: 20px;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 996px) {
+    font-size: 20px;
+  }
 `;
 
 export const PostingContents = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 350px;
-  height: 300px;
-  padding: 30px 40px;
+  width: 100%;
   border: 1px solid #e9e9e9;
   background-color: #f7f7f7;
+  @media only screen and (max-width: 600px) {
+    padding: 20px 20px;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 20px 20px;
+  }
+  @media only screen and (min-width: 996px) {
+    padding: 30px 40px;
+  }
 `;
 
 export const PostingDetail = styled.div`
@@ -191,15 +324,27 @@ export const PostingDate = styled.span`
 `;
 
 export const PostingTitle = styled.span`
-  max-height: 100px;
   overflow: hidden;
-  font-size: 20px;
   margin: 10px 0;
+  @media only screen and (max-width: 600px) {
+    max-height: 20px;
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    max-height: 20px;
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 996px) {
+    max-height: 100px;
+    font-size: 20px;
+  }
 `;
 
 export const PostingLike = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  margin-top: 50px;
 `;
 
 export const LikeImg = styled.img`

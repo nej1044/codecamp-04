@@ -1,5 +1,6 @@
 import MarketWrite from "../../../../src/components/units/markets/write/marketWrite.container";
 import { createContext } from "react";
+import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
 
 export const EditContext = createContext({});
 
@@ -12,4 +13,4 @@ const MarketEditPage = () => {
   );
 };
 
-export default MarketEditPage;
+export default withAuth(MarketEditPage);

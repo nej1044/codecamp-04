@@ -18,5 +18,5 @@ function solution(n) {
 function solution(n) {
   n = n.toString(3).split("").reverse().join("");
 
-  return n.parseInt(n, 3);
+  return parseInt(n, 3);
 }
