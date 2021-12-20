@@ -1,4 +1,5 @@
 import { HeartTwoTone } from "@ant-design/icons";
+import { onError } from "../../../../commons/libraries/utils";
 import * as S from "./project.styles";
 
 const MyPageProjectUI = (props) => {
@@ -24,7 +25,7 @@ const MyPageProjectUI = (props) => {
                       isSoldout={el.buyer?._id}
                     >
                       <S.ItemImg
-                        onError={props.onError}
+                        onError={onError}
                         src={`https://storage.googleapis.com/${el.images[0]}`}
                       />
                       <S.ItemInfo>
@@ -46,7 +47,7 @@ const MyPageProjectUI = (props) => {
                   <>
                     <S.Item key={el._id} onClick={props.getDetail(el._id)}>
                       <S.ItemImg
-                        onError={props.onError}
+                        onError={onError}
                         src={`https://storage.googleapis.com/${el.images[0]}`}
                       />
                       <S.ItemInfo>

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import MyPageProjectUI from "./project.presenter";
 import { FETCH_BOUGHT, FETCH_SOLD } from "./project.queries";
 
@@ -12,11 +12,6 @@ const MyPageProject = () => {
 
   const getDetail = (id: String) => () => {
     router.push(`market/${id}`);
-  };
-
-  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
-    (event.target as any).src =
-      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
   };
 
   const onLoadMore = () => {
@@ -73,7 +68,6 @@ const MyPageProject = () => {
       fetchSold={fetchSold}
       isBought={isBought}
       getDetail={getDetail}
-      onError={onError}
       onLoadMore={onLoadMore}
       getBought={getBought}
       getSold={getSold}

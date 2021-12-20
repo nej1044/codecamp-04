@@ -50,6 +50,7 @@ export const ListFooter = styled.button`
 export const Item = styled.div`
   position: relative;
   width: 280px;
+  height: 400px;
   margin-bottom: 40px;
   float: left;
   opacity: ${(props) => (props.isSoldout ? "0.5" : "1")};
