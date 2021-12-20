@@ -67,6 +67,7 @@ const MarketList = () => {
         };
       },
     });
+    console.log("fetchmore");
   };
 
   return (

@@ -248,7 +248,7 @@ export const ModalWrap = styled.div`
   height: 100%;
 `;
 
-export const ModalTitle = styled.span`
+export const ModalTitle = styled.h3`
   font-size: 24px;
 `;
 
@@ -301,3 +301,18 @@ export const style = {
   p: 5,
   px: 4,
 };
+
+export const PWWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const PWInput = styled.input`
+  width: 66%;
+  border: 1px solid #9f9f9f;
+  padding: 5px;
+  :focus {
+    outline: none;
+    border: 3px solid #8eb696;
+  }
+`;

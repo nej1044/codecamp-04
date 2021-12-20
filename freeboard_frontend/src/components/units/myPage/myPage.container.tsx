@@ -4,6 +4,7 @@ import { ChangeEvent, SyntheticEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
+  IMutationResetUserPasswordArgs,
   IMutationUpdateUserArgs,
   IQuery,
   IQueryFetchPointTransactionsArgs,
@@ -14,6 +15,7 @@ import {
   FETCH_USER,
   FETCH_POINT,
   UPDATE_USER,
+  RESET_PASSWORD,
 } from "./myPage.queries";
 
 const MyPage = () => {
@@ -30,14 +32,22 @@ const MyPage = () => {
     Pick<IMutation, "updateUser">,
     IMutationUpdateUserArgs
   >(UPDATE_USER);
+  const [resetUserPassword] = useMutation<
+    Pick<IMutation, "resetUserPassword">,
+    IMutationResetUserPasswordArgs
+  >(RESET_PASSWORD);
   const router = useRouter();
   const [isEdit, setisEdit] = useState(false);
   const [name, setName] = useState("");
   const [coin, setCoin] = useState(0);
+  const [pw, setPw] = useState("");
+  const [rePw, setRePw] = useState("");
   const [open, setOpen] = useState(false);
-
+  const [passwordEdit, setPasswordEdit] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const passwordOpen = () => setPasswordEdit(true);
+  const passwordClose = () => setPasswordEdit(false);
 
   const handleChangeCoin = (event: ChangeEvent<HTMLInputElement>) => {
     setCoin(Number(event.target.value));
@@ -122,6 +132,27 @@ const MyPage = () => {
     }
   };
 
+  const onChanePw = (event) => {
+    setPw(event.target.value);
+  };
+
+  const onChaneRePw = (event) => {
+    setRePw(event.target.value);
+  };
+
+  const resetPassword = () => {
+    if (pw !== rePw) alert("비밀번호를 다시 확인해주세요");
+    if (pw === rePw) {
+      try {
+        resetUserPassword({ variables: { password: pw } });
+        alert("비밀번호가 변경되었습니다.");
+        setPasswordEdit(false);
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  };
+
   return (
     <MyPageUI
       handleOpen={handleOpen}
@@ -138,6 +169,12 @@ const MyPage = () => {
       isEdit={isEdit}
       onChangeName={onChangeName}
       updateName={updateName}
+      passwordEdit={passwordEdit}
+      passwordClose={passwordClose}
+      passwordOpen={passwordOpen}
+      onChanePw={onChanePw}
+      onChaneRePw={onChaneRePw}
+      resetPassword={resetPassword}
     />
   );
 };

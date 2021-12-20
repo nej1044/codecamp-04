@@ -61,7 +61,7 @@ const MyPageUI = (props) => {
               <S.CoinBtn onClick={props.handleOpen}>충전</S.CoinBtn>
             </S.CoinSection>
             <S.ProfileSection>
-              <S.Password>비밀번호변경</S.Password>
+              <S.Password onClick={props.passwordOpen}>비밀번호변경</S.Password>
               <Avatar
                 src={
                   <Image
@@ -115,6 +115,34 @@ const MyPageUI = (props) => {
               <S.ModalText>원</S.ModalText>
             </S.ModalCount>
             <S.ModalBtn onClick={props.onClickPayment}>결제하기</S.ModalBtn>
+          </S.ModalWrap>
+        </Box>
+      </S.StyledModal>
+      <S.StyledModal
+        open={props.passwordEdit}
+        onClose={props.passwordClose}
+        BackdropComponent={S.Backdrop}
+      >
+        <Box sx={S.style}>
+          <S.ModalWrap>
+            <S.ModalTitle>비밀번호 변경</S.ModalTitle>
+            <S.PWWrap>
+              <S.ModalText>새 비밀번호</S.ModalText>
+              <S.PWInput
+                type="password"
+                placeholder="새 비밀번호를 입력해주세요"
+                onChange={props.onChanePw}
+              />
+            </S.PWWrap>
+            <S.PWWrap>
+              <S.ModalText>새 비밀번호 확인</S.ModalText>
+              <S.PWInput
+                type="password"
+                placeholder="새 비밀번호를 확인해주세요"
+                onChange={props.onChaneRePw}
+              />
+            </S.PWWrap>
+            <S.ModalBtn onClick={props.resetPassword}>비밀번호 변경</S.ModalBtn>
           </S.ModalWrap>
         </Box>
       </S.StyledModal>
