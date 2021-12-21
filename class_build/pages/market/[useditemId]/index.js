@@ -28,9 +28,7 @@ export const getServerSideProps = async (context) => {
   const result = await request(
     "https://backend04.codebootcamp.co.kr/graphql",
     FETCH_USEDITEM,
-    {
-      variables: { useditemId: context.query.useditemId },
-    }
+    { useditemId: context.query.useditemId }
   );
   return {
     props: {
