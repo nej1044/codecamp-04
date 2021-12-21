@@ -7,8 +7,9 @@ import * as S from "./myPage.styles";
 import MyPageProject from "./project/project.containter";
 import Pick from "./pick/pick.container";
 import { EditOutlined } from "@ant-design/icons";
+import { IMyPageUI } from "./myPage.types";
 
-const MyPageUI = (props) => {
+const MyPageUI = (props: IMyPageUI) => {
   return (
     <>
       <Head>
@@ -32,7 +33,7 @@ const MyPageUI = (props) => {
                 loadMore={props.onLoadMore}
                 useWindow={false}
               >
-                {props.fetchPoint?.fetchPointTransactions.map((el) => (
+                {props.fetchPoint?.fetchPointTransactions.map((el: any) => (
                   <S.TransHeader key={el._id}>
                     <S.TransBasic>{getDate(el.createdAt)}</S.TransBasic>
                     <S.TransContents status={el.status === "구매"}>
@@ -55,7 +56,7 @@ const MyPageUI = (props) => {
               <S.CoinCountWrap>
                 <S.CountTitle>로켓코인</S.CountTitle>
                 <S.PointAmount>
-                  {props.data?.fetchUserLoggedIn.userPoint.amount}
+                  {props.data?.fetchUserLoggedIn.userPoint?.amount}
                 </S.PointAmount>
               </S.CoinCountWrap>
               <S.CoinBtn onClick={props.handleOpen}>충전</S.CoinBtn>
@@ -131,7 +132,7 @@ const MyPageUI = (props) => {
               <S.PWInput
                 type="password"
                 placeholder="새 비밀번호를 입력해주세요"
-                onChange={props.onChanePw}
+                onChange={props.onChangePw}
               />
             </S.PWWrap>
             <S.PWWrap>
@@ -139,7 +140,7 @@ const MyPageUI = (props) => {
               <S.PWInput
                 type="password"
                 placeholder="새 비밀번호를 확인해주세요"
-                onChange={props.onChaneRePw}
+                onChange={props.onChangeRePw}
               />
             </S.PWWrap>
             <S.ModalBtn onClick={props.resetPassword}>비밀번호 변경</S.ModalBtn>

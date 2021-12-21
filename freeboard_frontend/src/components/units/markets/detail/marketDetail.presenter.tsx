@@ -12,7 +12,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         <S.DetailHeader>
           <S.HeaderImg
             onError={onError}
-            src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`}
+            src={`https://storage.googleapis.com/${props.data?.fetchUseditem?.images?.[0]}`}
           />
           <S.HeaderText>
             <S.HeaderEdit>

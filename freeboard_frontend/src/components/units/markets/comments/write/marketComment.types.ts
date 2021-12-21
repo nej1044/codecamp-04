@@ -31,4 +31,5 @@ export interface IMarketComment {
 export interface IMarketCommentStyled {
   isAnswer?: boolean;
   isAnswerEdit?: boolean;
+  isEdit?: boolean;
 }

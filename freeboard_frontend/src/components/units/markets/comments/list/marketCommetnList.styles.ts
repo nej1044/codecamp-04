@@ -1,17 +1,18 @@
 import styled from "@emotion/styled";
+import { IMarketCommentListStyled } from "./marketComment.List.types";
 
 export const CommentBody = styled.div`
   margin: 0 auto;
   width: 100%;
   background-color: #f7f7f7;
   @media only screen and (max-width: 600px) {
-    padding: ${(props) =>
+    padding: ${(props: IMarketCommentListStyled) =>
       props.isEdit || props.isAnswer || props.isAnswerEdit
         ? "20px 0"
         : "10px 20px"};
   }
   @media only screen and (min-width: 600px) {
-    padding: ${(props) =>
+    padding: ${(props: IMarketCommentListStyled) =>
       props.isEdit || props.isAnswer || props.isAnswerEdit
         ? "20px 0"
         : "0px 102px 30px 102px"};

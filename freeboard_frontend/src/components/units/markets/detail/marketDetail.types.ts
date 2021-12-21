@@ -1,4 +1,4 @@
-import { IBoard, IQuery } from "../../../../commons/types/generated/types";
+import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IMarketDetailUIProps {
   handleEdit: () => void;
@@ -6,6 +6,6 @@ export interface IMarketDetailUIProps {
   togglePick: () => void;
   data?: Pick<IQuery, "fetchUseditem">;
   fetchUser?: Pick<IQuery, "fetchUserLoggedIn">;
-  onClickBasket: (data: IBoard) => () => void;
+  onClickBasket: (data: any) => () => void;
   buyItem: (id: string) => () => void;
 }

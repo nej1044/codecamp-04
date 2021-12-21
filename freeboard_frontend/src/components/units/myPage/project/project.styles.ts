@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IProjectStyled } from "./project.types";
 
 export const MyPageBody = styled.div`
   display: flex;
@@ -19,7 +20,8 @@ export const ProjectHeader = styled.div`
 export const SoldTitle = styled.span`
   height: 50px;
   font-size: 30px;
-  border-bottom: ${(props) => (props.isBought ? "3px solid black" : "none")};
+  border-bottom: ${(props: IProjectStyled) =>
+    props.isBought ? "3px solid black" : "none"};
   text-align: center;
   color: ${(props) => (props.isBought ? "black" : "#9f9f9f")};
   cursor: pointer;
@@ -53,7 +55,7 @@ export const Item = styled.div`
   height: 400px;
   margin-bottom: 40px;
   float: left;
-  opacity: ${(props) => (props.isSoldout ? "0.5" : "1")};
+  opacity: ${(props: IProjectStyled) => (props.isSoldout ? "0.5" : "1")};
 `;
 
 export const Soldout = styled.span`

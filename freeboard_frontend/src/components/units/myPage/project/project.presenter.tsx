@@ -1,8 +1,9 @@
 import { HeartTwoTone } from "@ant-design/icons";
 import { onError } from "../../../../commons/libraries/utils";
 import * as S from "./project.styles";
+import { IMyPageProjectUI } from "./project.types";
 
-const MyPageProjectUI = (props) => {
+const MyPageProjectUI = (props: IMyPageProjectUI) => {
   return (
     <>
       <S.MyPageBody>

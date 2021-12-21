@@ -53,12 +53,12 @@ const MarketDetail = () => {
     }
   };
 
-  const onClickBasket = (data: IBoard) => () => {
+  const onClickBasket = (data: any) => () => {
     const basket = JSON.parse(localStorage.getItem("baskets") || "[]") || [];
 
     let isExists = false;
     basket.forEach((basketEl: IBoard) => {
-      if (data._id === basketEl._id) isExists = true;
+      if (data?._id === basketEl._id) isExists = true;
     });
     if (isExists) {
       alert("이미 장바구니에 담았습니다.");

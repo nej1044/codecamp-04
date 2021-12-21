@@ -120,6 +120,7 @@ export const ListBody = styled.section`
 
 export const Item = styled.div`
   position: relative;
+  min-height: 350px;
   margin-bottom: 50px;
   float: left;
   opacity: ${(props: IMarketListStyled) => (props.isSoldout ? 0.5 : 1)};

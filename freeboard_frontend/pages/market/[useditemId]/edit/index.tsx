@@ -2,7 +2,7 @@ import MarketWrite from "../../../../src/components/units/markets/write/marketWr
 import { createContext } from "react";
 import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
 
-export const EditContext = createContext({});
+export const EditContext = createContext<any>({});
 
 const MarketEditPage = () => {
   const editValue = { isEdit: true };

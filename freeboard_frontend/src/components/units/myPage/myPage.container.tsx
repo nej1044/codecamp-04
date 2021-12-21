@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
@@ -17,6 +17,10 @@ import {
   UPDATE_USER,
   RESET_PASSWORD,
 } from "./myPage.queries";
+
+declare const window: typeof globalThis & {
+  IMP: any;
+};
 
 const MyPage = () => {
   const { data } = useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER);
@@ -85,11 +89,6 @@ const MyPage = () => {
     router.push(`market/${id}`);
   };
 
-  const onError = (event: SyntheticEvent<HTMLImageElement>) => {
-    (event.target as any).src =
-      "https://reviewpro.co.kr/wp-content/uploads/2020/06/vipul-jha-a4X1cdC1QAc-unsplash-scaled.jpg";
-  };
-
   const onLoadMore = () => {
     if (!fetchPoint) return;
 
@@ -114,7 +113,7 @@ const MyPage = () => {
     setisEdit(true);
   };
 
-  const onChangeName = (event) => {
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
 
@@ -128,15 +127,15 @@ const MyPage = () => {
       alert("별병이 변경되었습니다.");
       setisEdit(false);
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) alert(error.message);
     }
   };
 
-  const onChanePw = (event) => {
+  const onChangePw = (event: ChangeEvent<HTMLInputElement>) => {
     setPw(event.target.value);
   };
 
-  const onChaneRePw = (event) => {
+  const onChangeRePw = (event: ChangeEvent<HTMLInputElement>) => {
     setRePw(event.target.value);
   };
 
@@ -148,7 +147,7 @@ const MyPage = () => {
         alert("비밀번호가 변경되었습니다.");
         setPasswordEdit(false);
       } catch (error) {
-        alert(error.message);
+        if (error instanceof Error) alert(error.message);
       }
     }
   };
@@ -163,7 +162,6 @@ const MyPage = () => {
       data={data}
       fetchPoint={fetchPoint}
       getDetail={getDetail}
-      onError={onError}
       onLoadMore={onLoadMore}
       openUpdateUser={openUpdateUser}
       isEdit={isEdit}
@@ -172,8 +170,8 @@ const MyPage = () => {
       passwordEdit={passwordEdit}
       passwordClose={passwordClose}
       passwordOpen={passwordOpen}
-      onChanePw={onChanePw}
-      onChaneRePw={onChaneRePw}
+      onChangePw={onChangePw}
+      onChangeRePw={onChangeRePw}
       resetPassword={resetPassword}
     />
   );

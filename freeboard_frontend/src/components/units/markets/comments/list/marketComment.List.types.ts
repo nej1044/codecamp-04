@@ -18,3 +18,9 @@ export interface IAnswerListUIItem {
   answerEl?: any;
   el?: any;
 }
+
+export interface IMarketCommentListStyled {
+  isEdit?: boolean;
+  isAnswer?: boolean;
+  isAnswerEdit?: boolean;
+}
