@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { gql, request } from "graphql/request";
+import { gql, request } from "graphql-request";
 
 const MarketDetailPage = (props) => {
   return (
