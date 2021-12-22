@@ -10,6 +10,10 @@ const MyPageProject = () => {
   const { data: fetchSold, fetchMore: moreSold } = useQuery(FETCH_SOLD);
   const [isBought, setIsBought] = useState(false);
 
+  const aaa = fetchBought?.fetchUseditemsIBought.slice(0, 8);
+  const bbb = fetchBought?.fetchUseditemsIBought.slice(8, 10);
+  console.log(aaa);
+  console.log(bbb);
   const getDetail = (id: String) => () => {
     router.push(`market/${id}`);
   };
