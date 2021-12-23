@@ -1,11 +1,11 @@
 import { Box } from "@mui/system";
 import { Avatar, Image } from "antd";
 import Head from "next/head";
-import { getDate } from "../../../commons/libraries/utils";
+import { getDate } from "../../../../commons/libraries/utils";
 import InfiniteScroll from "react-infinite-scroller";
 import * as S from "./myPage.styles";
-import MyPageProject from "./project/project.containter";
-import Pick from "./pick/pick.container";
+import MyPageProject from "../project/project.containter";
+import Pick from "../pick/pick.container";
 import { EditOutlined } from "@ant-design/icons";
 import { IMyPageUI } from "./myPage.types";
 
@@ -67,10 +67,10 @@ const MyPageUI = (props: IMyPageUI) => {
                 src={
                   <Image
                     src="https://joeschmoe.io/api/v1/random"
-                    style={{ width: 150 }}
+                    style={S.AvatarStyle}
                   />
                 }
-                style={{ width: 150, height: 150 }}
+                style={S.AvatarStyle}
               />
               {!props.isEdit && (
                 <div>

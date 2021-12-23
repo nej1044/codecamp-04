@@ -1,7 +1,7 @@
 import * as S from "./MarketList.styles";
 import { HeartTwoTone } from "@ant-design/icons";
 import InfiniteScroll from "react-infinite-scroller";
-import TodayItem from "../../../commons/todayItem/todayItem.container";
+import TodayItem from "../../../commons/todayItem";
 import { IMarketListUI } from "./MarketList.types";
 import Checkbox from "@mui/material/Checkbox";
 import { v4 as uuid4 } from "uuid";

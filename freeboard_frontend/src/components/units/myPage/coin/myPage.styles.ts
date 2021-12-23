@@ -4,25 +4,40 @@ import { IMyPageStyled } from "./myPage.types";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 100px;
   background-color: #f9f9f9;
+  @media only screen and (max-width: 600px) {
+    padding: 30px;
+  }
+  @media only screen and (min-width: 600px) {
+    padding: 100px;
+  }
 `;
 
 export const MyPageHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 30px;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const HeaderLeft = styled.div`
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 49%;
   height: 300px;
   padding: 50px;
   background-color: white;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 600px) {
+    display: flex;
+  }
 `;
 
 export const Transaction = styled.div`
@@ -54,10 +69,18 @@ export const TransContents = styled.span`
 export const HeaderRight = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 49%;
-  height: 300px;
-  padding: 50px;
+
   background-color: white;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    height: 150px;
+    padding: 25px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 49%;
+    height: 300px;
+    padding: 50px;
+  }
 `;
 
 export const CoinSection = styled.section`
@@ -70,11 +93,18 @@ export const CoinSection = styled.section`
 `;
 
 export const CoinTitle = styled.span`
-  width: 120px;
-  height: 50px;
-  font-size: 30px;
   border-bottom: 3px solid black;
   text-align: center;
+  @media only screen and (max-width: 600px) {
+    width: 60px;
+    height: 25px;
+    font-size: 15px;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 120px;
+    height: 50px;
+    font-size: 30px;
+  }
 `;
 
 export const CoinCountWrap = styled.div`
@@ -86,20 +116,37 @@ export const CoinCountWrap = styled.div`
 `;
 
 export const PointAmount = styled.span`
-  font-size: 24px;
   font-weight: 600;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 24px;
+  }
 `;
 
 export const CountTitle = styled.span`
-  font-size: 20px;
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 export const CoinBtn = styled.button`
-  height: 70px;
-  width: 250px;
-  font-size: 20px;
   color: white;
   background-color: black;
+  @media only screen and (max-width: 600px) {
+    height: 35px;
+    width: 125px;
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    height: 70px;
+    width: 250px;
+    font-size: 20px;
+  }
 `;
 
 export const ProfileSection = styled.section`
@@ -117,7 +164,25 @@ export const Password = styled.span`
   color: #9f9f9f;
   text-decoration: underline;
   text-align: right;
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 16px;
+  }
 `;
+
+export const AvatarStyle = {
+  margin: 0,
+  "@media only screen and (max-width: 600px)": {
+    width: 100,
+    height: 100,
+  },
+  "@media only screen and (min-width: 600px)": {
+    width: 150,
+    height: 150,
+  },
+};
 
 export const PasswordWrap = styled.div`
   display: flex;
@@ -142,7 +207,12 @@ export const PasswordBtn = styled.button`
 `;
 
 export const ProfileName = styled.span`
-  font-size: 25px;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+  @media only screen and (min-width: 600px) {
+    font-size: 25px;
+  }
 `;
 
 export const StyledModal = styled(ModalUnstyled)`

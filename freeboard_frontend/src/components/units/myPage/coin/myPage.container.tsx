@@ -8,7 +8,7 @@ import {
   IMutationUpdateUserArgs,
   IQuery,
   IQueryFetchPointTransactionsArgs,
-} from "../../../commons/types/generated/types";
+} from "../../../../commons/types/generated/types";
 import MyPageUI from "./myPage.presenter";
 import {
   CREATE_POINT,
