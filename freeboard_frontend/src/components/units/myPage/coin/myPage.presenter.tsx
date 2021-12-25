@@ -67,10 +67,10 @@ const MyPageUI = (props: IMyPageUI) => {
                 src={
                   <Image
                     src="https://joeschmoe.io/api/v1/random"
-                    style={S.AvatarStyle}
+                    style={{ width: "60%", height: "60%", margin: "0 auto" }}
                   />
                 }
-                style={S.AvatarStyle}
+                style={{ width: "70%", height: "70%" }}
               />
               {!props.isEdit && (
                 <div>

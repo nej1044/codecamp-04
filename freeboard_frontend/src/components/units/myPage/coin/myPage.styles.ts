@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
     padding: 30px;
   }
   @media only screen and (min-width: 600px) {
+    padding: 65px;
+  }
+  @media only screen and (min-width: 996px) {
     padding: 100px;
   }
 `;
@@ -21,6 +24,9 @@ export const MyPageHeader = styled.div`
     margin-bottom: 15px;
   }
   @media only screen and (min-width: 600px) {
+    margin-bottom: 23px;
+  }
+  @media only screen and (min-width: 996px) {
     margin-bottom: 30px;
   }
 `;
@@ -36,6 +42,9 @@ export const HeaderLeft = styled.div`
     display: none;
   }
   @media only screen and (min-width: 600px) {
+    display: none;
+  }
+  @media only screen and (min-width: 996px) {
     display: flex;
   }
 `;
@@ -69,7 +78,6 @@ export const TransContents = styled.span`
 export const HeaderRight = styled.div`
   display: flex;
   justify-content: space-between;
-
   background-color: white;
   @media only screen and (max-width: 600px) {
     width: 100%;
@@ -77,6 +85,11 @@ export const HeaderRight = styled.div`
     padding: 25px;
   }
   @media only screen and (min-width: 600px) {
+    width: 100%;
+    height: 300px;
+    padding: 38px;
+  }
+  @media only screen and (min-width: 996px) {
     width: 49%;
     height: 300px;
     padding: 50px;
@@ -171,18 +184,6 @@ export const Password = styled.span`
     font-size: 16px;
   }
 `;
-
-export const AvatarStyle = {
-  margin: 0,
-  "@media only screen and (max-width: 600px)": {
-    width: 100,
-    height: 100,
-  },
-  "@media only screen and (min-width: 600px)": {
-    width: 150,
-    height: 150,
-  },
-};
 
 export const PasswordWrap = styled.div`
   display: flex;
