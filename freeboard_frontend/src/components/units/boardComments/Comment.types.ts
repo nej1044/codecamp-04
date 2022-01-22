@@ -6,9 +6,9 @@ import {
 import { ApolloQueryResult } from "@apollo/client";
 
 interface IInputs {
-  writer: string;
-  password: string;
-  contents: string;
+  writer?: string;
+  password?: string;
+  contents?: string;
 }
 
 export interface ICommentWriteUIProps {

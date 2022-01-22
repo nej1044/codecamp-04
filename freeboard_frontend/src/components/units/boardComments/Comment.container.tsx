@@ -11,14 +11,14 @@ import {
 } from "../../../commons/types/generated/types";
 
 const CommentWrite = () => {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState<object>({
     writer: "",
     password: "",
     contents: "",
   });
-  const [rating, setRating] = useState(3);
+  const [rating, setRating] = useState<number>(3);
   const router = useRouter();
-  const [startPage, setStartPage] = useState(1);
+  const [startPage, setStartPage] = useState<number>(1);
   const [createBoardComment] = useMutation<
     Pick<IMutation, "createBoardComment">,
     IMutationCreateBoardCommentArgs
@@ -63,8 +63,9 @@ const CommentWrite = () => {
           contents: "",
         });
         alert("댓글을 등록했습니다.");
-      } catch (error: any) {
-        alert(`댓글 등록에 실패했습니다 ${error.message}`);
+      } catch (error) {
+        if (error instanceof Error)
+          alert(`댓글 등록에 실패했습니다 ${error.message}`);
       }
     }
   };

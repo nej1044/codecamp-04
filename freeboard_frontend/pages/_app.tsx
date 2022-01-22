@@ -10,7 +10,7 @@ import { AppProps } from "next/dist/shared/lib/router/router";
 import "antd/dist/antd.css";
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
-import { globalStyles } from "../src/commons/styles/globalStyles";
+import { globalStyles } from "../src/commons/styles/globalstyles";
 import { createUploadLink } from "apollo-upload-client";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -75,7 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   const uploadLink = createUploadLink({
-    uri: "https://backend04.codebootcamp.co.kr/graphql",
+    uri: "https://backend04.codebootcamp.co.kr/graphql01",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
