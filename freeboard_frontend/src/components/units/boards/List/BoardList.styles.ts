@@ -34,6 +34,7 @@ export const HeaderForm = styled.div`
   width: 100%;
   height: 50px;
 `;
+
 export const Selected = styled.select`
   width: 100px;
   height: 100%;
@@ -49,7 +50,7 @@ export const HeaderInput = styled.input`
   height: 100%;
   padding: 10px;
   border: 1px solid #fbdea2;
-  &:focus {
+  :focus {
     border: none;
     outline: 1px solid #8eb695;
   }

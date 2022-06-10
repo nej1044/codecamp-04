@@ -5,26 +5,38 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { schema, nonSchema } from "./marketWrite.validation";
 import { EditContext } from "../../../../../pages/market/[useditemId]/edit";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { IMarketWriteUI } from "./marketWrite.types";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const marketWriteUI = (props: IMarketWriteUI) => {
   const { isEdit } = useContext(EditContext);
-  const { handleSubmit, register, setValue, trigger, getValues, formState } =
-    useForm({
-      mode: "onChange",
-      resolver: yupResolver(isEdit ? nonSchema : schema),
-    });
+  const {
+    handleSubmit,
+    register,
+    setValue,
+    trigger,
+    getValues,
+    formState,
+    reset,
+  } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(isEdit ? nonSchema : schema),
+  });
 
   const handleChange = (value: string) => {
     setValue("contents", value === "<p><br></p>" ? "" : value);
     trigger("contents");
   };
+
+  useEffect(() => {
+    reset({ contents: props.data?.fetchUseditem.contents });
+  }, [props.data]);
 
   return (
     <>
@@ -103,11 +115,7 @@ const marketWriteUI = (props: IMarketWriteUI) => {
                 <ReactQuill
                   onChange={handleChange}
                   style={{ height: "20em" }}
-                  value={
-                    getValues("contents") ||
-                    props.data?.fetchUseditem.contents ||
-                    ""
-                  }
+                  value={getValues("contents") || ""}
                 />
                 <div>{formState.errors.contents?.message}</div>
               </S.InputWrap>

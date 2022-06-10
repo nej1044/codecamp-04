@@ -128,7 +128,7 @@ const BoardNew = (props: IBoardNewProps) => {
     setImgUrl([...images]);
   };
 
-  async function handleClickBoard() {
+  const handleClickBoard = async () => {
     // 작성자 검증
     if (!writer) {
       setErrorWriter("이름을 정확히 입력해 주세요.");
@@ -163,12 +163,14 @@ const BoardNew = (props: IBoardNewProps) => {
           },
         });
         alert("게시물 등록이 완료되었습니다.");
+        console.log(result);
         router.push(`/boards/${result.data?.createBoard._id}`);
-      } catch (error: any) {
-        alert(`게시물 등록에 실패했습니다. ${error.message}`);
+      } catch (error) {
+        if (error instanceof Error)
+          alert(`게시물 등록에 실패했습니다. ${error.message}`);
       }
     }
-  }
+  };
 
   // 수정하기
   const myBoardAddress: IMyBoardAddress = {};
@@ -233,9 +235,10 @@ const BoardNew = (props: IBoardNewProps) => {
       setErrorPassword("비밀번호를 정확히 입력해 주세요.");
     }
     try {
-      await updateBoard({ variables: myVariables });
+      const result = await updateBoard({ variables: myVariables });
       router.push(`/boards/${router.query.boardId}`);
       alert("게시물 수정이 완료되었습니다.");
+      console.log(result);
     } catch (error: any) {
       alert(`게시물 수정에 실패했습니다. ${error.message}`);
     }

@@ -1,65 +1,91 @@
 import styled from "@emotion/styled";
 
-export const HeaderWrapper = styled.section`
+export const HeaderWrapper = styled.header`
   display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 80px;
+  width: 100vw;
+  height: 12vh;
   background-color: white;
-  @font-face {
-    font-family: "Black Han";
-    src: url("/fonts/BlackHanSans-Regular.ttf");
-  }
-  @media only screen and (max-width: 600px) {
-    padding: 0 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    padding: 0 50px;
-  }
-  @media only screen and (min-width: 996px) {
-    padding: 0 100px;
-  }
 `;
 
-export const Logo = styled.span`
+export const ContentsWrap = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  font-family: "Black Han";
-  font-size: 40px;
-  color: #8eb695;
+  width: 70vw;
+`;
+
+export const LogoTitle = styled.h1`
+  margin: 0;
+  font-family: "yg-jalnan";
+  font-size: 20px;
   cursor: pointer;
 `;
 
-export const LogoTitle = styled.span`
-  @media only screen and (max-width: 600px) {
-    display: none;
-    font-size: 30px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 40px;
-    display: inline-block;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 40px;
-    display: inline-block;
-  }
+export const HeaderMenu = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 700px;
 `;
 
-export const HeaderMenu = styled.div`
-  position: relative;
+export const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media only screen and (max-width: 600px) {
-    width: 250px;
+  width: 260px;
+  height: 40px;
+  padding: 20px;
+  margin-right: 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 20px;
+  transition: width 0.5s;
+  :hover {
+    border: 1px solid black;
   }
-  @media only screen and (min-width: 600px) {
-    width: 270px;
+  :focus-within {
+    border: 1px solid black;
+    width: 350px;
+    transition: width 0.5s;
   }
-  @media only screen and (min-width: 996px) {
-    width: 290px;
+`;
+
+export const SearchInput = styled.input`
+  width: 200px;
+  outline: none;
+  border: none;
+`;
+
+export const HeaderList = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 220px;
+  margin: 0;
+  list-style: none;
+`;
+
+export const LoginBtn = styled.li`
+  height: 40px;
+  padding: 0px 20px;
+  line-height: 40px;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  :hover {
+    background-color: #e6e6e6;
+    border: none;
+  }
+`;
+
+export const SignUpBtn = styled(LoginBtn)`
+  background-color: #ffd301;
+  :hover {
+    background-color: #f5c126;
   }
 `;
 
@@ -68,15 +94,7 @@ export const UserInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media only screen and (max-width: 600px) {
-    min-width: 200px;
-  }
-  @media only screen and (min-width: 600px) {
-    min-width: 250px;
-  }
-  @media only screen and (min-width: 996px) {
-    min-width: 300px;
-  }
+  min-width: 300px;
 `;
 export const UserName = styled.span`
   font-size: 20px;
@@ -86,32 +104,6 @@ export const UserName = styled.span`
 
 export const UserText = styled.span`
   margin-right: 20px;
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 600px) {
-    display: block;
-  }
-  @media only screen and (min-width: 996px) {
-    display: block;
-  }
-`;
-
-export const LoginBtn = styled.button`
-  width: 100px;
-  height: 40px;
-  margin-right: 20px;
-  border: 1px solid black;
-  border-radius: 15px;
-  background-color: white;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  :hover {
-    background-color: #8eb695;
-    color: white;
-    border: none;
-  }
 `;
 
 export const modalStyle = {
@@ -138,15 +130,6 @@ export const HeroHeader = styled.div`
   height: 700px;
   padding: 50px;
   background-color: #8eb695;
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 996px) {
-    display: flex;
-  }
 `;
 
 export const HeaderImg = styled.img`
@@ -171,15 +154,6 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   height: 700px;
   padding: 100px 50px;
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 996px) {
-    width: 50%;
-  }
 `;
 
 export const LoginInput = styled.input`

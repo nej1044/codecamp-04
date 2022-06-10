@@ -2,37 +2,53 @@ import styled from "@emotion/styled";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+// import { SetStateAction, useRef, useState } from "react";
 
 const BannerSection = styled.section`
-  width: 100%;
-  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 70vh;
   overflow: hidden;
-  @media only screen and (max-width: 600px) {
-    height: 150px;
-  }
-  @media only screen and (min-width: 600px) {
-    height: 250px;
-  }
-  @media only screen and (min-width: 996px) {
-    height: 350px;
-  }
+  /* background-color: ${(props)=> props.background}; */
+`;
+
+const BannerContent = styled.div`
+  display: flex;
+  width: 70vw;
+  height: 40vh;
+`;
+
+const BannerText = styled.article`
+  width: 70vw;
+  height: 40vh;
+`;
+
+const BannerWrapper = styled.div`
+  width: 35vw;
+  height: 40vh;
 `;
 
 const ImgWrapper = styled.div`
   display: inline-block;
-  width: 100%;
+  width: 35vw;
+  height: 40vh;
 `;
 
 const SlideImg = styled.img`
   display: inline-block;
-  width: 100%;
-  height: 100%;
+  width: 35vw;
+  height: 40vh;
 `;
 
+// const backgroundArr = ['red', 'black', 'blue', 'yellow']
+
 const Banner = () => {
+  // const [background, setBackground] = useState<string>('')
+
   const settings = {
-    dots: true,
-    fade: true,
+    dots: false,
     infinite: true,
     speed: 1000,
     autoplay: true,
@@ -43,20 +59,27 @@ const Banner = () => {
   };
   return (
     <BannerSection>
-      <Slider {...settings}>
-        <ImgWrapper>
-          <SlideImg src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720__480.jpg" />
-        </ImgWrapper>
-        <ImgWrapper>
-          <SlideImg src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZGV2ZWxvcGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" />
-        </ImgWrapper>
-        <ImgWrapper>
-          <SlideImg src="https://www.sscsrl.com/wp-content/uploads/2020/09/Senior-Front-End-Developer-1080x675-1.jpg" />
-        </ImgWrapper>
-        <ImgWrapper>
-          <SlideImg src="https://cdn.seeklearning.com.au/media/images/career-guide/module/web-developer-module.jpg " />
-        </ImgWrapper>
-      </Slider>
+      <BannerContent>
+        <BannerText>프리랜서 개발자들의 No.1 커뮤니티<br />
+        디벨로펌에서 원하는 전문가를 찾아보세요!
+        </BannerText>
+        <BannerWrapper>
+          <Slider {...settings}>
+            <ImgWrapper>
+              <SlideImg src="/images/carousel_1.jpeg" />
+            </ImgWrapper>
+            <ImgWrapper>
+              <SlideImg src="" />
+            </ImgWrapper>
+            <ImgWrapper>
+              <SlideImg src="" />
+            </ImgWrapper>
+            <ImgWrapper>
+              <SlideImg src="" />
+            </ImgWrapper>
+          </Slider>
+        </BannerWrapper>
+      </BannerContent>
     </BannerSection>
   );
 };

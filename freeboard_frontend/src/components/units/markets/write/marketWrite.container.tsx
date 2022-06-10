@@ -115,6 +115,7 @@ const MarketWrite = () => {
 
     const hashContainer = data?.fetchUseditem.tags;
     hashContainer && setHashArr([...hashContainer]);
+    
   }, [data]);
 
   const handleEditMarket = async (editData: FormValues) => {
@@ -168,3 +169,4 @@ const MarketWrite = () => {
 };
 
 export default MarketWrite;
+

@@ -1,4 +1,4 @@
-import BoardDetail from "../../../src/components/units/boards/detail/BoardDetail.container";
+import BoardDetail from "../../../src/components/units/boards/Detail/BoardDetail.container";
 import CommentWrite from "../../../src/components/units/boardComments/Comment.container";
 import Head from "next/head";
 import { gql, request } from "graphql-request";
@@ -36,7 +36,7 @@ export default function BoardDetailPage(props: IBoardDetailPage) {
 }
 
 const FETCH_BOARD = gql`
-  query fetchBoard($fetchBoard: ID!) {
+  query fetchBoard($boardId: ID!) {
     fetchBoard(boardId: $boardId) {
       _id
       title
@@ -56,7 +56,7 @@ export const getServerSideProps = async (context: any) => {
       fetchBoard: {
         _id: result.fetchBoard._id,
         title: result.fetchBoard.title,
-        images: result.fetchBoard.images[0],
+        images: result.images ? result.fetchBoard.images[0] : '',
       },
     },
   };

@@ -79,7 +79,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
           </S.BodyHeader>
           <S.BodyHeader>
             <S.Title>사무실 위치</S.Title>
-            <Map data={props.data} />
+            {props.data && <Map data={props.data} />}
           </S.BodyHeader>
           <S.Tags>
             {props.data?.fetchUseditem.tags?.map((el: any, idx: number) => (

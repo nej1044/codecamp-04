@@ -1,41 +1,29 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
-const NavDiv = styled.section`
+const Nav = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100px;
-  background-color: #8eb695;
-  @media only screen and (max-width: 600px) {
-    padding: 0;
-  }
-  @media only screen and (min-width: 600px) {
-    padding: 0 50px;
-  }
-  @media only screen and (min-width: 996px) {
-    padding: 0 100px;
-  }
+  width: 100vw;
+  height: 50px;
+  background-color: white;
 `;
 
-const Menu = styled.div`
-  width: 200px;
-  height: 100%
-  height: 50px;
-  color: white;
-  font-weight: 600;
+const MenuContainer = styled.ul`
+  display: flex;
+  width: 70vw;
+  height: 100%;
+  margin: 0;
+  list-style: none;
+`
+
+const Menu = styled.li`
+  width: 100px;
+  height: 100%;
+  font-size: 17px;
+  font-weight: 400;
   cursor: pointer;
-  text-align: center;
-  @media only screen and (max-width: 600px) {
-    font-size: 14px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 20px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 25px;
-  }
 `;
 
 const Navigation = () => {
@@ -46,13 +34,15 @@ const Navigation = () => {
   };
 
   return (
-    <NavDiv>
-      <Menu onClick={moveComp("/news")}>실시간뉴스</Menu>
-      <Menu onClick={moveComp("/boards")}>커뮤니티</Menu>
-      <Menu onClick={moveComp("/market")}>아웃소싱마켓</Menu>
-      <Menu onClick={moveComp("/lecture")}>추천강의</Menu>
-      <Menu onClick={moveComp("/mypage")}>마이페이지</Menu>
-    </NavDiv>
+    <Nav>
+      <MenuContainer>
+        <Menu style={{fontWeight: 600}} onClick={moveComp("/market")}>전문가 찾기</Menu>
+        {/* <Menu onClick={moveComp("/news")}>실시간뉴스</Menu> */}
+        <Menu onClick={moveComp("/boards")}>커뮤니티</Menu>
+        {/* <Menu onClick={moveComp("/lecture")}>추천강의</Menu> */}
+        {/* <Menu onClick={moveComp("/mypage")}>마이페이지</Menu> */}
+      </MenuContainer>
+    </Nav>
   );
 };
 

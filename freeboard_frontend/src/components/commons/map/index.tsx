@@ -1,6 +1,9 @@
+// import { useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
+// import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { IQuery } from "../../../commons/types/generated/types";
+// import { FETCH_USEDITEM } from "../../units/markets/detail/marketDetail.queries";
 
 declare const window: typeof globalThis & {
   kakao: any;
@@ -72,7 +75,7 @@ const Map = (props: IMap) => {
         );
       });
     };
-  }, [props.data]);
+  }, []);
   return <MapWrap id="map"></MapWrap>;
 };
 

@@ -24,15 +24,16 @@ const Body = styled.section`
 `;
 
 const Layout = (props: ILayoutProps) => {
+  const {children} = props
   const router = useRouter();
   const isHideBanner = HIDE_BANNER.includes(router.asPath);
 
   return (
     <Wrapper>
       {!isHideBanner && <Header />}
-      {!isHideBanner && <Banner />}
       <Navigation />
-      <Body>{props.children}</Body>
+      {!isHideBanner && <Banner />}
+      <Body>{children}</Body>
       <Footer />
     </Wrapper>
   );

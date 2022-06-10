@@ -2,8 +2,8 @@ import { withAuth } from "../../../src/components/commons/hocs/withAuth";
 import MarketCommentList from "../../../src/components/units/markets/comments/list/marketCommentList.container";
 import MarketComment from "../../../src/components/units/markets/comments/write/marketComment.container";
 import MarketDetail from "../../../src/components/units/markets/detail/marketDetail.container";
-import Head from "next/head";
-import { gql, request } from "graphql-request";
+// import Head from "next/head";
+// import { gql, request } from "graphql-request";
 
 interface IMarketDetailPage {
   fetchUseditem: {
@@ -17,7 +17,7 @@ interface IMarketDetailPage {
 const MarketDetailPage = (props: IMarketDetailPage) => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <meta property="og:title" content={props.fetchUseditem.name} />
         <meta
           property="og:url"
@@ -28,7 +28,7 @@ const MarketDetailPage = (props: IMarketDetailPage) => {
           content={`https://storage.googleapis.com/${props.fetchUseditem.images}`}
         />
         <meta property="og:description" content={props.fetchUseditem.remarks} />
-      </Head>
+      </Head> */}
       <MarketDetail />
       <MarketComment />
       <MarketCommentList />
@@ -36,33 +36,33 @@ const MarketDetailPage = (props: IMarketDetailPage) => {
   );
 };
 
-const FETCH_USEDITEM = gql`
-  query fetchUseditem($useditemId: ID!) {
-    fetchUseditem(useditemId: $useditemId) {
-      _id
-      name
-      remarks
-      images
-    }
-  }
-`;
+// const FETCH_USEDITEM = gql`
+//   query fetchUseditem($useditemId: ID!) {
+//     fetchUseditem(useditemId: $useditemId) {
+//       _id
+//       name
+//       remarks
+//       images
+//     }
+//   }
+// `;
 
-export const getServerSideProps = async (context: any) => {
-  const result = await request(
-    "https://backend04.codebootcamp.co.kr/graphql",
-    FETCH_USEDITEM,
-    { useditemId: context.query.useditemId }
-  );
-  return {
-    props: {
-      fetchUseditem: {
-        _id: result.fetchUseditem._id,
-        name: result.fetchUseditem.name,
-        remarks: result.fetchUseditem.remarks,
-        images: result.fetchUseditem.images[0],
-      },
-    },
-  };
-};
+// export const getServerSideProps = async (context: any) => {
+//   const result = await request(
+//     "https://backend04.codebootcamp.co.kr/graphql",
+//     FETCH_USEDITEM,
+//     { useditemId: context.query.useditemId }
+//   );
+//   return {
+//     props: {
+//       fetchUseditem: {
+//         _id: result.fetchUseditem._id,
+//         name: result.fetchUseditem.name,
+//         remarks: result.fetchUseditem.remarks,
+//         images: result.fetchUseditem.images[0],
+//       },
+//     },
+//   };
+// };
 
 export default withAuth(MarketDetailPage);
