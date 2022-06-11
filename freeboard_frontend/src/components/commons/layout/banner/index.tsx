@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-// import { SetStateAction, useRef, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const BannerSection = styled.section`
   display: flex;
@@ -11,7 +11,7 @@ const BannerSection = styled.section`
   width: 100vw;
   height: 70vh;
   overflow: hidden;
-  /* background-color: ${(props)=> props.background}; */
+  background-color: #939caf;
 `;
 
 const BannerContent = styled.div`
@@ -23,6 +23,9 @@ const BannerContent = styled.div`
 const BannerText = styled.article`
   width: 70vw;
   height: 40vh;
+  padding: 40px 0;
+  color: white;
+  font-size: 26px;
 `;
 
 const BannerWrapper = styled.div`
@@ -40,13 +43,12 @@ const SlideImg = styled.img`
   display: inline-block;
   width: 35vw;
   height: 40vh;
+  object-fit: cover;
 `;
 
-// const backgroundArr = ['red', 'black', 'blue', 'yellow']
+const backgroundImg = ["carousel_1.png", "carousel_2.png"];
 
 const Banner = () => {
-  // const [background, setBackground] = useState<string>('')
-
   const settings = {
     dots: false,
     infinite: true,
@@ -60,23 +62,18 @@ const Banner = () => {
   return (
     <BannerSection>
       <BannerContent>
-        <BannerText>프리랜서 개발자들의 No.1 커뮤니티<br />
-        디벨로펌에서 원하는 전문가를 찾아보세요!
+        <BannerText>
+          프리랜서 개발자들의 No.1 커뮤니티
+          <br />
+          디벨로펌에서 원하는 전문가를 찾아보세요!
         </BannerText>
         <BannerWrapper>
           <Slider {...settings}>
-            <ImgWrapper>
-              <SlideImg src="/images/carousel_1.jpeg" />
-            </ImgWrapper>
-            <ImgWrapper>
-              <SlideImg src="" />
-            </ImgWrapper>
-            <ImgWrapper>
-              <SlideImg src="" />
-            </ImgWrapper>
-            <ImgWrapper>
-              <SlideImg src="" />
-            </ImgWrapper>
+            {backgroundImg.map((el, idx) => (
+              <ImgWrapper key={idx}>
+                <SlideImg src={`/images/${el}`} />
+              </ImgWrapper>
+            ))}
           </Slider>
         </BannerWrapper>
       </BannerContent>
