@@ -12,18 +12,28 @@ const Nav = styled.nav`
 
 const MenuContainer = styled.ul`
   display: flex;
-  width: 70vw;
+  width: 1150px;
   height: 100%;
   margin: 0;
   list-style: none;
-`
+`;
 
 const Menu = styled.li`
-  width: 100px;
   height: 100%;
   font-size: 17px;
   font-weight: 400;
+  margin-right: 15px;
   cursor: pointer;
+  :hover {
+    font-weight: 600;
+    :after {
+      display: block;
+      content: "";
+      width: 80%;
+      margin: 18px auto;
+      border-bottom: 5px solid #ffd301;
+    }
+  }
 `;
 
 const Navigation = () => {
@@ -36,7 +46,9 @@ const Navigation = () => {
   return (
     <Nav>
       <MenuContainer>
-        <Menu style={{fontWeight: 600}} onClick={moveComp("/market")}>전문가 찾기</Menu>
+        <Menu style={{ fontWeight: 600 }} onClick={moveComp("/market")}>
+          서비스 찾기
+        </Menu>
         {/* <Menu onClick={moveComp("/news")}>실시간뉴스</Menu> */}
         <Menu onClick={moveComp("/boards")}>커뮤니티</Menu>
         {/* <Menu onClick={moveComp("/lecture")}>추천강의</Menu> */}

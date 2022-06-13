@@ -1,10 +1,8 @@
-import { MouseEvent, SyntheticEvent } from "react";
 import { IQuery } from "../../../commons/types/generated/types";
 
 export interface IHomeUI {
   data?: Pick<IQuery, "fetchBoardsOfTheBest">;
-  getDetail: (event: MouseEvent<HTMLDivElement>) => void;
-  fetchUseditemBest?: any;
-  onError: (event: SyntheticEvent<HTMLImageElement>) => void;
+  fetchUseditemBest?: Pick<IQuery, 'fetchUseditemsOfTheBest'>
+  getDetail: (id: string) => () => void;
   getProject: (id: string) => () => void;
 }

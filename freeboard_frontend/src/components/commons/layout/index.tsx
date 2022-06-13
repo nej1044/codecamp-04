@@ -6,7 +6,7 @@ import Footer from "./footer";
 import Header from "./header/header.container";
 import Navigation from "./navigation";
 
-const HIDE_BANNER = ["/signup"];
+const HIDE_BANNER = ["/"];
 
 interface ILayoutProps {
   children: ReactChild;
@@ -23,16 +23,25 @@ const Body = styled.section`
   width: 100%;
 `;
 
+const TopLayout = styled.div`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #e6e6e6;
+`;
+
 const Layout = (props: ILayoutProps) => {
-  const {children} = props
+  const { children } = props;
   const router = useRouter();
   const isHideBanner = HIDE_BANNER.includes(router.asPath);
 
   return (
     <Wrapper>
-      {!isHideBanner && <Header />}
-      <Navigation />
-      {!isHideBanner && <Banner />}
+      <TopLayout>
+        <Header />
+        <Navigation />
+      </TopLayout>
+      {isHideBanner && <Banner />}
       <Body>{children}</Body>
       <Footer />
     </Wrapper>

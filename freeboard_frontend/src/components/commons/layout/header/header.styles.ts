@@ -5,7 +5,7 @@ export const HeaderWrapper = styled.header`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 12vh;
+  height: 80px;
   background-color: white;
 `;
 
@@ -13,7 +13,7 @@ export const ContentsWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70vw;
+  width: 1200px;
 `;
 
 export const LogoTitle = styled.h1`

@@ -12,14 +12,10 @@ import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalstyles";
 import { createUploadLink } from "apollo-upload-client";
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createContext, useEffect, useState } from "react";
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAgGowN_jw08K9sJnPTMfudEtyrb0tJNh4",
   authDomain: "codecamp-04.firebaseapp.com",
@@ -53,27 +49,27 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
-    // if (graphQLErrors) {
-    //   for (const err of graphQLErrors) {
-    //     // 토큰 만료 에러 시
-    //     if (err.extensions.code === "UNAUTHENTICATED") {
-    //       // restore token
-    //       // const newAccessToken = getAccessToken(setMyAccessToken);
-    //       // 재요청
-    //       operation.setContext({
-    //         headers: {
-    //           ...operation.getContext().headers,
-    //           authorization: `Bearer ${getAccessToken(setAccessToken)}`,
-    //         },
-    //       });
-    //       return forward(operation);
-    //     }
-    //   }
-    // }
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        // 토큰 만료 에러 시
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          // restore token
+          // const newAccessToken = getAccessToken(setMyAccessToken);
+          // 재요청
+          operation.setContext({
+            headers: {
+              ...operation.getContext().headers,
+              authorization: `Bearer ${getAccessToken(setAccessToken)}`,
+            },
+          });
+          return forward(operation);
+        }
+      }
+    }
   });
 
   const uploadLink = createUploadLink({
-    uri: "https://backend07.codebootcamp.co.kr/graphql",
+    uri: "http://backend07.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });

@@ -6,16 +6,9 @@ const FooterWrap = styled.section`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #8eb695;
-  color: white;
-  @media only screen and (max-width: 600px) {
-    height: 150px;
-    padding: 30px;
-  }
-  @media only screen and (min-width: 600px) {
-    height: 300px;
-    padding: 100px;
-  }
+  height: 300px;
+  padding: 100px;
+  border-top: 1px solid #e6e6e6;
 `;
 
 const InfoWrap = styled.div`
@@ -23,55 +16,23 @@ const InfoWrap = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
 `;
 
 const TopInfo = styled.span`
   display: flex;
   justify-content: space-between;
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 70%;
-  }
-  @media only screen and (min-width: 996px) {
-    width: 40%;
-  }
+  width: 700px;
 `;
 
 const BottomInfo = styled.span`
   display: flex;
   justify-content: space-between;
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 996px) {
-    width: 55%;
-  }
+  width: 900px;
 `;
 
 const Info = styled.span`
-  @media only screen and (max-width: 600px) {
-    font-size: 8px;
-    :nth-of-type(2) {
-      display: none;
-    }
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 16px;
-  }
+  font-size: 16px;
 `;
 
 const FooterBody = styled.div`
@@ -80,40 +41,14 @@ const FooterBody = styled.div`
   align-items: center;
   width: 100%;
   color: #5f5f5f;
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    margin-bottom: 20px;
-  }
-`;
-
-const FooterTop = styled.span`
-  @media only screen and (max-width: 600px) {
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 14px;
-  }
-`;
-
-const FooterBottom = styled.span`
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 600px) {
-    display: block;
-  }
+  margin-bottom: 20px;
+  word-break: keep-all;
+  text-align: center;
 `;
 
 const Copyright = styled.span`
   font-weight: 200;
-  @media only screen and (max-width: 600px) {
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 20px;
-  }
+  font-size: 20px;
 `;
 
 const Footer = () => {
@@ -133,17 +68,16 @@ const Footer = () => {
         </BottomInfo>
       </InfoWrap>
       <FooterBody>
-        <FooterTop>
-          (주)디벨로펌은 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품,
-          상품정보, 거래에 관한 의무와 책임은 판매회원에게 있습니다
-        </FooterTop>
-        <FooterBottom>
-          (주)디벨로펌 사이트의 상품/판매회원/중개 서비스/거래 정보, 콘텐츠, UI
-          등에 대한 무단복제, 전송, 배포, 스크래핑 등의 행위는 저작권법,
-          콘텐츠산업 진흥법 등 관련법령에 의하여 엄격히 금지됩니다.
-        </FooterBottom>
+        (주)디벨로펌은 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품,
+        상품정보, 거래에 관한 의무와 책임은 판매회원에게 있습니다
+        <br />
+        (주)디벨로펌 사이트의 상품/판매회원/중개 서비스/거래 정보, 콘텐츠, UI
+        등에 대한 무단복제, 전송, 배포, 스크래핑 등의 행위는 저작권법,
+        콘텐츠산업 진흥법 등 관련법령에 의하여 엄격히 금지됩니다.
       </FooterBody>
-      <Copyright>Copyright © 2021 kmong Inc. All rights reserved.</Copyright>
+      <Copyright>
+        Copyright © 2021 Develofirm Inc. All rights reserved.
+      </Copyright>
     </FooterWrap>
   );
 };
