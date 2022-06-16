@@ -9,7 +9,7 @@ export interface IHeaderUIProps {
   moveSignup: () => void;
   data?: any;
   logout: () => void;
-  moveCart: () => void;
-  shoppingCart: string[];
+  // moveCart: () => void;
+  // shoppingCart: string[];
   accessToken: string;
 }

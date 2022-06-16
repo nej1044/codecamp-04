@@ -6,7 +6,8 @@ import Footer from "./footer";
 import Header from "./header/header.container";
 import Navigation from "./navigation";
 
-const HIDE_BANNER = ["/"];
+const SHOW_BANNER = ["/"];
+const HIDE_HEADER = ["/signup/"];
 
 interface ILayoutProps {
   children: ReactChild;
@@ -33,15 +34,18 @@ const TopLayout = styled.div`
 const Layout = (props: ILayoutProps) => {
   const { children } = props;
   const router = useRouter();
-  const isHideBanner = HIDE_BANNER.includes(router.asPath);
+  const isShowBanner = SHOW_BANNER.includes(router.asPath);
+  const isHideHeader = HIDE_HEADER.includes(router.asPath);
 
   return (
     <Wrapper>
-      <TopLayout>
-        <Header />
-        <Navigation />
-      </TopLayout>
-      {isHideBanner && <Banner />}
+      {!isHideHeader && (
+        <TopLayout>
+          <Header />
+          <Navigation />
+        </TopLayout>
+      )}
+      {isShowBanner && <Banner />}
       <Body>{children}</Body>
       <Footer />
     </Wrapper>

@@ -1,6 +1,6 @@
 import HeaderUI from "./header.presenter";
 import { useRouter } from "next/router";
-import { ChangeEvent, useContext, useState, useEffect } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { LOGIN_USER, FETCH_USER_LOGGEDIN, LOGOUT_USER } from "./header.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -14,9 +14,7 @@ const Header = () => {
   const { accessToken, setAccessToken, setIsOpen, isOpen } =
     useContext<any>(GlobalContext);
   const router = useRouter();
-
-  const [shoppingCart, setShoppingCart] = useState([]);
-
+  // const [shoppingCart, setShoppingCart] = useState([]);
   const [logoutUser] = useMutation(LOGOUT_USER);
   const [loginUser] = useMutation<
     Pick<IMutation, "loginUser">,
@@ -65,13 +63,13 @@ const Header = () => {
     alert("로그아웃하였습니다.");
   };
 
-  const moveCart = () => {
-    router.push("/cart");
-  };
+  // const moveCart = () => {
+  //   router.push("/cart");
+  // };
 
-  useEffect(() => {
-    setShoppingCart(JSON.parse(localStorage.getItem("baskets") || "[]"));
-  }, []);
+  // useEffect(() => {
+  //   setShoppingCart(JSON.parse(localStorage.getItem("baskets") || "[]"));
+  // }, []);
 
   return (
     <HeaderUI
@@ -83,8 +81,8 @@ const Header = () => {
       moveSignup={moveSignup}
       data={data}
       logout={logout}
-      moveCart={moveCart}
-      shoppingCart={shoppingCart}
+      // moveCart={moveCart}
+      // shoppingCart={shoppingCart}
       accessToken={accessToken}
     />
   );

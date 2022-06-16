@@ -112,9 +112,8 @@ export const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  "@media only screen and (max-width: 600px)": { width: "90%" },
-  "@media only screen and (min-width: 600px)": { width: "90%" },
-  "@media only screen and (min-width: 996px)": { width: "55%" },
+  width: "1000px",
+  height: "600px",
   bgcolor: "background.paper",
   borderRadius: 20,
   overflow: "hidden",
@@ -123,38 +122,38 @@ export const modalStyle = {
 };
 
 export const HeroHeader = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 700px;
-  padding: 50px;
-  background-color: #8eb695;
+  height: 600px;
+  background-color: #f5c126;
 `;
 
-export const HeaderImg = styled.img`
-  width: 400px;
-  filter: invert(100%);
+export const HeaderSubTitle = styled.span`
+  font-size: 26px;
+  font-weight: 600;
 `;
 
-export const HeaderSubTitle = styled.h1`
-  font-size: 21px;
-  color: white;
-`;
-
-export const HeaderTitle = styled.h2`
-  font-family: "Black Han";
+export const HeaderTitle = styled.span`
   font-size: 70px;
-  color: white;
+  font-weight: 900;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 700px;
+  width: 50%;
+  height: 600px;
   padding: 100px 50px;
 `;
+
+export const SectionTitle = styled.span`
+  font-size: 24px;
+  font-weight: 500;
+`
 
 export const LoginInput = styled.input`
   width: 100%;
@@ -162,21 +161,23 @@ export const LoginInput = styled.input`
   padding: 10px;
   border: 1px solid #9f9f9f;
   border-radius: 10px;
-  :focus {
+  :hover, :focus {
     outline: none;
-    border: 2px solid #8eb695;
+    border: 1px solid black;
   }
 `;
 
 export const WrapperBtn = styled.button`
   width: 100%;
   height: 60px;
-  border: 1px solid #8eb695;
+  border: 1px solid #ffd301;
   border-radius: 10px;
-  background-color: #8eb695;
-  color: white;
+  background-color: #ffd301;
   font-size: 20px;
   font-weight: 700;
+  :hover {
+    background-color: #f5c126;
+  }
 `;
 
 export const BodyFooter = styled.div`
@@ -196,13 +197,13 @@ export const SocialWrapper = styled.div`
 export const FooterBtn = styled.button`
   width: 100%;
   height: 60px;
-  border: 1px solid #8eb695;
+  border: 1px solid #3279ff;
   border-radius: 10px;
   background-color: white;
-  color: #8eb695;
+  color: #3279ff;
   font-size: 20px;
   font-weight: 700;
   :hover {
-    background-color: #f9f9f9;
+    background-color: #dbe7ff;
   }
 `;

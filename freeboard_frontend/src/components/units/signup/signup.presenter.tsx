@@ -1,14 +1,10 @@
 import * as S from "./signup.styles";
-import { RocketTwoTone } from "@ant-design/icons";
 import { IPropsSignupUI } from "./signup.types";
 
 const SignUpUI = (props: IPropsSignupUI) => {
   return (
     <S.Wrapper>
-      <S.Logo onClick={props.moveHome}>
-        <RocketTwoTone twoToneColor="#8eb695" />
-        디벨로펌
-      </S.Logo>
+      <S.Logo onClick={props.moveHome}>develofirm</S.Logo>
       <S.SignUpBody>
         <S.BodyTitle>딱 이것만 입력하면 가입완료!</S.BodyTitle>
         <S.BodyContainer>

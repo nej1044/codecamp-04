@@ -11,23 +11,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Logo = styled.span`
-  @font-face {
-    font-family: "Black Han";
-    src: url("/fonts/BlackHanSans-Regular.ttf");
-  }
   margin-bottom: 30px;
-  font-family: "Black Han";
-  color: #8eb695;
+  font-family: "yg-jalnan";
   cursor: pointer;
-  @media only screen and (max-width: 600px) {
-    font-size: 30px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 40px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 40px;
-  }
+  font-size: 26px;
 `;
 
 export const SignUpBody = styled.section`
