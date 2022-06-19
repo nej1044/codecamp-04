@@ -30,36 +30,23 @@ const HeaderUI = (props: IHeaderUIProps) => {
               />
               <SearchOutlined />
             </S.InputWrapper>
-            <S.HeaderList>
-              <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
-              <S.SignUpBtn onClick={props.moveSignup}>
-                무료 회원가입
-              </S.SignUpBtn>
-            </S.HeaderList>
+            {!props.accessToken && (
+              <S.HeaderList>
+                <S.LoginBtn onClick={props.openLogin}>로그인</S.LoginBtn>
+                <S.SignUpBtn onClick={props.moveSignup}>
+                  무료 회원가입
+                </S.SignUpBtn>
+              </S.HeaderList>
+            )}
+            {props.accessToken && (
+              <S.HeaderList>
+                <S.LoginBtn>메세지</S.LoginBtn>
+                <S.LoginBtn>마이디벨로펌</S.LoginBtn>
+              </S.HeaderList>
+            )}
           </S.HeaderMenu>
         </S.ContentsWrap>
       </S.HeaderWrapper>
-      {/* {!props.accessToken && (
-        <S.HeaderMenu>
-          <IconButton aria-label="cart" onClick={props.moveCart}>
-            <StyledBadge badgeContent={props.shoppingCart.length} color="error">
-              <ShoppingCartIcon />
-            </StyledBadge>
-          </IconButton>
-        </S.HeaderMenu>
-      )}
-      {props.accessToken && (
-        <S.UserInfo>
-          <S.UserName>{props.data?.fetchUserLoggedIn.name}</S.UserName>
-          <S.UserText>개발자님, 환영합니다!</S.UserText>
-          <S.LoginBtn onClick={props.logout}>로그아웃</S.LoginBtn>
-          <IconButton aria-label="cart" onClick={props.moveCart}>
-            <StyledBadge badgeContent={props.shoppingCart.length} color="error">
-              <ShoppingCartIcon />
-            </StyledBadge>
-          </IconButton>
-        </S.UserInfo>
-      )} */}
       <Modal
         aria-labelledby="hero-header"
         aria-describedby="login-wrapper"
@@ -74,7 +61,9 @@ const HeaderUI = (props: IHeaderUIProps) => {
         <Fade in={props.isOpen}>
           <Box sx={S.modalStyle}>
             <S.HeroHeader id="hero-header">
-              <S.HeaderSubTitle>프리랜서 개발자들의 No.1 커뮤니티</S.HeaderSubTitle>
+              <S.HeaderSubTitle>
+                프리랜서 개발자들의 No.1 커뮤니티
+              </S.HeaderSubTitle>
               <S.HeaderTitle>디벨로펌</S.HeaderTitle>
             </S.HeroHeader>
             <S.Wrapper id="login-wrapper">

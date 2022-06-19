@@ -13,7 +13,7 @@ const Signup = () => {
     name: "",
   });
   const [password, setPassword] = useState("");
-  const [btnColor, setBtnColor] = useState(false);
+  const [btnColor, setBtnColor] = useState(true);
 
   const moveHome = () => {
     router.push("/");
@@ -26,9 +26,9 @@ const Signup = () => {
   const handleChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
     if (inputs && event.target.value && inputs.password.length > 5) {
-      setBtnColor(true);
-    } else {
       setBtnColor(false);
+    } else {
+      setBtnColor(true);
     }
   };
 

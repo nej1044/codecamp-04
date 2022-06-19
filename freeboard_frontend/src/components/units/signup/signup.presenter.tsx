@@ -6,7 +6,7 @@ const SignUpUI = (props: IPropsSignupUI) => {
     <S.Wrapper>
       <S.Logo onClick={props.moveHome}>develofirm</S.Logo>
       <S.SignUpBody>
-        <S.BodyTitle>딱 이것만 입력하면 가입완료!</S.BodyTitle>
+        <S.BodyTitle>딱 이것만 체크하면 가입완료!</S.BodyTitle>
         <S.BodyContainer>
           <S.BodySubTitle>이메일</S.BodySubTitle>
           <S.BodyInput
@@ -40,9 +40,14 @@ const SignUpUI = (props: IPropsSignupUI) => {
           />
         </S.BodyContainer>
         <div></div>
-        <S.SignupBtn onClick={props.onClickSignup} btnColor={props.btnColor}>
-          버튼만 누르면 가입완료!
-        </S.SignupBtn>
+        <S.SignupBtn
+          type="button"
+          value="버튼만 누르면 가입완료!"
+          onClick={props.onClickSignup}
+          disabled={props.btnColor}
+          btnColor={props.btnColor}
+        />
+        <div></div>
       </S.SignUpBody>
     </S.Wrapper>
   );

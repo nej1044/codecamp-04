@@ -7,14 +7,14 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  padding: 80px;
 `;
 
-export const Logo = styled.span`
+export const Logo = styled.h1`
   margin-bottom: 30px;
   font-family: "yg-jalnan";
   cursor: pointer;
-  font-size: 26px;
+  font-size: 24px;
 `;
 
 export const SignUpBody = styled.section`
@@ -22,32 +22,15 @@ export const SignUpBody = styled.section`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #9f9f9f;
-  @media only screen and (max-width: 600px) {
-    width: 300px;
-    padding: 30px;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 700px;
-    padding: 50px;
-  }
-  @media only screen and (min-width: 996px) {
-    width: 700px;
-    padding: 50px;
-  }
+  border: 1px solid #e6e6e6;
+  width: 540px;
+  padding: 50px;
 `;
 
 export const BodyTitle = styled.h2`
-  margin-bottom: 30px;
-  @media only screen and (max-width: 600px) {
-    font-size: 18px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 36px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 36px;
-  }
+  margin-bottom: 20px;
+  color: #303441;
+  font-size: 30px;
 `;
 
 export const BodyContainer = styled.div`
@@ -57,62 +40,49 @@ export const BodyContainer = styled.div`
 `;
 
 export const BodySubTitle = styled.h3`
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 24px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 24px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  :after {
+    width: 5px;
+    content: "*";
+    color: rgb(255, 144, 98);
   }
 `;
 
 export const BodyInput = styled.input`
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #9f9f9f;
+  height: 60px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
   border-radius: 5px;
-  :focus {
+  font-size: 16px;
+  :focus,
+  :hover {
     outline: none;
-    border: 2px solid #8eb695;
-  }
-  @media only screen and (max-width: 600px) {
-    height: 35px;
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    height: 70px;
-    font-size: 18px;
-  }
-  @media only screen and (min-width: 996px) {
-    height: 70px;
-    font-size: 18px;
+    border: 1px solid #304441;
   }
 `;
 
-export const SignupBtn = styled.button`
+export const SignupBtn = styled.input`
   width: 100%;
+  height: 60px;
   margin-top: 30px;
   border-radius: 5px;
   border: none;
-  :focus {
-    outline: none;
-    border: 2px solid #8eb695;
-  }
+  color: ${(props: IPropsSignupStyled) =>
+    props.btnColor === true ? "#9A9BA7" : "black"};
+  font-size: 20px;
+  font-weight: 500;
   background-color: ${(props: IPropsSignupStyled) =>
-    props.btnColor === true ? "#8eb695" : "9f9f9f"};
-  color: white;
-  @media only screen and (max-width: 600px) {
-    height: 35px;
-    font-size: 12px;
-  }
-  @media only screen and (min-width: 600px) {
-    height: 70px;
-    font-size: 24px;
-  }
-  @media only screen and (min-width: 996px) {
-    height: 70px;
-    font-size: 24px;
+    props.btnColor === true ? "#e4e5ed" : "#ffd301"};
+  :focus,
+  :hover {
+    outline: none;
+    border: 1px solid
+      ${(props: IPropsSignupStyled) =>
+        props.btnColor === true ? "#e4e5ed" : "#f5c126"};
+    background-color: ${(props: IPropsSignupStyled) =>
+      props.btnColor === true ? "#e4e5ed" : "#f5c126"};
   }
 `;

@@ -1,6 +1,6 @@
 import HeaderUI from "./header.presenter";
 import { useRouter } from "next/router";
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { LOGIN_USER, FETCH_USER_LOGGEDIN, LOGOUT_USER } from "./header.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import {
@@ -8,13 +8,11 @@ import {
   IMutationLoginUserArgs,
   IQuery,
 } from "../../../../commons/types/generated/types";
-import { GlobalContext } from "../../../../../pages/_app";
+import { useRecoilState } from "recoil";
+import { accessTokenState, isOpenState } from "../../../../commons/store";
 
 const Header = () => {
-  const { accessToken, setAccessToken, setIsOpen, isOpen } =
-    useContext<any>(GlobalContext);
   const router = useRouter();
-  // const [shoppingCart, setShoppingCart] = useState([]);
   const [logoutUser] = useMutation(LOGOUT_USER);
   const [loginUser] = useMutation<
     Pick<IMutation, "loginUser">,
@@ -22,6 +20,8 @@ const Header = () => {
   >(LOGIN_USER);
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGEDIN);
+  const [isOpen, setIsOpen] = useRecoilState(isOpenState);
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const [input, setInput] = useState({
     password: "",
     email: "",
@@ -42,8 +42,9 @@ const Header = () => {
   const onClickLogin = async () => {
     try {
       const result = await loginUser({ variables: { ...input } });
+      const accessToken = result.data?.loginUser.accessToken;
       localStorage.setItem("isLoggedIn", "true");
-      setAccessToken(result.data?.loginUser.accessToken);
+      setAccessToken(accessToken);
       alert(`로그인하였습니다.`);
       setIsOpen(false);
     } catch (error: any) {
@@ -63,14 +64,6 @@ const Header = () => {
     alert("로그아웃하였습니다.");
   };
 
-  // const moveCart = () => {
-  //   router.push("/cart");
-  // };
-
-  // useEffect(() => {
-  //   setShoppingCart(JSON.parse(localStorage.getItem("baskets") || "[]"));
-  // }, []);
-
   return (
     <HeaderUI
       moveHome={moveHome}
@@ -81,8 +74,6 @@ const Header = () => {
       moveSignup={moveSignup}
       data={data}
       logout={logout}
-      // moveCart={moveCart}
-      // shoppingCart={shoppingCart}
       accessToken={accessToken}
     />
   );
