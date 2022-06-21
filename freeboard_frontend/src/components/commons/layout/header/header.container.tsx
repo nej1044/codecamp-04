@@ -43,8 +43,7 @@ const Header = () => {
     try {
       const result = await loginUser({ variables: { ...input } });
       const accessToken = result.data?.loginUser.accessToken;
-      localStorage.setItem("isLoggedIn", "true");
-      setAccessToken(accessToken);
+      setAccessToken(accessToken || "");
       alert(`로그인하였습니다.`);
       setIsOpen(false);
     } catch (error: any) {
@@ -59,7 +58,6 @@ const Header = () => {
 
   const logout = async () => {
     await logoutUser;
-    localStorage.removeItem("isLoggedIn");
     setAccessToken("");
     alert("로그아웃하였습니다.");
   };

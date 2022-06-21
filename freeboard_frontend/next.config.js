@@ -1,5 +1,5 @@
 module.exports = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: false,
   trailingSlash: true,
   generateBuildId: () => "develofirm",

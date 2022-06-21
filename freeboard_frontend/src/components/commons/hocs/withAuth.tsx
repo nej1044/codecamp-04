@@ -1,16 +1,19 @@
+import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { ComponentType, useContext, useEffect } from "react";
-import { GlobalContext } from "../../../../pages/_app";
+import { ComponentType, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { accessTokenState, isOpenState } from "../../../commons/store";
 
 export const withAuth =
   <P extends {}>(Component: ComponentType<P>) =>
   (props: P) => {
     const router = useRouter();
-    const { setIsOpen } = useContext(GlobalContext);
-    
+    const [accessToken] = useRecoilState(accessTokenState);
+    const [, setIsOpen] = useRecoilState(isOpenState);
+
     useEffect(() => {
-      if (!localStorage.getItem("isLoggedIn")) {
-        alert("로그인이 필요합니다.");
+      if (!accessToken) {
+        Modal.error({ content: "로그인이 필요합니다." });
         router.push("/");
         setIsOpen(true);
       }

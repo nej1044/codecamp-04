@@ -1,6 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 import { gql } from "@apollo/client";
-import { Dispatch, SetStateAction } from "react";
+import { Modal } from "antd";
 
 const RESTORE_TOKEN = gql`
   mutation restoreAccessToken {
@@ -10,21 +10,18 @@ const RESTORE_TOKEN = gql`
   }
 `;
 
-export const getAccessToken = async (
-  setMyAccessToken: Dispatch<SetStateAction<string>>
-) => {
+export const getAccessToken = async () => {
   try {
     const graphQLClient = new GraphQLClient(
-      "https://backend04.codebootcamp.co.kr/graphql",
+      "https://backend06.codebootcamp.co.kr/graphql",
       {
         credentials: "include",
       }
     );
     const result = await graphQLClient.request(RESTORE_TOKEN);
     const newAccessToken = result.restoreAccessToken.accessToken;
-    setMyAccessToken(newAccessToken);
     return newAccessToken;
-  } catch (error: any) {
-    console.log(error.message);
+  } catch (error) {
+    if (error instanceof Error) Modal.error({ content: error.message });
   }
 };

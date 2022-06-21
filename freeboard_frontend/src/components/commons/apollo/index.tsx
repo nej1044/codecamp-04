@@ -19,24 +19,25 @@ const ApolloSetting = (props: IProps) => {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
   useEffect(() => {
-    if (localStorage.getItem("isLoggedIn")) getAccessToken(setAccessToken);
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken);
+    });
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        // 토큰 만료 에러 시
         if (err.extensions.code === "UNAUTHENTICATED") {
-          // restore token
-          // const newAccessToken = getAccessToken(setMyAccessToken);
-          // 재요청
-          operation.setContext({
-            headers: {
-              ...operation.getContext().headers,
-              authorization: `Bearer ${getAccessToken(setAccessToken)}`,
-            },
+          getAccessToken().then((newAccessToken) => {
+            setAccessToken(newAccessToken);
+            operation.setContext({
+              headers: {
+                ...operation.getContext().headers,
+                authorization: `Bearer ${newAccessToken}`,
+              },
+            });
+            return forward(operation);
           });
-          return forward(operation);
         }
       }
     }
