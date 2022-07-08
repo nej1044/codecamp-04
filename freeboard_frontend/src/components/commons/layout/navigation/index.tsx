@@ -50,7 +50,7 @@ const Navigation = () => {
       <Menu onClick={moveComp("/news")}>실시간뉴스</Menu>
       <Menu onClick={moveComp("/boards")}>커뮤니티</Menu>
       <Menu onClick={moveComp("/market")}>아웃소싱마켓</Menu>
-      <Menu onClick={moveComp("/lecture")}>추천강의</Menu>
+      {/* <Menu onClick={moveComp("/lecture")}>추천강의</Menu> */}
       <Menu onClick={moveComp("/mypage")}>마이페이지</Menu>
     </NavDiv>
   );
