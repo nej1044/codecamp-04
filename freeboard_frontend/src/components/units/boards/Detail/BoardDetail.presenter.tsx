@@ -1,3 +1,4 @@
+import { EnvironmentOutlined, VideoCameraOutlined } from "@ant-design/icons";
 import { Avatar, Image } from "antd";
 import { getDate } from "../../../../commons/libraries/utils";
 import * as S from "./BoardDetail.styles";
@@ -24,7 +25,7 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                 <S.ProfileText>
                   <S.UserName>{props.data?.fetchBoard.writer}</S.UserName>
                   <S.UserDate>
-                    Date: {getDate(props.data?.fetchBoard.createdAt)}
+                    {getDate(props.data?.fetchBoard.createdAt)}
                   </S.UserDate>
                 </S.ProfileText>
               </S.UserProfile>
@@ -34,16 +35,18 @@ const BoardDetailUI = (props: IBoardDetailUIProps) => {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <img src="/images/detail/sns.png" />
+                  <VideoCameraOutlined
+                    style={{ fontSize: "20px", color: "black" }}
+                  />
                 </a>
                 <S.Address ref={props.addressBox}>
                   {props.data?.fetchBoard?.boardAddress?.address}
                   <br />
                   {props.data?.fetchBoard?.boardAddress?.addressDetail}
                 </S.Address>
-                <img
+                <EnvironmentOutlined
                   onClick={props.addressShow}
-                  src="/images/detail/zipcode.png"
+                  style={{ fontSize: "20px", color: "black" }}
                 />
               </S.UserMore>
             </S.UserInfo>

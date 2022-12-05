@@ -10,6 +10,7 @@ import {
 } from "../../../../commons/types/generated/types";
 import { useRecoilState } from "recoil";
 import { accessTokenState, isOpenState } from "../../../../commons/store";
+import { Modal } from "antd";
 
 const Header = () => {
   const router = useRouter();
@@ -44,10 +45,14 @@ const Header = () => {
       const result = await loginUser({ variables: { ...input } });
       const accessToken = result.data?.loginUser.accessToken;
       setAccessToken(accessToken || "");
-      alert(`로그인하였습니다.`);
+      Modal.success({
+        content: "로그인 하였습니다.",
+      });
       setIsOpen(false);
     } catch (error: any) {
-      alert(`로그인에 실패했습니다 ${error.message}`);
+      Modal.error({
+        content: `로그인에 실패했습니다 ${error.message}`,
+      });
     }
   };
 
@@ -59,7 +64,9 @@ const Header = () => {
   const logout = async () => {
     await logoutUser;
     setAccessToken("");
-    alert("로그아웃하였습니다.");
+    Modal.success({
+      content: "로그아웃하였습니다.",
+    });
   };
 
   return (

@@ -39,7 +39,7 @@ export const DetailHeader = styled.section`
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 0;
-  border-bottom: 1px solid #8eb695;
+  border-bottom: 1px solid black;
 `;
 export const Title = styled.h1`
   font-size: 36px;
@@ -82,9 +82,10 @@ export const UserDate = styled.p`
 export const UserMore = styled.div`
   display: flex;
   position: relative;
-  width: 80px;
+  width: 60px;
   justify-content: space-between;
 `;
+
 export const Address = styled.div`
   display: none;
   flex-direction: column;
@@ -148,7 +149,7 @@ export const LikeNum = styled.p`
   margin: 0;
   height: 0;
   font-size: 18px;
-  color: #ffd600;
+  color: #ffd301;
 `;
 
 export const UnLikeNum = styled.p`
@@ -167,6 +168,7 @@ export const DetailBtnSection = styled.section`
 
 export const DetailBtn = styled.button`
   height: 45px;
+  margin-left: 20px;
   border: none;
   background: none;
   font-size: 16px;

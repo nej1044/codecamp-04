@@ -11,13 +11,15 @@ import {
 
 const MarketList = () => {
   const router = useRouter();
-  const [searchValue, setSearchValue] = useState<string>("");
   const [confirmSearch, setConfirm] = useState<string>("");
   const [isSoldout, setIsSoldout] = useState<boolean>(false);
-  const { data, refetch, fetchMore } = useQuery<
+  const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
-  >(FETCH_USEDITEMS, { variables: { search: confirmSearch, isSoldout } });
+  >(FETCH_USEDITEMS, {
+    variables: { search: confirmSearch, isSoldout },
+    fetchPolicy: "network-only",
+  });
 
   const getDetail = (data: IBoard) => () => {
     router.push(`market/${data._id}`);
@@ -39,12 +41,7 @@ const MarketList = () => {
   };
 
   const changeSearchValue = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
-
-  const clickSearchValue = () => {
-    setConfirm(searchValue);
-    refetch({ search: confirmSearch });
+    setConfirm(event.target.value);
   };
 
   const getSoldout = (event: MouseEvent<HTMLButtonElement>) => {
@@ -67,7 +64,6 @@ const MarketList = () => {
         };
       },
     });
-    console.log("fetchmore");
   };
 
   return (
@@ -78,7 +74,6 @@ const MarketList = () => {
         data={data}
         onLoadMore={onLoadMore}
         changeSearchValue={changeSearchValue}
-        clickSearchValue={clickSearchValue}
         confirmSearch={confirmSearch}
         getSoldout={getSoldout}
       />

@@ -5,7 +5,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 50px;
   background-color: white;
 `;
@@ -22,7 +22,7 @@ const Menu = styled.li`
   height: 100%;
   font-size: 17px;
   font-weight: 400;
-  margin-right: 15px;
+  margin-right: 30px;
   cursor: pointer;
   :hover {
     font-weight: 600;
@@ -46,11 +46,11 @@ const Navigation = () => {
   return (
     <Nav>
       <MenuContainer>
-        <Menu style={{ fontWeight: 600 }} onClick={moveComp("/market")}>
-          서비스 찾기
+        <Menu style={{ fontWeight: 600 }} onClick={moveComp("/boards")}>
+          커뮤니티
         </Menu>
+        <Menu onClick={moveComp("/market")}>오픈 마켓</Menu>
         {/* <Menu onClick={moveComp("/news")}>실시간뉴스</Menu> */}
-        <Menu onClick={moveComp("/boards")}>커뮤니티</Menu>
         {/* <Menu onClick={moveComp("/lecture")}>추천강의</Menu> */}
         {/* <Menu onClick={moveComp("/mypage")}>마이페이지</Menu> */}
       </MenuContainer>

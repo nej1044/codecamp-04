@@ -16,7 +16,7 @@ export const CommentWrapper = styled.div`
 export const CommentHeader = styled.div`
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid #8eb695;
+  border-bottom: 1px solid black;
   font-size: 24px;
   font-weight: 700;
 `;
@@ -37,9 +37,9 @@ export const UserInputWrapper = styled.div`
 export const UserInput = styled.input`
   height: 40px;
   padding: 10px;
-  border: 1px solid #8eb695;
+  border: none;
   :focus {
-    outline: 2px solid #8eb695;
+    outline: 2px solid black;
     border-radius: 3px;
   }
 `;
@@ -65,10 +65,10 @@ export const UserTextarea = styled.textarea`
   width: 100%;
   height: 130px;
   padding: 10px;
-  border: 1px solid #8eb695;
+  border: none;
   font-family: Arial, Helvetica, sans-serif;
   :focus {
-    outline: 2px solid #8eb695;
+    outline: 2px solid black;
     border-radius: 3px;
   }
 `;
@@ -89,7 +89,7 @@ export const LettersNumber = styled.span`
 export const CommentAdmin = styled.button`
   width: 100px;
   height: 35px;
-  color: white;
-  background-color: #8eb695;
-  border: 1px solid #8eb695;
+  color: black;
+  background-color: #ffd301;
+  border: none;
 `;

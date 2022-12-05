@@ -4,7 +4,10 @@ import { IPropsSignupUI } from "./signup.types";
 const SignUpUI = (props: IPropsSignupUI) => {
   return (
     <S.Wrapper>
-      <S.Logo onClick={props.moveHome}>develofirm</S.Logo>
+      <S.Logo onClick={props.moveHome}>
+        codecamp
+        <div style={{ fontSize: "16px", textAlign: "center" }}>그라운드</div>
+      </S.Logo>
       <S.SignUpBody>
         <S.BodyTitle>딱 이것만 체크하면 가입완료!</S.BodyTitle>
         <S.BodyContainer>

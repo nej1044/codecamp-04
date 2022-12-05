@@ -27,27 +27,31 @@ const MyPageUI = (props: IMyPageUI) => {
           <S.HeaderLeft>
             <S.CoinTitle>마이코인</S.CoinTitle>
             <S.Transaction>
-              <InfiniteScroll
-                pageStart={0}
-                hasMore={true}
-                loadMore={props.onLoadMore}
-                useWindow={false}
-              >
-                {props.fetchPoint?.fetchPointTransactions.map((el: any) => (
-                  <S.TransHeader key={el._id}>
-                    <S.TransBasic>{getDate(el.createdAt)}</S.TransBasic>
-                    <S.TransContents status={el.status === "구매"}>
-                      {el.status}
-                    </S.TransContents>
-                    <S.TransContents status={el.status === "구매"}>
-                      {el.amount}
-                    </S.TransContents>
-                    <S.TransContents status={el.status === "구매"}>
-                      {el.balance}
-                    </S.TransContents>
-                  </S.TransHeader>
-                ))}
-              </InfiniteScroll>
+              {props.fetchPoint?.fetchPointTransactions.length > 0 ? (
+                <InfiniteScroll
+                  pageStart={0}
+                  hasMore={true}
+                  loadMore={props.onLoadMore}
+                  useWindow={false}
+                >
+                  {props.fetchPoint?.fetchPointTransactions.map((el: any) => (
+                    <S.TransHeader key={el._id}>
+                      <S.TransBasic>{getDate(el.createdAt)}</S.TransBasic>
+                      <S.TransContents status={el.status === "구매"}>
+                        {el.status}
+                      </S.TransContents>
+                      <S.TransContents status={el.status === "구매"}>
+                        {el.amount}
+                      </S.TransContents>
+                      <S.TransContents status={el.status === "구매"}>
+                        {el.balance}
+                      </S.TransContents>
+                    </S.TransHeader>
+                  ))}
+                </InfiniteScroll>
+              ) : (
+                <div>코인 충전 내역이 없습니다</div>
+              )}
             </S.Transaction>
           </S.HeaderLeft>
           <S.HeaderRight>

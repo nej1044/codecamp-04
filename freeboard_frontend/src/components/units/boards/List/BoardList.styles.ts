@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { IBoardListEmotionProps } from "./BoardList.types";
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -23,36 +24,48 @@ export const ListHeader = styled.section`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 200px;
-  border-bottom: 1px solid #8eb695;
+  height: 100px;
+  border-bottom: 1px solid black;
+`;
+
+export const BtnWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 30px;
 `;
 
 export const HeaderForm = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  overflow: hidden;
+  width: 30%;
   height: 50px;
-`;
+  padding: 0 30px;
+  border: 1px solid #c0c0c0;
+  border-radius: 100px;
+  transition: width 0.5s;
 
-export const Selected = styled.select`
-  width: 100px;
-  height: 100%;
-  padding: 5px;
-  border: 1px solid #fbdea2;
-  :focus {
-    outline: none;
+  :hover {
+    border: 1px solid black;
+  }
+  :focus-within {
+    border: 1px solid black;
+    width: 50%;
+    transition: width 0.5s;
   }
 `;
 
 export const HeaderInput = styled.input`
-  width: 800px;
+  width: 100%;
   height: 100%;
   padding: 10px;
-  border: 1px solid #fbdea2;
+  border: none;
+
   :focus {
     border: none;
-    outline: 1px solid #8eb695;
+    outline: none;
   }
 `;
 
@@ -72,25 +85,17 @@ export const HeaderBtn = styled.button`
   cursor: pointer;
 `;
 
-export const BtnWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  padding: 20px 30px;
-`;
-
 export const WriteBtn = styled.button`
-  width: 180px;
+  width: 120px;
   height: 50px;
-  color: white;
+  color: black;
   font-size: 18px;
   font-weight: 700;
   border: 1px solid #fbdea2;
   border-radius: 5px;
-  background-color: #fbdea2;
-  &:hover {
-    background-color: #8eb695;
-    border: 1px solid #8eb695;
+  background-color: #ffd301;
+  :hover {
+    background-color: #f5c126;
   }
   cursor: pointer;
 `;
@@ -109,7 +114,7 @@ export const ListBoard = styled.div`
   width: 100%;
   height: 250px;
   padding: 50px;
-  border-bottom: 1px solid #8eb695;
+  border-bottom: 1px solid black;
   cursor: pointer;
   :hover {
     background-color: #f9f9f9;
@@ -129,7 +134,7 @@ export const ListComment = styled.div`
   align-items: center;
   width: 100px;
   height: 100px;
-  border: 1px solid #8eb695;
+  border: 1px solid black;
   border-radius: 50%;
 `;
 export const BoardTitle = styled.span`
@@ -142,6 +147,8 @@ export const BoardTitle = styled.span`
 
 export const BoardContents = styled.span`
   width: 900px;
+  max-height: 68px;
+  overflow: hidden;
 `;
 
 export const BoardUser = styled.div`
@@ -150,9 +157,6 @@ export const BoardUser = styled.div`
   width: 250px;
   margin-top: 30px;
 `;
-export const BoardWriter = styled.span``;
-
-export const BoardCreatedAt = styled.span``;
 
 export const ListFooter = styled.section`
   display: flex;
@@ -164,8 +168,11 @@ export const ListFooter = styled.section`
 `;
 
 export const SideBarWrapper = styled.div`
+  position: fixed;
+  top: 160px;
+  left: 10px;
   width: 300px;
-  padding: 50px;
+  padding-right: 100px;
   text-align: right;
 `;
 
@@ -182,7 +189,7 @@ export const Category = styled.li`
   margin: 10px 0;
   font-size: 20px;
   color: ${(props: IBoardListEmotionProps) =>
-    props.active === true ? "#8eb695" : "black"};
+    props.active === true ? "black" : "#9f9f9f"};
   font-weight: ${(props: IBoardListEmotionProps) =>
     props.active === true ? "700" : "normal"};
   cursor: pointer;
@@ -194,6 +201,7 @@ export const CommentsCount = styled.span`
 `;
 
 export const KeyTitle = styled.span`
-  color: ${(props: IBoardListEmotionProps) =>
-    props.isMatched ? "#8eb695" : "black"};
+  color: black;
+  background: ${(props: IBoardListEmotionProps) =>
+    props.isMatched ? "#ffd301" : "none"};
 `;

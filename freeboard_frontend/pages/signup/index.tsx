@@ -4,7 +4,7 @@ const SignupPage = () => {
   return (
     <>
       <Head>
-        <meta property="og:title" content="디벨로펌 회원가입" />
+        <meta property="og:title" content="코드캠프 그라운드 회원가입" />
         <meta property="og:url" content="http://develofirm.site/signup" />
         <meta
           property="og:image"
@@ -12,7 +12,7 @@ const SignupPage = () => {
         />
         <meta
           property="og:description"
-          content="능력있는 개발자들의 모임, 디벨로펌"
+          content="개발 회사에서 만든 실무 코딩 부트캠프: 코드캠프"
         />
       </Head>
       <SignUp />

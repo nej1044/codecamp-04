@@ -47,7 +47,7 @@ const AnswerListUIITEM = (props: IAnswerListUIItem) => {
     <>
       {!isAnswerEdit && (
         <S.Answer key={props.answerEl?._id}>
-          <S.AnswerImg src="/images/detail/answer.png" />
+          <S.AnswerImg>A</S.AnswerImg>
           <S.CommentInfo>
             <div>
               <S.CommentUser>{props.answerEl?.user.name}</S.CommentUser>

@@ -4,25 +4,16 @@ import { onError } from "../../../commons/libraries/utils";
 import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
-  width: 220px;
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 600px) {
-    display: block;
-  }
-  @media only screen and (min-width: 996px) {
-    display: block;
-  }
+  width: 200px;
 `;
 
 const TodayTitle = styled.span`
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 500;
 `;
 
 const ItemWrap = styled.div`
-  border-top: 3px solid #8eb696;
+  border-top: 3px solid #ffd301;
   padding: 10px;
 `;
 

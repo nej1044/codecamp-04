@@ -3,6 +3,7 @@ import { useState, ChangeEvent } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "./signup.queries";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
 
 const Signup = () => {
   const router = useRouter();
@@ -35,14 +36,20 @@ const Signup = () => {
   console.log(/\w+@\w+\.\w+/.test(inputs.email));
   const onClickSignup = async () => {
     if (!/\w+@\w+\.\w+/.test(inputs.email)) {
-      alert("이메일을 다시 확인하세요");
+      Modal.error({
+        content: "이메일을 다시 확인하세요",
+      });
     }
     if (inputs.password.length < 6) {
-      alert("비밀번호를 6자리 이상 입력해주세요");
+      Modal.error({
+        content: "비밀번호를 6자리 이상 입력해주세요",
+      });
     }
 
     if (inputs.password !== password) {
-      alert("비밀번호를 다시 확인하세요");
+      Modal.error({
+        content: "비밀번호를 다시 확인하세요",
+      });
     }
     if (
       inputs &&
@@ -58,10 +65,14 @@ const Signup = () => {
             },
           },
         });
-        alert("회원가입이 완료되었습니다.");
+        Modal.success({
+          content: "회원가입이 완료되었습니다.",
+        });
         router.push("/");
       } catch (error: any) {
-        alert(`회원가입에 실패했습니다 ${error.message}`);
+        Modal.error({
+          content: `회원가입에 실패했습니다 ${error.message}`,
+        });
       }
     }
   };

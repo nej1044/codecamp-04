@@ -31,11 +31,12 @@ const InfiniteScroll = (props: IInfiniteScroll) => {
     const target = event.target as HTMLSpanElement;
     setEditContents(target.id);
     const editArea: any = target.parentNode?.parentNode?.nextSibling;
-    if (editArea?.style.display === "none") {
+    console.log(editArea.style.display);
+    if (!editArea?.style.display || editArea?.style.display === "none") {
       editArea.style.display = "block";
       setDisabled(false);
     } else if (editArea?.style.display === "block") {
-      editArea.style.display = "none";
+      editArea.style.display = "";
       setDisabled(true);
     }
   };

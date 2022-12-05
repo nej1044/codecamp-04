@@ -47,7 +47,7 @@ const FETCH_BOARD = gql`
 
 export const getServerSideProps = async (context: any) => {
   const result = await request(
-    "https://backend04.codebootcamp.co.kr/graphql",
+    "https://backend09.codebootcamp.co.kr/graphql",
     FETCH_BOARD,
     { boardId: context.query.boardId }
   );
@@ -56,7 +56,7 @@ export const getServerSideProps = async (context: any) => {
       fetchBoard: {
         _id: result.fetchBoard._id,
         title: result.fetchBoard.title,
-        images: result.images ? result.fetchBoard.images[0] : '',
+        images: result.images ? result.fetchBoard.images[0] : "",
       },
     },
   };

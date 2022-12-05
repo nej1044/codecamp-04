@@ -6,7 +6,6 @@ export interface IMarketListUI {
   getDetail: (el: any) => () => void;
   moveWrite: () => void;
   changeSearchValue: (event: ChangeEvent<HTMLInputElement>) => void;
-  clickSearchValue: () => void;
   confirmSearch: string;
   getSoldout: (event: MouseEvent<HTMLButtonElement>) => void;
 }

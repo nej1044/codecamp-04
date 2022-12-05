@@ -14,14 +14,9 @@ interface IMap {
 }
 
 const MapWrap = styled.div`
-  @media only screen and (max-width: 600px) {
-    width: 250px;
-    height: 150px;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 500px;
-    height: 400px;
-  }
+  width: 500px;
+  height: 300px;
+  z-index: 0;
 `;
 
 const Map = (props: IMap) => {
@@ -65,7 +60,7 @@ const Map = (props: IMap) => {
 
               const infowindow = new window.kakao.maps.InfoWindow({
                 content:
-                  '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>',
+                  '<div style="width:150px;text-align:center;padding:6px 0;">직거래 위치</div>',
               });
               infowindow.open(map, marker);
 

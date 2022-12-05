@@ -4,7 +4,7 @@ import { Rate } from "antd";
 export const Comment = styled.div`
   position: relative;
   width: 800px;
-  border-left: 1px solid #8eb695;
+  border-left: 1px solid #ffd301;
   padding-left: 30px;
 `;
 
@@ -65,7 +65,6 @@ export const TextAreaSection = styled.section`
 `;
 
 export const EditTextArea = styled.div`
-  display: none;
   position: relative;
   width: 100%;
 `;
@@ -74,10 +73,10 @@ export const UserTextarea = styled.textarea`
   width: 100%;
   height: 130px;
   padding: 10px;
-  border: 1px solid #8eb695;
+  border: none;
   font-family: Arial, Helvetica, sans-serif;
   :focus {
-    outline: 2px solid #8eb695;
+    outline: 2px solid black;
     border-radius: 3px;
   }
 `;
@@ -98,7 +97,7 @@ export const LettersNumber = styled.span`
 export const CommentAdmin = styled.button`
   width: 100px;
   height: 35px;
-  color: white;
-  background-color: #8eb695;
-  border: 1px solid #8eb695;
+  color: black;
+  background-color: #ffd301;
+  border: 1px solid #ffd301;
 `;

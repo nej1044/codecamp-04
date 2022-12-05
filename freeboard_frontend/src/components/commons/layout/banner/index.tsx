@@ -8,10 +8,10 @@ const BannerSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 500px;
   overflow: hidden;
-  background-color: #939caf;
+  background-color: black;
 `;
 
 const BannerContent = styled.div`
@@ -62,7 +62,7 @@ const SlideImg = styled.img`
   object-fit: cover;
 `;
 
-const backgroundImg = ["carousel_1.png", "carousel_2.png"];
+const backgroundImg = ["carousel_1.jpg", "carousel_2.jpg", "carousel_3.jpg"];
 
 const Banner = () => {
   const settings = {
@@ -80,13 +80,16 @@ const Banner = () => {
       <BannerContent>
         <BannerArticle>
           <BannerText>
-            프리랜서 개발자들의 No.1 커뮤니티 디벨로펌에서 원하는 전문가를
-            찾아보세요!
+            수료율 98%
+            <br />
+            끝까지 책임지는
+            <br />
+            프리미엄 관리형 부트캠프
           </BannerText>
           <div>
-            <HashtagText>#블로그</HashtagText>
-            <HashtagText>#상세페이지</HashtagText>
-            <HashtagText>#랜딩페이지</HashtagText>
+            <HashtagText>#프론트엔드</HashtagText>
+            <HashtagText>#백엔드</HashtagText>
+            <HashtagText>#풀스택</HashtagText>
           </div>
         </BannerArticle>
         <BannerWrapper>

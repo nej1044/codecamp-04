@@ -5,22 +5,51 @@ export const Wrapper = styled.section`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
 `;
 
-export const ProjectSection = styled.article`
+export const Section = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 1200px;
-  padding: 80px 0;
+  padding-top: 80px;
+
+  ._community_ {
+    width: 100%;
+  }
+`;
+
+export const Board = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #c0c0c0;
+  cursor: pointer;
+
+  :last-child {
+    border-bottom: none;
+  }
+
+  ._title_ {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  ._like_ {
+    margin-left: 5px;
+  }
 `;
 
 export const SectionTitle = styled.h2`
   font-size: 24px;
 `;
 
-export const ProjectContainer = styled.div`
+export const Article = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,24 +61,26 @@ export const Project = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  width: 260px;
-  height: 360px;
-  padding: 30px;
-  background-color: #ffd400;
-  border-radius: 15px;
+  width: 280px;
+  height: 230px;
   overflow: hidden;
 `;
 
 export const ProjectImg = styled.img`
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 70%;
   margin-bottom: 10px;
   padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  object-fit: contain;
 `;
 
 export const ContentsHeader = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 30%;
 `;
 
 export const ProjectSeller = styled.span`
@@ -62,4 +93,7 @@ export const ProjectName = styled.span`
   width: 100%;
   font-size: 25px;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;

@@ -1,37 +1,20 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.form``;
-
 export const WriteWrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 1200px;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  @media only screen and (max-width: 600px) {
-    padding: 50px 50px;
-  }
-  @media only screen and (min-width: 600px) {
-    padding: 75px 100px;
-  }
-  @media only screen and (min-width: 996px) {
-    padding: 100px 200px;
-  }
+  padding: 100px 0;
+  margin: 0 auto;
 `;
 
 export const H1 = styled.h1`
   width: 100%;
   border-bottom: 3px solid black;
   padding: 10px;
-  @media only screen and (max-width: 600px) {
-    font-size: 25px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 30px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 36px;
-  }
+  font-size: 26px;
 `;
 
 export const PhotoSection = styled.section`
@@ -42,15 +25,7 @@ export const PhotoSection = styled.section`
 export const Title = styled.label`
   width: 20%;
   word-break: keep-all;
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 18px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 24px;
-  }
+  font-size: 20px;
 `;
 
 export const PhotoWrapper = styled.div`
@@ -114,11 +89,11 @@ export const HashArr = styled.div`
 `;
 
 export const InnerHash = styled.span`
-  background-color: #8eb696;
+  background-color: #ffd301;
   margin-right: 5px;
   padding: 10px;
   border-radius: 20px;
-  color: white;
+  color: black;
   cursor: pointer;
 `;
 
@@ -126,17 +101,9 @@ export const HashInput = styled.input`
   height: 100%;
   padding: 10px;
   border: none;
+  font-size: 16px;
   :focus {
     outline: none;
-  }
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 14px;
-  }
-  @media only screen and (min-width: 996px) {
-    font-size: 16px;
   }
 `;
 
@@ -165,13 +132,15 @@ export const Footer = styled.section`
 export const FooterBtn = styled.button`
   width: 180px;
   height: 70px;
-  color: white;
+  color: black;
   font-size: 24px;
+  font-weight: 500;
   border: none;
   border-radius: 10px;
-  background-color: #8eb696;
+  cursor: pointer;
+  background-color: #ffd301;
   :hover {
-    background-color: #8d9696;
+    background-color: #f5c126;
   }
 `;
 
@@ -193,10 +162,10 @@ export const ZipcodeSearch = styled.input`
   width: 124px;
   height: 52px;
   border: 0;
-  background-color: #8eb696;
-  color: white;
+  background-color: #ffd301;
+  color: black;
   font-size: 16px;
   font-weight: 600;
-  border: 1px solid #8eb696;
+  border: none;
   cursor: pointer;
 `;

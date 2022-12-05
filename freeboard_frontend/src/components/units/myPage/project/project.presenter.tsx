@@ -34,7 +34,7 @@ const MyPageProjectUI = (props: IMyPageProjectUI) => {
                         <S.ItemName>{el.name}</S.ItemName>
                         <S.ItemPrice>{el.price} 원</S.ItemPrice>
                         <S.Picked>
-                          <HeartTwoTone twoToneColor="#8eb696" />{" "}
+                          <HeartTwoTone twoToneColor="#ffd301" />{" "}
                           {el.pickedCount}
                         </S.Picked>
                       </S.ItemInfo>
@@ -56,7 +56,7 @@ const MyPageProjectUI = (props: IMyPageProjectUI) => {
                         <S.ItemName>{el.name}</S.ItemName>
                         <S.ItemPrice>{el.price} 원</S.ItemPrice>
                         <S.Picked>
-                          <HeartTwoTone twoToneColor="#8eb696" />{" "}
+                          <HeartTwoTone twoToneColor="#ffd301" />{" "}
                           {el.pickedCount}
                         </S.Picked>
                       </S.ItemInfo>

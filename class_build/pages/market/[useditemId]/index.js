@@ -26,7 +26,7 @@ const FETCH_USEDITEM = gql`
 `;
 export const getServerSideProps = async (context) => {
   const result = await request(
-    "https://backend04.codebootcamp.co.kr/graphql",
+    "https://backend09.codebootcamp.co.kr/graphql",
     FETCH_USEDITEM,
     { useditemId: context.query.useditemId }
   );

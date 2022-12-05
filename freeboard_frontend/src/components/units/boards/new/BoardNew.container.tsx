@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
-import { MouseEvent, ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import BoardNewUI from "./BoardNew.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardNew.queries";
 import {
@@ -10,6 +10,7 @@ import {
   IUpdateBoardInput,
 } from "./BoardNew.types";
 import { IMutation, IQuery } from "../../../../commons/types/generated/types";
+import { Modal } from "antd";
 
 const BoardNew = (props: IBoardNewProps) => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const BoardNew = (props: IBoardNewProps) => {
   const [errorPassword, setErrorPassword] = useState("");
   const [errorTitle, setErrorTitle] = useState("");
   const [errorContents, setErrorContents] = useState("");
-  const [topic, setTopic] = useState("");
+  // const [topic, setTopic] = useState("");
   const [btnColor, setBtnColor] = useState(false);
   const [snsUrl, setSNSUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -38,10 +39,10 @@ const BoardNew = (props: IBoardNewProps) => {
   const [addressDetail, setAddressDetail] = useState("");
   const [imgUrl, setImgUrl] = useState<string[]>([]);
 
-  function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
-    const target = event.target as HTMLInputElement;
-    setTopic(target.value);
-  }
+  // function hanldeClickTopic(event: MouseEvent<HTMLInputElement>) {
+  //   const target = event.target as HTMLInputElement;
+  //   setTopic(target.value);
+  // }
 
   // 등록하기
   // 작성자
@@ -147,14 +148,14 @@ const BoardNew = (props: IBoardNewProps) => {
     }
     // 모두 작성되었다면 작성정보전달
     if (writer && password && tempTitle && contents) {
-      const title = `[${topic}] ` + tempTitle;
+      // const title = `[${topic}] ` + tempTitle;
       try {
         const result = await createBoard({
           variables: {
             createBoardInput: {
               writer,
               password,
-              title,
+              title: tempTitle,
               contents,
               youtubeUrl: snsUrl,
               boardAddress: { zipcode, address, addressDetail },
@@ -162,12 +163,15 @@ const BoardNew = (props: IBoardNewProps) => {
             },
           },
         });
-        alert("게시물 등록이 완료되었습니다.");
-        console.log(result);
+        Modal.success({
+          content: "게시물 등록이 완료되었습니다.",
+        });
         router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error) {
         if (error instanceof Error)
-          alert(`게시물 등록에 실패했습니다. ${error.message}`);
+          Modal.error({
+            content: `게시물 등록에 실패했습니다. ${error.message}`,
+          });
       }
     }
   };
@@ -186,11 +190,12 @@ const BoardNew = (props: IBoardNewProps) => {
   };
 
   if (tempTitle) {
-    myVariables.updateBoardInput.title = `[${topic}] ` + tempTitle;
+    myVariables.updateBoardInput.title = tempTitle;
   } else {
-    myVariables.updateBoardInput.title =
-      `[${topic}] ` +
-      data?.fetchBoard.title.split(" ").splice(1, Infinity).join(" ");
+    myVariables.updateBoardInput.title = data?.fetchBoard.title
+      .split(" ")
+      .splice(1, Infinity)
+      .join(" ");
   }
 
   if (contents) {
@@ -254,7 +259,7 @@ const BoardNew = (props: IBoardNewProps) => {
     <BoardNewUI
       data={data}
       isEdit={props.isEdit}
-      selectedTopic={hanldeClickTopic}
+      // selectedTopic={hanldeClickTopic}
       changedWriter={handleChangeWriter}
       changedPassword={handleChangePassword}
       changedTitle={handleChangeTitle}
@@ -273,7 +278,7 @@ const BoardNew = (props: IBoardNewProps) => {
       zipcode={zipcode}
       address={address}
       changedDetailAddress={handleChangeDetailAddress}
-      topic={topic}
+      // topic={topic}
       onChangeFiles={onChangeFiles}
       imgUrl={imgUrl}
       onClickDeletes={onClickDeletes}

@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { IPaginationStyled } from "./pagination.types";
 
-
 export const ListFooter = styled.section`
   display: flex;
   justify-content: space-between;
@@ -29,18 +28,17 @@ export const NextArrow = styled(RightOutlined)`
 export const Pages = styled.button`
   width: 40px;
   height: 40px;
-  color: ${(props: IPaginationStyled) =>
-    props.current === true ? "white" : "black"};
+  color: black;
   border: ${(props: IPaginationStyled) =>
-    props.current === true ? "1px solid #8eb695" : "1px solid #fbdea2"};
+    props.current === true ? "none" : "1px solid black"};
+  outline: none;
   border-radius: 5px;
   background-color: ${(props: IPaginationStyled) =>
-    props.current === true ? "#8eb695" : "white"};
+    props.current === true ? "#ffd301" : "white"};
   :hover {
-    color: white;
-    background-color: #8eb695;
-    border: 1px solid #8eb695;
+    color: black;
+    background-color: #ffd301;
+    border: 1px solid #ffd301;
   }
   cursor: pointer;
 `;
-

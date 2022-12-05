@@ -5,42 +5,33 @@ export const CommentBody = styled.div`
   margin: 0 auto;
   width: 100%;
   background-color: #f7f7f7;
-  @media only screen and (max-width: 600px) {
-    padding: ${(props: IMarketCommentListStyled) =>
-      props.isEdit || props.isAnswer || props.isAnswerEdit
-        ? "20px 0"
-        : "10px 20px"};
-  }
-  @media only screen and (min-width: 600px) {
-    padding: ${(props: IMarketCommentListStyled) =>
-      props.isEdit || props.isAnswer || props.isAnswerEdit
-        ? "20px 0"
-        : "0px 102px 30px 102px"};
-  }
+  padding: ${(props: IMarketCommentListStyled) =>
+    props.isEdit || props.isAnswer || props.isAnswerEdit
+      ? "20px 0"
+      : "0px 102px 30px 102px"};
 `;
 
 export const Comment = styled.div`
-  width: 100%;
+  width: 1200px;
   position: relative;
   padding-bottom: 20px;
-  padding-left: 30px;
+  padding-left: 120px;
+  padding-right: 120px;
   margin: 0 auto;
 `;
 
-export const CommentImg = styled.img`
+export const CommentImg = styled.div`
   position: absolute;
-  background-color: white;
-  border-radius: 50px;
-  @media only screen and (max-width: 600px) {
-    width: 36px;
-    top: -5px;
-    left: -15px;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 48px;
-    top: -15px;
-    left: -25px;
-  }
+  font-size: 20px;
+  background-color: #ffd301;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  top: -10px;
+  left: 60px;
+  text-align: center;
+  line-height: 42px;
+  font-weight: 600;
 `;
 
 export const CommentInfo = styled.div`
@@ -88,6 +79,9 @@ export const CommentContents = styled.div`
 
 export const CommentFooter = styled.div`
   margin-bottom: 20px;
+  span {
+    cursor: pointer;
+  }
 `;
 
 export const Answer = styled.div`
@@ -95,22 +89,21 @@ export const Answer = styled.div`
   width: 100%;
   padding-bottom: 20px;
   padding-left: 30px;
-  border-left: 1px solid #8eb696;
+  border-left: 1px solid #ffd301;
 `;
 
-export const AnswerImg = styled.img`
+export const AnswerImg = styled.div`
   position: absolute;
-
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  top: -10px;
+  left: -22px;
   background-color: white;
   border-radius: 50px;
-  @media only screen and (max-width: 600px) {
-    width: 36px;
-    top: -5px;
-    left: -20px;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 48px;
-    top: -10px;
-    left: -25px;
-  }
+  text-align: center;
+  font-size: 20px;
+  background-color: #ffd301;
+  border-radius: 50%;
+  font-weight: 600;
 `;

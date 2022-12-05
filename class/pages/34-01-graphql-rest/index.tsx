@@ -4,7 +4,7 @@ import { result } from "lodash";
 const GraphqlRest = () => {
   const onClickSubmit = async () => {
     const result = await axios.post(
-      "https://backend04.codebootcamp.co.kr/graphql",
+      "https://backend09.codebootcamp.co.kr/graphql",
       {
         query: `mutation createBoard { 
                 createBoard(createBoardInput: {

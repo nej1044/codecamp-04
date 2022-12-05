@@ -4,13 +4,14 @@ import * as S from "./BoardList.styles";
 import { IBoardListUIProps } from "./BoardList.types";
 import { CommentsCount } from "../../../../commons/libraries/CommentsCount";
 import { v4 as uuid4 } from "uuid";
+import { SearchOutlined } from "@ant-design/icons";
 
 const BoardListUI = (props: IBoardListUIProps) => {
   return (
     <>
       <S.Wrapper>
-        <S.SideBarWrapper>
-          <S.SideBarTitle>디벨로펌과 함께 성장해보세요</S.SideBarTitle>
+        {/* <S.SideBarWrapper>
+          <S.SideBarTitle>코드캠프와 함께 성장해보세요</S.SideBarTitle>
           <S.CategoryWrapper>
             <S.Category
               onClick={props.categorySelector}
@@ -41,21 +42,20 @@ const BoardListUI = (props: IBoardListUIProps) => {
               스터디
             </S.Category>
           </S.CategoryWrapper>
-        </S.SideBarWrapper>
+        </S.SideBarWrapper> */}
         <S.ListWrapper>
           <S.ListHeader>
-            <S.HeaderForm>
-              <S.HeaderInput
-                onChange={props.changeSearchValue}
-                type="text"
-                placeholder="궁금한 내용을 검색해보세요!"
-              />
-              <S.HeaderBtn onClick={props.clickSearchValue}>검색</S.HeaderBtn>
-            </S.HeaderForm>
             <S.BtnWrapper>
-              <S.WriteBtn onClick={props.handleCreate}>
-                게시물 등록하기
-              </S.WriteBtn>
+            <S.HeaderForm>
+                <SearchOutlined />
+                <S.HeaderInput
+                  onChange={props.changeSearchValue}
+                  type="text"
+                  placeholder="커뮤니티 내에서 검색해보세요"
+                />
+                {/* <S.HeaderBtn onClick={props.clickSearchValue}>검색</S.HeaderBtn> */}
+              </S.HeaderForm>
+              <S.WriteBtn onClick={props.handleCreate}>작성하기</S.WriteBtn>
             </S.BtnWrapper>
           </S.ListHeader>
           <S.ListBody>
@@ -80,8 +80,8 @@ const BoardListUI = (props: IBoardListUIProps) => {
                   </S.BoardTitle>
                   <S.BoardContents>{el?.contents}</S.BoardContents>
                   <S.BoardUser>
-                    <S.BoardWriter>{el?.writer}</S.BoardWriter>
-                    <S.BoardCreatedAt>{getDate(el.createdAt)}</S.BoardCreatedAt>
+                    <span>{el?.writer}</span>
+                    <span>{getDate(el.createdAt)}</span>
                   </S.BoardUser>
                 </S.BoardWrapper>
                 <S.ListComment>

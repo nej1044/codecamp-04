@@ -56,28 +56,26 @@ const Footer = () => {
     <FooterWrap>
       <InfoWrap>
         <TopInfo>
-          <Info>(주)디벨로펌</Info>
+          <Info>(주)코드캠프</Info>
           <Info>서울특별시 구로구 디지털로 300</Info>
-          <Info>대표: 노은정</Info>
-          <Info>사업자등록번호: 123-45-67891</Info>
+          <Info>대표: 노원두</Info>
+          <Info>이메일: support@codebootcamp.co.k</Info>
         </TopInfo>
         <BottomInfo>
-          <Info>통신판매업신고: 2021-서울구로-1234</Info>
-          <Info>유료직업소개사업등록번호: 제2021-1234567-89-1-23456</Info>
-          <Info>nej1044@naver.com</Info>
+          <Info>학원 등록 번호: 제 5845호</Info>
+          <Info>사업자등록번호: 717-87-02373</Info>
+          <Info>운영 시간: AM 09:30 ~ PM:06:30</Info>
         </BottomInfo>
       </InfoWrap>
       <FooterBody>
-        (주)디벨로펌은 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품,
+        (주)코드캠프은 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품,
         상품정보, 거래에 관한 의무와 책임은 판매회원에게 있습니다
         <br />
-        (주)디벨로펌 사이트의 상품/판매회원/중개 서비스/거래 정보, 콘텐츠, UI
+        (주)코드캠프 사이트의 상품/판매회원/중개 서비스/거래 정보, 콘텐츠, UI
         등에 대한 무단복제, 전송, 배포, 스크래핑 등의 행위는 저작권법,
         콘텐츠산업 진흥법 등 관련법령에 의하여 엄격히 금지됩니다.
       </FooterBody>
-      <Copyright>
-        Copyright © 2021 Develofirm Inc. All rights reserved.
-      </Copyright>
+      <Copyright>Copyright © 2022 Codecamp Inc. All rights reserved.</Copyright>
     </FooterWrap>
   );
 };

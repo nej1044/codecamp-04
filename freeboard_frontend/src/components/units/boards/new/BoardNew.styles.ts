@@ -8,13 +8,13 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 50px auto;
-  padding: 100px;
-  border: 1px solid #8eb695;
+  padding: 50px;
   border-radius: 100px;
 `;
 
 export const H1 = styled.h1`
   font-size: 36px;
+  padding-bottom: 30px;
 `;
 
 export const WrapperHeader = styled.div`
@@ -26,24 +26,26 @@ export const WrapperHeader = styled.div`
 
 export const TopicWrapper = styled.div`
   display: flex;
-  width: 40%;
+  width: 30%;
   justify-content: space-between;
+  margin-left: 50px;
 `;
 
 export const TopicBtn = styled.input`
   width: 100px;
   height: 50px;
-  color: white;
+  color: black;
   font-size: 16px;
   font-weight: 600;
   border: ${(props: IBoardNewEmotion) =>
-    props.topic === true ? "1px solid #8EB695" : "1px solid #fbdea2"};
+    props.topic === true ? "none" : "1px solid #c0c0c0"};
   border-radius: 5px;
   background-color: ${(props: IBoardNewEmotion) =>
-    props.topic === true ? "#8EB695" : "#fbdea2"};
-  &:hover {
-    background-color: #8eb695;
-    border: 1px solid #8eb695;
+    props.topic === true ? "#ffd301" : "white"};
+  cursor: pointer;
+  :hover {
+    background-color: #ffd301;
+    border: none;
   }
 `;
 
@@ -72,10 +74,11 @@ export const HeaderInput = styled.input`
   height: 52px;
   padding: 14px;
   font-size: 16px;
-  border: 1px solid #fbdea2;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
   &:focus {
     border: none;
-    outline: 1px solid #8eb695;
+    outline: 1px solid black;
   }
 `;
 
@@ -94,10 +97,11 @@ export const BasicInput = styled.input`
   height: 52px;
   padding: 14px;
   font-size: 16px;
-  border: 1px solid #fbdea2;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
   &:focus {
     border: none;
-    outline: 1px solid #8eb695;
+    outline: 1px solid black;
   }
 `;
 export const ContentInput = styled.textarea`
@@ -107,10 +111,11 @@ export const ContentInput = styled.textarea`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   resize: none;
-  border: 1px solid #fbdea2;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
   &:focus {
     border: none;
-    outline: 1px solid #8eb695;
+    outline: 1px solid black;
   }
 `;
 
@@ -132,15 +137,17 @@ export const ZipcodeSearch = styled.button`
   width: 124px;
   height: 52px;
   border: 0;
-  background-color: #fbdea2;
-  color: white;
+  background-color: #ffd301;
+  border-radius: 5px;
+  color: black;
   font-size: 16px;
   font-weight: 600;
   border: 1px solid #fbdea2;
+  cursor: pointer;
   &:hover {
     border: none;
-    outline: 1px solid #8eb695;
-    background-color: #8eb695;
+    outline: none;
+    background-color: #f5c126;
   }
 `;
 
@@ -150,8 +157,19 @@ export const AdminBtn = styled.button`
   margin-top: 80px;
   border: 0;
   background-color: ${(props: IBoardNewEmotion) =>
-    props.btnColor === true ? "#8EB695" : "#FBDEA2"};
-  color: white;
+    props.btnColor === true ? "#ffd301" : "#e4e5ed"};
+  :focus,
+  :hover {
+    outline: none;
+    border: 1px solid
+      ${(props: IBoardNewEmotion) =>
+        props.btnColor === true ? "#f5c126" : "#e4e5ed"};
+    background-color: ${(props: IBoardNewEmotion) =>
+      props.btnColor === true ? "#f5c126" : "#e4e5ed"};
+  }
+  cursor: pointer;
+  color: black;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
 `;

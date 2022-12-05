@@ -5,30 +5,14 @@ import { IMyPageStyled } from "./myPage.types";
 export const Wrapper = styled.div`
   width: 100%;
   background-color: #f9f9f9;
-  @media only screen and (max-width: 600px) {
-    padding: 30px;
-  }
-  @media only screen and (min-width: 600px) {
-    padding: 65px;
-  }
-  @media only screen and (min-width: 996px) {
-    padding: 100px;
-  }
+  padding: 100px 300px;
 `;
 
 export const MyPageHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  @media only screen and (max-width: 600px) {
-    margin-bottom: 15px;
-  }
-  @media only screen and (min-width: 600px) {
-    margin-bottom: 23px;
-  }
-  @media only screen and (min-width: 996px) {
-    margin-bottom: 30px;
-  }
+  margin-bottom: 30px;
 `;
 
 export const HeaderLeft = styled.div`
@@ -38,21 +22,17 @@ export const HeaderLeft = styled.div`
   height: 300px;
   padding: 50px;
   background-color: white;
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 600px) {
-    display: none;
-  }
-  @media only screen and (min-width: 996px) {
-    display: flex;
-  }
 `;
 
 export const Transaction = styled.div`
   width: 100%;
   height: 300px;
   overflow: auto;
+  div {
+    color: #c0c0c0;
+    line-height: 150px;
+    text-align: center;
+  }
 `;
 
 export const TransHeader = styled.div`
@@ -79,21 +59,9 @@ export const HeaderRight = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: white;
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-    height: 150px;
-    padding: 25px;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 100%;
-    height: 300px;
-    padding: 38px;
-  }
-  @media only screen and (min-width: 996px) {
-    width: 49%;
-    height: 300px;
-    padding: 50px;
-  }
+  width: 49%;
+  height: 300px;
+  padding: 50px;
 `;
 
 export const CoinSection = styled.section`
@@ -108,16 +76,10 @@ export const CoinSection = styled.section`
 export const CoinTitle = styled.span`
   border-bottom: 3px solid black;
   text-align: center;
-  @media only screen and (max-width: 600px) {
-    width: 60px;
-    height: 25px;
-    font-size: 15px;
-  }
-  @media only screen and (min-width: 600px) {
-    width: 120px;
-    height: 50px;
-    font-size: 30px;
-  }
+  width: 90px;
+  height: 35px;
+  font-size: 20px;
+  padding: 0px 10px 10px 10px;
 `;
 
 export const CoinCountWrap = styled.div`
@@ -130,35 +92,23 @@ export const CoinCountWrap = styled.div`
 
 export const PointAmount = styled.span`
   font-weight: 600;
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 24px;
-  }
+  font-size: 20px;
 `;
 
 export const CountTitle = styled.span`
-  @media only screen and (max-width: 600px) {
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 20px;
-  }
+  font-size: 18px;
 `;
 
 export const CoinBtn = styled.button`
-  color: white;
-  background-color: black;
-  @media only screen and (max-width: 600px) {
-    height: 35px;
-    width: 125px;
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    height: 70px;
-    width: 250px;
-    font-size: 20px;
+  color: black;
+  background-color: #ffd301;
+  height: 70px;
+  width: 250px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  :hover {
+    background-color: #f5c126;
   }
 `;
 
@@ -177,12 +127,7 @@ export const Password = styled.span`
   color: #9f9f9f;
   text-decoration: underline;
   text-align: right;
-  @media only screen and (max-width: 600px) {
-    font-size: 10px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 16px;
-  }
+  font-size: 14px;
 `;
 
 export const PasswordWrap = styled.div`
@@ -208,12 +153,9 @@ export const PasswordBtn = styled.button`
 `;
 
 export const ProfileName = styled.span`
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-  @media only screen and (min-width: 600px) {
-    font-size: 25px;
-  }
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 500;
 `;
 
 export const StyledModal = styled(ModalUnstyled)`

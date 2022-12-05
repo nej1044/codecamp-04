@@ -1,5 +1,5 @@
-import BoardList from "../../src/components/units/boards/list/BoardList.container";
 import Head from "next/head";
+import BoardList from "../../src/components/units/boards/List/BoardList.container";
 
 const BoardListPage = () => {
   return (
@@ -13,7 +13,7 @@ const BoardListPage = () => {
         />
         <meta
           property="og:description"
-          content="능력있는 개발자들의 모임, 디벨로펌과 함께 성장해보세요"
+          content="개발 회사에서 만든 실무 코딩 부트캠프: 코드캠프"
         />
       </Head>
       <BoardList />

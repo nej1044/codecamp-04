@@ -6,7 +6,7 @@ export interface IBoardListUIProps {
   current: any;
   count: number;
   changeSearchValue: (event: ChangeEvent<HTMLInputElement>) => void;
-  clickSearchValue: (event: MouseEvent<HTMLElement>) => void;
+  // clickSearchValue: (event: MouseEvent<HTMLElement>) => void;
   handleCreate: () => void;
   getDetail: (event: MouseEvent<HTMLDivElement>) => void;
   // refetch: (
@@ -15,8 +15,8 @@ export interface IBoardListUIProps {
   refetch: any;
   setStartPage: Dispatch<SetStateAction<number>>;
   setCurrent: Dispatch<SetStateAction<number>>;
-  categorySelector: (event: MouseEvent<HTMLLIElement>) => void;
-  active: string;
+  // categorySelector: (event: MouseEvent<HTMLLIElement>) => void;
+  // active: string;
   confirmSearch: string;
 }
 

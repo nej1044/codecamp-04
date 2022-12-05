@@ -15,6 +15,7 @@ interface IProps {
   children: ReactNode;
 }
 
+const CACHE_LIST = new InMemoryCache();
 const ApolloSetting = (props: IProps) => {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
@@ -44,14 +45,14 @@ const ApolloSetting = (props: IProps) => {
   });
 
   const uploadLink = createUploadLink({
-    uri: "https://backend06.codebootcamp.co.kr/graphql",
+    uri: "https://backend09.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
 
   const client = new ApolloClient({
     link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
-    cache: new InMemoryCache(),
+    cache: CACHE_LIST,
     connectToDevTools: true,
   });
   return <ApolloProvider client={client}>{props.children}</ApolloProvider>;

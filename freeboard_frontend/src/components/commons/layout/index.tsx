@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
 const Body = styled.section`
@@ -29,6 +30,8 @@ const TopLayout = styled.div`
   top: 0;
   z-index: 1;
   border-bottom: 1px solid #e6e6e6;
+  background-color: white;
+  width: 100%;
 `;
 
 const Layout = (props: ILayoutProps) => {

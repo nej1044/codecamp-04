@@ -9,6 +9,7 @@ import {
   IQuery,
   IQueryFetchBoardCommentsArgs,
 } from "../../../commons/types/generated/types";
+import { Modal } from "antd";
 
 const CommentWrite = () => {
   const [inputs, setInputs] = useState<object>({
@@ -62,7 +63,9 @@ const CommentWrite = () => {
           password: "",
           contents: "",
         });
-        alert("댓글을 등록했습니다.");
+        Modal.success({
+          content: "댓글을 등록했습니다.",
+        });
       } catch (error) {
         if (error instanceof Error)
           alert(`댓글 등록에 실패했습니다 ${error.message}`);

@@ -9,6 +9,7 @@ import {
 } from "./BoardDetail.queries";
 import { useRef, MouseEvent, SyntheticEvent } from "react";
 import { IMutation, IQuery } from "../../../../commons/types/generated/types";
+import { Modal } from "antd";
 
 const BoardDetail = () => {
   const router = useRouter();
@@ -35,14 +36,17 @@ const BoardDetail = () => {
   // 게시글 삭제
   async function handleDeleteBoard() {
     try {
-      const result = await deleteBoard({
+      await deleteBoard({
         variables: { boardId: router.query.boardId },
       });
-      console.log(result);
-      alert("게시물을 삭제했습니다.");
-      router.push(`/boards`);
+      Modal.success({
+        content: "게시물을 삭제했습니다.",
+      });
+      router.push("/boards");
     } catch (error: any) {
-      alert(`게시물 삭제에 실패했습니다 ${error.message}`);
+      Modal.error({
+        content: `게시물 삭제에 실패했습니다 ${error.message}`,
+      });
     }
   }
 
@@ -61,7 +65,9 @@ const BoardDetail = () => {
         ],
       });
     } catch (error: any) {
-      alert(error.message);
+      Modal.error({
+        content: `${error.message}`,
+      });
     }
   };
 
@@ -75,7 +81,9 @@ const BoardDetail = () => {
         ],
       });
     } catch (error: any) {
-      alert(error.message);
+      Modal.error({
+        content: `${error.message}`,
+      });
     }
   };
 

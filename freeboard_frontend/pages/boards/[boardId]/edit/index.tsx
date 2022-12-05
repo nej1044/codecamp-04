@@ -1,6 +1,6 @@
 import BoardNew from "../../../../src/components/units/boards/new/BoardNew.container";
-import Head from "next/head";
-import { gql, request } from "graphql-request";
+// import Head from "next/head";
+// import { gql, request } from "graphql-request";
 
 interface IBoardDetailPage {
   fetchBoard: {
@@ -13,7 +13,7 @@ interface IBoardDetailPage {
 const BoardEditPage = (props: IBoardDetailPage) => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <meta property="og:title" content={props.fetchBoard.title} />
         <meta
           property="og:url"
@@ -27,37 +27,37 @@ const BoardEditPage = (props: IBoardDetailPage) => {
           property="og:description"
           content="능력있는 개발자들의 모임, 디벨로펌"
         />
-      </Head>
+      </Head> */}
       <BoardNew isEdit={true} />
     </>
   );
 };
 
-const FETCH_BOARD = gql`
-  query fetchBoard($fetchBoard: ID!) {
-    fetchBoard(boardId: $boardId) {
-      _id
-      title
-      images
-    }
-  }
-`;
+// const FETCH_BOARD = gql`
+//   query fetchBoard($fetchBoard: ID!) {
+//     fetchBoard(boardId: $boardId) {
+//       _id
+//       title
+//       images
+//     }
+//   }
+// `;
 
-export const getServerSideProps = async (context: any) => {
-  const result = await request(
-    "https://backend04.codebootcamp.co.kr/graphql",
-    FETCH_BOARD,
-    { boardId: context.query.boardId }
-  );
-  return {
-    props: {
-      fetchBoard: {
-        _id: result.fetchBoard._id,
-        title: result.fetchBoard.title,
-        images: result.fetchBoard.images[0],
-      },
-    },
-  };
-};
+// export const getServerSideProps = async (context: any) => {
+//   const result = await request(
+//     "https://backend09.codebootcamp.co.kr/graphql",
+//     FETCH_BOARD,
+//     { boardId: context.query.boardId }
+//   );
+//   return {
+//     props: {
+//       fetchBoard: {
+//         _id: result.fetchBoard._id,
+//         title: result.fetchBoard.title,
+//         images: result.fetchBoard.images[0],
+//       },
+//     },
+//   };
+// };
 
 export default BoardEditPage;

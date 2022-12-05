@@ -10,7 +10,7 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
     <>
       <S.Wrapper>
         <S.H1>게시물{props.isEdit ? "수정" : "등록"}</S.H1>
-        <S.WrapperHeader>
+        {/* <S.WrapperHeader>
           <S.TopicWrapper>
             <S.TopicBtn
               onClick={props.selectedTopic}
@@ -34,7 +34,7 @@ const BoardNewUI = (props: IBoardNewUIProps) => {
               topic={props.topic === "스터디"}
             />
           </S.TopicWrapper>
-        </S.WrapperHeader>
+        </S.WrapperHeader> */}
         <S.WrapperBody>
           <S.BodyHeader>
             <S.HeaderForm>

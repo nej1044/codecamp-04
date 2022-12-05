@@ -10,7 +10,7 @@ export const PhotoUpload = styled.div`
 `;
 
 export const Photo = styled.div`
-  background-color: #8eb695;
+  background-color: black;
   text-align: center;
   color: white;
   cursor: pointer;

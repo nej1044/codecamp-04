@@ -26,7 +26,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
                 <div></div>
               )}
               <S.Picked onClick={props.togglePick}>
-                <HeartTwoTone twoToneColor="#8eb696" /> 찜하기{" "}
+                <HeartTwoTone twoToneColor="#ffd301" /> 찜하기{" "}
                 {props.data?.fetchUseditem.pickedCount}
               </S.Picked>
             </S.HeaderEdit>
@@ -55,7 +55,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         </S.DetailHeader>
         <S.DetailBody>
           <S.BodyHeader>
-            <S.Title>서비스 설명</S.Title>
+            <S.Title>상품 설명</S.Title>
             {process.browser ? (
               <S.HeaderContents
                 dangerouslySetInnerHTML={{
@@ -78,7 +78,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
             </S.PhotoWrapper>
           </S.BodyHeader>
           <S.BodyHeader>
-            <S.Title>사무실 위치</S.Title>
+            <S.Title>직거래 위치</S.Title>
             {props.data && <Map data={props.data} />}
           </S.BodyHeader>
           <S.Tags>

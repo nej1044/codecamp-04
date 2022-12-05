@@ -56,7 +56,7 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItem) => {
     <>
       {!isEdit && (
         <S.Comment>
-          <S.CommentImg src="/images/detail/question.png" />
+          <S.CommentImg>Q</S.CommentImg>
           <S.CommentInfo>
             <div>
               <S.CommentUser>{props.el?.user.name}</S.CommentUser>

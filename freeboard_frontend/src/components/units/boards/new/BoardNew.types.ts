@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent } from "react";
+import { ChangeEvent } from "react";
 import { Maybe } from "../../../../commons/types/generated/types";
 
 export interface IBoardNewProps {
@@ -31,8 +31,8 @@ export interface IBoardNewUIProps {
   btnColor?: boolean;
   isOpen: boolean;
   data?: any;
-  topic: string | boolean;
-  selectedTopic: (event: MouseEvent<HTMLInputElement>) => void;
+  // topic: string | boolean;
+  // selectedTopic: (event: MouseEvent<HTMLInputElement>) => void;
   changedWriter: (event: ChangeEvent<HTMLInputElement>) => void;
   changedPassword: (event: ChangeEvent<HTMLInputElement>) => void;
   changedTitle: (event: ChangeEvent<HTMLInputElement>) => void;

@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 80px;
   background-color: white;
 `;
@@ -34,7 +34,7 @@ export const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 260px;
+  width: 300px;
   height: 40px;
   padding: 20px;
   margin-right: 20px;
@@ -52,7 +52,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  width: 200px;
+  width: 220px;
   outline: none;
   border: none;
 `;
@@ -153,7 +153,7 @@ export const Wrapper = styled.section`
 export const SectionTitle = styled.span`
   font-size: 24px;
   font-weight: 500;
-`
+`;
 
 export const LoginInput = styled.input`
   width: 100%;
@@ -161,7 +161,8 @@ export const LoginInput = styled.input`
   padding: 10px;
   border: 1px solid #9f9f9f;
   border-radius: 10px;
-  :hover, :focus {
+  :hover,
+  :focus {
     outline: none;
     border: 1px solid black;
   }
@@ -175,6 +176,8 @@ export const WrapperBtn = styled.button`
   background-color: #ffd301;
   font-size: 20px;
   font-weight: 700;
+  cursor: pointer;
+
   :hover {
     background-color: #f5c126;
   }
@@ -203,6 +206,8 @@ export const FooterBtn = styled.button`
   color: #3279ff;
   font-size: 20px;
   font-weight: 700;
+  cursor: pointer;
+
   :hover {
     background-color: #dbe7ff;
   }
